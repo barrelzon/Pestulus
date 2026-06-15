@@ -1,0 +1,42 @@
+# Dependencies
+node_modules/
+.expo/
+dist/
+build/
+web-build/
+expo-env.d.ts
+*.tsbuildinfo
+.metro-health-check*
+
+# Env / hemmeligheter
+.env
+.env.*
+!.env.example
+
+# Logger
+*.log
+npm-debug.log*
+yarn-debug.*
+yarn-error.*
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Native
+ios/
+android/
+.kotlin/
+*.keystore
+*.jks
+*.p8
+*.p12
+*.key
+*.pem
+*.mobileprovision
+
+# Claude Code (lokale/personlige innstillinger)
+.claude/settings.local.json
+.claude/scheduled_tasks.lock

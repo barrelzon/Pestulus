@@ -1,0 +1,205 @@
+MANGLENDE BILDER – Pestulus
+============================
+
+Krysset species.json (152 arter) mot bildene i backend/public/images (105 stk).
+50 arter mangler bilde. Lagre hvert nytt bilde som "<NavnNo>.png" (nøyaktig samme
+navn som arten heter i appen), i backend/public/images/.
+
+ChatGPT-prompt-mal (samme som du brukte):
+"Lag et lite men høyoppløst bilde av <NAVN> (<LATIN>). Sørg for at farger og
+utseende på dyrearten er realistisk korrekt. Bruk litt focus blur for pen effekt."
+
+For grupper/familier (markert *) finnes ingen enkeltart – be ChatGPT om en
+typisk/representativ art i gruppen.
+
+
+===== EDDERKOPPER, MIDD OG FLÅTT (6) =====
+
+Kløverbrunmidd (Bryobia praetiosa)
+Lag et lite men høyoppløst bilde av Kløverbrunmidd (Bryobia praetiosa). Sørg for at farger og utseende på dyrearten er realistisk korrekt. Bruk litt focus blur for pen effekt.
+
+Mosskorpioner * (Pseudoscorpiones)
+Lag et lite men høyoppløst bilde av en mosskorpion (Pseudoscorpiones). Sørg for at farger og utseende på dyrearten er realistisk korrekt. Bruk litt focus blur for pen effekt.
+
+Rød hønsemidd (Dermanyssus gallinae)
+Lag et lite men høyoppløst bilde av Rød hønsemidd (Dermanyssus gallinae). Sørg for at farger og utseende på dyrearten er realistisk korrekt. Bruk litt focus blur for pen effekt.
+
+Skabb (Sarcoptes scabiei)
+Lag et lite men høyoppløst bilde av skabbmidd (Sarcoptes scabiei). Sørg for at farger og utseende på dyrearten er realistisk korrekt. Bruk litt focus blur for pen effekt.
+
+Vevkjerringer * (Opiliones)
+Lag et lite men høyoppløst bilde av en vevkjerring (Opiliones). Sørg for at farger og utseende på dyrearten er realistisk korrekt. Bruk litt focus blur for pen effekt.
+
+Flått (Ixodes ricinus)
+Lag et lite men høyoppløst bilde av Flått / skogflått (Ixodes ricinus). Sørg for at farger og utseende på dyrearten er realistisk korrekt. Bruk litt focus blur for pen effekt.
+
+
+===== SOMMERFUGLER OG MØLL (12) =====
+
+Daddelsmalmott (Cadra cautella)
+Lag et lite men høyoppløst bilde av Daddelsmalmott (Cadra cautella). Sørg for at farger og utseende på dyrearten er realistisk korrekt. Bruk litt focus blur for pen effekt.
+
+Flatmøll (Agonopterix heracliana)
+Lag et lite men høyoppløst bilde av Flatmøll (Agonopterix heracliana). Sørg for at farger og utseende på dyrearten er realistisk korrekt. Bruk litt focus blur for pen effekt.
+
+Frømøll (Hofmannophila pseudospretella)
+Lag et lite men høyoppløst bilde av Frømøll (Hofmannophila pseudospretella). Sørg for at farger og utseende på dyrearten er realistisk korrekt. Bruk litt focus blur for pen effekt.
+
+Humlebolvoksmøll (Aphomia sociella)
+Lag et lite men høyoppløst bilde av Humlebolvoksmøll (Aphomia sociella). Sørg for at farger og utseende på dyrearten er realistisk korrekt. Bruk litt focus blur for pen effekt.
+
+Husfly (Caradrina clavipalpis)
+Lag et lite men høyoppløst bilde av Husfly (Caradrina clavipalpis). Sørg for at farger og utseende på dyrearten er realistisk korrekt. Bruk litt focus blur for pen effekt.
+
+Brunhodereirmøll (Niditinea fuscella)
+Lag et lite men høyoppløst bilde av Brunhodereirmøll (Niditinea fuscella). Sørg for at farger og utseende på dyrearten er realistisk korrekt. Bruk litt focus blur for pen effekt.
+
+Klistermøll (Endrosis sarcitrella)
+Lag et lite men høyoppløst bilde av Klistermøll (Endrosis sarcitrella). Sørg for at farger og utseende på dyrearten er realistisk korrekt. Bruk litt focus blur for pen effekt.
+
+Kornkjukemøll (Nemapogon granella)
+Lag et lite men høyoppløst bilde av Kornkjukemøll (Nemapogon granella). Sørg for at farger og utseende på dyrearten er realistisk korrekt. Bruk litt focus blur for pen effekt.
+
+Broket kjukemøll (Nemapogon variatella)
+Lag et lite men høyoppløst bilde av Broket kjukemøll (Nemapogon variatella). Sørg for at farger og utseende på dyrearten er realistisk korrekt. Bruk litt focus blur for pen effekt.
+
+Melsmalmott (Ephestia kuehniella)
+Lag et lite men høyoppløst bilde av Melsmalmott (Ephestia kuehniella). Sørg for at farger og utseende på dyrearten er realistisk korrekt. Bruk litt focus blur for pen effekt.
+
+Pelsmøll (Tinea pellionella)
+Lag et lite men høyoppløst bilde av Pelsmøll (Tinea pellionella). Sørg for at farger og utseende på dyrearten er realistisk korrekt. Bruk litt focus blur for pen effekt.
+
+Tørrfruktsmalmott (Plodia interpunctella)
+Lag et lite men høyoppløst bilde av Tørrfruktsmalmott (Plodia interpunctella). Sørg for at farger og utseende på dyrearten er realistisk korrekt. Bruk litt focus blur for pen effekt.
+
+
+===== KAKERLAKKER (12) =====
+
+Amerikansk kakerlakk (Periplaneta americana)
+Lag et lite men høyoppløst bilde av Amerikansk kakerlakk (Periplaneta americana). Sørg for at farger og utseende på dyrearten er realistisk korrekt. Bruk litt focus blur for pen effekt.
+
+Australsk kakerlakk (Periplaneta australasiae)
+Lag et lite men høyoppløst bilde av Australsk kakerlakk (Periplaneta australasiae). Sørg for at farger og utseende på dyrearten er realistisk korrekt. Bruk litt focus blur for pen effekt.
+
+Banankakerlakker * (Panchlora spp.)
+Lag et lite men høyoppløst bilde av en banankakerlakk (Panchlora). Sørg for at farger og utseende på dyrearten er realistisk korrekt. Bruk litt focus blur for pen effekt.
+
+Brunbeltet kakerlakk (Supella longipalpa)
+Lag et lite men høyoppløst bilde av Brunbeltet kakerlakk (Supella longipalpa). Sørg for at farger og utseende på dyrearten er realistisk korrekt. Bruk litt focus blur for pen effekt.
+
+Brun kakerlakk (Periplaneta brunnea)
+Lag et lite men høyoppløst bilde av Brun kakerlakk (Periplaneta brunnea). Sørg for at farger og utseende på dyrearten er realistisk korrekt. Bruk litt focus blur for pen effekt.
+
+Madeirakakerlakk (Rhyparobia maderae)
+Lag et lite men høyoppløst bilde av Madeirakakerlakk (Rhyparobia maderae). Sørg for at farger og utseende på dyrearten er realistisk korrekt. Bruk litt focus blur for pen effekt.
+
+Markkakerlakk (Ectobius lapponicus)
+Lag et lite men høyoppløst bilde av Markkakerlakk (Ectobius lapponicus). Sørg for at farger og utseende på dyrearten er realistisk korrekt. Bruk litt focus blur for pen effekt.
+
+Orientalsk kakerlakk (Blatta orientalis)
+Lag et lite men høyoppløst bilde av Orientalsk kakerlakk (Blatta orientalis). Sørg for at farger og utseende på dyrearten er realistisk korrekt. Bruk litt focus blur for pen effekt.
+
+Orkidékakerlakk (Shelfordina orchidae)
+Lag et lite men høyoppløst bilde av Orkidékakerlakk (Shelfordina orchidae). Sørg for at farger og utseende på dyrearten er realistisk korrekt. Bruk litt focus blur for pen effekt.
+
+Røkbrun kakerlakk (Periplaneta fuliginosa)
+Lag et lite men høyoppløst bilde av Røkbrun kakerlakk (Periplaneta fuliginosa). Sørg for at farger og utseende på dyrearten er realistisk korrekt. Bruk litt focus blur for pen effekt.
+
+Tysk kakerlakk (Blattella germanica)
+Lag et lite men høyoppløst bilde av Tysk kakerlakk (Blattella germanica). Sørg for at farger og utseende på dyrearten er realistisk korrekt. Bruk litt focus blur for pen effekt.
+
+Veksthuskakerlakk (Pychnoscelus surinamensis)
+Lag et lite men høyoppløst bilde av Veksthuskakerlakk (Pychnoscelus surinamensis). Sørg for at farger og utseende på dyrearten er realistisk korrekt. Bruk litt focus blur for pen effekt.
+
+
+===== FLUER OG MYGG (20) =====
+
+Appelsinflue (Ceratitis capitata)
+Lag et lite men høyoppløst bilde av Appelsinflue (Ceratitis capitata). Sørg for at farger og utseende på dyrearten er realistisk korrekt. Bruk litt focus blur for pen effekt.
+
+Blå spyfluer * (Calliphora spp.)
+Lag et lite men høyoppløst bilde av en blå spyflue (Calliphora). Sørg for at farger og utseende på dyrearten er realistisk korrekt. Bruk litt focus blur for pen effekt.
+
+Bremser * (Hypoderma tarandi m.fl.)
+Lag et lite men høyoppløst bilde av en brems (Hypoderma tarandi). Sørg for at farger og utseende på dyrearten er realistisk korrekt. Bruk litt focus blur for pen effekt.
+
+Fjærmygg * (Chironomidae)
+Lag et lite men høyoppløst bilde av en fjærmygg (Chironomidae). Sørg for at farger og utseende på dyrearten er realistisk korrekt. Bruk litt focus blur for pen effekt.
+
+Fruktfluer, Eddikfluer * (Drosophilidae)
+Lag et lite men høyoppløst bilde av en fruktflue/eddikflue (Drosophila). Sørg for at farger og utseende på dyrearten er realistisk korrekt. Bruk litt focus blur for pen effekt.
+
+Gressflue (Thaumatomyia notata)
+Lag et lite men høyoppløst bilde av Gressflue (Thaumatomyia notata). Sørg for at farger og utseende på dyrearten er realistisk korrekt. Bruk litt focus blur for pen effekt.
+
+Gullfluer * (Lucilia spp.)
+Lag et lite men høyoppløst bilde av en gullflue (Lucilia). Sørg for at farger og utseende på dyrearten er realistisk korrekt. Bruk litt focus blur for pen effekt.
+
+Hjortelusflue (Lipoptena cervi)
+Lag et lite men høyoppløst bilde av Hjortelusflue (Lipoptena cervi). Sørg for at farger og utseende på dyrearten er realistisk korrekt. Bruk litt focus blur for pen effekt.
+
+Humlebolflue (Volucella bombylans)
+Lag et lite men høyoppløst bilde av Humlebolflue (Volucella bombylans). Sørg for at farger og utseende på dyrearten er realistisk korrekt. Bruk litt focus blur for pen effekt.
+
+Vepsebolflue (Volucella pellucens)
+Lag et lite men høyoppløst bilde av Vepsebolflue (Volucella pellucens). Sørg for at farger og utseende på dyrearten er realistisk korrekt. Bruk litt focus blur for pen effekt.
+
+Sørgemygg (hærmygg) * (Sciaridae)
+Lag et lite men høyoppløst bilde av en sørgemygg / hærmygg (Sciaridae). Sørg for at farger og utseende på dyrearten er realistisk korrekt. Bruk litt focus blur for pen effekt.
+
+Klegg * (Tabanidae)
+Lag et lite men høyoppløst bilde av en klegg (Tabanidae). Sørg for at farger og utseende på dyrearten er realistisk korrekt. Bruk litt focus blur for pen effekt.
+
+Loftsfluer * (Pollenia spp.)
+Lag et lite men høyoppløst bilde av en loftsflue (Pollenia). Sørg for at farger og utseende på dyrearten er realistisk korrekt. Bruk litt focus blur for pen effekt.
+
+Pukkelfluer * (Phoridae)
+Lag et lite men høyoppløst bilde av en pukkelflue (Phoridae). Sørg for at farger og utseende på dyrearten er realistisk korrekt. Bruk litt focus blur for pen effekt.
+
+Sommerfuglmygg * (Psychodidae)
+Lag et lite men høyoppløst bilde av en sommerfuglmygg (Psychodidae). Sørg for at farger og utseende på dyrearten er realistisk korrekt. Bruk litt focus blur for pen effekt.
+
+Springfluer * (Sphaeroceridae)
+Lag et lite men høyoppløst bilde av en springflue (Sphaeroceridae). Sørg for at farger og utseende på dyrearten er realistisk korrekt. Bruk litt focus blur for pen effekt.
+
+Spyfluer * (Calliphoridae)
+Lag et lite men høyoppløst bilde av en spyflue (Calliphoridae). Sørg for at farger og utseende på dyrearten er realistisk korrekt. Bruk litt focus blur for pen effekt.
+
+Stikkflue (Stomoxys calcitrans)
+Lag et lite men høyoppløst bilde av Stikkflue (Stomoxys calcitrans). Sørg for at farger og utseende på dyrearten er realistisk korrekt. Bruk litt focus blur for pen effekt.
+
+Stikkmygg * (Culicidae)
+Lag et lite men høyoppløst bilde av en stikkmygg (Culicidae). Sørg for at farger og utseende på dyrearten er realistisk korrekt. Bruk litt focus blur for pen effekt.
+
+Sviknott * (Culicoides spp.)
+Lag et lite men høyoppløst bilde av en sviknott (Culicoides). Sørg for at farger og utseende på dyrearten er realistisk korrekt. Bruk litt focus blur for pen effekt.
+
+
+============================================================
+BILDER UTEN MATCHENDE ART (sjekk navn / mulig manglende art)
+============================================================
+
+Disse bildefilene finnes i backend/public/images, men har INGEN tilsvarende art
+i species.json. Enten er filnavnet stavet litt annerledes enn arten i appen,
+eller så er arten ikke lagt inn i databasen ennå:
+
+- Hettebille.png            -> ingen art "Hettebille" i species.json
+- Muggbiller.png            -> ingen art "Muggbiller" i species.json
+- Korngnager.png            -> ingen art "Korngnager" i species.json
+- Smalvinget styltestøvlus.png -> finnes som bilde, men ikke som egen art
+                                 (databasen har bare Boklus, Brun støvlus, Støvlus)
+- Hundeloppe.png            -> databasen har "Katteloppe" (dekker katte-/hundeloppe),
+                                 men ingen egen "Hundeloppe"-art
+
+Vurder: skal disse legges til som egne arter i species.json, eller skal
+bildene gis nytt navn slik at de matcher en eksisterende art?
+
+
+============================================================
+TIL SLUTT: koble bilder til appen
+============================================================
+Når bildene er på plass gjenstår to ting (gjøres av Claude Code):
+1. Sett "bildeUrl" for hver art i species.json til riktig bildefil
+   (f.eks. "/images/Veggedyr.png").
+2. Sørg for at backend serverer mappen public/images statisk
+   (f.eks. app.use("/images", express.static(...))), slik at appen kan vise dem.

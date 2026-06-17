@@ -1,3 +1,17 @@
 {
-  "cleanUrls": true
+  "cleanUrls": true,
+  "rewrites": [
+    {
+      "source": "/oversikt/art/:id",
+      "destination": "/oversikt/art/[id].html"
+    },
+    {
+      "source": "/oversikt/:kategori",
+      "destination": "/oversikt/[kategori].html"
+    },
+    {
+      "source": "/historikk/:id",
+      "destination": "/historikk/[id].html"
+    }
+  ]
 }

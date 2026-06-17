@@ -38,6 +38,35 @@ export type ScanResult = {
   treff: Treff[];
 };
 
+export type AdminScanEntry = {
+  tidspunkt: string;
+  status: VisionStatus;
+  imageCount: number;
+  topTreff: {
+    navnNo: string;
+    navnLatin: string;
+    kategori: string;
+    konfidens: number;
+  } | null;
+};
+
+export type AdminFeedbackEntry = {
+  tidspunkt: string;
+  vote: FeedbackVote;
+  treff: { navnNo: string; navnLatin: string; kategori: string };
+  korrigertArtId: string | null;
+  correctedSpeciesName: string | null;
+};
+
+export type AdminStats = {
+  totals: { scans: number; feedback: number };
+  scanStatus: Record<VisionStatus, number>;
+  feedbackVotes: { like: number; dislike: number };
+  mostDisliked: { navnNo: string; kategori: string; count: number }[];
+  recentScans: AdminScanEntry[];
+  recentFeedback: AdminFeedbackEntry[];
+};
+
 export class ApiError extends Error {}
 
 async function request<T>(path: string, init?: RequestInit): Promise<T> {
@@ -99,5 +128,19 @@ export function sendFeedback(payload: FeedbackPayload): Promise<{ ok: boolean }>
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload),
+  });
+}
+
+export function adminLogin(password: string): Promise<{ token: string }> {
+  return request<{ token: string }>('/admin/login', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ password }),
+  });
+}
+
+export function fetchAdminStats(token: string): Promise<AdminStats> {
+  return request<AdminStats>('/admin/stats', {
+    headers: { Authorization: `Bearer ${token}` },
   });
 }

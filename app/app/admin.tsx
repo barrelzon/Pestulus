@@ -12,6 +12,7 @@ import {
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { GlassPanel } from '@/components/glass-panel';
+import { PestulusLogo } from '@/components/pestulus-logo';
 import { IconSymbol } from '@/components/ui/icon-symbol';
 import { Colors, Radius, Spacing, Typography } from '@/constants/theme';
 import {
@@ -119,7 +120,7 @@ export default function AdminScreen() {
       ]}>
       <View style={styles.header}>
         <View style={styles.headerIcon}>
-          <IconSymbol name="person.crop.circle.fill" size={26} color={Colors.accent} />
+          <PestulusLogo variant="mark" size="sm" />
         </View>
         <View style={styles.headerText}>
           <Text style={styles.eyebrow}>Skjult område</Text>

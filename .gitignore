@@ -42,3 +42,6 @@ android/
 .claude/scheduled_tasks.lock
 
 .vercel
+
+# Codex / Superpowers lokale arbeidsflater
+.superpowers/

@@ -18,9 +18,10 @@ import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-na
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { CategoryBadge } from '@/components/category-badge';
-import { SpeciesLink } from '@/components/species-link';
-import { KjennetegnKort, ForvekslingsKort } from '@/components/species-cards';
 import { GlassPanel } from '@/components/glass-panel';
+import { PestulusLogo } from '@/components/pestulus-logo';
+import { KjennetegnKort, ForvekslingsKort } from '@/components/species-cards';
+import { SpeciesLink } from '@/components/species-link';
 import { SpeciesPickerModal } from '@/components/species-picker-modal';
 import { IconSymbol } from '@/components/ui/icon-symbol';
 import { Colors, Radius, Spacing, Typography } from '@/constants/theme';
@@ -356,6 +357,7 @@ function ScanEntry({
   return (
     <View style={[styles.entryContent, { paddingBottom: insetsBottom + Spacing.xl }]}>
       <View style={styles.entryHeader}>
+        <PestulusLogo size="md" />
         <View style={styles.statusPill}>
           <View style={styles.statusDot} />
           <Text style={styles.statusText}>{cameraReady ? 'Kamera er klart' : 'Klar for scan'}</Text>
@@ -760,6 +762,7 @@ const styles = StyleSheet.create({
   },
   entryHeader: {
     alignItems: 'flex-start',
+    gap: Spacing.md,
   },
   statusPill: {
     flexDirection: 'row',

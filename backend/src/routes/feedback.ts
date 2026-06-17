@@ -1,13 +1,8 @@
 import { Router } from "express";
-import { promises as fs } from "fs";
-import path from "path";
-import { fileURLToPath } from "url";
 import species from "../data/species.json" with { type: "json" };
+import { logFeedbackEvent } from "../lib/activity-log.js";
 
 export const feedbackRouter = Router();
-
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const FEEDBACK_LOG = path.join(__dirname, "../data/feedback.log");
 
 type FeedbackTreff = { navnNo: string; navnLatin: string; kategori: string };
 
@@ -23,7 +18,7 @@ function isFeedbackTreff(value: unknown): value is FeedbackTreff {
 
 /**
  * POST /feedback
- * Body: { vote: "like" | "dislike", treff: {navnNo, navnLatin, kategori}, korrigertArtId?: string }
+ * Body: { scanId?: string, vote: "like" | "dislike", treff: {navnNo, navnLatin, kategori}, korrigertArtId?: string }
  * Lagrer brukerens tilbakemelding på gjenkjenningen, slik at den kan brukes til å
  * forbedre vision-kandidatlista/prompten senere.
  */
@@ -33,11 +28,12 @@ feedbackRouter.post("/", async (req, res) => {
     return res.status(400).json({ error: "Ugyldig forespørsel" });
   }
 
-  const { vote, treff, korrigertArtId } = body as Record<string, unknown>;
+  const { scanId, vote, treff, korrigertArtId } = body as Record<string, unknown>;
 
   if (vote !== "like" && vote !== "dislike") {
     return res.status(400).json({ error: "Mangler gyldig vote ('like' eller 'dislike')" });
   }
+  const voteValue: "like" | "dislike" = vote;
   if (!isFeedbackTreff(treff)) {
     return res.status(400).json({ error: "Mangler gyldig treff" });
   }
@@ -46,16 +42,19 @@ feedbackRouter.post("/", async (req, res) => {
       return res.status(400).json({ error: "Ugyldig korrigertArtId" });
     }
   }
+  const correctedSpeciesId = typeof korrigertArtId === "string" ? korrigertArtId : null;
+  const linkedScanId = typeof scanId === "string" && scanId.length > 0 ? scanId : null;
 
   const entry = {
+    scanId: linkedScanId,
     tidspunkt: new Date().toISOString(),
-    vote,
+    vote: voteValue,
     treff,
-    korrigertArtId: korrigertArtId ?? null,
+    korrigertArtId: correctedSpeciesId,
   };
 
   try {
-    await fs.appendFile(FEEDBACK_LOG, JSON.stringify(entry) + "\n", "utf8");
+    await logFeedbackEvent(entry);
   } catch (err) {
     console.error("feedback-feil:", err);
   }

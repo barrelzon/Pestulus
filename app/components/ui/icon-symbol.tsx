@@ -36,6 +36,9 @@ const MAPPING = {
   'photo.fill': 'image',
   'hand.thumbsup.fill': 'thumb-up',
   'hand.thumbsdown.fill': 'thumb-down',
+  'lock.fill': 'lock',
+  'chart.bar.fill': 'bar-chart',
+  'person.crop.circle.fill': 'admin-panel-settings',
 } as IconMapping;
 
 /**

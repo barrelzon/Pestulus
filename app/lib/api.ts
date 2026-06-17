@@ -5,6 +5,7 @@
 const API_URL = process.env.EXPO_PUBLIC_API_URL ?? 'http://localhost:8787';
 
 export type VisionStatus = 'treff' | 'usikker' | 'ikke_skadedyr';
+export type ScanImageSource = 'camera' | 'library' | 'unknown';
 
 export type Species = {
   id: string;
@@ -34,8 +35,58 @@ export type Treff = {
 };
 
 export type ScanResult = {
+  scanId?: string;
   status: VisionStatus;
   treff: Treff[];
+};
+
+export type ScanRequestMetadata = {
+  clientId?: string;
+  imageSources?: ScanImageSource[];
+};
+
+export type AdminScanTreff = {
+  navnNo: string;
+  navnLatin: string;
+  kategori: string;
+  konfidens: number;
+};
+
+export type AdminScanImage = {
+  fileName: string;
+  urlPath: string;
+  imageUrl?: string;
+  source: ScanImageSource;
+};
+
+export type AdminScanEntry = {
+  scanId?: string;
+  clientId?: string | null;
+  tidspunkt: string;
+  status: VisionStatus;
+  imageCount: number;
+  imageSource?: ScanImageSource | 'mixed';
+  images?: AdminScanImage[];
+  treff?: AdminScanTreff[];
+  topTreff: AdminScanTreff | null;
+};
+
+export type AdminFeedbackEntry = {
+  scanId?: string | null;
+  tidspunkt: string;
+  vote: FeedbackVote;
+  treff: { navnNo: string; navnLatin: string; kategori: string };
+  korrigertArtId: string | null;
+  correctedSpeciesName: string | null;
+};
+
+export type AdminStats = {
+  totals: { scans: number; feedback: number };
+  scanStatus: Record<VisionStatus, number>;
+  feedbackVotes: { like: number; dislike: number };
+  mostDisliked: { navnNo: string; kategori: string; count: number }[];
+  recentScans: AdminScanEntry[];
+  recentFeedback: AdminFeedbackEntry[];
 };
 
 export class ApiError extends Error {}
@@ -56,12 +107,19 @@ async function request<T>(path: string, init?: RequestInit): Promise<T> {
   return response.json() as Promise<T>;
 }
 
-export function scanImage(imageBase64: string): Promise<ScanResult> {
+export function scanImages(
+  imageBase64List: string[],
+  metadata: ScanRequestMetadata = {},
+): Promise<ScanResult> {
   return request<ScanResult>('/scan', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ imageBase64 }),
+    body: JSON.stringify({ imageBase64List, ...metadata }),
   });
+}
+
+export function scanImage(imageBase64: string): Promise<ScanResult> {
+  return scanImages([imageBase64]);
 }
 
 export function fetchCategories(): Promise<Category[]> {
@@ -85,6 +143,7 @@ export function resolveImageUrl(bildeUrl: string): string {
 export type FeedbackVote = 'like' | 'dislike';
 
 export type FeedbackPayload = {
+  scanId?: string;
   vote: FeedbackVote;
   treff: { navnNo: string; navnLatin: string; kategori: string };
   korrigertArtId?: string;
@@ -95,5 +154,26 @@ export function sendFeedback(payload: FeedbackPayload): Promise<{ ok: boolean }>
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload),
+  });
+}
+
+export function adminLogin(password: string): Promise<{ token: string }> {
+  return request<{ token: string }>('/admin/login', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ password }),
+  });
+}
+
+export function fetchAdminStats(token: string): Promise<AdminStats> {
+  return request<AdminStats>('/admin/stats', {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+}
+
+export function resetAdminData(token: string): Promise<{ ok: boolean }> {
+  return request<{ ok: boolean }>('/admin/reset', {
+    method: 'POST',
+    headers: { Authorization: `Bearer ${token}` },
   });
 }

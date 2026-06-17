@@ -55,7 +55,7 @@ const SPECIES_SCHEMA = {
 };
 
 function buildCategoryPrompt(categories: string[]): string {
-  return `Du er en ekspert på skadedyr og insekter i Norge. Du får ett bilde.
+  return `Du er en ekspert på skadedyr og insekter i Norge. Du får ett eller flere bilder av samme funn.
 Oppgaven din er å avgjøre hvilken kategori organismen på bildet tilhører.
 
 KATEGORIER:
@@ -80,7 +80,7 @@ function buildSpeciesPrompt(candidates: Candidate[]): string {
     })
     .join("\n");
 
-  return `Du er en ekspert på skadedyr og insekter i Norge. Du får ett bilde og en liste over mulige arter i kategorien. Oppgaven din er å avgjøre hvilken art på lista bildet mest sannsynlig viser.
+  return `Du er en ekspert på skadedyr og insekter i Norge. Du får ett eller flere bilder av samme funn og en liste over mulige arter i kategorien. Oppgaven din er å avgjøre hvilken art på lista bildene mest sannsynlig viser.
 
 REGLER:
 - Velg KUN blant artene i kandidatlista under. Ikke finn på arter utenfor lista.
@@ -106,7 +106,7 @@ function parseModelJson(text: string): unknown {
 
 async function callModel(
   systemPrompt: string,
-  imageBase64: string,
+  imageBase64List: string[],
   responseSchema: unknown,
 ): Promise<string> {
   const apiKey = process.env.VISION_API_KEY;
@@ -118,6 +118,13 @@ async function callModel(
   }
 
   const url = `${apiUrl.replace(/\/+$/, "")}/${model}:generateContent`;
+  const imageParts = imageBase64List.map((imageBase64) => ({
+    inlineData: { mimeType: "image/jpeg", data: imageBase64 },
+  }));
+  const imagePrompt =
+    imageBase64List.length === 1
+      ? "Hvilken art viser dette bildet?"
+      : `Hvilken art viser disse ${imageBase64List.length} bildene? Bildene viser samme funn fra ulike vinkler. Bruk samlet visuell informasjon.`;
 
   const response = await fetch(url, {
     method: "POST",
@@ -133,8 +140,8 @@ async function callModel(
         {
           role: "user",
           parts: [
-            { text: "Hvilken art viser dette bildet?" },
-            { inlineData: { mimeType: "image/jpeg", data: imageBase64 } },
+            { text: imagePrompt },
+            ...imageParts,
           ],
         },
       ],
@@ -161,12 +168,12 @@ async function callModel(
 
 /** Trinn 1: velg kategori fra bildet. Returnerer kategorinavn eller null. */
 async function identifyCategory(
-  imageBase64: string,
+  imageBase64List: string[],
   candidates: Candidate[],
 ): Promise<string | null> {
   const categories = [...new Set(candidates.map((c) => c.kategori))];
   const prompt = buildCategoryPrompt(categories);
-  const raw = await callModel(prompt, imageBase64, CATEGORY_SCHEMA);
+  const raw = await callModel(prompt, imageBase64List, CATEGORY_SCHEMA);
   const parsed = parseModelJson(raw) as { status: string; kategori: string };
   if (parsed.status === "ikke_skadedyr" || !parsed.kategori) return null;
   // Valider at kategorien faktisk finnes i lista
@@ -175,11 +182,11 @@ async function identifyCategory(
 
 /** Trinn 2: velg art blant innsnevrede kandidater. */
 async function identifySpecies(
-  imageBase64: string,
+  imageBase64List: string[],
   candidates: Candidate[],
 ): Promise<VisionResult> {
   const prompt = buildSpeciesPrompt(candidates);
-  const raw = await callModel(prompt, imageBase64, SPECIES_SCHEMA);
+  const raw = await callModel(prompt, imageBase64List, SPECIES_SCHEMA);
   const result = parseModelJson(raw) as VisionResult;
   if (!result || !Array.isArray(result.treff)) {
     throw new Error("Uventet svarformat fra modellen");
@@ -188,11 +195,11 @@ async function identifySpecies(
 }
 
 export async function identifyPest(
-  imageBase64: string,
+  imageBase64List: string[],
   candidates: Candidate[],
 ): Promise<VisionResult> {
   // Trinn 1: finn kategori
-  const kategori = await identifyCategory(imageBase64, candidates);
+  const kategori = await identifyCategory(imageBase64List, candidates);
 
   if (kategori === null) {
     return { status: "ikke_skadedyr", treff: [] };
@@ -203,7 +210,7 @@ export async function identifyPest(
   // Sikkerhetsnett: fallback til alle hvis kategorien er tom
   const finalCandidates = narrowed.length > 0 ? narrowed : candidates;
 
-  const result = await identifySpecies(imageBase64, finalCandidates);
+  const result = await identifySpecies(imageBase64List, finalCandidates);
 
   // Sikkerhetsnett: degrader "treff" til "usikker" hvis konfidens er for lav
   if (result.status === "treff") {

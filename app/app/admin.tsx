@@ -36,6 +36,7 @@ export default function AdminScreen() {
   const [stats, setStats] = useState<AdminStats | null>(null);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [passwordFocused, setPasswordFocused] = useState(false);
 
   const loadStats = useCallback(async (nextToken?: string) => {
     const activeToken = nextToken ?? token;
@@ -108,21 +109,31 @@ export default function AdminScreen() {
             <Text style={styles.sectionTitle}>Logg inn</Text>
           </View>
           <Text style={styles.inputLabel}>Passord</Text>
-          <TextInput
-            value={password}
-            onChangeText={(value) => {
-              setPassword(value);
-              if (error) setError(null);
-            }}
-            placeholder="Passord"
-            placeholderTextColor={Colors.textMuted}
-            secureTextEntry
-            autoCapitalize="none"
-            autoCorrect={false}
-            returnKeyType="go"
-            onSubmitEditing={handleLogin}
-            style={styles.input}
-          />
+          <View
+            style={[
+              styles.passwordField,
+              passwordFocused && styles.passwordFieldFocused,
+              error && styles.passwordFieldError,
+            ]}>
+            <TextInput
+              value={password}
+              onChangeText={(value) => {
+                setPassword(value);
+                if (error) setError(null);
+              }}
+              placeholder="Skriv passordet her"
+              placeholderTextColor={Colors.textMuted}
+              secureTextEntry
+              autoCapitalize="none"
+              autoCorrect={false}
+              returnKeyType="go"
+              onFocus={() => setPasswordFocused(true)}
+              onBlur={() => setPasswordFocused(false)}
+              onSubmitEditing={handleLogin}
+              selectionColor={Colors.accent}
+              style={styles.input}
+            />
+          </View>
           {error && <Text style={styles.errorText}>{error}</Text>}
           <Pressable
             style={[styles.primaryButton, busy && styles.disabledButton]}
@@ -356,12 +367,24 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     gap: Spacing.sm,
   },
-  input: {
-    minHeight: 52,
+  passwordField: {
+    width: '100%',
+    minHeight: 64,
     borderRadius: Radius.lg,
-    borderWidth: 1,
-    borderColor: Colors.accentMuted,
-    backgroundColor: Colors.surface,
+    borderWidth: 2,
+    borderColor: Colors.accent,
+    backgroundColor: Colors.surfaceAlt,
+    justifyContent: 'center',
+  },
+  passwordFieldFocused: {
+    borderColor: Colors.text,
+  },
+  passwordFieldError: {
+    borderColor: Colors.danger,
+  },
+  input: {
+    minHeight: 60,
+    width: '100%',
     paddingHorizontal: Spacing.md,
     ...Typography.body,
     color: Colors.text,

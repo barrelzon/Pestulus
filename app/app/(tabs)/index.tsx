@@ -24,7 +24,7 @@ import { GlassPanel } from '@/components/glass-panel';
 import { SpeciesPickerModal } from '@/components/species-picker-modal';
 import { IconSymbol } from '@/components/ui/icon-symbol';
 import { Colors, Radius, Spacing, Typography } from '@/constants/theme';
-import { ApiError, scanImage, sendFeedback, type Species, type Treff } from '@/lib/api';
+import { ApiError, scanImages, sendFeedback, type Species, type Treff } from '@/lib/api';
 import { useAllSpecies } from '@/hooks/use-all-species';
 import { confidenceColor, confidenceLabel } from '@/lib/confidence';
 import { addHistoryRecord } from '@/lib/history';
@@ -36,6 +36,12 @@ type ScanUiResult =
   | { kind: 'error'; message: string };
 
 const SHEET_OFFSET = 560;
+const MAX_SCAN_IMAGES = 3;
+
+type SelectedScanImage = {
+  id: string;
+  uri: string;
+};
 
 export default function ScanScreen() {
   const insets = useSafeAreaInsets();
@@ -43,7 +49,9 @@ export default function ScanScreen() {
   const [facing, setFacing] = useState<CameraType>('back');
   const [flash, setFlash] = useState<'off' | 'on'>('off');
   const [busy, setBusy] = useState(false);
-  const [pendingUri, setPendingUri] = useState<string | null>(null);
+  const [selectedImages, setSelectedImages] = useState<SelectedScanImage[]>([]);
+  const [cameraActive, setCameraActive] = useState(false);
+  const [zoom, setZoom] = useState(0);
   const [result, setResult] = useState<ScanUiResult | null>(null);
   const [sheetVisible, setSheetVisible] = useState(false);
   const cameraRef = useRef<CameraView>(null);
@@ -64,25 +72,81 @@ export default function ScanScreen() {
 
   const cameraReady = permission.granted;
   const webBlocked = Platform.OS === 'web' && permission.status === 'denied';
+  const hasSelectedImages = selectedImages.length > 0;
+  const canAddImages = selectedImages.length < MAX_SCAN_IMAGES;
+  const showCamera = cameraReady && cameraActive && !sheetVisible;
+  const showEntry = !cameraActive && !sheetVisible && !hasSelectedImages;
+  const showReview = hasSelectedImages && !sheetVisible && !cameraActive;
 
-  async function processImage(uri: string) {
+  function makeScanImage(uri: string): SelectedScanImage {
+    return { id: `${Date.now()}-${Math.random().toString(36).slice(2)}`, uri };
+  }
+
+  function addSelectedUris(uris: string[]) {
+    setSelectedImages((current) => {
+      const remaining = MAX_SCAN_IMAGES - current.length;
+      const additions = uris.slice(0, remaining).map(makeScanImage);
+      return [...current, ...additions];
+    });
+  }
+
+  function removeSelectedImage(id: string) {
+    setSelectedImages((current) => current.filter((image) => image.id !== id));
+  }
+
+  function clearSelectedImages() {
+    setSelectedImages([]);
+  }
+
+  function exitCamera() {
+    setCameraActive(false);
+    setZoom(0);
+  }
+
+  async function handleStartCamera() {
+    if (busy) return;
+    if (cameraReady) {
+      setCameraActive(true);
+      setZoom(0);
+      return;
+    }
+
+    const response = await requestPermission();
+    if (response.granted) {
+      setCameraActive(true);
+      setZoom(0);
+    }
+  }
+
+  async function processSelectedImages(images: SelectedScanImage[]) {
     try {
-      const rendered = await ImageManipulator.manipulate(uri).resize({ width: 1024 }).renderAsync();
-      const saved = await rendered.saveAsync({ compress: 0.6, format: SaveFormat.JPEG, base64: true });
-      if (!saved.base64) throw new Error('Kunne ikke behandle bildet.');
+      const processed = await Promise.all(
+        images.map(async (image) => {
+          const rendered = await ImageManipulator.manipulate(image.uri).resize({ width: 1024 }).renderAsync();
+          const saved = await rendered.saveAsync({ compress: 0.6, format: SaveFormat.JPEG, base64: true });
+          if (!saved.base64) throw new Error('Kunne ikke behandle bildet.');
 
-      const photoUri = `data:image/jpeg;base64,${saved.base64}`;
-      const apiResult = await scanImage(saved.base64);
+          return {
+            base64: saved.base64,
+            photoUri: `data:image/jpeg;base64,${saved.base64}`,
+          };
+        })
+      );
+      const primaryPhotoUri = processed[0]?.photoUri;
+      if (!primaryPhotoUri) throw new Error('Kunne ikke behandle bildet.');
+
+      const apiResult = await scanImages(processed.map((image) => image.base64));
 
       if (apiResult.status === 'treff' && apiResult.treff[0]) {
         const [top, ...alternative] = apiResult.treff;
-        await addHistoryRecord({ brukerBilde: photoUri, treff: top, alternativeTreff: alternative });
-        setResult({ kind: 'treff', photoUri, treff: top, alternative });
+        await addHistoryRecord({ brukerBilde: primaryPhotoUri, treff: top, alternativeTreff: alternative });
+        setResult({ kind: 'treff', photoUri: primaryPhotoUri, treff: top, alternative });
       } else if (apiResult.status === 'usikker') {
-        setResult({ kind: 'usikker', photoUri, treff: apiResult.treff });
+        setResult({ kind: 'usikker', photoUri: primaryPhotoUri, treff: apiResult.treff });
       } else {
-        setResult({ kind: 'ikke_skadedyr', photoUri });
+        setResult({ kind: 'ikke_skadedyr', photoUri: primaryPhotoUri });
       }
+      clearSelectedImages();
     } catch (err) {
       const message = err instanceof ApiError ? err.message : 'Noe gikk feil. Prøv igjen.';
       setResult({ kind: 'error', message });
@@ -93,7 +157,7 @@ export default function ScanScreen() {
   }
 
   async function handleCapture() {
-    if (busy || !cameraRef.current) return;
+    if (busy || !canAddImages || !cameraRef.current) return;
     setBusy(true);
     const photo = await cameraRef.current.takePictureAsync({ quality: 0.5 }).catch(() => null);
     setBusy(false);
@@ -102,101 +166,124 @@ export default function ScanScreen() {
       setSheetVisible(true);
       return;
     }
-    setPendingUri(photo.uri);
+    addSelectedUris([photo.uri]);
+    exitCamera();
   }
 
   async function handlePickImage() {
-    if (busy) return;
+    if (busy || !canAddImages) return;
     try {
-      const picked = await ImagePicker.launchImageLibraryAsync({ mediaTypes: ['images'], quality: 1 });
-      if (picked.canceled || !picked.assets[0]) return;
-      setPendingUri(picked.assets[0].uri);
+      const remaining = MAX_SCAN_IMAGES - selectedImages.length;
+      const picked = await ImagePicker.launchImageLibraryAsync({
+        mediaTypes: ['images'],
+        quality: 1,
+        allowsMultipleSelection: true,
+        selectionLimit: remaining,
+        orderedSelection: true,
+      });
+      if (picked.canceled) return;
+      const uris = picked.assets.slice(0, remaining).map((asset) => asset.uri);
+      if (uris.length === 0) return;
+      addSelectedUris(uris);
+      exitCamera();
     } catch {
       setResult({ kind: 'error', message: 'Kunne ikke åpne bildevelgeren. Prøv igjen.' });
       setSheetVisible(true);
     }
   }
 
-  function handleConfirm() {
-    const uri = pendingUri!;
-    setPendingUri(null);
+  function handleAnalyzeSelectedImages() {
+    if (busy || selectedImages.length === 0) return;
     setBusy(true);
-    processImage(uri);
+    processSelectedImages([...selectedImages]);
   }
 
-  function handleRetake() {
-    setPendingUri(null);
+  async function handleRetakeLatest() {
+    if (busy || selectedImages.length === 0) return;
+    if (!cameraReady) {
+      const response = await requestPermission();
+      if (!response.granted) return;
+    }
+    setSelectedImages((current) => current.slice(0, -1));
+    setCameraActive(true);
+    setZoom(0);
   }
 
   function closeSheet() {
     setSheetVisible(false);
   }
 
-  const showCamera = cameraReady && !pendingUri && !sheetVisible;
-
   return (
     <View style={styles.container}>
-      {cameraReady ? (
-        <CameraView ref={cameraRef} style={StyleSheet.absoluteFill} facing={facing} flash={flash} />
-      ) : (
-        <View style={[styles.container, styles.centered]}>
-          <GlassPanel variant="card" style={styles.permissionCard}>
-            <IconSymbol name="camera.fill" size={36} color={Colors.accent} />
-            <Text style={styles.permissionTitle}>Kameratilgang</Text>
-            <Text style={styles.permissionBody}>
-              Pestulus bruker kameraet til å ta bilde av skadedyret du vil identifisere. Bildet
-              sendes til en KI-tjeneste for gjenkjenning.
-            </Text>
-            {webBlocked ? (
-              <>
-                <Text style={styles.permissionBody}>
-                  Nettleseren har blokkert kameratilgang for denne siden. Klikk på kamera- eller
-                  hengelås-ikonet i adressefeltet, slå på kamera, og last siden på nytt.
-                </Text>
-                <Pressable style={styles.primaryButton} onPress={() => window.location.reload()}>
-                  <Text style={styles.primaryButtonText}>Last siden på nytt</Text>
-                </Pressable>
-              </>
-            ) : (
-              <Pressable style={styles.primaryButton} onPress={requestPermission}>
-                <Text style={styles.primaryButtonText}>Gi tilgang til kamera</Text>
-              </Pressable>
-            )}
-            {!permission.canAskAgain && Platform.OS !== 'web' && (
-              <Pressable style={styles.secondaryButton} onPress={() => Linking.openSettings()}>
-                <Text style={styles.secondaryButtonText}>Åpne innstillinger</Text>
-              </Pressable>
-            )}
-            <Pressable style={styles.secondaryButton} onPress={handlePickImage} disabled={busy}>
-              <Text style={styles.secondaryButtonText}>Velg bilde fra fil i stedet</Text>
-            </Pressable>
-          </GlassPanel>
-        </View>
+      {cameraReady && (showCamera || showEntry) && (
+        <CameraView
+          ref={cameraRef}
+          style={StyleSheet.absoluteFill}
+          facing={facing}
+          flash={flash}
+          zoom={zoom}
+        />
+      )}
+
+      {showEntry && cameraReady && <View style={styles.entryCameraScrim} />}
+
+      {showEntry && (
+        <ScanEntry
+          cameraReady={cameraReady}
+          webBlocked={webBlocked}
+          canAskAgain={permission.canAskAgain}
+          onStartCamera={handleStartCamera}
+          onOpenSettings={() => Linking.openSettings()}
+          onPickImage={handlePickImage}
+          insetsBottom={insets.bottom}
+        />
       )}
 
       {showCamera && (
         <View style={[styles.topBar, { top: insets.top + Spacing.sm }]}>
-          <Pressable onPress={() => setFlash((current) => (current === 'off' ? 'on' : 'off'))}>
+          <Pressable onPress={exitCamera}>
             <GlassPanel variant="card" style={styles.controlButton}>
-              <IconSymbol
-                name={flash === 'on' ? 'bolt.fill' : 'bolt.slash.fill'}
-                size={20}
-                color={Colors.text}
-              />
+              <IconSymbol name="xmark" size={20} color={Colors.text} />
             </GlassPanel>
           </Pressable>
-          <Pressable onPress={() => setFacing((current) => (current === 'back' ? 'front' : 'back'))}>
-            <GlassPanel variant="card" style={styles.controlButton}>
-              <IconSymbol name="arrow.triangle.2.circlepath.camera.fill" size={20} color={Colors.text} />
-            </GlassPanel>
-          </Pressable>
+          <View style={styles.cameraControlGroup}>
+            <Pressable onPress={() => setFlash((current) => (current === 'off' ? 'on' : 'off'))}>
+              <GlassPanel variant="card" style={styles.controlButton}>
+                <IconSymbol
+                  name={flash === 'on' ? 'bolt.fill' : 'bolt.slash.fill'}
+                  size={20}
+                  color={Colors.text}
+                />
+              </GlassPanel>
+            </Pressable>
+            <Pressable onPress={() => setFacing((current) => (current === 'back' ? 'front' : 'back'))}>
+              <GlassPanel variant="card" style={styles.controlButton}>
+                <IconSymbol name="arrow.triangle.2.circlepath.camera.fill" size={20} color={Colors.text} />
+              </GlassPanel>
+            </Pressable>
+          </View>
+        </View>
+      )}
+
+      {showCamera && (
+        <View style={[styles.zoomControls, { bottom: insets.bottom + 132 }]}>
+          {[0, 0.35, 0.7].map((value, index) => (
+            <Pressable
+              key={value}
+              style={[styles.zoomButton, zoom === value && styles.zoomButtonActive]}
+              onPress={() => setZoom(value)}>
+              <Text style={[styles.zoomButtonText, zoom === value && styles.zoomButtonTextActive]}>
+                {index === 0 ? '1x' : index === 1 ? '2x' : '4x'}
+              </Text>
+            </Pressable>
+          ))}
         </View>
       )}
 
       {showCamera && (
         <View style={[styles.bottomArea, { bottom: insets.bottom + Spacing.xl }]}>
           <Text style={styles.privacyText}>
-            Bildet sendes til en KI-tjeneste for artsgjenkjenning og lagres ikke av Pestulus.
+            Ta ett eller flere bilder av samme funn. Bildene lagres bare lokalt i scan-historikken.
           </Text>
           <View style={styles.captureRow}>
             <Pressable onPress={handlePickImage} disabled={busy}>
@@ -212,12 +299,16 @@ export default function ScanScreen() {
         </View>
       )}
 
-      {pendingUri && !sheetVisible && (
-        <ConfirmationOverlay
-          uri={pendingUri}
+      {showReview && (
+        <ScanReviewTray
+          images={selectedImages}
+          canAddImages={canAddImages}
           insetBottom={insets.bottom}
-          onConfirm={handleConfirm}
-          onRetake={handleRetake}
+          onAddFromCamera={handleStartCamera}
+          onAddFromLibrary={handlePickImage}
+          onAnalyze={handleAnalyzeSelectedImages}
+          onRetakeLatest={handleRetakeLatest}
+          onRemoveImage={removeSelectedImage}
         />
       )}
 
@@ -239,27 +330,126 @@ export default function ScanScreen() {
   );
 }
 
-function ConfirmationOverlay({
-  uri,
-  insetBottom,
-  onConfirm,
-  onRetake,
+function ScanEntry({
+  cameraReady,
+  webBlocked,
+  canAskAgain,
+  onStartCamera,
+  onOpenSettings,
+  onPickImage,
+  insetsBottom,
 }: {
-  uri: string;
-  insetBottom: number;
-  onConfirm: () => void;
-  onRetake: () => void;
+  cameraReady: boolean;
+  webBlocked: boolean;
+  canAskAgain: boolean;
+  onStartCamera: () => void;
+  onOpenSettings: () => void;
+  onPickImage: () => void;
+  insetsBottom: number;
 }) {
   return (
-    <View style={StyleSheet.absoluteFillObject}>
-      <Image source={{ uri }} style={StyleSheet.absoluteFillObject} contentFit="cover" />
-      <View style={[styles.confirmBar, { paddingBottom: insetBottom + Spacing.lg }]}>
-        <Text style={styles.confirmPrompt}>Bruk dette bildet?</Text>
-        <Pressable style={styles.primaryButton} onPress={onConfirm}>
-          <Text style={styles.primaryButtonText}>Bruk dette bildet</Text>
+    <View style={[styles.entryContent, { paddingBottom: insetsBottom + Spacing.xl }]}>
+      <View style={styles.entryHeader}>
+        <View style={styles.statusPill}>
+          <View style={styles.statusDot} />
+          <Text style={styles.statusText}>{cameraReady ? 'Kamera er klart' : 'Klar for scan'}</Text>
+        </View>
+      </View>
+
+      <View style={styles.entryCopy}>
+        <Text style={styles.entryTitle}>Identifiser skadedyr</Text>
+        <Text style={styles.entrySubtitle}>
+          Start kameraet når du er klar, eller analyser bilder du allerede har.
+        </Text>
+        {webBlocked && (
+          <Text style={styles.entryHelp}>
+            Nettleseren har blokkert kamera. Bruk kamera- eller hengelås-ikonet i adressefeltet for å gi tilgang.
+          </Text>
+        )}
+        {!canAskAgain && Platform.OS !== 'web' && (
+          <Pressable style={styles.entryTextButton} onPress={onOpenSettings}>
+            <Text style={styles.secondaryButtonText}>Åpne innstillinger</Text>
+          </Pressable>
+        )}
+      </View>
+
+      <View style={styles.entryActions}>
+        <Pressable style={styles.entryPrimaryButton} onPress={onStartCamera}>
+          <View style={styles.entryButtonLeft}>
+            <IconSymbol name="camera.fill" size={24} color={Colors.accentText} />
+            <Text style={styles.entryPrimaryButtonText}>Start kamera</Text>
+          </View>
+          <IconSymbol name="chevron.right" size={20} color={Colors.accentText} />
         </Pressable>
-        <Pressable style={styles.secondaryButton} onPress={onRetake}>
-          <Text style={styles.secondaryButtonText}>Ta nytt bilde</Text>
+        <Pressable style={styles.entrySecondaryButton} onPress={onPickImage}>
+          <View style={styles.entryButtonLeft}>
+            <IconSymbol name="photo.fill" size={24} color={Colors.accent} />
+            <Text style={styles.entrySecondaryButtonText}>Last opp bilde</Text>
+          </View>
+          <IconSymbol name="chevron.right" size={20} color={Colors.textSecondary} />
+        </Pressable>
+        <Text style={styles.entryPrivacy}>Du kan bruke opptil tre bilder for bedre treff.</Text>
+      </View>
+    </View>
+  );
+}
+
+function ScanReviewTray({
+  images,
+  canAddImages,
+  insetBottom,
+  onAddFromCamera,
+  onAddFromLibrary,
+  onAnalyze,
+  onRetakeLatest,
+  onRemoveImage,
+}: {
+  images: SelectedScanImage[];
+  canAddImages: boolean;
+  insetBottom: number;
+  onAddFromCamera: () => void;
+  onAddFromLibrary: () => void;
+  onAnalyze: () => void;
+  onRetakeLatest: () => void;
+  onRemoveImage: (id: string) => void;
+}) {
+  const count = images.length;
+
+  return (
+    <View style={[styles.reviewTray, { paddingBottom: insetBottom + Spacing.md }]}>
+      <View style={styles.reviewHeader}>
+        <Text style={styles.reviewTitle}>{count}/3 bilder valgt</Text>
+        <Pressable onPress={onRetakeLatest}>
+          <Text style={styles.reviewLink}>Ta siste på nytt</Text>
+        </Pressable>
+      </View>
+      <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.thumbnailRow}>
+        {images.map((image, index) => (
+          <View key={image.id} style={[styles.reviewThumbnailWrap, index === images.length - 1 && styles.reviewThumbnailActive]}>
+            <Image source={{ uri: image.uri }} style={styles.reviewThumbnail} contentFit="cover" />
+            <Pressable style={styles.removeThumbnailButton} onPress={() => onRemoveImage(image.id)}>
+              <IconSymbol name="xmark" size={14} color={Colors.text} />
+            </Pressable>
+          </View>
+        ))}
+      </ScrollView>
+      <View style={styles.reviewActions}>
+        {canAddImages && (
+          <View style={styles.reviewAddRow}>
+            <Pressable style={styles.reviewSecondaryButton} onPress={onAddFromCamera}>
+              <IconSymbol name="camera.fill" size={18} color={Colors.textSecondary} />
+              <Text style={styles.reviewSecondaryButtonText}>Ta bilde</Text>
+            </Pressable>
+            <Pressable style={styles.reviewSecondaryButton} onPress={onAddFromLibrary}>
+              <IconSymbol name="photo.fill" size={18} color={Colors.textSecondary} />
+              <Text style={styles.reviewSecondaryButtonText}>Last opp</Text>
+            </Pressable>
+          </View>
+        )}
+        <Pressable style={styles.reviewPrimaryButton} onPress={onAnalyze}>
+          <Text style={styles.primaryButtonText}>
+            {count === 1 ? 'Analyser 1 bilde' : `Analyser ${count} bilder`}
+          </Text>
         </Pressable>
       </View>
     </View>
@@ -475,7 +665,7 @@ function ScanResultContent({ result, onClose }: { result: ScanUiResult; onClose:
           )}
 
           <Pressable style={styles.secondaryButton} onPress={onClose}>
-            <Text style={styles.secondaryButtonText}>📷 Ta nytt bilde</Text>
+            <Text style={styles.secondaryButtonText}>Ta nytt bilde</Text>
           </Pressable>
         </>
       )}
@@ -549,28 +739,98 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: Colors.background,
   },
-  centered: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: Spacing.lg,
+  entryCameraScrim: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: 'rgba(10, 11, 13, 0.7)',
   },
-  permissionCard: {
-    padding: Spacing.lg,
-    borderRadius: Radius.xl,
+  entryContent: {
+    flex: 1,
+    paddingHorizontal: Spacing.lg,
+    paddingTop: Spacing.xl,
+    justifyContent: 'space-between',
+  },
+  entryHeader: {
+    alignItems: 'flex-start',
+  },
+  statusPill: {
+    flexDirection: 'row',
     alignItems: 'center',
-    gap: Spacing.sm,
+    gap: Spacing.xs,
+    borderRadius: Radius.pill,
     borderWidth: 1,
     borderColor: Colors.border,
+    backgroundColor: Colors.overlay,
+    paddingVertical: Spacing.sm,
+    paddingHorizontal: Spacing.md,
   },
-  permissionTitle: {
-    ...Typography.heading,
+  statusDot: {
+    width: 7,
+    height: 7,
+    borderRadius: 4,
+    backgroundColor: Colors.accent,
+  },
+  statusText: {
+    ...Typography.caption,
+    color: Colors.textSecondary,
+  },
+  entryCopy: {
+    gap: Spacing.sm,
+  },
+  entryTitle: {
+    ...Typography.title,
     color: Colors.text,
-    marginTop: Spacing.xs,
   },
-  permissionBody: {
+  entrySubtitle: {
     ...Typography.body,
     color: Colors.textSecondary,
-    textAlign: 'center',
+  },
+  entryHelp: {
+    ...Typography.caption,
+    color: Colors.textSecondary,
+  },
+  entryActions: {
+    gap: Spacing.md,
+  },
+  entryPrimaryButton: {
+    minHeight: 76,
+    borderRadius: Radius.lg,
+    backgroundColor: Colors.accent,
+    paddingHorizontal: Spacing.lg,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  entrySecondaryButton: {
+    minHeight: 72,
+    borderRadius: Radius.lg,
+    borderWidth: 1,
+    borderColor: Colors.border,
+    backgroundColor: Colors.surface,
+    paddingHorizontal: Spacing.lg,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  entryButtonLeft: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: Spacing.md,
+  },
+  entryPrimaryButtonText: {
+    ...Typography.bodyStrong,
+    color: Colors.accentText,
+  },
+  entrySecondaryButtonText: {
+    ...Typography.bodyStrong,
+    color: Colors.text,
+  },
+  entryPrivacy: {
+    ...Typography.caption,
+    color: Colors.textMuted,
+  },
+  entryTextButton: {
+    alignSelf: 'flex-start',
+    paddingVertical: Spacing.xs,
   },
   primaryButton: {
     backgroundColor: Colors.accent,
@@ -597,7 +857,11 @@ const styles = StyleSheet.create({
     left: Spacing.md,
     right: Spacing.md,
     flexDirection: 'row',
-    justifyContent: 'flex-end',
+    justifyContent: 'space-between',
+    gap: Spacing.sm,
+  },
+  cameraControlGroup: {
+    flexDirection: 'row',
     gap: Spacing.sm,
   },
   controlButton: {
@@ -608,6 +872,31 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     borderWidth: 1,
     borderColor: Colors.border,
+  },
+  zoomControls: {
+    position: 'absolute',
+    alignSelf: 'center',
+    flexDirection: 'row',
+    gap: Spacing.xs,
+    borderRadius: Radius.pill,
+    padding: 4,
+    backgroundColor: Colors.overlay,
+  },
+  zoomButton: {
+    minWidth: 44,
+    borderRadius: Radius.pill,
+    paddingVertical: Spacing.xs,
+    alignItems: 'center',
+  },
+  zoomButtonActive: {
+    backgroundColor: Colors.accent,
+  },
+  zoomButtonText: {
+    ...Typography.caption,
+    color: Colors.textSecondary,
+  },
+  zoomButtonTextActive: {
+    color: Colors.accentText,
   },
   bottomArea: {
     position: 'absolute',
@@ -653,21 +942,86 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     backgroundColor: Colors.text,
   },
-  confirmBar: {
+  reviewTray: {
     position: 'absolute',
     left: 0,
     right: 0,
     bottom: 0,
-    paddingHorizontal: Spacing.xl,
-    paddingTop: Spacing.lg,
+    paddingTop: Spacing.md,
+    paddingHorizontal: Spacing.md,
     backgroundColor: Colors.overlay,
+    gap: Spacing.sm,
+  },
+  reviewHeader: {
+    flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  reviewTitle: {
+    ...Typography.bodyStrong,
+    color: Colors.text,
+  },
+  reviewLink: {
+    ...Typography.caption,
+    color: Colors.accent,
+  },
+  thumbnailRow: {
+    gap: Spacing.sm,
+  },
+  reviewThumbnailWrap: {
+    width: 72,
+    height: 72,
+    borderRadius: Radius.md,
+    borderWidth: 1,
+    borderColor: Colors.border,
+    overflow: 'hidden',
+  },
+  reviewThumbnailActive: {
+    borderColor: Colors.accent,
+  },
+  reviewThumbnail: {
+    width: '100%',
+    height: '100%',
+  },
+  removeThumbnailButton: {
+    position: 'absolute',
+    top: 4,
+    right: 4,
+    width: 24,
+    height: 24,
+    borderRadius: Radius.pill,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: Colors.overlay,
+  },
+  reviewActions: {
+    gap: Spacing.sm,
+  },
+  reviewAddRow: {
+    flexDirection: 'row',
+    gap: Spacing.sm,
+  },
+  reviewSecondaryButton: {
+    flex: 1,
+    minHeight: 46,
+    borderRadius: Radius.pill,
+    borderWidth: 1,
+    borderColor: Colors.border,
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'row',
     gap: Spacing.xs,
   },
-  confirmPrompt: {
-    ...Typography.heading,
+  reviewSecondaryButtonText: {
+    ...Typography.bodyStrong,
     color: Colors.text,
-    marginBottom: Spacing.xs,
+  },
+  reviewPrimaryButton: {
+    minHeight: 50,
+    borderRadius: Radius.pill,
+    backgroundColor: Colors.accent,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   loadingOverlay: {
     ...StyleSheet.absoluteFillObject,

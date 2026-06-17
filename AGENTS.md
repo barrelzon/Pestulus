@@ -52,6 +52,8 @@ Expo-app (etter at den er generert):
   håndterer safe-area selv, og Safari hjemskjerm får ellers tom bunnpadding.
 - IKKE hardkod vision-leverandørens API-form fra hukommelsen — les leverandørens
   gjeldende docs og verifiser request/response før du fullfører `src/lib/vision.ts`.
+- IKKE stol på skjulte/ugjettbare URL-er som admin-sikkerhet — bruk backend-auth
+  med hemmelighet fra env.
 
 ## Byggerekkefølge
 1. Backend: fullfør `/scan` (vision), `/species`, `/categories`, og bygg ut

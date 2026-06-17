@@ -24,15 +24,16 @@ import { GlassPanel } from '@/components/glass-panel';
 import { SpeciesPickerModal } from '@/components/species-picker-modal';
 import { IconSymbol } from '@/components/ui/icon-symbol';
 import { Colors, Radius, Spacing, Typography } from '@/constants/theme';
-import { ApiError, scanImages, sendFeedback, type Species, type Treff } from '@/lib/api';
+import { ApiError, scanImages, sendFeedback, type ScanImageSource, type Species, type Treff } from '@/lib/api';
 import { useAllSpecies } from '@/hooks/use-all-species';
+import { getClientId } from '@/lib/client-id';
 import { confidenceColor, confidenceLabel } from '@/lib/confidence';
 import { addHistoryRecord } from '@/lib/history';
 
 type ScanUiResult =
-  | { kind: 'treff'; photoUri: string; treff: Treff; alternative: Treff[] }
-  | { kind: 'usikker'; photoUri: string; treff: Treff[] }
-  | { kind: 'ikke_skadedyr'; photoUri: string }
+  | { kind: 'treff'; scanId?: string; photoUri: string; treff: Treff; alternative: Treff[] }
+  | { kind: 'usikker'; scanId?: string; photoUri: string; treff: Treff[] }
+  | { kind: 'ikke_skadedyr'; scanId?: string; photoUri: string }
   | { kind: 'error'; message: string };
 
 const SHEET_OFFSET = 560;
@@ -41,6 +42,7 @@ const MAX_SCAN_IMAGES = 3;
 type SelectedScanImage = {
   id: string;
   uri: string;
+  source: ScanImageSource;
 };
 
 export default function ScanScreen() {
@@ -78,14 +80,14 @@ export default function ScanScreen() {
   const showEntry = !cameraActive && !sheetVisible && !hasSelectedImages;
   const showReview = hasSelectedImages && !sheetVisible && !cameraActive;
 
-  function makeScanImage(uri: string): SelectedScanImage {
-    return { id: `${Date.now()}-${Math.random().toString(36).slice(2)}`, uri };
+  function makeScanImage(uri: string, source: ScanImageSource): SelectedScanImage {
+    return { id: `${Date.now()}-${Math.random().toString(36).slice(2)}`, uri, source };
   }
 
-  function addSelectedUris(uris: string[]) {
+  function addSelectedUris(uris: string[], source: ScanImageSource) {
     setSelectedImages((current) => {
       const remaining = MAX_SCAN_IMAGES - current.length;
-      const additions = uris.slice(0, remaining).map(makeScanImage);
+      const additions = uris.slice(0, remaining).map((uri) => makeScanImage(uri, source));
       return [...current, ...additions];
     });
   }
@@ -135,16 +137,20 @@ export default function ScanScreen() {
       const primaryPhotoUri = processed[0]?.photoUri;
       if (!primaryPhotoUri) throw new Error('Kunne ikke behandle bildet.');
 
-      const apiResult = await scanImages(processed.map((image) => image.base64));
+      const clientId = await getClientId();
+      const apiResult = await scanImages(processed.map((image) => image.base64), {
+        clientId,
+        imageSources: images.map((image) => image.source),
+      });
 
       if (apiResult.status === 'treff' && apiResult.treff[0]) {
         const [top, ...alternative] = apiResult.treff;
         await addHistoryRecord({ brukerBilde: primaryPhotoUri, treff: top, alternativeTreff: alternative });
-        setResult({ kind: 'treff', photoUri: primaryPhotoUri, treff: top, alternative });
+        setResult({ kind: 'treff', scanId: apiResult.scanId, photoUri: primaryPhotoUri, treff: top, alternative });
       } else if (apiResult.status === 'usikker') {
-        setResult({ kind: 'usikker', photoUri: primaryPhotoUri, treff: apiResult.treff });
+        setResult({ kind: 'usikker', scanId: apiResult.scanId, photoUri: primaryPhotoUri, treff: apiResult.treff });
       } else {
-        setResult({ kind: 'ikke_skadedyr', photoUri: primaryPhotoUri });
+        setResult({ kind: 'ikke_skadedyr', scanId: apiResult.scanId, photoUri: primaryPhotoUri });
       }
       clearSelectedImages();
     } catch (err) {
@@ -166,7 +172,7 @@ export default function ScanScreen() {
       setSheetVisible(true);
       return;
     }
-    addSelectedUris([photo.uri]);
+    addSelectedUris([photo.uri], 'camera');
     exitCamera();
   }
 
@@ -184,7 +190,7 @@ export default function ScanScreen() {
       if (picked.canceled) return;
       const uris = picked.assets.slice(0, remaining).map((asset) => asset.uri);
       if (uris.length === 0) return;
-      addSelectedUris(uris);
+      addSelectedUris(uris, 'library');
       exitCamera();
     } catch {
       setResult({ kind: 'error', message: 'Kunne ikke åpne bildevelgeren. Prøv igjen.' });
@@ -484,6 +490,7 @@ function ScanResultContent({ result, onClose }: { result: ScanUiResult; onClose:
     if (result.kind !== 'treff' || feedback) return;
     setFeedback('like');
     sendFeedback({
+      scanId: result.scanId,
       vote: 'like',
       treff: { navnNo: result.treff.navnNo, navnLatin: result.treff.navnLatin, kategori: result.treff.kategori },
     }).catch(() => {});
@@ -494,6 +501,7 @@ function ScanResultContent({ result, onClose }: { result: ScanUiResult; onClose:
     setFeedback('dislike');
     setPickerVisible(true);
     sendFeedback({
+      scanId: result.scanId,
       vote: 'dislike',
       treff: { navnNo: result.treff.navnNo, navnLatin: result.treff.navnLatin, kategori: result.treff.kategori },
     }).catch(() => {});
@@ -504,6 +512,7 @@ function ScanResultContent({ result, onClose }: { result: ScanUiResult; onClose:
     setCorrected(species);
     if (result.kind !== 'treff') return;
     sendFeedback({
+      scanId: result.scanId,
       vote: 'dislike',
       treff: { navnNo: result.treff.navnNo, navnLatin: result.treff.navnLatin, kategori: result.treff.kategori },
       korrigertArtId: species.id,

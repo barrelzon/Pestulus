@@ -18,7 +18,7 @@ function isFeedbackTreff(value: unknown): value is FeedbackTreff {
 
 /**
  * POST /feedback
- * Body: { vote: "like" | "dislike", treff: {navnNo, navnLatin, kategori}, korrigertArtId?: string }
+ * Body: { scanId?: string, vote: "like" | "dislike", treff: {navnNo, navnLatin, kategori}, korrigertArtId?: string }
  * Lagrer brukerens tilbakemelding på gjenkjenningen, slik at den kan brukes til å
  * forbedre vision-kandidatlista/prompten senere.
  */
@@ -28,7 +28,7 @@ feedbackRouter.post("/", async (req, res) => {
     return res.status(400).json({ error: "Ugyldig forespørsel" });
   }
 
-  const { vote, treff, korrigertArtId } = body as Record<string, unknown>;
+  const { scanId, vote, treff, korrigertArtId } = body as Record<string, unknown>;
 
   if (vote !== "like" && vote !== "dislike") {
     return res.status(400).json({ error: "Mangler gyldig vote ('like' eller 'dislike')" });
@@ -43,8 +43,10 @@ feedbackRouter.post("/", async (req, res) => {
     }
   }
   const correctedSpeciesId = typeof korrigertArtId === "string" ? korrigertArtId : null;
+  const linkedScanId = typeof scanId === "string" && scanId.length > 0 ? scanId : null;
 
   const entry = {
+    scanId: linkedScanId,
     tidspunkt: new Date().toISOString(),
     vote: voteValue,
     treff,

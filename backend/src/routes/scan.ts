@@ -1,5 +1,6 @@
 import { Router } from "express";
 import species from "../data/species.json" with { type: "json" };
+import { logScanEvent } from "../lib/activity-log.js";
 import { parseScanImages } from "../lib/scan-input.js";
 import { identifyPest } from "../lib/vision.js";
 import { withImage } from "../lib/images.js";
@@ -31,6 +32,20 @@ scanRouter.post("/", async (req, res) => {
     }));
 
     const result = await identifyPest(imageBase64List, candidates);
+
+    logScanEvent({
+      tidspunkt: new Date().toISOString(),
+      status: result.status,
+      imageCount: imageBase64List.length,
+      topTreff: result.treff[0]
+        ? {
+            navnNo: result.treff[0].navnNo,
+            navnLatin: result.treff[0].navnLatin,
+            kategori: result.treff[0].kategori,
+            konfidens: result.treff[0].konfidens,
+          }
+        : null,
+    }).catch((err) => console.error("scan-logg-feil:", err));
 
     // Berik hvert treff med full artsinfo fra databasen.
     const treff = result.treff.map((t) => {

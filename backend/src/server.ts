@@ -3,6 +3,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 import express from "express";
 import cors from "cors";
+import { adminRouter } from "./routes/admin.js";
 import { feedbackRouter } from "./routes/feedback.js";
 import { scanRouter } from "./routes/scan.js";
 import { speciesRouter } from "./routes/species.js";
@@ -22,6 +23,7 @@ app.use("/images", express.static(path.join(__dirname, "../public/images")));
 
 app.use("/scan", scanRouter);
 app.use("/feedback", feedbackRouter);
+app.use("/admin", adminRouter);
 app.use("/", speciesRouter); // /species, /categories
 
 const port = Number(process.env.PORT) || 8787;

@@ -56,12 +56,16 @@ async function request<T>(path: string, init?: RequestInit): Promise<T> {
   return response.json() as Promise<T>;
 }
 
-export function scanImage(imageBase64: string): Promise<ScanResult> {
+export function scanImages(imageBase64List: string[]): Promise<ScanResult> {
   return request<ScanResult>('/scan', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ imageBase64 }),
+    body: JSON.stringify({ imageBase64List }),
   });
+}
+
+export function scanImage(imageBase64: string): Promise<ScanResult> {
+  return scanImages([imageBase64]);
 }
 
 export function fetchCategories(): Promise<Category[]> {

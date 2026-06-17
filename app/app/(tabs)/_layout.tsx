@@ -1,4 +1,5 @@
 import { Tabs } from 'expo-router';
+import { Platform } from 'react-native';
 
 import { GlassPanel } from '@/components/glass-panel';
 import { HapticTab } from '@/components/haptic-tab';
@@ -16,6 +17,7 @@ export default function TabLayout() {
         tabBarStyle: {
           backgroundColor: 'transparent',
           borderTopColor: Colors.border,
+          ...(Platform.OS === 'web' ? { paddingBottom: 0 } : {}),
         },
         tabBarBackground: () => <GlassPanel variant="tabBar" style={{ flex: 1 }} />,
       }}>

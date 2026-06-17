@@ -19,6 +19,8 @@ export default function Root({ children }: PropsWithChildren) {
         <meta name="apple-mobile-web-app-title" content="Pestulus" />
         <meta name="theme-color" content="#15171A" />
         <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon.png" />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="manifest" href="/manifest.json" />
 
         {/* Remove white flash before React hydrates */}

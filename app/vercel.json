@@ -3,15 +3,15 @@
   "rewrites": [
     {
       "source": "/oversikt/art/:id",
-      "destination": "/oversikt/art/[id].html"
+      "destination": "/oversikt/art/[id]"
     },
     {
       "source": "/oversikt/:kategori",
-      "destination": "/oversikt/[kategori].html"
+      "destination": "/oversikt/[kategori]"
     },
     {
       "source": "/historikk/:id",
-      "destination": "/historikk/[id].html"
+      "destination": "/historikk/[id]"
     }
   ]
 }

@@ -1,0 +1,64 @@
+# Pestulus — Skadedyr- og artsgjenkjenning
+
+Følg alltid `docs/skadedyr-app-spesifikasjon.md` som kilde til sannhet.
+System-prompten for vision-modellen ligger i `docs/vision-system-prompt.md`.
+
+## Hva dette er
+App som identifiserer norske skadedyr/insekter fra et kamerabilde. To klienter
+(iOS + web) bygget med **Expo** (React Native + react-native-web) fra én
+kodebase, og en felles backend. Versjon 1 dekker arter i Norge.
+
+## Struktur
+- `app/`      — Expo-app (iOS + web), TypeScript, Expo Router  (genereres, se README)
+- `backend/`  — Node + Express + TypeScript (deploy: Render)
+- `docs/`     — spesifikasjon + vision system-prompt
+
+## Kommandoer
+Backend:
+- `cd backend && npm install`
+- `npm run dev`    — start API lokalt (port 8787)
+- `npm run build`  — kompiler TypeScript til `dist/`
+- `npm start`      — kjør kompilert build (brukes på Render)
+
+Expo-app (etter at den er generert):
+- `cd app && npm install`
+- `npx expo start`         — utvikling (iOS via Expo Go / simulator)
+- `npx expo start --web`   — web-prototype i nettleser
+- `npx expo export -p web` — statisk web-build (deploy til Vercel)
+
+## Arkitektur
+- Klient tar bilde → POST til backend `/scan` → backend kaller vision-LLM med
+  system-prompten i `docs/vision-system-prompt.md` (kandidatliste innbakt) →
+  returnerer `status` + topp-3 treff som JSON.
+- AI-nøkkelen ligger KUN i backend (Render env vars). Klienten snakker bare med
+  vår egen backend, aldri direkte med vision-leverandøren.
+- History lagres lokalt på enheten (AsyncStorage) i v1 — ingen pålogging.
+- 3 skjermer: Scan (startfane), Oversikt, History. Bunn-tabs, Scan i midten.
+
+## Konvensjoner
+- TypeScript strict, ingen `any`.
+- Mørkt tema som standard. Liquid Glass etterlignes med `expo-blur` +
+  gjennomskinnelige lag. Dempet, sofistikert palett, én rolig aksentfarge.
+- All brukervendt tekst på norsk (bokmål). Forbered for i18n.
+- Del designtokens (farger, radius, blur, typografi) i én modul brukt av hele appen.
+- Bruk FHIs norske navn og kategori ORDRETT (må matche artsdatabasen).
+
+## Ikke gjør
+- IKKE legg API-nøkler eller hemmeligheter i klientkoden eller i git — bruk env.
+- IKKE kall vision-leverandøren direkte fra klienten — alltid via backend.
+- IKKE finn opp arter utenfor kandidatlista i gjenkjenningssvar.
+- IKKE bruk neon eller skrikende gradienter; hold designet stilrent.
+- IKKE hardkod `env(safe-area-inset-bottom)` i tabbar/web-PWA; React Navigation
+  håndterer safe-area selv, og Safari hjemskjerm får ellers tom bunnpadding.
+- IKKE hardkod vision-leverandørens API-form fra hukommelsen — les leverandørens
+  gjeldende docs og verifiser request/response før du fullfører `src/lib/vision.ts`.
+
+## Byggerekkefølge
+1. Backend: fullfør `/scan` (vision), `/species`, `/categories`, og bygg ut
+   FHI-databasen (erstatt `src/data/species.sample.json`).
+2. Web-prototype i Expo (raskest å teste i nettleser).
+3. iOS-finpuss: kamera, tillatelser, glass-UI, navigasjon.
+
+## Tips
+Hver gang du retter en feil jeg gjør, legg til en kort regel i «Ikke gjør» over,
+så feilen ikke gjentas.

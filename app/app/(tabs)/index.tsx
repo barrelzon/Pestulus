@@ -4,16 +4,27 @@ import * as ImagePicker from 'expo-image-picker';
 import { ImageManipulator, SaveFormat } from 'expo-image-manipulator';
 import { router } from 'expo-router';
 import { useEffect, useRef, useState } from 'react';
-import { ActivityIndicator, Linking, Platform, Pressable, StyleSheet, Text, View } from 'react-native';
+import {
+  ActivityIndicator,
+  Linking,
+  Platform,
+  Pressable,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
 import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { CategoryBadge } from '@/components/category-badge';
+import { ForvekslingText, SpeciesLink } from '@/components/species-link';
 import { GlassPanel } from '@/components/glass-panel';
 import { SpeciesPickerModal } from '@/components/species-picker-modal';
 import { IconSymbol } from '@/components/ui/icon-symbol';
 import { Colors, Radius, Spacing, Typography } from '@/constants/theme';
 import { ApiError, scanImage, sendFeedback, type Species, type Treff } from '@/lib/api';
+import { useAllSpecies } from '@/hooks/use-all-species';
 import { addHistoryRecord } from '@/lib/history';
 
 type ScanUiResult =
@@ -22,7 +33,7 @@ type ScanUiResult =
   | { kind: 'ikke_skadedyr'; photoUri: string }
   | { kind: 'error'; message: string };
 
-const SHEET_OFFSET = 420;
+const SHEET_OFFSET = 560;
 
 export default function ScanScreen() {
   const insets = useSafeAreaInsets();
@@ -30,6 +41,7 @@ export default function ScanScreen() {
   const [facing, setFacing] = useState<CameraType>('back');
   const [flash, setFlash] = useState<'off' | 'on'>('off');
   const [busy, setBusy] = useState(false);
+  const [pendingUri, setPendingUri] = useState<string | null>(null);
   const [result, setResult] = useState<ScanUiResult | null>(null);
   const [sheetVisible, setSheetVisible] = useState(false);
   const cameraRef = useRef<CameraView>(null);
@@ -82,13 +94,13 @@ export default function ScanScreen() {
     if (busy || !cameraRef.current) return;
     setBusy(true);
     const photo = await cameraRef.current.takePictureAsync({ quality: 0.5 }).catch(() => null);
+    setBusy(false);
     if (!photo?.uri) {
       setResult({ kind: 'error', message: 'Noe gikk feil. Prøv igjen.' });
-      setBusy(false);
       setSheetVisible(true);
       return;
     }
-    await processImage(photo.uri);
+    setPendingUri(photo.uri);
   }
 
   async function handlePickImage() {
@@ -96,18 +108,29 @@ export default function ScanScreen() {
     try {
       const picked = await ImagePicker.launchImageLibraryAsync({ mediaTypes: ['images'], quality: 1 });
       if (picked.canceled || !picked.assets[0]) return;
-      setBusy(true);
-      await processImage(picked.assets[0].uri);
+      setPendingUri(picked.assets[0].uri);
     } catch {
       setResult({ kind: 'error', message: 'Kunne ikke åpne bildevelgeren. Prøv igjen.' });
-      setBusy(false);
       setSheetVisible(true);
     }
+  }
+
+  function handleConfirm() {
+    const uri = pendingUri!;
+    setPendingUri(null);
+    setBusy(true);
+    processImage(uri);
+  }
+
+  function handleRetake() {
+    setPendingUri(null);
   }
 
   function closeSheet() {
     setSheetVisible(false);
   }
+
+  const showCamera = cameraReady && !pendingUri && !sheetVisible;
 
   return (
     <View style={styles.container}>
@@ -149,7 +172,7 @@ export default function ScanScreen() {
         </View>
       )}
 
-      {cameraReady && !sheetVisible && (
+      {showCamera && (
         <View style={[styles.topBar, { top: insets.top + Spacing.sm }]}>
           <Pressable onPress={() => setFlash((current) => (current === 'off' ? 'on' : 'off'))}>
             <GlassPanel variant="card" style={styles.controlButton}>
@@ -168,7 +191,7 @@ export default function ScanScreen() {
         </View>
       )}
 
-      {cameraReady && !sheetVisible && (
+      {showCamera && (
         <View style={[styles.bottomArea, { bottom: insets.bottom + Spacing.xl }]}>
           <Text style={styles.privacyText}>
             Bildet sendes til en KI-tjeneste for artsgjenkjenning og lagres ikke av Pestulus.
@@ -185,6 +208,15 @@ export default function ScanScreen() {
             <View style={styles.galleryButton} />
           </View>
         </View>
+      )}
+
+      {pendingUri && !sheetVisible && (
+        <ConfirmationOverlay
+          uri={pendingUri}
+          insetBottom={insets.bottom}
+          onConfirm={handleConfirm}
+          onRetake={handleRetake}
+        />
       )}
 
       {busy && (
@@ -205,11 +237,67 @@ export default function ScanScreen() {
   );
 }
 
+function ConfirmationOverlay({
+  uri,
+  insetBottom,
+  onConfirm,
+  onRetake,
+}: {
+  uri: string;
+  insetBottom: number;
+  onConfirm: () => void;
+  onRetake: () => void;
+}) {
+  return (
+    <View style={StyleSheet.absoluteFillObject}>
+      <Image source={{ uri }} style={StyleSheet.absoluteFillObject} contentFit="cover" />
+      <View style={[styles.confirmBar, { paddingBottom: insetBottom + Spacing.lg }]}>
+        <Text style={styles.confirmPrompt}>Bruk dette bildet?</Text>
+        <Pressable style={styles.primaryButton} onPress={onConfirm}>
+          <Text style={styles.primaryButtonText}>Bruk dette bildet</Text>
+        </Pressable>
+        <Pressable style={styles.secondaryButton} onPress={onRetake}>
+          <Text style={styles.secondaryButtonText}>Ta nytt bilde</Text>
+        </Pressable>
+      </View>
+    </View>
+  );
+}
+
+function ConfidenceMeter({ value }: { value: number }) {
+  const color = value >= 0.7 ? '#5A9E6F' : value >= 0.5 ? Colors.accent : Colors.danger;
+  return (
+    <View style={styles.confidenceTrack}>
+      <View style={[styles.confidenceFill, { flex: value, backgroundColor: color }]} />
+      <View style={{ flex: Math.max(0, 1 - value) }} />
+    </View>
+  );
+}
+
+function InfoCard({ title, text }: { title: string; text: string }) {
+  return (
+    <View style={styles.infoCard}>
+      <Text style={styles.infoCardTitle}>{title}</Text>
+      <Text style={styles.infoCardText}>{text}</Text>
+    </View>
+  );
+}
+
+function ForvekslingsKort({ tekst, allSpecies }: { tekst: string; allSpecies: Species[] }) {
+  return (
+    <View style={styles.infoCard}>
+      <Text style={styles.infoCardTitle}>Kan forveksles med</Text>
+      <ForvekslingText tekst={tekst} allSpecies={allSpecies} textStyle={styles.infoCardText} />
+    </View>
+  );
+}
+
 function ScanResultContent({ result, onClose }: { result: ScanUiResult; onClose: () => void }) {
   const [feedback, setFeedback] = useState<'like' | 'dislike' | null>(null);
   const [pickerVisible, setPickerVisible] = useState(false);
   const [corrected, setCorrected] = useState<Species | null>(null);
   const [showAlternatives, setShowAlternatives] = useState(false);
+  const allSpecies = useAllSpecies();
 
   useEffect(() => {
     setFeedback(null);
@@ -224,9 +312,7 @@ function ScanResultContent({ result, onClose }: { result: ScanUiResult; onClose:
     sendFeedback({
       vote: 'like',
       treff: { navnNo: result.treff.navnNo, navnLatin: result.treff.navnLatin, kategori: result.treff.kategori },
-    }).catch(() => {
-      // Stille feil - tilbakemelding er ikke kritisk for brukeropplevelsen.
-    });
+    }).catch(() => {});
   }
 
   function handleDislike() {
@@ -236,9 +322,7 @@ function ScanResultContent({ result, onClose }: { result: ScanUiResult; onClose:
     sendFeedback({
       vote: 'dislike',
       treff: { navnNo: result.treff.navnNo, navnLatin: result.treff.navnLatin, kategori: result.treff.kategori },
-    }).catch(() => {
-      // Stille feil - tilbakemelding er ikke kritisk for brukeropplevelsen.
-    });
+    }).catch(() => {});
   }
 
   function handleSelectSpecies(species: Species) {
@@ -249,9 +333,7 @@ function ScanResultContent({ result, onClose }: { result: ScanUiResult; onClose:
       vote: 'dislike',
       treff: { navnNo: result.treff.navnNo, navnLatin: result.treff.navnLatin, kategori: result.treff.kategori },
       korrigertArtId: species.id,
-    }).catch(() => {
-      // Stille feil - tilbakemelding er ikke kritisk for brukeropplevelsen.
-    });
+    }).catch(() => {});
   }
 
   const excludeIds =
@@ -261,68 +343,59 @@ function ScanResultContent({ result, onClose }: { result: ScanUiResult; onClose:
         )
       : [];
 
-  // Appen viser kun topp 3 i scan-resultatet - resten av de opptil 5 kandidatene
-  // fra backend beholdes i `result` (og historikk) for senere bruk.
   const displayedAlternatives = result.kind === 'treff' ? result.alternative.slice(0, 2) : [];
   const displayedUncertain = result.kind === 'usikker' ? result.treff.slice(0, 3) : [];
 
   return (
-    <View style={styles.sheetContent}>
-      <View style={styles.sheetHeader}>
-        {result.kind === 'error' ? (
-          <View style={[styles.thumbnail, styles.errorIcon]}>
-            <IconSymbol name="exclamationmark.triangle.fill" size={26} color={Colors.danger} />
-          </View>
-        ) : (
-          <Image source={{ uri: result.photoUri }} style={styles.thumbnail} />
-        )}
-
-        <View style={styles.sheetHeaderText}>
-          {result.kind === 'treff' && (
-            <>
-              <Text style={styles.resultTitle}>{result.treff.navnNo}</Text>
-              <Text style={styles.resultLatin}>{result.treff.navnLatin}</Text>
-            </>
-          )}
-          {result.kind === 'usikker' && (
-            <>
-              <Text style={styles.resultTitle}>Usikkert resultat</Text>
-              <Text style={styles.resultBody}>
-                Vi er usikre på hvilken art dette er. Her er de mest sannsynlige
-                kandidatene - bekreft identifiseringen før du eventuelt gjør noe
-                med skadedyret.
-              </Text>
-            </>
-          )}
-          {result.kind === 'ikke_skadedyr' && (
-            <>
-              <Text style={styles.resultTitle}>Ingen skadedyr funnet</Text>
-              <Text style={styles.resultBody}>
-                Vi fant ikke noe skadedyr i bildet. Prøv å ta bildet nærmere eller med bedre lys.
-              </Text>
-            </>
-          )}
-          {result.kind === 'error' && (
-            <>
-              <Text style={styles.resultTitle}>Noe gikk feil</Text>
-              <Text style={styles.resultBody}>{result.message}</Text>
-            </>
-          )}
-        </View>
-
-        <Pressable onPress={onClose} style={styles.closeButton} hitSlop={8}>
-          <IconSymbol name="xmark" size={18} color={Colors.textSecondary} />
-        </Pressable>
-      </View>
-
+    <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.sheetContent}>
+      {/* ─── TREFF ─── */}
       {result.kind === 'treff' && (
         <>
+          <View style={styles.sheetHeader}>
+            <Image source={{ uri: result.photoUri }} style={styles.thumbnail} />
+            <View style={styles.sheetHeaderText}>
+              <SpeciesLink
+                navnNo={result.treff.navnNo}
+                allSpecies={allSpecies}
+                style={styles.resultTitle}
+              />
+              <Text style={styles.resultLatin}>{result.treff.navnLatin}</Text>
+            </View>
+            <Pressable onPress={onClose} style={styles.closeButton} hitSlop={8}>
+              <IconSymbol name="xmark" size={18} color={Colors.textSecondary} />
+            </Pressable>
+          </View>
+
           <View style={styles.metaRow}>
             <CategoryBadge label={result.treff.kategori} />
-            <Text style={styles.confidenceText}>
+            <Text
+              style={[
+                styles.confidenceLabel,
+                {
+                  color:
+                    result.treff.konfidens >= 0.7
+                      ? '#5A9E6F'
+                      : result.treff.konfidens >= 0.5
+                        ? Colors.accent
+                        : Colors.danger,
+                },
+              ]}>
               {Math.round(result.treff.konfidens * 100)}% sannsynlig
             </Text>
           </View>
+
+          <ConfidenceMeter value={result.treff.konfidens} />
+
+          {result.treff.species?.kjennetegn && (
+            <InfoCard title="Kjennetegn" text={result.treff.species.kjennetegn} />
+          )}
+
+          {result.treff.species?.forveksling && (
+            <ForvekslingsKort
+              tekst={result.treff.species.forveksling}
+              allSpecies={allSpecies}
+            />
+          )}
 
           {feedback === null ? (
             <View style={styles.feedbackRow}>
@@ -354,7 +427,7 @@ function ScanResultContent({ result, onClose }: { result: ScanUiResult; onClose:
                   params: { id: result.treff.species!.id },
                 })
               }>
-              <Text style={styles.primaryButtonText}>Se detaljer</Text>
+              <Text style={styles.primaryButtonText}>Se full artsbeskrivelse →</Text>
             </Pressable>
           )}
 
@@ -391,24 +464,93 @@ function ScanResultContent({ result, onClose }: { result: ScanUiResult; onClose:
         </>
       )}
 
+      {/* ─── USIKKER ─── */}
       {result.kind === 'usikker' && (
         <>
-          <View style={styles.warningBanner}>
-            <IconSymbol name="exclamationmark.triangle.fill" size={16} color={Colors.accent} />
-            <Text style={styles.warningBannerText}>Bør verifiseres</Text>
+          <View style={styles.sheetHeader}>
+            <Image source={{ uri: result.photoUri }} style={styles.thumbnail} />
+            <View style={styles.sheetHeaderText}>
+              <View style={styles.warningBanner}>
+                <IconSymbol name="exclamationmark.triangle.fill" size={14} color={Colors.accent} />
+                <Text style={styles.warningBannerText}>Usikkert resultat</Text>
+              </View>
+              <Text style={styles.resultBody}>
+                Bildet er vanskelig å identifisere sikkert.
+              </Text>
+            </View>
+            <Pressable onPress={onClose} style={styles.closeButton} hitSlop={8}>
+              <IconSymbol name="xmark" size={18} color={Colors.textSecondary} />
+            </Pressable>
           </View>
-          {displayedUncertain.map((t, index) => (
-            <CandidateRow key={`${t.navnNo}-${index}`} treff={t} />
-          ))}
+
+          {displayedUncertain[0] && (
+            <View>
+              <Text style={styles.candidateSectionLabel}>Mest sannsynlig</Text>
+              <CandidateRow treff={displayedUncertain[0]} />
+            </View>
+          )}
+
+          {displayedUncertain.length > 1 && (
+            <View>
+              <Text style={styles.candidateSectionLabel}>Kan også være</Text>
+              {displayedUncertain.slice(1).map((t, index) => (
+                <CandidateRow key={`${t.navnNo}-${index}`} treff={t} />
+              ))}
+            </View>
+          )}
+
+          {displayedUncertain[0]?.species?.forveksling && (
+            <ForvekslingsKort
+              tekst={displayedUncertain[0].species.forveksling}
+              allSpecies={allSpecies}
+            />
+          )}
+
+          <Pressable style={styles.secondaryButton} onPress={onClose}>
+            <Text style={styles.secondaryButtonText}>📷 Ta nytt bilde</Text>
+          </Pressable>
         </>
       )}
 
-      {result.kind === 'error' && (
-        <Pressable style={styles.primaryButton} onPress={onClose}>
-          <Text style={styles.primaryButtonText}>Lukk</Text>
-        </Pressable>
+      {/* ─── IKKE SKADEDYR ─── */}
+      {result.kind === 'ikke_skadedyr' && (
+        <>
+          <View style={styles.sheetHeader}>
+            <Image source={{ uri: result.photoUri }} style={styles.thumbnail} />
+            <View style={styles.sheetHeaderText}>
+              <Text style={styles.resultTitle}>Ingen skadedyr funnet</Text>
+              <Text style={styles.resultBody}>
+                Vi fant ikke noe skadedyr i bildet. Prøv å ta bildet nærmere eller med bedre lys.
+              </Text>
+            </View>
+            <Pressable onPress={onClose} style={styles.closeButton} hitSlop={8}>
+              <IconSymbol name="xmark" size={18} color={Colors.textSecondary} />
+            </Pressable>
+          </View>
+        </>
       )}
-    </View>
+
+      {/* ─── FEIL ─── */}
+      {result.kind === 'error' && (
+        <>
+          <View style={styles.sheetHeader}>
+            <View style={[styles.thumbnail, styles.errorIcon]}>
+              <IconSymbol name="exclamationmark.triangle.fill" size={26} color={Colors.danger} />
+            </View>
+            <View style={styles.sheetHeaderText}>
+              <Text style={styles.resultTitle}>Noe gikk feil</Text>
+              <Text style={styles.resultBody}>{result.message}</Text>
+            </View>
+            <Pressable onPress={onClose} style={styles.closeButton} hitSlop={8}>
+              <IconSymbol name="xmark" size={18} color={Colors.textSecondary} />
+            </Pressable>
+          </View>
+          <Pressable style={styles.primaryButton} onPress={onClose}>
+            <Text style={styles.primaryButtonText}>Lukk</Text>
+          </Pressable>
+        </>
+      )}
+    </ScrollView>
   );
 }
 
@@ -543,6 +685,22 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     backgroundColor: Colors.text,
   },
+  confirmBar: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    bottom: 0,
+    paddingHorizontal: Spacing.xl,
+    paddingTop: Spacing.lg,
+    backgroundColor: Colors.overlay,
+    alignItems: 'center',
+    gap: Spacing.xs,
+  },
+  confirmPrompt: {
+    ...Typography.heading,
+    color: Colors.text,
+    marginBottom: Spacing.xs,
+  },
   loadingOverlay: {
     ...StyleSheet.absoluteFillObject,
     backgroundColor: Colors.overlay,
@@ -567,7 +725,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: Colors.border,
     padding: Spacing.lg,
-    gap: Spacing.md,
+    maxHeight: 540,
   },
   sheetContent: {
     gap: Spacing.md,
@@ -613,9 +771,45 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
   },
+  confidenceLabel: {
+    ...Typography.bodyStrong,
+  },
   confidenceText: {
     ...Typography.bodyStrong,
     color: Colors.accent,
+  },
+  confidenceTrack: {
+    flexDirection: 'row',
+    height: 6,
+    backgroundColor: Colors.surfaceAlt,
+    borderRadius: Radius.pill,
+    overflow: 'hidden',
+  },
+  confidenceFill: {
+    borderRadius: Radius.pill,
+  },
+  infoCard: {
+    backgroundColor: Colors.surface,
+    borderRadius: Radius.md,
+    borderWidth: 1,
+    borderColor: Colors.border,
+    padding: Spacing.md,
+    gap: Spacing.xs,
+  },
+  infoCardTitle: {
+    ...Typography.label,
+    color: Colors.textMuted,
+    textTransform: 'uppercase',
+  },
+  infoCardText: {
+    ...Typography.body,
+    color: Colors.text,
+  },
+  candidateSectionLabel: {
+    ...Typography.label,
+    color: Colors.textMuted,
+    textTransform: 'uppercase',
+    marginBottom: 2,
   },
   feedbackRow: {
     flexDirection: 'row',

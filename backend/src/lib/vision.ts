@@ -1,29 +1,39 @@
 /**
  * Vision-adapter — Google Gemini.
  *
- * Bygger system-prompten (kandidatliste + JSON-kontrakt, jf.
- * docs/vision-system-prompt.md) og kaller Gemini sin generateContent-endpoint
- * med bilde + tekst (REST API, x-goog-api-key header).
+ * To-trinns identifisering:
+ *   1. Kategoritrinn: modellen velger én av 14 kategorier fra bildet.
+ *   2. Artstrinn: modellen velger blant artene i den kategorien (med kjennetegn).
  *
- * Hvis du senere bytter leverandør: bare denne filen (callModel + ev. parsing
- * av svarstruktur) trenger å endres. Resten av appen er leverandøruavhengig.
+ * Hvis du bytter leverandør: bare callModel (+ ev. parsing) trenger å endres.
  */
 
-export type Candidate = { navnNo: string; navnLatin: string; kategori: string };
+export type Candidate = {
+  navnNo: string;
+  navnLatin: string;
+  kategori: string;
+  kjennetegn?: string;
+  forveksling?: string;
+};
 export type Treff = Candidate & { konfidens: number };
 export type VisionStatus = "treff" | "usikker" | "ikke_skadedyr";
 export type VisionResult = { status: VisionStatus; treff: Treff[] };
 
-// Krav til toppkandidatens konfidens for status "treff" - under dette degraderes til "usikker".
 const CONFIDENCE_THRESHOLD = Number(process.env.CONFIDENCE_THRESHOLD ?? 0.7);
-// Krav til avstand mellom nr. 1 og nr. 2 for status "treff" - for liten avstand
-// betyr at de to beste kandidatene er for like til å skille sikkert.
 const CONFIDENCE_MARGIN_THRESHOLD = Number(process.env.CONFIDENCE_MARGIN_THRESHOLD ?? 0.15);
 
-// Tvinger Gemini til å svare med ETT JSON-objekt på formen i SVARFORMAT (ikke en
-// liste). Uten dette har gemini-3.1-pro-preview observert å pakke svaret i en
-// array (f.eks. [{"status":...,"treff":[]}]), som parseModelJson ikke takler.
-const RESPONSE_SCHEMA = {
+// Schema for trinn 1 — kategorigjenkjenning
+const CATEGORY_SCHEMA = {
+  type: "OBJECT",
+  properties: {
+    kategori: { type: "STRING" },
+    status: { type: "STRING", enum: ["treff", "ikke_skadedyr"] },
+  },
+  required: ["kategori", "status"],
+};
+
+// Schema for trinn 2 — artsgjenkjenning (samme som før)
+const SPECIES_SCHEMA = {
   type: "OBJECT",
   properties: {
     status: { type: "STRING", enum: ["treff", "usikker", "ikke_skadedyr"] },
@@ -44,48 +54,61 @@ const RESPONSE_SCHEMA = {
   required: ["status", "treff"],
 };
 
-function buildSystemPrompt(candidates: Candidate[]): string {
+function buildCategoryPrompt(categories: string[]): string {
+  return `Du er en ekspert på skadedyr og insekter i Norge. Du får ett bilde.
+Oppgaven din er å avgjøre hvilken kategori organismen på bildet tilhører.
+
+KATEGORIER:
+${categories.join("\n")}
+
+REGLER:
+- Velg KUN én kategori fra listen over.
+- Bruk kategorinavnet NØYAKTIG slik det står i listen.
+- Hvis bildet ikke viser noe dyr/insekt/skadedyr i det hele tatt, sett "status": "ikke_skadedyr" og "kategori": "".
+- Ellers sett "status": "treff" og "kategori" til den beste kategorien.
+- Svar KUN med gyldig JSON.
+
+SVARFORMAT: {"status":"treff"|"ikke_skadedyr","kategori":"string"}`;
+}
+
+function buildSpeciesPrompt(candidates: Candidate[]): string {
   const liste = candidates
-    .map((c) => `${c.navnNo} | ${c.navnLatin} | ${c.kategori}`)
+    .map((c) => {
+      const kj = c.kjennetegn ? ` | ${c.kjennetegn}` : "";
+      const forv = c.forveksling ? `\n  NB forveksling: ${c.forveksling}` : "";
+      return `${c.navnNo} | ${c.navnLatin}${kj}${forv}`;
+    })
     .join("\n");
 
-  return `Du er en ekspert på skadedyr og insekter i Norge. Du får ett bilde og en liste over kjente arter. Oppgaven din er å avgjøre hvilken art på lista bildet mest sannsynlig viser.
+  return `Du er en ekspert på skadedyr og insekter i Norge. Du får ett bilde og en liste over mulige arter i kategorien. Oppgaven din er å avgjøre hvilken art på lista bildet mest sannsynlig viser.
 
 REGLER:
 - Velg KUN blant artene i kandidatlista under. Ikke finn på arter utenfor lista.
-- Bruk navnNo, navnLatin og kategori NØYAKTIG slik de står i lista.
-- Returner ALLTID de 5 mest sannsynlige artene fra lista (med mindre bildet ikke viser noe skadedyr i det hele tatt), sortert med høyest konfidens først. Konfidens er et tall mellom 0 og 1.
-- Vær realistisk og forsiktig med konfidens. Sett høy konfidens (over ca. 0.8) KUN når kjennetegnene i bildet er tydelige og entydige for én art. Hvis flere arter på lista har lignende form, størrelse eller fargetegning, og bildet ikke gir grunnlag for å skille dem sikkert, FORDEL sannsynligheten mer jevnt mellom de mest sannsynlige kandidatene (f.eks. 0.4 / 0.3 / 0.2) i stedet for å gi én art en urealistisk høy konfidens.
-- Hvis du er usikker på hvilken art det er - enten fordi flere arter er like sannsynlige, eller fordi ingen art på lista passer godt - sett "status": "usikker", selv om bildet tydelig viser et insekt/skadedyr.
-- Hvis bildet ikke viser et dyr/skadedyr i det hele tatt, sett "status": "ikke_skadedyr" og la "treff" være [].
-- Ellers, når én art klart er mest sannsynlig og kjennetegnene er tydelige, sett "status": "treff".
-- Svar KUN med gyldig JSON. Ingen forklaring, ingen markdown, ingen kodeblokk.
+- Bruk navnNo og navnLatin NØYAKTIG slik de står i lista. Bruk kategori fra lista.
+- Returner ALLTID de 5 mest sannsynlige artene (med mindre bildet ikke viser noe skadedyr i det hele tatt), sortert med høyest konfidens først.
+- Vær realistisk og forsiktig med konfidens. Sett høy konfidens (over ca. 0.8) KUN når kjennetegnene i bildet er tydelige og entydige for én art. Fordel ellers sannsynligheten mer jevnt.
+- Hvis du er usikker, sett "status": "usikker".
+- Hvis bildet ikke viser et dyr/skadedyr, sett "status": "ikke_skadedyr" og "treff": [].
+- Ellers sett "status": "treff".
+- Svar KUN med gyldig JSON.
 
 SVARFORMAT:
 {"status":"treff"|"usikker"|"ikke_skadedyr","treff":[{"navnNo":"string","navnLatin":"string","kategori":"string","konfidens":0.0}]}
 
-KANDIDATLISTE (navnNo | navnLatin | kategori):
+KANDIDATLISTE (navnNo | navnLatin | kjennetegn):
 ${liste}`;
 }
 
-/** Robust parsing: fjern ev. kodeblokk-fences og parse JSON. */
-function parseModelJson(text: string): VisionResult {
+function parseModelJson(text: string): unknown {
   const cleaned = text.replace(/```json|```/g, "").trim();
-  const parsed = JSON.parse(cleaned) as VisionResult;
-  if (!parsed || !Array.isArray(parsed.treff)) {
-    throw new Error("Uventet svarformat fra modellen");
-  }
-  return parsed;
+  return JSON.parse(cleaned);
 }
 
-/**
- * Kaller Gemini sin generateContent-endpoint med system-prompt (som
- * systemInstruction) + bilde som inline_data (base64) + en kort tekstdel.
- * VISION_API_URL skal være basis-URL uten modellnavn/metode, f.eks.:
- *   https://generativelanguage.googleapis.com/v1beta/models
- * Full URL bygges som: {VISION_API_URL}/{VISION_MODEL}:generateContent
- */
-async function callModel(systemPrompt: string, imageBase64: string): Promise<string> {
+async function callModel(
+  systemPrompt: string,
+  imageBase64: string,
+  responseSchema: unknown,
+): Promise<string> {
   const apiKey = process.env.VISION_API_KEY;
   const apiUrl = process.env.VISION_API_URL;
   const model = process.env.VISION_MODEL;
@@ -111,18 +134,13 @@ async function callModel(systemPrompt: string, imageBase64: string): Promise<str
           role: "user",
           parts: [
             { text: "Hvilken art viser dette bildet?" },
-            {
-              inlineData: {
-                mimeType: "image/jpeg",
-                data: imageBase64,
-              },
-            },
+            { inlineData: { mimeType: "image/jpeg", data: imageBase64 } },
           ],
         },
       ],
       generationConfig: {
         responseMimeType: "application/json",
-        responseSchema: RESPONSE_SCHEMA,
+        responseSchema,
       },
     }),
   });
@@ -132,27 +150,62 @@ async function callModel(systemPrompt: string, imageBase64: string): Promise<str
     throw new Error(`Vision-API (Gemini) svarte ${response.status}: ${body}`);
   }
 
-  const data: any = await response.json();
-  // Gemini-svar: candidates[0].content.parts[0].text
-  const text = data?.candidates?.[0]?.content?.parts?.[0]?.text;
+  const data: unknown = await response.json();
+  const text = (data as { candidates?: { content?: { parts?: { text?: string }[] } }[] })
+    ?.candidates?.[0]?.content?.parts?.[0]?.text;
   if (typeof text !== "string") {
     throw new Error("Fant ikke tekst i Gemini-svaret");
   }
   return text;
 }
 
+/** Trinn 1: velg kategori fra bildet. Returnerer kategorinavn eller null. */
+async function identifyCategory(
+  imageBase64: string,
+  candidates: Candidate[],
+): Promise<string | null> {
+  const categories = [...new Set(candidates.map((c) => c.kategori))];
+  const prompt = buildCategoryPrompt(categories);
+  const raw = await callModel(prompt, imageBase64, CATEGORY_SCHEMA);
+  const parsed = parseModelJson(raw) as { status: string; kategori: string };
+  if (parsed.status === "ikke_skadedyr" || !parsed.kategori) return null;
+  // Valider at kategorien faktisk finnes i lista
+  return categories.includes(parsed.kategori) ? parsed.kategori : null;
+}
+
+/** Trinn 2: velg art blant innsnevrede kandidater. */
+async function identifySpecies(
+  imageBase64: string,
+  candidates: Candidate[],
+): Promise<VisionResult> {
+  const prompt = buildSpeciesPrompt(candidates);
+  const raw = await callModel(prompt, imageBase64, SPECIES_SCHEMA);
+  const result = parseModelJson(raw) as VisionResult;
+  if (!result || !Array.isArray(result.treff)) {
+    throw new Error("Uventet svarformat fra modellen");
+  }
+  return result;
+}
+
 export async function identifyPest(
   imageBase64: string,
   candidates: Candidate[],
 ): Promise<VisionResult> {
-  const systemPrompt = buildSystemPrompt(candidates);
-  const raw = await callModel(systemPrompt, imageBase64);
-  const result = parseModelJson(raw);
+  // Trinn 1: finn kategori
+  const kategori = await identifyCategory(imageBase64, candidates);
 
-  // Sikkerhetsnett: degrader "treff" til "usikker" hvis toppkandidaten ikke er
-  // sikker nok på egen hånd, eller hvis nr. 1 og nr. 2 ligger for nær hverandre
-  // (modellen kan være overdrevent selvsikker selv når den er bedt om å fordele
-  // sannsynligheten realistisk).
+  if (kategori === null) {
+    return { status: "ikke_skadedyr", treff: [] };
+  }
+
+  // Trinn 2: finn art blant kandidater i den kategorien
+  const narrowed = candidates.filter((c) => c.kategori === kategori);
+  // Sikkerhetsnett: fallback til alle hvis kategorien er tom
+  const finalCandidates = narrowed.length > 0 ? narrowed : candidates;
+
+  const result = await identifySpecies(imageBase64, finalCandidates);
+
+  // Sikkerhetsnett: degrader "treff" til "usikker" hvis konfidens er for lav
   if (result.status === "treff") {
     const top = result.treff[0]?.konfidens ?? 0;
     const second = result.treff[1]?.konfidens ?? 0;

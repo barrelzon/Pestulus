@@ -11,6 +11,8 @@ export type Species = {
   navnNo: string;
   navnLatin: string;
   kategori: string;
+  kjennetegn: string;
+  forveksling?: string;
   beskrivelse: string;
   helsemessigBetydning: string;
   tiltak: string;

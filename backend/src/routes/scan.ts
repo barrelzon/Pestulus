@@ -21,6 +21,8 @@ scanRouter.post("/", async (req, res) => {
       navnNo: s.navnNo,
       navnLatin: s.navnLatin,
       kategori: s.kategori,
+      kjennetegn: (s as { kjennetegn?: string }).kjennetegn,
+      forveksling: (s as { forveksling?: string }).forveksling,
     }));
 
     const result = await identifyPest(imageBase64, candidates);

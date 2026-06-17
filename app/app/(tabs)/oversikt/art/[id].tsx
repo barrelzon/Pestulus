@@ -5,11 +5,13 @@ import { router, Stack, useLocalSearchParams } from 'expo-router';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { CategoryBadge } from '@/components/category-badge';
+import { ForvekslingText } from '@/components/species-link';
 import { screenStyles } from '@/components/shared-styles';
 import { SpeciesHero } from '@/components/species-hero';
 import { IconSymbol } from '@/components/ui/icon-symbol';
 import { Colors, Radius, Spacing, Typography } from '@/constants/theme';
 import { ApiError, fetchSpeciesById, resolveImageUrl, type Species } from '@/lib/api';
+import { useAllSpecies } from '@/hooks/use-all-species';
 
 export default function ArtDetailScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
@@ -17,6 +19,7 @@ export default function ArtDetailScreen() {
   const [species, setSpecies] = useState<Species | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const allSpecies = useAllSpecies();
 
   const load = useCallback(async () => {
     setLoading(true);
@@ -68,6 +71,24 @@ export default function ArtDetailScreen() {
             <Text style={styles.latin}>{species.navnLatin}</Text>
             <CategoryBadge label={species.kategori} style={styles.badge} />
           </View>
+
+          {species.kjennetegn && (
+            <View style={styles.section}>
+              <Text style={styles.sectionTitle}>Kjennetegn</Text>
+              <Text style={styles.sectionText}>{species.kjennetegn}</Text>
+            </View>
+          )}
+
+          {species.forveksling && (
+            <View style={styles.section}>
+              <Text style={styles.sectionTitle}>Kan forveksles med</Text>
+              <ForvekslingText
+                tekst={species.forveksling}
+                allSpecies={allSpecies}
+                textStyle={styles.sectionText}
+              />
+            </View>
+          )}
 
           <Section title="Beskrivelse" text={species.beskrivelse} />
           <Section title="Helsemessig betydning" text={species.helsemessigBetydning} />

@@ -4,127 +4,150 @@
     "navnNo": "Maskeringstege",
     "navnLatin": "Reduvius personatus",
     "kategori": "Veggedyr og andre teger",
+    "kjennetegn": "Stor brunsvart tege, 1,5–2 cm. Flat overside, lange tynne antenner. Nymfene kler seg i støv og rusk og ser ut som vandrende støvdotter.",
     "beskrivelse": "Stor tege, 1,5–2 cm lang, brunsvart med flat overside og lange, tynne antenner. Nymfene dekker seg med støv og rusk og ser ut som vandrende støvdotter.",
     "helsemessigBetydning": "Kan i sjeldne tilfeller bite mennesker, og bittet kan gi en kraftig lokal reaksjon på grunn av enzymene i spyttet. Regnes ikke som farlig.",
     "tiltak": "Vanligvis ikke nødvendig å bekjempe, siden arten lever av andre skadeinsekter som støvlus og veggedyr og dermed kan være nyttig å ha i huset.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Veggedyr (mindre, 5–6 mm, rødere og mer oval; maskeringstege er markant større og brunsvart)."
   },
   {
     "id": "svaletege",
     "navnNo": "Svaletege",
     "navnLatin": "Oeciacus hirundinis",
     "kategori": "Veggedyr og andre teger",
+    "kjennetegn": "Liten lysebrun tege, 3,5–4 mm. Smalere halsskjold enn veggedyr, lyst gulbrun farge med lange hår på kroppen.",
     "beskrivelse": "Liten, flat tege på 3,5–4 mm, lysere gulbrun enn veggedyret med lange gulbrune hår på kroppen. Lever normalt i fuglereder, særlig hos svaler.",
     "helsemessigBetydning": "Kan i sjeldne tilfeller stikke mennesker hvis den kommer inn i boligen, men menneskeblod gir den dårlig næring og stikk gir lite eller ingen helserisiko.",
     "tiltak": "Sett netting for vinduer ved lufting og sikre mot nye fuglereder. Gamle reder kan fjernes på høsten når de ikke lenger er i bruk.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Veggedyr (5–6 mm, rødere, bredere halsskjold). Svaletege er lysere, tynnere og mer hårete."
   },
   {
     "id": "veggedyr",
     "navnNo": "Veggedyr",
     "navnLatin": "Cimex lectularius",
     "kategori": "Veggedyr og andre teger",
+    "kjennetegn": "Oval, flattrykt, rødbrun, 5–6 mm. Halsskjoldet er bredere enn 1,5× hodebredden. Sterk ubehagelig lukt. Ung nymfe er gjennomsiktig gul.",
     "beskrivelse": "Rødbrun, flattrykt og vingeløs tege på 5–6 mm. Gjemmer seg i sprekker nær sengen og etterlater karakteristiske mørke ekskrementflekker.",
     "helsemessigBetydning": "Bitt gir kløe og kan gi sekundærinfeksjon ved kloring. Ingen kjent sykdomsoverføring, men kan gi store psykiske belastninger som søvnmangel og angst.",
     "tiltak": "Inspiser sengetøy ved reise og hold bagasje unna sengen. Bekjempelse krever ofte varmebehandling (over 50°C), frysing eller fagfolk med integrert skadedyrbekjempelse.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Maskeringstege (mye større, brunsvart). Svaletege (lysere, smalere halsskjold, med hår)."
   },
   {
     "id": "flatlus",
     "navnNo": "Flatlus",
     "navnLatin": "Pthirus pubis",
     "kategori": "Lus",
+    "kjennetegn": "~2 mm, gråhvit, bred krabbeformet kropp. Kraftige bakre klør tilpasset grovt hår. Lever i skambehåring, armhuler og øyenbryn.",
     "beskrivelse": "Gråhvit lus på rundt 2 mm med bred, nesten kvadratisk kroppsform. De bakerste benparene har kraftige klør som griper godt om kroppshår.",
     "helsemessigBetydning": "Suger blod og gir kløe på grunn av allergisk reaksjon på bittene. Etter noen timer kan det oppstå blåaktige flekker i huden rundt bittstedene som kan vare i flere dager.",
     "tiltak": "Behandles med kremer som inneholder permetrin på alt hårbevokst område utenom øyenbryn og øyevipper, hvor lus og egg heller fjernes med pinsett. Partnere bør også undersøkes.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Hodelus (avlang, 2–3 mm, lever i hodehår). Kroppslus (2,5–3,6 mm, lever i klær)."
   },
   {
     "id": "hodelus",
     "navnNo": "Hodelus",
     "navnLatin": "Pediculus capitis",
     "kategori": "Lus",
+    "kjennetegn": "Avlang, 2–3 mm. Seks klør tilpasset hodehår-diameter. Gråhvit til grå. Egg (gnisser) limt til hårstrå nær hodebunnen.",
     "beskrivelse": "Liten lus på 2–3 mm, farge varierer fra lys til brun eller svart. Har klør på bena som gjør den i stand til å klamre seg fast til hårstrå. Eggene er gulhvite og nesten gjennomsiktige.",
     "helsemessigBetydning": "Forårsaker kløe i hodebunnen på grunn av stoffer i spyttet, men ikke alle får symptomer. Opprevne bitt kan gi sår og infeksjon. Overføring av sykdom er svært sjelden i Norge.",
     "tiltak": "Daglig kjemming med lusekam i 12–14 dager, eventuelt kombinert med lusemidler som inneholder dimetikon eller planteoljer. Alle smittede bør behandles samtidig for å unngå gjensmitte.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Flatlus (bred krabbeform, lever ikke i hodehår). Kroppslus (lever i klær, noe større)."
   },
   {
     "id": "kroppslus",
     "navnNo": "Kroppslus",
     "navnLatin": "Pediculus humanus",
     "kategori": "Lus",
+    "kjennetegn": "2,5–3,6 mm, avlang, litt større enn hodelus. Lever i klær og sømmer, suger blod om natten. Egg limt til tekstilfibre.",
     "beskrivelse": "Ligner hodelus i form, men er noe større (2,5–3,6 mm). Lever hovedsakelig i klær, særlig i sømmer på trøyer og skjorter, og legger egg festet til tekstilfibrene.",
     "helsemessigBetydning": "Bittene gir kløe. Under svært dårlige hygieniske forhold kan arten overføre alvorlige sykdommer som flekktyfus og tilbakefallsfeber, men dette skjer nesten bare i krise- og krigsområder.",
     "tiltak": "Hyppig dusjing og bytte av klær. Vask tekstiler i over 60°C eller bruk tørketrommel på samme temperatur i minst 15 minutter. Frysing dreper også lus, og insektmiddel kan brukes ved behov.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Hodelus (lever i hodehår, noe mindre). Flatlus (bred krabbeform)."
   },
   {
     "id": "fugleloppe",
     "navnNo": "Fugleloppe",
     "navnLatin": "Ceratophyllus gallinae",
     "kategori": "Smådyr",
+    "kjennetegn": "Vingeløs, flattrykt fra siden, brunsvart, 2–3 mm. Kam av omdannede hår i 'nakken'. Bakerste beinpar er springbein.",
     "beskrivelse": "Liten, vingeløs og sidevendt flattrykt loppe, 2–3 mm, brunsvart med kammelignende strukturer som hjelper den å feste seg til verten. Larvene er gulhvite og benløse.",
     "helsemessigBetydning": "Bitt kan være smertefulle og gi kløe som vanligvis varer 1–2 uker. Ikke kjent å overføre sykdom til mennesker i Norge. Bitt forekommer ofte på ben og rundt midjen.",
     "tiltak": "Fjern gamle fuglereder på vinteren eller noen uker etter at ungene har flydd ut, og bruk hansker og regntøy under arbeidet. Støvsug grundig innendørs, og luft og rist tekstiler utendørs.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Katteloppe (svært lik, 1,5–3 mm; katteloppe er sjelden i Norge – de fleste lopper på kjæledyr her er faktisk fugleloppe)."
   },
   {
     "id": "katteloppe",
     "navnNo": "Katteloppe",
     "navnLatin": "Ctenocephalides felis",
     "kategori": "Smådyr",
+    "kjennetegn": "Vingeløs, flattrykt fra siden, brunsvart, 1,5–3 mm. Lik fugleloppe, men noe mindre.",
     "beskrivelse": "Liten, brunsvart og sidevendt flattrykt loppe på 1,5–3 mm uten vinger. Har kamlignende hårstrukturer som gir godt feste i pelsen til kjæledyr. Larvene er gulhvite og benløse.",
     "helsemessigBetydning": "Suger blod fra katter og hunder, men kan også bite mennesker, typisk ved sokkekant og linning. Kan gi allergiske hudreaksjoner hos kjæledyr og er kjent som vektor for sykdom andre steder i verden.",
     "tiltak": "Behandle kjæledyr hos veterinær som førsteprioritet. Støvsug liggeplasser og møbler grundig, og luft tepper og møbler utendørs i kulde for å fryse ut lopper. Vekstregulerende midler kan ha god effekt.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Fugleloppe (2–3 mm, vanligst i Norge; nær identisk, skilles best under lupe)."
   },
   {
     "id": "boklus",
     "navnNo": "Boklus",
     "navnLatin": "Liposcelis bostrychophila",
     "kategori": "Smådyr",
+    "kjennetegn": "Svært liten, ~1 mm, vingeløs. Lys til brun farge. Tykk buet panne, lange tynne antenner, tykke lår på bakbein.",
     "beskrivelse": "Svært liten, vingeløs støvlus på rundt 1 mm med tykk panne og lange, tynne antenner. Bakbenas tykke lår er karakteristiske for arten.",
     "helsemessigBetydning": "Hovedsakelig et trivselsproblem ved store mengder. Kan forurense mel og kornvarer, og kan skade gamle bøker og fuktig papir som ikke lagres tørt.",
     "tiltak": "Reduser luftfuktigheten til under 60 %, da bestanden da forsvinner. Frys angrepne matvarer i et døgn. Kjemiske midler er sjelden nødvendig siden andre tiltak er trygge og effektive.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Brun støvlus (noe større 2–3 mm, mørkere). Spretthaler (lik størrelse, men har springgaffel og hopper)."
   },
   {
     "id": "brun-stovlus",
     "navnNo": "Brun støvlus",
     "navnLatin": "Lepinotus patruelis",
     "kategori": "Smådyr",
+    "kjennetegn": "2–3 mm, lys brun. Lange tynne antenner. Mørk stripe mellom øye og antennefeste. Korte ikke-funksjonelle vinger.",
     "beskrivelse": "Lys brun støvlus på 2–3 mm med lange, tynne antenner og en mørk stripe mellom øye og antennefeste. Har korte, ikke-funksjonelle vinger, og hunnene er noe større og mørkere enn hannene.",
     "helsemessigBetydning": "Først og fremst et trivselsproblem ved store bestander på fuktige steder. Kan forurense lagrede matvarer, noe som særlig kan være et problem i næringsmiddelvirksomheter.",
     "tiltak": "Reduser luftfuktigheten til under 70 %, som er det viktigste tiltaket mot arten. Kjemisk bekjempelse anbefales ikke siden fuktkontroll er like effektivt og mindre belastende.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Boklus (~1 mm, mindre). Spretthaler (har springgaffel). Støvlus (svært lik, mange arter)."
   },
   {
     "id": "stovlus",
     "navnNo": "Støvlus",
     "navnLatin": "Psocoptera",
     "kategori": "Smådyr",
+    "kjennetegn": "1–5 mm, lys brun. Lange mangeleddede antenner, tydelig fortykket/buet panne. Mange innendørsarter vingeløse.",
     "beskrivelse": "Samlebegrep for en gruppe små insekter på 1–5 mm med lange, mangeleddede antenner og en tydelig fortykkelse i pannen. Mange innendørsarter er vingeløse, og nymfene ligner små, lysere voksne.",
     "helsemessigBetydning": "Verken stikker eller biter mennesker og utgjør ingen direkte medisinsk fare. Kan forurense matvarer og forverre symptomer hos personer med luftveisallergi eller astma ved store mengder.",
     "tiltak": "Reduser luftfuktigheten, da høy fuktighet er hovedårsaken til oppblomstring. Oppbevar mat tørt og kjølig i tette beholdere, og forbedre ventilasjonen. Kjemiske midler er ikke nødvendig.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Spretthaler (lik størrelse og levested, men har springgaffel og hopper). Boklus (~1 mm, minste vanlige arten)."
   },
   {
     "id": "bydue",
     "navnNo": "Bydue",
     "navnLatin": "Columba livia",
     "kategori": "Fugler",
+    "kjennetegn": "~30 cm, grå med metallglinsende hals. To svarte vingestriper. Rød iris.",
     "beskrivelse": "Tamdue som lever vilt i byer, cirka 30 cm lang og 400–500 gram. Fjærdrakten varierer fra grå til hvit og svart, ofte med to mørke striper på vingene.",
     "helsemessigBetydning": "Ekskrementer kan forurense og skade bygninger og overflater. Byduer kan være smittekilde for mikroorganismer som salmonella og være vert for parasitter som duelus og fuglelopper.",
     "tiltak": "Fjern tilgang til mat, vann og hekkeplasser, og sikre bygninger med nett eller piggsystemer. Levendefangstfeller kan brukes, og skadefelling skjer kun ved dokumentert skade og etter at andre tiltak er prøvd.",
@@ -136,17 +159,20 @@
     "navnNo": "Gråspurv",
     "navnLatin": "Passer domesticus",
     "kategori": "Fugler",
+    "kjennetegn": "≤15 cm. Hann med svart strupeflekk, hvite kinn og kastanjebrunt hodeband. Hunn mer gråbrun og uspraglet.",
     "beskrivelse": "Liten fugl på opptil 15 cm. Hannen har svart strupeflekk og hvite kinn, mens hunnen er mer jevnt gråbrun. Kan forveksles med pilfink.",
     "helsemessigBetydning": "Forurenser mat og fôrlagre med avføring og kan være smittekilde for mikroorganismer som salmonella. Kommer ofte inn i bygninger og kan skape problemer i butikker og næringsmiddelbedrifter.",
     "tiltak": "Begrens tilgang til mat og vann, og fjern hekke- og skjuleplasser. Sikre bygninger med nett med maks 2 cm maskevidde. Hold fuglebrett rene, og bruk levendefangst ved behov.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Pilfink (ligner; pilfink har kastanjebrun kalott og svart kinnflekk, men hannens svarte strupe mangler)."
   },
   {
     "id": "hakkespetter",
     "navnNo": "Hakkespetter",
     "navnLatin": "Picidae",
     "kategori": "Fugler",
+    "kjennetegn": "Kraftig rett nebb tilpasset boring. Stive halestjertfjær som støtte mot trær. Sterk klatrende bevegelse. Størrelse og farge varierer etter art.",
     "beskrivelse": "Samlebegrep for hakkespetter som flaggspett, grønnspett og svartspett. Kjennetegnes ved kraftige klør og et langt, sterkt nebb. Fargen varierer mye mellom artene.",
     "helsemessigBetydning": "Utgjør ingen smittefare for mennesker. Problemet er materielle skader når fuglene hakker hull i trevegger, særlig på hytter og bygninger som står tomme over lengre tid.",
     "tiltak": "Dekk utsatte vegger med plastnetting (maks 2 cm maskevidde) festet noen centimeter fra veggen, eller spenn fiskesnører over flaten. Visuelle og lydlige skremmemidler kan også hjelpe, og skadefelling krever kommunal tillatelse.",
@@ -158,17 +184,20 @@
     "navnNo": "Kløverbrunmidd",
     "navnLatin": "Bryobia praetiosa",
     "kategori": "Edderkopper, midd og flått",
+    "kjennetegn": "~0,7 mm, rødbrun til oliven, 8 bein (edderkoppdyr). Suger ikke blod. Røde flekker oppstår når den blir klemt.",
     "beskrivelse": "Svært liten midd, ca. 0,7 mm, med farge fra rødbrun til olivengrønn. Kjennetegnes ved lange frambein som peker fremover.",
     "helsemessigBetydning": "Ufarlig for mennesker. Kan etterlate rødbrune flekker på tekstiler og tapet hvis den klemmes, og suger plantesaft utendørs som kan gi noe bladskade.",
     "tiltak": "Anlegg en grusrand mellom plen og grunnmur for å hindre vandring inn, og tett sprekker rundt vinduer og dører. Innendørs fjernes midd enkelt med støvsuger.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Rød hønsemidd (suger blod om natten; kløverbrunmidd er dagaktiv plantesuger)."
   },
   {
     "id": "mosskorpioner",
     "navnNo": "Mosskorpioner",
     "navnLatin": "Pseudoscorpiones",
     "kategori": "Edderkopper, midd og flått",
+    "kjennetegn": "≤4,5 mm. Ligner en liten skorpion med klosakser foran, men mangler hale og brodd. 8 bein.",
     "beskrivelse": "Liten gruppe edderkoppdyr på få millimeter, med kraftige klosakser foran og en flat, brunaktig kropp. Kan forveksles med små skorpioner, men har ingen brodd.",
     "helsemessigBetydning": "Helt ufarlige for mennesker og uten betydning for helse eller eiendom. De er rovdyr som lever av andre småkryp.",
     "tiltak": "Ingen bekjempelse er nødvendig. Dyrene kan plukkes opp eller fjernes med kost. Hyppig forekomst innendørs kan tyde på fuktproblemer som bør undersøkes.",
@@ -180,17 +209,20 @@
     "navnNo": "Rød hønsemidd",
     "navnLatin": "Dermanyssus gallinae",
     "kategori": "Edderkopper, midd og flått",
+    "kjennetegn": "~1 mm, grå til rødaktig etter blodmåltid. 8 bein. Aktiv om natten; suger blod av fjørfe og av og til mennesker.",
     "beskrivelse": "Ca. 1 mm lang midd som blir rød etter blodmåltid og senere mer grå. Lever vanligvis på fugler, men kan også angripe mennesker i boliger nær fuglereir.",
     "helsemessigBetydning": "Bitt gir et kraftig kløende, skabblignende utslett. I hønsehus svekker midden dyrene betydelig og kan gjøre dem blodfattige, samt bidra til spredning av bakterier.",
     "tiltak": "Fjern fuglereir nær bygningen og behandle området med godkjent middel. Innendørs hjelper grundig og gjentatt støvsuging, der posen kastes umiddelbart etterpå.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Kløverbrunmidd (ikke blodsugend, aktiv om dagen, finnes på planter)."
   },
   {
     "id": "skabb",
     "navnNo": "Skabb",
     "navnLatin": "Sarcoptes scabiei",
     "kategori": "Edderkopper, midd og flått",
+    "kjennetegn": "0,3–0,5 mm, mikroskopisk – kan ikke sees med det blotte øye. 8 bein. Graver ganger i huden som ser ut som fine rødlige streker.",
     "beskrivelse": "Mikroskopisk liten midd, 0,3–0,5 mm, som ikke kan sees med det blotte øye. Hunnene graver gravegange i overhuden og legger egg der.",
     "helsemessigBetydning": "Gir et kraftig kløende utslett, ofte verst om natten og ved varme. Vanligvis bærer en person bare noen få midd, men ved nedsatt immunforsvar kan antallet bli svært høyt og smittsomheten øke kraftig.",
     "tiltak": "Skabb går ikke over av seg selv og må alltid behandles. Kontakt fastlege ved mistanke, slik at riktig behandling kan settes i gang.",
@@ -202,28 +234,33 @@
     "navnNo": "Stor husedderkopp",
     "navnLatin": "Eratigena atrica",
     "kategori": "Edderkopper, midd og flått",
+    "kjennetegn": "Kropp 11–18 mm, beinspenn 8–10 cm. Matt brun med flekkete tegninger. Bygger traktformede nett.",
     "beskrivelse": "En av Norges største edderkopper, med kropp på 10–18 mm og et beinspenn som kan nå 8–10 cm. Bakkroppen har et mønster av lyse og mørke flekker.",
     "helsemessigBetydning": "Ufarlig for mennesker, men oppleves ofte som skremmende på grunn av størrelsen. Et eventuelt bitt kan gi en kort, smertefull og nummen følelse.",
     "tiltak": "Tett åpninger og bruk nettingduk for å hindre at edderkoppen kommer inn. Innendørs kan den enkelt fjernes med kost eller støvsuger. Sprøyting er ikke nødvendig.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Vevkjerringer (mye tynnere og lengre bein, kropp bare ~5 mm, danner ikke traktnett)."
   },
   {
     "id": "vevkjerringer",
     "navnNo": "Vevkjerringer",
     "navnLatin": "Opiliones",
     "kategori": "Edderkopper, midd og flått",
+    "kjennetegn": "Kropp ~5 mm, beinspenn opptil 10 cm. Ekstremt lange og slanke bein. Ikke spinnende nett av tradisjonell form.",
     "beskrivelse": "Edderkoppdyr med liten, eggformet kropp på få millimeter og svært lange, tynne bein som gir et samlet spenn på opptil 10 cm.",
     "helsemessigBetydning": "Helt ufarlige - de er uten gift og utgjør ingen risiko for mennesker. Kommer av og til inn i hus, men tørker raskt ut uten tilgang på vann.",
     "tiltak": "Ingen bekjempelse er nødvendig. Det enkleste er å hjelpe dyret ut igjen med en kost.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Stor husedderkopp (kraftig kropp 11–18 mm, kortere/tykkere bein, bygger traktnett)."
   },
   {
     "id": "flatt",
     "navnNo": "Flått",
     "navnLatin": "Ixodes ricinus",
     "kategori": "Edderkopper, midd og flått",
+    "kjennetegn": "8 bein (edderkoppdyr). Hann 2–3 mm gråsvart, hunn 3–4 mm med rødbrun bakkropp, fullsugd opptil 1,5 cm grå/blågrå. Hoderegion med sugesnabel.",
     "beskrivelse": "Skogflåtten er den vanligste flåtten i Norge, en blodsugende midd på noen millimeter som sitter fast i huden over flere dager mens den suger blod. Trives i høyt gress, lyng og skogkratt, særlig på Sør- og Vestlandet.",
     "helsemessigBetydning": "Kan overføre sykdommer som Lyme borreliose og i noen områder skogflåttencefalitt (TBE). Risikoen øker med hvor lenge flåtten sitter fast før den fjernes.",
     "tiltak": "Bruk lange bukser og kontroller kroppen for flått etter tur i naturen. Fjern fastsittende flått raskt med pinsett, så nær huden som mulig. Vaksine mot TBE finnes for personer i utsatte områder.",
@@ -235,248 +272,293 @@
     "navnNo": "Brunrotte",
     "navnLatin": "Rattus norvegicus",
     "kategori": "Gnagere",
+    "kjennetegn": "18–25 cm kropp. Butt avrundet snute. Små behårede ører. Hale kortere enn kroppen, tofarget. Grov brun pels.",
     "beskrivelse": "Stor gnager, 200–500 gram og 18–25 cm kroppslengde, med gråbrun til svart pels og en hale som er kortere enn kroppen.",
     "helsemessigBetydning": "Forurenser mat og overflater med urin og avføring, kan bære smittestoffer og utløse allergiske reaksjoner. Gnaging på strømledninger kan øke brannrisikoen.",
     "tiltak": "Tett alle åpninger større enn 12 mm og fjern tilgang til mat og søppel. Klappfeller plassert langs vegger er effektive, mens gift kun bør brukes av godkjente bekjempere.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Svartrotte (slankere, spissere snute, store ører, hale lengre enn kroppen). Husmus (mye mindre, 6–10 cm)."
   },
   {
     "id": "husmus",
     "navnNo": "Husmus",
     "navnLatin": "Mus musculus",
     "kategori": "Gnagere",
+    "kjennetegn": "6–10 cm kropp. Liten, grålig ensfarget pels med svak overgang mellom rygg og buk. Karakteristisk sterk muslukt.",
     "beskrivelse": "Liten gnager, 6–10 cm lang med tilnærmet like lang hale, gråbrun rygg og lysere buk. Kjennetegnes ved sterk lukt og små øyne og ører.",
     "helsemessigBetydning": "Forurenser mat med urin og avføring, og kan gnage på vegger, gulv og strømledninger med økt brannrisiko som resultat. Kan også spre enkelte smittestoffer.",
     "tiltak": "Tett åpninger større enn 6 mm og fjern matrester og bolplasser. Klappfeller langs vegger er effektive, og åtestasjoner med antikoagulant kan brukes innendørs.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Brunrotte (mye større, 18–25 cm). Småskogmus (gulbrun med hvit buk og brystflekk)."
   },
   {
     "id": "klatremus",
     "navnNo": "Klatremus",
     "navnLatin": "Myodes glareolus",
     "kategori": "Gnagere",
+    "kjennetegn": "Rødbrun rygg, skarpt avgrenset grå side, hvit buk. Tofarget hale 2–4 cm, tetthåret.",
     "beskrivelse": "Liten gnager, 8–13 cm lang, med rødbrun rygg, grå sider og en tydelig tofarget hale. Ørene er små og snuten butt.",
     "helsemessigBetydning": "Forurenser mat og omgivelser og kan gjøre skade ved gnaging. Viktigst er at arten er reservoar for musepest, som kan smitte mennesker ved innånding av virus fra tørket avføring.",
     "tiltak": "Tett åpninger større enn 5–6 mm og sett metallbeslag under dører. Rydd vekk høyt gress og matrester, bruk klappfeller, og vask med våt klut i stedet for å tørrkoste.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Rødmus (intens rødbrun uten skarpe fargegrenser, hale kortere og enda mer tetthåret)."
   },
   {
     "id": "rodmus",
     "navnNo": "Rødmus",
     "navnLatin": "Myodes rutilus",
     "kategori": "Gnagere",
+    "kjennetegn": "Intens rødbrun/kastanjebrun pels uten skarpe fargegrenser mot buken. Kort tetthåret hale 2–4 cm.",
     "beskrivelse": "Liten gnager, 8–12 cm lang, med rødbrun rygg, gulbrune sider og gråhvit buk. Halen er kortere og tettere behåret enn hos klatremus.",
     "helsemessigBetydning": "Er reservoar for musepest, som kan smitte mennesker ved innånding av virus fra inntørket avføring og urin. Forårsaker også gnageskader og forurensning av mat.",
     "tiltak": "Tett åpninger større enn 5–6 mm, rydd opp matkilder og bruk klappfeller. Bruk hansker og våt klut ved opprydding for å redusere smitterisiko.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Klatremus (gråere sider, skarpere fargegrense mot hvit buk)."
   },
   {
     "id": "smaskogmus",
     "navnNo": "Småskogmus",
     "navnLatin": "Apodemus sylvaticus",
     "kategori": "Gnagere",
+    "kjennetegn": "Liten, 7–11 cm kropp. Gulbrun rygg, hvit buk, karakteristisk gulbrun brystflekk. Spiss snute, store mørke øyne og ører.",
     "beskrivelse": "Liten gnager, 7–10 cm lang med tilsvarende lang hale, gråbrun rygg og gråhvit buk med en gulbrun brystflekk. Har spiss snute, store øyne og store ører.",
     "helsemessigBetydning": "Forurenser mat og omgivelser med urin og avføring, og kan gjøre skade på isolasjon, møbler og ledninger ved gnaging. Kan i noen grad spre smittestoffer.",
     "tiltak": "Tett åpninger større enn 6 mm og sikre kjellervinduer med netting. Fjern vegetasjon og matkilder nær bygningen, og bruk klappfeller ved bekjempelse.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Storskogmus (større, halsbånd i stedet for brystflekk, hale lengre enn kroppen). Husmus (gråere, ingen brystflekk)."
   },
   {
     "id": "storskogmus",
     "navnNo": "Storskogmus",
     "navnLatin": "Apodemus flavicollis",
     "kategori": "Gnagere",
+    "kjennetegn": "12–14 cm kropp. Gulbrun rygg, hvit buk med gulbrunt halsbånd. Hale lengre enn kroppen. Store øyne og ører.",
     "beskrivelse": "Gnager på 8–13 cm med hale som ofte er litt lengre enn kroppen. Har brunrød rygg, hvit buk og et tydelig gulbrunt halsbånd på brystet.",
     "helsemessigBetydning": "Gjør skade ved gnaging på vegger, ledninger og innredning, og forurenser mat og omgivelser med urin og avføring. Smitter ikke mennesker med musepest.",
     "tiltak": "Tett alle åpninger større enn 6 mm. Bruk klappfeller med agn som peanøttsmør, bacon eller sjokolade, og fjern matkilder gjennom god sanitasjon.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Småskogmus (mindre, brystflekk i stedet for halsbånd)."
   },
   {
     "id": "svartrotte",
     "navnNo": "Svartrotte",
     "navnLatin": "Rattus rattus",
     "kategori": "Gnagere",
+    "kjennetegn": "16–23 cm kropp. Slank, spiss snute. Store tynne ører, nesten naken hale lengre enn kroppen. Mørk grå til svart pels.",
     "beskrivelse": "Noe mindre enn brunrotten, 150–200 gram og 16–23 cm kroppslengde, med spiss snute og en hale som er lengre enn kroppen og kan strekkes til snuten.",
     "helsemessigBetydning": "Kan spre smittestoffer og forurenser mat og emballasje med urin og avføring. Gnaging på strømledninger kan gi økt brannrisiko.",
     "tiltak": "Tett alle åpninger større enn 12 mm for å hindre adkomst. Sanitasjon for å fjerne mat- og bokilder, samt klappfeller plassert høyt oppe i bygningen, er sentrale tiltak.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Brunrotte (butt snute, små behårede ører, hale kortere enn kroppen)."
   },
   {
     "id": "vand",
     "navnNo": "Vånd",
     "navnLatin": "Arvicola amphibius",
     "kategori": "Gnagere",
+    "kjennetegn": "Klumpete bygget, butt snute, kort hale 5–11 cm. Mørk brun/grå pels. Går aldri inn i hus.",
     "beskrivelse": "Rundlig og kraftig gnager på opptil 200 gram, med kroppslengde 12–20 cm, kort hårete hale og pels fra lysgrå til mørk brunsvart. Øyne og ben er små.",
     "helsemessigBetydning": "Kan være bærer av bakterien som gir tularemi, som kan smitte via forurenset drikkevann. Gravesystemene kan skade hageanlegg, røtter og kabler.",
     "tiltak": "Hold gresset kort og pakk jorden for å rase sammen gangsystemer. Mekaniske feller plassert i aktive ganger, med agn som solsikkefrø eller gulrot, er effektive. Bekjempelse fungerer best i samarbeid med nærliggende eiendommer.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Brunrotte (lengre hale, spissere snute, går inn i hus). Husmus (mye mindre)."
   },
   {
     "id": "honningbie",
     "navnNo": "Honningbie",
     "navnLatin": "Apis mellifera",
     "kategori": "Veps, bier & humler",
+    "kjennetegn": "Behåret, gul- til rødbrune tverrstriper på gul/oransje bakkropp. 12–15 mm. Lang tunge. Brodd med mothaker (forblir i huden).",
     "beskrivelse": "Sterkt hårete bie med brune til rød- eller gulbrune tverrstriper på bakkroppen, og tett hårvekst rundt øynene. Skiller seg fra veps ved den tette pelsen.",
     "helsemessigBetydning": "Stikk er smertefullt og brodden sitter fast i huden etter stikk. De fleste tåler enkeltstikk godt, men stikk i munn eller svelg kan gi pusteproblemer, og personer med bie-allergi kan få en alvorlig allergisk reaksjon.",
     "tiltak": "Ved sverming bør lokal birøkter kontaktes for trygg fangst av samfunnet. Etablerte bol i bygninger bør fjernes av birøkter eller godkjent skadedyrbekjemper. Personer med kjent allergi bør ha adrenalinpenn tilgjengelig i sesongen.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Humler (mye større og rundere, mer lodne). Stikkeveps (glatt, klarere gul-svart mønster)."
   },
   {
     "id": "humler",
     "navnNo": "Humler",
     "navnLatin": "Bombus spp.",
     "kategori": "Veps, bier & humler",
+    "kjennetegn": "Store, runde, tett lodne insekter. Gul, svart og hvit behåring i ulike kombinasjoner etter art. Glatt brodd.",
     "beskrivelse": "Robuste, tett hårete bier med hvite, gule eller røde bånd på bryst og bakkropp. Norge har rundt 35 humlearter, blant annet steinhumle, jordhumle og åkerhumle.",
     "helsemessigBetydning": "Fredelige insekter som vanligvis kun stikker hvis bolet trues eller de håndteres direkte. Stikk gir lignende reaksjon som bie- og vepsestikk, men forekommer langt sjeldnere.",
     "tiltak": "Bol i husvegger gjør vanligvis ingen skade og varer kun en sesong, så det beste er å la bolet være i fred til det er tomt og deretter tette inngangshullet. Humler er viktige pollinatorer, og bekjempelse bør unngås så langt det er mulig.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Honningbie (slankere, ikke like lodden). Humlebolflue og vepsebolflue (fluer – bare ett vingepar, kortere antenner)."
   },
   {
     "id": "kjempetreveps",
     "navnNo": "Kjempetreveps",
     "navnLatin": "Urocerus gigas",
     "kategori": "Veps, bier & humler",
+    "kjennetegn": "2,4–4,4 cm. Gul og svart sylindrisk kropp uten tydelig innsnevring. Kan ikke stikke. Kraftig, humlelignende.",
     "beskrivelse": "Norges største vepselignende insekt, med sylindrisk kropp uten innsnøring mellom bryst og bakkropp. Hunnen er gul-svart med et langt eggleggingsrør og kan bli over 4 cm, mens hannen har orangerød bakkropp.",
     "helsemessigBetydning": "Helt ufarlig for mennesker, da den ikke kan stikke selv om den ser ut som en stor veps.",
     "tiltak": "Ingen bekjempelse nødvendig. Larvene utvikler seg i dødt eller døende bartrevirke, og voksne dyr kan av og til klekkes ut av bygningsmaterialer laget av nylig felt tømmer.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Stikkeveps (tydelig midje, kan stikke). Humler (mye loddent)."
   },
   {
     "id": "stikkeveps",
     "navnNo": "Stikkeveps",
     "navnLatin": "Vespidae",
     "kategori": "Veps, bier & humler",
+    "kjennetegn": "11–19 mm. Glatt gul og svart mønstret kropp med tydelig innsnevring (midje). Kan stikke gjentatte ganger.",
     "beskrivelse": "Glatt, nesten hårløs bakkropp med sort-gule ringer. Arbeidere er typisk 11–19 mm, mens dronninger er klart større, og ulike arter kan skilles på mønsteret på hodet.",
     "helsemessigBetydning": "Stikk er smertefullt, men sjelden farlig ved enkeltstikk. Stikk i munn eller svelg kan gi farlig hevelse, og personer som er overfølsomme kan få en alvorlig allergisk reaksjon som krever adrenalin.",
     "tiltak": "Tett mulige boplasser under tak med nett, og fjern små bol tidlig. Tilgjengelige bol kan fryses ned eller behandles med insektmiddel/pulver. Fluefangere med søtt agn kan redusere antall veps utendørs.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Honningbie (behåret, rustbrun farge, mister brodden). Kjempetreveps (sylindrisk, ingen midje, kan ikke stikke)."
   },
   {
     "id": "brun-tremaur",
     "navnNo": "Brun tremaur",
     "navnLatin": "Lasius brunneus",
     "kategori": "Maur",
+    "kjennetegn": "3,2–4,5 mm. Gult/oransjerødt bryst, mørk hode og bakkropp. Glatte antenneledd. Én node i stilk.",
     "beskrivelse": "Liten maur der arbeiderne er 3,2–4,5 mm med brunt hode og bakkropp og gulbrunt bryststykke og ben, mens dronningen er dobbelt så stor. Det første antenneleddet er glatt uten utstikkende børster.",
     "helsemessigBetydning": "Ikke helsefarlig. Kan gjøre skade ved å gnage lange, buktende ganger i trevirke og isolasjon i bygninger.",
     "tiltak": "Vanskelig å forebygge, men tørre og godt vedlikeholdte bygg har generelt mindre problemer. Forgiftet åte er hovedmetoden for bekjempelse, og må stå fremme i flere uker etter siste observasjon. Insektspray kan brukes direkte i reiret om det er tilgjengelig.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Svart tremaur (blank svart, bredt innbuktet hode, appelsinlukt). Stokkmaur (5–18 mm, helt svart hode)."
   },
   {
     "id": "eitermaur",
     "navnNo": "Eitermaur",
     "navnLatin": "Myrmica sp.",
     "kategori": "Maur",
+    "kjennetegn": "< 5 mm. To knuter i stilken mellom bryst og bakkropp. Brodd. Svart/mørk.",
     "beskrivelse": "Små, brungule til rødbrune maur, vanligvis under 5 mm, med karakteristiske knuter mellom bryst og bakkropp. Hageeitermauren er den vanligste arten rundt hus i Norge.",
     "helsemessigBetydning": "Kan stikke når den blir forstyrret, noe som gir en svie som kan vare lenge. Ikke farlig, men allergiske reaksjoner kan i sjeldne tilfeller forekomme.",
     "tiltak": "Bruk hansker, sko, sokker og lange bukser ved arbeid i hagen for å unngå stikk. Kjemisk bekjempelse anbefales ikke, da den også går ut over andre nyttige insekter. Mindre bol kan fjernes med spade, men maurene kommer ofte tilbake.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Kompostmaur (én innsnøring, brodd, mindre). Faraomaur (2–2,4 mm, gulbrun)."
   },
   {
     "id": "faraomaur",
     "navnNo": "Faraomaur",
     "navnLatin": "Monomorium pharaonis",
     "kategori": "Maur",
+    "kjennetegn": "2–2,4 mm, meget liten. Brungul/gulbrun kropp. Lever kun innendørs i Norge.",
     "beskrivelse": "Svært liten, brungul maur med noe mørkere bakkropp. Arbeidere er bare 2–2,4 mm, og selv om enkelte individer har vinger, kan de ikke fly.",
     "helsemessigBetydning": "Kan utløse allergiske reaksjoner og forverre astma ved store mengder innendørs. Arten kan også spre sykdomsfremkallende bakterier og er spesielt problematisk i helseinstitusjoner.",
     "tiltak": "Forebygging handler om gode rutiner ved kontroll av varer som tas inn i bygninger. Bekjempelse krever profesjonell hjelp med forgiftet åte i hele bygningen samtidig, ikke spray, samt løpende overvåkning av åtestasjoner og etterkontroll.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Spøkelsesmaur (1,5–2 mm, mørkt hode og blek bakkropp). Eitermaur (mørkere, med brodd)."
   },
   {
     "id": "kompostmaur",
     "navnNo": "Kompostmaur",
     "navnLatin": "Hypoponera punctatissima",
     "kategori": "Maur",
+    "kjennetegn": "2,5–3 mm. Én innsnøring i stilken. Har brodd. Mørk brun til svart.",
     "beskrivelse": "Gulbrun til rødbrun maur på 2,5–3 mm med en tydelig innsnøring mellom de første bakkroppsleddene og en synlig brodd bak.",
     "helsemessigBetydning": "Kan gi et smertefullt stikk med hevelse i huden. Mennesker kommer oftest i kontakt med arten under sverming i august–september.",
     "tiltak": "Det er normalt ikke nødvendig å bekjempe reir av kompostmaur. Arten trives i varme miljøer som kompostbinger og avfallsdunker, og tiltak bør fokusere på å fjerne slike levesteder innendørs.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Eitermaur (to knuter i stilken). Svart jordmaur (3–5 mm, matt svart, ingen brodd)."
   },
   {
     "id": "sauemaur",
     "navnNo": "Sauemaur",
     "navnLatin": "Formica fusca",
     "kategori": "Maur",
+    "kjennetegn": "4,5–7 mm. Glanssvart kropp. Glatte skinnende antenneledd. Én node i stilk.",
     "beskrivelse": "Svart maur av middels størrelse, hvor arbeidere er 4,5–7 mm og vingede dronninger/hanner opptil 9,5 mm. Det første antenneleddet er glatt uten utstikkende børster, noe som skiller den fra den lignende svarte jordmauren.",
     "helsemessigBetydning": "Ingen kjent helserisiko er beskrevet. Arten kan etablere seg i mykt materiale innendørs på jakt etter mat, men skadene er vanligvis begrenset på grunn av lavt individantall.",
     "tiltak": "Tett sprekker i grunnmuren og monter finmasket netting på ventiler som forebygging. Rutinemessig sprøyting har liten effekt; forgiftet åte som maurene bringer til reiret er mest virkningsfullt, alternativt mekanisk fjerning av reiret.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Stokkmaur (5–18 mm, spruter ikke syre). Svart jordmaur (matt svart, mindre)."
   },
   {
     "id": "spokelsesmaur",
     "navnNo": "Spøkelsesmaur",
     "navnLatin": "Tapinoma melanocephalum",
     "kategori": "Maur",
+    "kjennetegn": "1,5–2 mm. Tofarget: mørkt hode og bryst, blek/gjennomsiktig bakkropp. Lever innendørs.",
     "beskrivelse": "Svært liten maur på 1,5–2 mm, med mørkt hode og fremre bryststykke mens resten av kroppen er blekt gulhvit. Den tynne midjen er nesten skjult under bakkroppen.",
     "helsemessigBetydning": "Liten direkte helserisiko i Norge, men kan i teori bidra til spredning av smitte i helseinstitusjoner eller utløse astmaproblemer ved store mengder innendørs.",
     "tiltak": "Bekjempelse krever å finne og fjerne dronningen(e) med forgiftet åte, på samme måte som for faraomaur. Kartlegg alle maurstier og plasser åtestasjoner samtidig, fjern andre matkilder, og følg opp med kontroll etter behandling.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Faraomaur (2–2,4 mm, ensfarge gulbrun). Andre svært små maur."
   },
   {
     "id": "stokkmaur",
     "navnNo": "Stokkmaur",
     "navnLatin": "Camponotus herculeanus",
     "kategori": "Maur",
+    "kjennetegn": "5–18 mm, helt svart. Jevn rygglinje uten pukkel. Spruter ikke syre.",
     "beskrivelse": "Norges største maur, med dronninger opptil 18 mm og arbeidere fra 5–14 mm. Hodet er helt svart og ryggen jevnt rundet, noe som skiller den fra rød skogmyr som har rødt på hodet og sprøyter myresyre.",
     "helsemessigBetydning": "Ingen kjent helserisiko. Arten er først og fremst et problem for bygninger, siden den gnager ut tre eller isolasjonsmateriale for å lage reir.",
     "tiltak": "Fjern overhengende greiner mot bygninger, råteskadet trevirke nær grunnmuren, og sørg for god ventilasjon i krypkjellere. Synlige reir kan fjernes fysisk eller behandles direkte, mens skjulte reir krever forgiftet åte og tett oppfølging over tid. Profesjonell bekjempelse anbefales.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Rød skogsmaur (rødbrunt hode, humpete rygg, spruter syre). Brun tremaur (gult bryst, mye mindre)."
   },
   {
     "id": "svart-jordmaur",
     "navnNo": "Svart jordmaur",
     "navnLatin": "Lasius niger",
     "kategori": "Maur",
+    "kjennetegn": "3–5 mm. Matt svart med hår på de lengste antenneleddene. Én node. Ingen brodd.",
     "beskrivelse": "Liten, helsvart maur på 3–5 mm med hår på det lengste antenneleddet. Vingede dronninger, omtrent dobbelt så store som arbeiderne, sees i store sverm i juli–august.",
     "helsemessigBetydning": "Ingen kjent helserisiko. Hovedproblemet er at reir innendørs kan skade mykt eller fuktskadet byggemateriale og isolasjon, men arten gnager ikke i friskt trevirke.",
     "tiltak": "Forebygg ved å bytte ut sand med grus rundt grunnmuren, redusere vegetasjon nær huset, og montere finmasket netting på kjellerventiler. Tilgjengelige reir kan fjernes med graving, kokende vann eller insektmiddel, og sukkerholdig åte er effektivt på våren. Profesjonell bekjemper anbefales for varig løsning.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Svart tremaur (blank svart, bredt konkavt hode, appelsinlukt). Kompostmaur (har brodd)."
   },
   {
     "id": "svart-tremaur",
     "navnNo": "Svart tremaur",
     "navnLatin": "Lasius fuliginosus",
     "kategori": "Maur",
+    "kjennetegn": "4–6 mm. Blank svart. Bredt innbuktet/konkavt hode. Avgir appelsinlignende lukt når knust.",
     "beskrivelse": "Skinnende svart maur med bredt hode og buet bakkant. Arbeidere er 4–6 mm, dronninger 6–6,5 mm, og arten kan kjennes igjen på en særegen lukt som minner om appelsin.",
     "helsemessigBetydning": "Ingen kjent direkte helserisiko. Hovedproblemet er at reir innendørs kan føre til fuktskader på grunn av de våte forholdene maurene skaper rundt boet.",
     "tiltak": "Følg maurstier eller bruk utvannet honning for å spore reiret, som deretter bør lokaliseres og fjernes for å unngå fuktskader. Hvis reiret ikke finnes, kan forgiftet åte brukes - sukkerholdig åte fungerer best om våren og proteinåte senere på sommeren.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Svart jordmaur (matt svart, intet konkavt hode, ingen appelsinlukt)."
   },
   {
     "id": "daddelsmalmott",
     "navnNo": "Daddelsmalmott",
     "navnLatin": "Cadra cautella",
     "kategori": "Sommerfugler og møll",
+    "kjennetegn": "Vingespenn 14–22 mm, kropp ~12 mm. Gråbrune forvinger med utydelige lyse tverrbånd og mørkere flekker. Lysegrå bakvinger. Vinger taklagt i hvile.",
     "beskrivelse": "Liten møll på rundt 12 mm med gråbrune forvinger som har svake lyse tverrbånd, og lyst grå bakvinger. Larvene er gulhvite med brunt hode og mørke prikker på hver kroppsring, og blir 12-15 mm lange.",
     "helsemessigBetydning": "Ingen direkte helserisiko, men larvene gjør lagrede matvarer som korn, ris, nøtter, kakaobønner og dadler uegnet for konsum fordi de spinner tett vev rundt maten og forurenser den. Arten trives kun i oppvarmede bygninger og har vært et kjent problem i næringsmiddelbedrifter siden 1950-tallet.",
     "tiltak": "Kast sterkt angrepet mat, og frys lett angrepne varer ved -18 °C i minst et døgn eller varmebehandle ved rundt 55 °C. Oppbevar tørrvarer i tette beholdere, støvsug grundig uten bruk av vann, og bruk feromonfeller for å overvåke forekomst. Kjølig og tørt lager (under 15 °C) gjør forholdene mindre gunstige for arten.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Melsmalmott (større 20–25 mm, tydeligere sikksakklinjer). Tørrfruktsmalmott (tofarget kobberrødt/lyst vingemønster)."
   },
   {
     "id": "flatmoll",
     "navnNo": "Flatmøll",
     "navnLatin": "Agonopterix heracliana",
     "kategori": "Sommerfugler og møll",
+    "kjennetegn": "Vingespenn 17–25 mm. Sitter flatt med vingene tett inntil kroppen (karakteristisk hvilestilling). Spraglet brungrå. Tre små hvite prikker midt på vingene.",
     "beskrivelse": "Liten, spraglet brunlig eller gråbrun sommerfugl med vingespenn på 17-25 mm som sitter flatt med vingene tett inntil kroppen. Arten kjennes ofte på lange antenner og tre små hvite prikker midt på vingene.",
     "helsemessigBetydning": "Flatmøll regnes ikke som skadedyr og gjør ingen skade på mat, tekstiler eller bygninger. Den kan ikke formere seg innendørs, men søker ofte inn i hus for å overvintre mellom klær og i sprekker.",
     "tiltak": "Det er sjelden behov for tiltak utover å lufte ut møllen eller riste tøy den gjemmer seg i utendørs. Kjemisk bekjempelse er unødvendig.",
@@ -488,6 +570,7 @@
     "navnNo": "Frømøll",
     "navnLatin": "Hofmannophila pseudospretella",
     "kategori": "Sommerfugler og møll",
+    "kjennetegn": "Opptil 15 mm, brungrå. Tre utydelige mørkebrune punkter i trekantformasjon midt på forvingene. Trives i fuktige kjellere og uthus.",
     "beskrivelse": "Ganske stor, brungrå møll på opptil 15 mm, med tre utydelige mørkebrune punkter som danner en trekant midt på forvingene. Larven er gulhvit med brunt hode, blir opptil 20 mm lang og spinner en brunlig kokong.",
     "helsemessigBetydning": "Frømøll gjør sjelden betydelig skade, men larvene kan spise lagret korn og frø, bokbind, kork i vinkorker og tekstiler. Den finnes mest i fuktige kjellere, uthus og naturlig i fuglereder, og er stort sett et kyststrøksproblem.",
     "tiltak": "Larvene tåler ikke uttørring og trenger over 80 % luftfuktighet for å utvikle seg, så det viktigste tiltaket er å holde lokalet tørt. Kjemisk bekjempelse er normalt ikke nødvendig.",
@@ -499,6 +582,7 @@
     "navnNo": "Humlebolvoksmott",
     "navnLatin": "Aphomia sociella",
     "kategori": "Sommerfugler og møll",
+    "kjennetegn": "Vingespenn 23–38 mm. Hunn gråbrun med to sorte flekker på forvingene. Hann mørkere med rødbrun midtbånd. Lever i humle-/vepsebol.",
     "beskrivelse": "Middels stor møll med vingespenn på 23-38 mm. Hunnen er gråbrun med to sorte flekker på forvingene, mens hannen har et mørkt, rødbrunt bånd midt på vingen. Larvene er gule med rødlig hode og svarte åndehull langs kroppen.",
     "helsemessigBetydning": "Arten gjør normalt ingen skade på hus eller mat. Larvene lever i bol av humler og veps der de spiser organisk materiale og honning, og kan i sjeldne tilfeller etterlate spor i treverk når de spinner kokonger.",
     "tiltak": "Det er vanligvis ikke nødvendig med bekjempelse utover å fjerne gamle kokonger og bol, eventuelt med støvsuger.",
@@ -510,6 +594,7 @@
     "navnNo": "Husfly",
     "navnLatin": "Caradrina clavipalpis",
     "kategori": "Sommerfugler og møll",
+    "kjennetegn": "Stor nattflytype (Noctuidae), vingespenn ~30 mm. Gråbeige forvinger med mørke tegninger.",
     "beskrivelse": "Middels stort og kraftig nattfly med vingespenn på rundt 30 mm og gråbeige forvinger med mørke tegninger. Larven varierer fra grå til grønnlig eller rødlig, blir opptil 2,5 cm lang og har brunt hode.",
     "helsemessigBetydning": "Husfly regnes ikke som skadedyr. Larvene kan spise litt tørt plantemateriale som høy, frø, korn og mel, men gjør ingen betydelig skade på mat eller bygninger.",
     "tiltak": "Larver som kommer innendørs kan enkelt plukkes opp og settes ut. Andre tiltak er normalt ikke nødvendig.",
@@ -521,17 +606,20 @@
     "navnNo": "Brunhodereirmøll",
     "navnLatin": "Niditinea fuscella",
     "kategori": "Sommerfugler og møll",
+    "kjennetegn": "Liten, vingelengde opptil 8 mm (spenn opptil 17 mm). Brune til gråbrune forvinger med uregelmessige mørke flekker. Lysere gulgrå bakvinger. Lange hår langs vingebakkant. Lysebrunt hode med rødlig skjær.",
     "beskrivelse": "Liten møll med vingespenn på opptil 17 mm, brune til gråbrune forvinger med uregelmessige mørkere flekker og lysere, ensfargede bakvinger. Hodet er lyst brunt med rødlig skjær. Larvene er gulhvite med mørkt hode.",
     "helsemessigBetydning": "Arten har liten økonomisk betydning, men larvene kan opptre som skadedyr på skinn, tekstiler og utstoppede dyr fordi de lever av fjær-, hår- og pelsrester. Den trives spesielt i hønsehus, der den kan bli til irritasjon ved store mengder.",
     "tiltak": "Tiltak består i å fjerne det larvene lever av, for eksempel møkk, strø, fjær og fôrrester i hønsehus eller reirmateriale. Kjemisk bekjempelse er normalt ikke nødvendig.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Pelsmøll og klesmøll (svært like; brunhodereirmøll skilles bare sikkert på genitalier)."
   },
   {
     "id": "klistermoll",
     "navnNo": "Klistermøll",
     "navnLatin": "Endrosis sarcitrella",
     "kategori": "Sommerfugler og møll",
+    "kjennetegn": "~11 mm (hunn), ~6 mm (hann). Karakteristisk hvit farge på hode, forbryst og fremre del av vingene; resten gråere.",
     "beskrivelse": "Kjennes lett igjen på hvit farge på hode, forbryst og fremre del av vingene. Hunner er omtrent 11 mm med sammenfoldede vinger, hanner rundt 6 mm. Larvene er gulhvite med rødbrunt hode og blir cirka 12 mm lange.",
     "helsemessigBetydning": "Klistermøll opptrer sjelden som skadedyr i Norge. Larvene kan spise tørre eller ruttende planterester og animalsk materiale som tørket frukt, korn og tekstiler, men dette skjer hovedsakelig der det er fuktig.",
     "tiltak": "Det viktigste tiltaket er å holde innemiljøet tørt, siden larvene trenger minst 80 % luftfuktighet for å overleve. Angrepne varer kan tørkes, fryses eller vaskes, og kjemisk bekjempelse er ikke nødvendig.",
@@ -543,83 +631,98 @@
     "navnNo": "Kornkjukemøll",
     "navnLatin": "Nemapogon granella",
     "kategori": "Sommerfugler og møll",
+    "kjennetegn": "Vingespenn 10–15 mm, kropp 5–8 mm. Gråhvite forvinger med uregelmessige brune og svarte flekker (marmorert). Gråhvite bakvinger med lange hårfrynser.",
     "beskrivelse": "Liten møll med vingespenn på 10-15 mm og kroppslengde på 5-8 mm. Forvingene er gråhvite med uregelmessige brune og svarte flekker, og bakvingene har lange hårfrynser langs bakkanten. Larvene er gulhvite med gulbrunt hode.",
     "helsemessigBetydning": "Arten kan gnage på lagret korn, og larvetråder blandet med ekskrementer kan gjøre det øverste laget i kornlagre til en illeluktende, sammenfiltret matte. Dette er hovedsakelig et problem i kornlagre og ikke i private husholdninger.",
     "tiltak": "Forebygging er å lagre korn tørt og i kortest mulig tid. Ved angrep kan det øverste, infiserte laget (rundt 10 cm) fjernes mekanisk, eller korn og lagerlokaler varmebehandles.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Broket kjukemøll (tilnærmet identisk – skilles kun på genitalier i mikroskop)."
   },
   {
     "id": "broket-kjukemoll",
     "navnNo": "Broket kjukemøll",
     "navnLatin": "Nemapogon variatella",
     "kategori": "Sommerfugler og møll",
+    "kjennetegn": "Vingespenn 10–15 mm, kropp 5–8 mm. Gråhvite spraglete forvinger med brune/svarte flekker. Hårfrynsede bakvinger. Svært lik kornkjukemøll.",
     "beskrivelse": "Svært lik kornkjukemøll i utseende, med vingespenn på 10-15 mm, gråhvite forvinger med brune og svarte flekker og lange frynser på bakvingene. Larvene er gulhvite med gulbrunt hode og nakkeskjold.",
     "helsemessigBetydning": "Broket kjukemøll er en hyppigere skadegjører i kornlagre enn kornkjukemøll. Larvene gnager korn og spinner tråder som sammen med ekskrementer kan filtre sammen det øverste laget av lagret korn.",
     "tiltak": "Korn bør lagres tørt og i kortest mulig tid for å forebygge angrep. Infiserte lag kan fjernes mekanisk, og varmebehandling av korn eller lagerbygg kan brukes mot etablerte bestander.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Kornkjukemøll (kan ikke skilles visuelt – kun på genitalier)."
   },
   {
     "id": "melsmalmott",
     "navnNo": "Melsmalmott",
     "navnLatin": "Ephestia kuehniella",
     "kategori": "Sommerfugler og møll",
+    "kjennetegn": "Vingespenn 20–25 mm. Blekt grå forvinger med mørke sikksakkformede tverrlinjer og flekker. Skittenhvite bakvinger med frynser. Eldre individer kan bli mer ensfarget grå.",
     "beskrivelse": "Møll med vingespenn på 20-25 mm, der forvingene er blekt grå med mørke sikksakklinjer og flekker, og bakvingene er hvitaktige med frynser. Larvene blir 13-16 mm lange og kan være lysegrønne, rosa eller hvite.",
     "helsemessigBetydning": "I hjemmet kan arten ødelegge poser med hvetemel, frokostblandinger og gryn. I næringsmiddelbedrifter kan klumper av spinn, ekskrementer og melrester ødelegge hele partier av mel og tette til maskiner og siler.",
     "tiltak": "Oppbevar mel og kornprodukter i tette beholdere. Angrepne varer kan fryses ved -18 °C i et døgn eller varmebehandles ved rundt 55 °C i en time. I virksomheter hjelper regelmessig rengjøring, god lufting, lav temperatur og hyppig utskifting av råvarer.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Daddelsmalmott (mindre 14–22 mm, utydelige tverrbånd). Tørrfruktsmalmott (tofarget vingemønster)."
   },
   {
     "id": "pelsmoll",
     "navnNo": "Pelsmøll",
     "navnLatin": "Tinea pellionella",
     "kategori": "Sommerfugler og møll",
+    "kjennetegn": "6–8 mm. Gråbrungule hode og forvinger med 2–3 mørke punkter. Askegrå bakvinger. Larven bærer et flyttbart silkerør (ikke festet til underlaget).",
     "beskrivelse": "Liten møll på 6-8 mm med gråbrungult hode og forvinger som har 2-3 mørke punkter, og askegrå bakvinger med litt mørkere kanter. Larven er hvit med skinnende mørkebrunt hode og bygger et bærbart rør av spinnsilke og fiberrester den lever inni.",
     "helsemessigBetydning": "Larvene kan gjøre skade på ull, fjær, tekstiler, stoppede møbler, filt og utstoppede dyr fordi de lever av hornstoff (keratin). Pelsmøll foretrekker fuktigere og kjøligere forhold enn klesmøll, og har derfor størst betydning i kalde rom.",
     "tiltak": "Oppbevar utsatte tekstiler og pelsverk i tette poser eller bokser. Frys ved -18 °C i to uker eller varmebehandle ved 60 °C i 3-4 timer, og rist og støvsug jevnlig. Feromonfeller kan brukes til å oppdage angrep, og kjemisk behandling bør brukes med varsomhet.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Klesmøll (ensfargede gylne vinger uten punkter; klesmøllarvens silkerør er festet til underlaget)."
   },
   {
     "id": "torrfruktsmalmott",
     "navnNo": "Tørrfruktsmalmott",
     "navnLatin": "Plodia interpunctella",
     "kategori": "Sommerfugler og møll",
+    "kjennetegn": "Vingespenn ~16 mm, kropp 8–10 mm. Karakteristisk tofarget forvinge: ytre halvdel kobberrød/mørkegrå, indre del lys grå/gul, med mørkt bånd mellom feltene.",
     "beskrivelse": "Liten møll, 8-10 mm lang med vingespenn på rundt 16 mm. Forvingene har kobberrød eller mørkegrå ytre del og lysere grå/gul innerdel, skilt av et mørkt bånd. Larvene blir 9-19 mm lange med rødbrunt hode og varierende kroppsfarge avhengig av hva de har spist.",
     "helsemessigBetydning": "Larvene forurenser tørrvarer som tørket frukt, nøtter, korn, krydder og sjokolade med avføring, gnagrester og tett spinn, og gjør maten uegnet til konsum. Arten kan opptre både i private hjem, butikker og næringsmiddelbedrifter.",
     "tiltak": "Kast sterkt angrepet mat, og frys lett angrepne varer ved -18 °C eller varmebehandle ved cirka 55 °C. Oppbevar tørrvarer i tette bokser, støvsug grundig, og bruk feromonfeller til overvåking. Kjølig (under 15 °C) og tørt lager reduserer risikoen.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Daddelsmalmott og melsmalmott (ensfarget gråbrune; tørrfruktsmalmott er unik med kobberrødt ytterfelt)."
   },
   {
     "id": "amerikansk-kakerlakk",
     "navnNo": "Amerikansk kakerlakk",
     "navnLatin": "Periplaneta americana",
     "kategori": "Kakerlakker",
+    "kjennetegn": "≤4,4 cm, rødbrun med gulaktig tegning bak halsskjoldet. Lange tynne cerci. Har vinger og kan fly kortere strekninger.",
     "beskrivelse": "Norges største kakerlakkart, opptil 4,4 cm lang, med rødbrun til svartbrun farge og lysere tegninger på halsskjoldet. Vingene dekker hele kroppen og eggkapselen er rødbrun og blir mørkere med tiden.",
     "helsemessigBetydning": "Kan forurense matvarer med avføring og illeluktende sekret, og er kjent for å bære mange typer virus, bakterier, sopp og parasitter. Kakerlakkallergi er vanlig og kan gi astma og hudirritasjoner, og store individer er rapportert å kunne bite sovende mennesker.",
     "tiltak": "Forebygging og bekjempelse krever en helhetlig innsats, gjerne med profesjonell hjelp, siden arten kan etablere store bestander i bygninger. God hygiene, tetting av sprekker og fjerning av mat- og fuktkilder reduserer risikoen for etablering.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Australsk kakerlakk (litt mindre ≤3,5 cm, lyse vingekanter). Røkbrun (mørkt brunsvart, ingen gul tegning)."
   },
   {
     "id": "australsk-kakerlakk",
     "navnNo": "Australsk kakerlakk",
     "navnLatin": "Periplaneta australasiae",
     "kategori": "Kakerlakker",
+    "kjennetegn": "≤3,5 cm, rødbrun. Lyse/gule striper langs vingekantene.",
     "beskrivelse": "Stor kakerlakk på opptil 3,5 cm, rødbrun til svartbrun med en lys gulring rundt mørke flekker på halsskjoldet og lyse kanter ytterst på vingene. Fullt utviklede vinger gjør at den kan fly, og nymfene har tydelige gule flekker på kroppen.",
     "helsemessigBetydning": "Kan oppholde seg på skitne steder og deretter forurense matvarer med avføring og sekret, noe som gir den potensial til å spre smittestoffer. Kakerlakkallergi forekommer ofte og kan forverre astma og gi hudirritasjoner, og store forekomster kan også gi psykologisk ubehag hos de som bor i boligen.",
     "tiltak": "Bekjempelse krever som regel profesjonell innsats med insektmidler og oppfølging over tid, siden arten kan etablere seg fast innendørs i varme, fuktige miljøer. Reduser tilgang på mat, vann og gjemmesteder, og tett mulige inngangsveier fra avløp og ventilasjon.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Amerikansk kakerlakk (større ≤4,4 cm, ingen lyse vingekanter)."
   },
   {
     "id": "banankakerlakker",
     "navnNo": "Banankakerlakker",
     "navnLatin": "Panchlora spp.",
     "kategori": "Kakerlakker",
+    "kjennetegn": "Grønne/gulgrønne vinger hos voksen. Liten til middels størrelse. Tropisk art.",
     "beskrivelse": "Samlebegrep for flere arter lysegrønne kakerlakker på 2-3 cm, der kubansk banankakerlakk er den vanligste i Norge. De voksne har fullt utviklede vinger og er gode flygere, mens nymfene er mørkebrune.",
     "helsemessigBetydning": "Det er ikke beskrevet noen kjent helserisiko forbundet med denne gruppen.",
     "tiltak": "Arten kommer vanligvis inn med importerte bananer og andre frukter fra Mellom- og Sør-Amerika, men klarer ikke å etablere faste bestander innendørs i Norge. Det er derfor ikke nødvendig med bekjempelse - enkeltindivider kan bare fjernes eller fanges.",
@@ -631,39 +734,46 @@
     "navnNo": "Brunbeltet kakerlakk",
     "navnLatin": "Supella longipalpa",
     "kategori": "Kakerlakker",
+    "kjennetegn": "1,0–1,4 cm. Brune tverrstriper over bakkroppen. Hann lysebrun med vinger, hunn mørkere med kortere vinger.",
     "beskrivelse": "Liten kakerlakk på 1,0-1,4 cm med gulbrun grunnfarge og karakteristiske brune tverrstriper over bakkroppen. Begge kjønn har godt utviklede vinger og kan fly, og eggkapselen er lysebrun og delt i rundt åtte segmenter.",
     "helsemessigBetydning": "Kan forurense mat med avføring og illeluktende sekret, og bærer som andre kakerlakker mange typer virus, bakterier, sopp og parasitter. Kakerlakkallergi er utbredt og kan gi astma og hudirritasjoner.",
     "tiltak": "Bekjempelse krever insektmidler med langvarig effekt, ettersom eggkapselen kan ta opptil tre måneder før den klekkes, samt etterkontroll i månedene etterpå. Siden arten foretrekker tørre, opphøyde steder, bør innsatsen rettes mot områder høyt oppe, som under listverk og i skap.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Tysk kakerlakk (1,0–1,6 cm, to svarte langstriper på halsskjoldet – ikke tverrstriper)."
   },
   {
     "id": "brun-kakerlakk",
     "navnNo": "Brun kakerlakk",
     "navnLatin": "Periplaneta brunnea",
     "kategori": "Kakerlakker",
+    "kjennetegn": "≤3,7 cm, ensfarget brun. Kraftige korte klubbeformede cerci. Beveger seg sakte.",
     "beskrivelse": "Relativt stor kakerlakk på opptil 3,7 cm, rødbrun med en lysere ring på halsskjoldet. Den skiller seg fra amerikansk kakerlakk ved kortere, bredere og mer klubbeformede haletråder, og har ikke de gule vingekantene som kjennetegner australsk kakerlakk.",
     "helsemessigBetydning": "Det er ikke beskrevet spesifikk informasjon om helserisiko for denne arten, men som andre store kakerlakker kan den potensielt forurense mat og bidra til spredning av smittestoffer.",
     "tiltak": "Arten stammer opprinnelig fra Afrika og forekommer bare sporadisk i Norge, ofte forvekslet med amerikansk og australsk kakerlakk. Ved funn gjelder de samme generelle rådene som for andre store kakerlakker: god hygiene, tetting av sprekker og eventuelt profesjonell bekjempelse ved etablering.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Madeirakakerlakk (4–5 cm, to mørke langstriper fremst på dekkvingene). Amerikansk kakerlakk (lange tynne cerci)."
   },
   {
     "id": "madeirakakerlakk",
     "navnNo": "Madeirakakerlakk",
     "navnLatin": "Rhyparobia maderae",
     "kategori": "Kakerlakker",
+    "kjennetegn": "4–5 cm, lys brun til brunoliven. To mørke langstriper fremst på dekkvingene. Beveger seg sakte og slentrende.",
     "beskrivelse": "Stor kakerlakk på 4-5 cm med lysbrun til brunoliven farge, kjennetegnet ved to mørkebrune striper fremst på dekkvingene. De voksne kan fly aktivt.",
     "helsemessigBetydning": "Det er ikke beskrevet helserisiko for mennesker. Arten kan derimot gjøre skade på frukt ved å spise av den og forurense den med avføring og illeluktende sekret.",
     "tiltak": "Arten er ikke påvist etablert i Norge, men kan følge med importerte bananer og annen frukt. Sjekk derfor importert frukt nøye, og fjern eventuelle enkeltindivider før de får etablert seg.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Brun kakerlakk (≤3,7 cm, ingen langstriper, kortere cerci). Amerikansk kakerlakk (rødbrunere, lengre cerci)."
   },
   {
     "id": "markkakerlakk",
     "navnNo": "Markkakerlakk",
     "navnLatin": "Ectobius lapponicus",
     "kategori": "Kakerlakker",
+    "kjennetegn": "8–13 mm, liten. Halsskjoldet har mørke flekker. Eneste art i Norge som lever og overvintrer utendørs.",
     "beskrivelse": "Liten kakerlakk på 8-13 mm med lysebrun farge og mørkere tegninger på halsskjoldet, der hannens mønster er klart mørkere enn hunnens. Hannene har fulle vinger og flyr ofte, mens hunnenes vingelengde varierer, og begge kjønn har gjenkjennelige mørke flekker på de tykke dekkvingene.",
     "helsemessigBetydning": "Arten gjør ingen skade og innebærer ingen helserisiko. Den er kun en tilfeldig, men ganske vanlig gjest innendørs og danner ikke faste bestander som de tropiske kakerlakkartene.",
     "tiltak": "Det er ikke nødvendig å bruke skadedyrmidler mot denne arten. Enkeltindivider kan enkelt fjernes med støvsuger hvis de oppleves som plagsomme.",
@@ -675,17 +785,20 @@
     "navnNo": "Orientalsk kakerlakk",
     "navnLatin": "Blatta orientalis",
     "kategori": "Kakerlakker",
+    "kjennetegn": "≤2,5 cm. Blank mørk brun til svart. Hann korte vinger, hunn nesten vingeløs. Trives i kjølige kjellere.",
     "beskrivelse": "Middels stor kakerlakk på opptil 2,5 cm, mørk rødbrun til svart og blank i fargen. Hannene har vinger kortere enn bakkroppen, mens hunnenes vinger er redusert til korte stubber, og eggkapselen er svart til brun, ca. 10 mm lang.",
     "helsemessigBetydning": "Kan forurense matvarer med avføring og er, i likhet med andre kakerlakker, funnet å bære mange typer virus, bakterier, sopp og parasitter. Kakerlakkallergi er utbredt og kan gi astma og hudirritasjoner, samt psykologisk belastning for de som bor i boligen.",
     "tiltak": "Arten tåler kjøligere forhold enn andre tropiske kakerlakker og trives best ved 20-25 °C, så den kan dukke opp i kjellere og andre kjøligere rom som man ellers ikke ville forvente kakerlakker i. Bekjempelse følger samme prinsipper som for andre kakerlakker - fjerning av mat- og fuktkilder, tetting av sprekker og eventuelt profesjonell behandling.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Røkbrun kakerlakk (2,5–3,5 cm, brunsvart, hann lange vinger). Brun kakerlakk (ensfarget brun, litt større)."
   },
   {
     "id": "orkidekakerlakk",
     "navnNo": "Orkidékakerlakk",
     "navnLatin": "Shelfordina orchidae",
     "kategori": "Kakerlakker",
+    "kjennetegn": "~1 cm. Voksen brun. Nymfer med spraglet svart-hvitt-brun mønster.",
     "beskrivelse": "Svært liten kakerlakk, kun rundt 1 cm lang som voksen. Nymfene har et spraglet, kontrastrikt mønster av lyst og mørkt på halsskjoldet og ryggen.",
     "helsemessigBetydning": "Det er ikke beskrevet noen helserisiko for mennesker. Arten lever av sopphyfer, plantevev og pollen, og er ikke kjent for å skade orkideene den følger med.",
     "tiltak": "Arten følger ofte med importerte orkideer fra tropiske områder, men ser ikke ut til å klare å etablere faste bestander innendørs i Norge. Enkeltindivider kan derfor bare fjernes ved funn, uten behov for videre bekjempelse.",
@@ -697,39 +810,46 @@
     "navnNo": "Røkbrun kakerlakk",
     "navnLatin": "Periplaneta fuliginosa",
     "kategori": "Kakerlakker",
+    "kjennetegn": "2,5–3,5 cm. Brunsvart, ensfarget mørk brun uten tegninger.",
     "beskrivelse": "Stor kakerlakk på opptil 3,7 cm med brunsvart farge, nesten like mørk som orientalsk kakerlakk, men klart større. I størrelse er den mer på linje med brun kakerlakk.",
     "helsemessigBetydning": "Det er ikke beskrevet spesifikk helserisiko for denne arten, men som andre store kakerlakker kan den ha potensial til å forurense matvarer og spre smittestoffer.",
     "tiltak": "Arten er subtropisk og finnes hovedsakelig i Asia, og forekommer bare sporadisk i Norge. Ved funn følges de samme generelle rådene som for andre store kakerlakker, inkludert god hygiene og tetting av mulige inngangsveier.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Orientalsk kakerlakk (blank svart/mørkebrun, ≤2,5 cm, hunn nesten vingeløs)."
   },
   {
     "id": "tysk-kakerlakk",
     "navnNo": "Tysk kakerlakk",
     "navnLatin": "Blattella germanica",
     "kategori": "Kakerlakker",
+    "kjennetegn": "1,0–1,6 cm, liten. To karakteristiske svarte langstriper på halsskjoldet. Lys brun. Vanligst innendørs art i Norge.",
     "beskrivelse": "Liten kakerlakk på ca. 1,0-1,6 cm, lysebrun til brungul med to tydelige svarte langsgående striper på halsskjoldet. Den har velutviklede vinger som brukes til glideflukt, og nymfene er vingeløse og mørkere enn de voksne.",
     "helsemessigBetydning": "Kan lett komme i kontakt med mat og tilberedningsoverflater, og bærer mange typer virus, bakterier, sopp og parasitter. Kakerlakkallergi er svært utbredt der arten forekommer, og kan forverre astma og gi hudirritasjoner.",
     "tiltak": "Bekjempelse er ofte krevende fordi arten kan være resistent mot flere insektmidler, og hunnen bærer eggkapselen med seg og beskytter den mot blant annet uttørking. Det er derfor viktig med profesjonell hjelp, kombinert med god hygiene og fjerning av mat- og vannkilder.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Brunbeltet kakerlakk (brune tverrstriper på bakkroppen, ikke langstriper på halsskjoldet)."
   },
   {
     "id": "veksthuskakerlakk",
     "navnNo": "Veksthuskakerlakk",
     "navnLatin": "Pychnoscelus surinamensis",
     "kategori": "Kakerlakker",
+    "kjennetegn": "≤2,5 cm. Svart halsskjold med lys/hvit forkant. Brunere bakkropp.",
     "beskrivelse": "Middels stor kakerlakk på opptil 2,5 cm, i farge fra rødbrun til mørkebrun, med sølvgrå til gulaktige vinger og et svart halsskjold med en lys stripe fremst. Kroppen er bredere enn vingene, og nymfene er rødbrune.",
     "helsemessigBetydning": "Det er ikke beskrevet helserisiko for mennesker. Arten regnes hovedsakelig som et problem for planter, ikke for folk.",
     "tiltak": "Arten formerer seg ved jomfruforplantning og kan følge med potteplanter og jord. Nye planter og jord bør undersøkes nøye ved mistanke, slik at man kan fange opp og fjerne arten før den skader røtter, blader og unge skudd.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Tysk kakerlakk (to langstriper på halsskjoldet, ikke svart halsskjold med lys kant)."
   },
   {
     "id": "appelsinflue",
     "navnNo": "Appelsinflue",
     "navnLatin": "Ceratitis capitata",
     "kategori": "Fluer og mygg",
+    "kjennetegn": "Middels stor flue, oransje/gulbrun med mørke tegninger. Kommer til Norge som larver i importert frukt; kan ikke etablere seg her.",
     "beskrivelse": "Appelsinflue er en liten flue på 3,5-5 mm med kremhvit til gul forkropp med svarte flekker, gulbåndet bakkropp og vinger med mørke striper og gule felter. De hvite, spisse larvene utvikler seg i frukt som sitrus.",
     "helsemessigBetydning": "Arten har ingen helsemessig betydning i Norge og etablerer seg ikke i landet på grunn av klimaet. Det er ikke farlig å spise importert frukt selv om den skulle inneholde larver, siden disse uansett ikke overlever fordøyelsen.",
     "tiltak": "I Norge er det ikke behov for tiltak siden arten ikke kan etablere seg her. I land der arten er etablert, brukes omfattende bekjempelsesprogrammer for å beskytte fruktproduksjon.",
@@ -741,50 +861,59 @@
     "navnNo": "Blå spyfluer",
     "navnLatin": "Calliphora spp.",
     "kategori": "Fluer og mygg",
+    "kjennetegn": "10–14 mm. Metallisk blå kropp (Calliphora). Knyttet til råtnende dyremateriale og kjøtt.",
     "beskrivelse": "Blå spyfluer er store, kraftige fluer på 5-14 mm med en metallisk blåskimrende bakkropp som har et sølvaktig, dugglignende belegg. De er kjent for sin høylytte summing og uhygieniske levevis.",
     "helsemessigBetydning": "Fluene kan spre sykdomsfremkallende bakterier fordi de beveger seg mellom urene og rene miljøer. Larvene kan utvikle seg i kjøtt og fisk, og i sjeldne tilfeller kan de gi sår hos levende dyr (myiasis).",
     "tiltak": "Gode søppelrutiner og rask fjerning av matavfall reduserer tilgangen på egnelegging. Fluenetting i matproduksjonslokaler og bruk av lys- eller limfeller hjelper å holde fluene ute.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Gullfluer (grønne, ikke blå). Loftsfluer (gråaktige med gylne krøllhår, mye mindre metalliske)."
   },
   {
     "id": "bremser",
     "navnNo": "Bremser",
     "navnLatin": "Hypoderma tarandi (m.fl.)",
     "kategori": "Fluer og mygg",
+    "kjennetegn": "11–18 mm. Humlelignende med tett behåring i gult, hvitt og brunt. Parasitterer pattedyr.",
     "beskrivelse": "Bremser er store, kraftig hårete fluer på 11-18 mm som kan minne om humler i utseende. De voksne fluene suger ikke blod, men flere arter har larver som utvikler seg som parasitter under huden hos hjortedyr og husdyr.",
     "helsemessigBetydning": "Bremser regnes i hovedsak som et problem for dyr, men i sjeldne tilfeller er larver funnet hos mennesker i Norge, blant annet et tilfelle der en reinbremslarve hadde trengt inn i øyet til en gutt etter et opphold i Finnmark.",
     "tiltak": "Det viktigste tiltaket er å unngå nærkontakt med dyr som er angrepet, samt god dyrehelsekontroll hos rein og husdyr for å begrense spredning av larvene.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Klegg (feilaktig kalt 'brems' i dagligtalen; klegg er blodsugere og flatere fluer). Humler (to vingepar, ikke fluer)."
   },
   {
     "id": "fjaermygg",
     "navnNo": "Fjærmygg",
     "navnLatin": "Chironomidae",
     "kategori": "Fluer og mygg",
+    "kjennetegn": "Harmløs. Hanner har store buskete fjærformede antenner. Ligner stikkmygg men suger ikke blod. Kan opptre i stort antall nær vann.",
     "beskrivelse": "Fjærmygg er slanke, myggliknende insekter på 1-12 mm med en karakteristisk pukkelrygget kroppsholdning. Hannene har iøynefallende fjærformede antenner, og larvene lever i vann og er smale, krumbøyde og kan være røde eller grønne.",
     "helsemessigBetydning": "Fjærmygg stikker ikke og overfører ikke sykdommer til mennesker. Noen arter kan likevel gi allergiske reaksjoner hos personer som bor nær store yngleplasser, og insektene kan oppleves som plagsomme når de opptrer i store antall.",
     "tiltak": "Myggnetting i vinduer og ventiler holder insektene ute, og dempet utebelysning reduserer tiltrekningen. FHI fraråder bruk av insektmidler ute i naturen for å bekjempe fjærmygg.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Stikkmygg (har stikkesnabel og suger blod; fjærmygg er harmløse og mangler stikkesnabel)."
   },
   {
     "id": "fruktfluer-eddikfluer",
     "navnNo": "Fruktfluer, Eddikfluer",
     "navnLatin": "Drosophilidae spp.",
     "kategori": "Fluer og mygg",
+    "kjennetegn": "2–4 mm, gulbrun med røde øyne. Ofte mørke striper på bakkroppen. Langsom 'hengende' flukt.",
     "beskrivelse": "Fruktfluer (eddikfluer) er små, 2-4 mm fluer med gulbrun eller brunlig kropp og ofte røde øyne. De flyr langsomt og kan ofte sees hengende stille i luften nær overripe frukter og avfall.",
     "helsemessigBetydning": "Fluene anses i hovedsak som et trivselsproblem i private hjem, ikke en alvorlig helserisiko. Siden de kan bevege seg mellom urene og rene miljøer, kan de i teorien spre smittestoffer, men dette vurderes som lite betydningsfullt i praksis.",
     "tiltak": "Tøm flaske- og returbokslager regelmessig, oppbevar ikke frukt lenge i åpne søppelbøtter, og hold avløp og sluk rene. Finn og fjern stedet der larvene utvikler seg, eventuelt med forsiktig bruk av pyretroider ved behov for raskere reduksjon.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Pukkelfluer (lik størrelse og pukkelrygg, men ingen røde øyne)."
   },
   {
     "id": "gressflue",
     "navnNo": "Gressflue",
     "navnLatin": "Thaumatomyia notata",
     "kategori": "Fluer og mygg",
+    "kjennetegn": "Liten, gulsvart farge. Opptrer i enorme ansamlinger nær høye hus om høsten.",
     "beskrivelse": "Gressflua er en liten, kun 3 mm lang flue med gul kropp og svarte tegninger. Den lever normalt utendørs ved gressrøtter, men kan om høsten samle seg i store mengder og trekke inn i boliger.",
     "helsemessigBetydning": "Gressflua har ingen helsemessig betydning og gjør ingen fysisk skade på mennesker eller bygninger. Den oppleves likevel som sjenerende når den invaderer hjem i store antall.",
     "tiltak": "Hold vinduer og dører lukket eller bruk myggnetting, og fjern fluer innendørs med støvsuger. Insektmidler med pyretrin/pyretroider kan sprøytes rundt åpninger utenfra, og klatreplanter som tiltrekker fluene kan fjernes fra fasaden.",
@@ -796,50 +925,59 @@
     "navnNo": "Gullfluer",
     "navnLatin": "Lucilia spp.",
     "kategori": "Fluer og mygg",
+    "kjennetegn": "4,5–11,5 mm. Lys metallisk grønn – særlig bryst og bakkropp blankt skinnende. Glatt overflate uten krøllhår.",
     "beskrivelse": "Gullfluer er middels store, 4,5-11,5 mm lange fluer med en glinsende, metallisk grønn farge og glatt overflate. De tilhører samme familie som spyfluene, men har en mer fremtredende metallglans.",
     "helsemessigBetydning": "Under normale hygieniske forhold er gullfluer ikke en helserisiko for mennesker. I sjeldne tilfeller, særlig ved dårlig hygiene eller i kriser, kan larvene utvikle seg i sår, men larver av enkelte arter brukes også medisinsk til sårrensing på sykehus.",
     "tiltak": "Sikre matproduksjonslokaler med fluenetting, sørg for gode søppelrutiner og bruk lys- eller limfeller. For husdyr bør sår behandles og døde dyr fjernes raskt fra beiteområder.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Blå spyfluer (metallisk blå). Loftsfluer (gråbrune med gylne krøllhår på bryst)."
   },
   {
     "id": "hjortelusflue",
     "navnNo": "Hjortelusflue",
     "navnLatin": "Lipoptena cervi",
     "kategori": "Fluer og mygg",
+    "kjennetegn": "Flat og krabbelignende med kraftige klør. Hode bredere enn langt. Vinger brekker av etter landing på vert; bakkropp svulmer ved blodsuging.",
     "beskrivelse": "Hjortelusflua er en flat, krabbelignende flue på 4,5-5 mm med kraftige klør på beina. Den klekkes med vinger om høsten, men kaster vingene etter å ha funnet en vert, slik at bare korte vingestumper blir igjen.",
     "helsemessigBetydning": "Fluen kan i sjeldne tilfeller stikke mennesker, noe som kan gi hevelse og intens kløe i en hard, rød kul i 14-20 dager. Den kan muligens overføre en bakterie som gir betennelse hos dyr i Mellom-Europa, men dette er ikke bekreftet hos mennesker i Norge.",
     "tiltak": "Bruk lyse klær som hvit jakke og caps, siden dette gjør det lettere å oppdage og fjerne fluene før de stikker. Børst eller plukk dem raskt av kroppen med fingrene i stedet for å klemme dem, og vanlige myggmidler gir liten effekt.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Fuglelusfluer (svært lik; verifikasjon anbefales)."
   },
   {
     "id": "humlebolflue",
     "navnNo": "Humlebolflue",
     "navnLatin": "Volucella bombylans",
     "kategori": "Fluer og mygg",
+    "kjennetegn": "12–17 mm. Sterkt behåret – ligner en liten humle. Farge varierer: svart-rød, hvit-svart eller helt oransjegul.",
     "beskrivelse": "Humlebolflua er en kraftig hårete flue på 12-17 mm som i utseende kan forveksles med en liten humle. Fargemønsteret varierer mellom individer, fra svart og rødt til hvitt og svart eller helt oransjegult.",
     "helsemessigBetydning": "Arten har ingen helsemessig betydning og gjør ingen skade på bolig eller innbo. Larvene lever i humle- og vepsebol uten å forårsake problemer for mennesker.",
     "tiltak": "Bekjempelse er enkel og gjøres ved å plukke opp eller støvsuge dyr som kommer innendørs. Kjemisk bekjempelse er ikke nødvendig.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Humler (to vingepar, lengre antenner). Vepsebolflue (15–18 mm, nesten helt svart med hvitt belte)."
   },
   {
     "id": "vepsebolflue",
     "navnNo": "Vepsebolflue",
     "navnLatin": "Volucella pellucens",
     "kategori": "Fluer og mygg",
+    "kjennetegn": "15–18 mm. Nesten helt svart med et bredt hvitaktig belte tvers over fremre del av bakkroppen.",
     "beskrivelse": "Vepsebolflua er en stor flue på 15-18 mm som er nesten helt svart, men med et bredt, hvitaktig belte over den fremre delen av bakkroppen. Den finnes i Norge nord til og med Trøndelag.",
     "helsemessigBetydning": "Arten har ingen helsemessig betydning for mennesker. Larvene lever i vepsebol og gjør ingen skade på bygninger eller innbo.",
     "tiltak": "Bekjempelse er enkel og gjøres ved å plukke opp eller støvsuge dyr som kommer innendørs. Kjemisk bekjempelse er ikke nødvendig.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Humlebolflue (sterkt behåret og fargevariert). Stikkeveps (faktisk veps med brodd)."
   },
   {
     "id": "sorgemygg-haermygg",
     "navnNo": "Sørgemygg (hærmygg)",
     "navnLatin": "Sciaridae spp.",
     "kategori": "Fluer og mygg",
+    "kjennetegn": "1–7 mm, mørk. Lange bein, perlesnorlignende antenner. Øynene møtes i en smal bro oppå hodet (synlig i lupe). Ofte mørke vinger.",
     "beskrivelse": "Sørgemygg, også kalt hærmygg, er 1-7 mm små insekter med lange ben, perlesnorlignende antenner og mørke vinger. Larvene er 4-7 mm, beinløse og melkehvite til glassklare med svart hode, og lever ofte i jord eller fuktig organisk materiale.",
     "helsemessigBetydning": "Voksne sørgemygg utgjør ingen medisinsk fare for mennesker og er først og fremst til sjenanse når de dukker opp i store antall i hjemmet. Det er kjent enkelte sjeldne tilfeller der kjæledyr har blitt syke etter å ha spist store mengder av fluene.",
     "tiltak": "Unngå overvanning av potteplanter og legg et tynt sandlag på jordoverflaten for å hindre egglegging. Gule limfeller fanger voksne mygg, og ved store problemer kan jorden byttes ut. I veksthus brukes god hygiene, overvåking og biologisk bekjempelse med nyttenematoder og rovmidd.",
@@ -851,39 +989,46 @@
     "navnNo": "Klegg",
     "navnLatin": "Tabanidae",
     "kategori": "Fluer og mygg",
+    "kjennetegn": "Store blodsugende fluer med smertefulle bitt. Aktive på varme solfylte dager nær vann og skog.",
     "beskrivelse": "Klegg er mellomstore til store, kraftige fluer med bredt hode, store øyne og kraftige munndeler. De vanligste gruppene i Norge er blindinger, regnklegg, storklegg og Hybomitra-klegg, og vingene har tydelige årer med en karakteristisk Y-form.",
     "helsemessigBetydning": "Bare hunnene biter, og et stikk kan gi en rød og kraftig hevelse i huden. Arten kan i teorien overføre sykdommer som tularemi til dyr, men smitterisikoen for mennesker i Norge er lav.",
     "tiltak": "Bekjempelse er vanskelig siden klegg yngler i naturen. For husdyr kan fluebarrierer, skyggefulle leskur og luftige bygninger redusere problemet, mens tette klær gir noe beskyttelse for mennesker - myggmidler har liten effekt.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Bremser (kalles 'brems' i dagligtalen, men er ulike familier; klegg suger blod direkte)."
   },
   {
     "id": "loftsfluer",
     "navnNo": "Loftsfluer",
     "navnLatin": "Pollenia spp.",
     "kategori": "Fluer og mygg",
+    "kjennetegn": "4,5–11 mm. Mørk grålig. Forkroppen tett dekket av gylne krøllete hår. Bakkropp med skiftende sjatteringer. Holder vingene tettere samlet i hvile.",
     "beskrivelse": "Loftsfluer er grålige til mørke fluer på 4,5-11 mm, med forkroppen tett dekket av gyllent, krøllet hår og et bakkroppsmønster som skifter mellom lyst og mørkt avhengig av lysvinkelen.",
     "helsemessigBetydning": "Loftsfluer har et langt mer hygienisk levevis enn spyfluene og regnes som lite betydningsfulle helsemessig. De kan likevel bli til sjenanse når store mengder samler seg innendørs for å overvintre.",
     "tiltak": "Tett sprekker og åpninger i fasaden for å hindre at fluene kommer inn for å overvintre. Fluer som likevel kommer inn kan fjernes med støvsuger, og insektmiddel kan eventuelt sprøytes på vindusrammer utenfra.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Husflue (forveksles innendørs om høsten; loftsflue kjennes på de gylne krøllhårene på forkroppen)."
   },
   {
     "id": "pukkelfluer",
     "navnNo": "Pukkelfluer",
     "navnLatin": "Phoridae",
     "kategori": "Fluer og mygg",
+    "kjennetegn": "0,4–3 mm. Brune/mørkebrune/svarte. Tydelig pukkelformet rygg. To kraftige tykke vingeårer øverst, resten tynne. Kraftige bein med lange børster.",
     "beskrivelse": "Pukkelfluer er svært små fluer på 0,4-3 mm, brune til svarte med en karakteristisk pukkelformet rygg. To tykke årer øverst på vingene er tydelige, mens resten av åremønsteret er svakt.",
     "helsemessigBetydning": "Fluene oppholder seg ofte på uhygieniske steder og kan i teorien overføre sykdomsfremkallende bakterier til matvarer de kommer i kontakt med.",
     "tiltak": "God avfallshåndtering og renhold er viktigste forebygging. Bekjempelse handler om å finne og fjerne det fuktige, organiske materialet der larvene utvikler seg, inkludert kontroll av sluk og avløp.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Fruktfluer (lik størrelse, men fruktfluer har røde øyne; pukkelfluer mangler røde øyne)."
   },
   {
     "id": "sommerfuglmygg",
     "navnNo": "Sommerfuglmygg",
     "navnLatin": "Psychodidae",
     "kategori": "Fluer og mygg",
+    "kjennetegn": "Liten. Tett hårete vinger gir 'sommerfugl'-preg. Vinger holdes taklagt i ro. Finnes ved sluk og avløp innendørs.",
     "beskrivelse": "Sommerfuglmygg er små, 2-3 mm insekter med hårete vinger som ved første blikk kan minne om miniatyrsommerfugler. Larvene er 1-9 mm, hvite med mørkt hode, og lever i slimlag i avløp og sluk.",
     "helsemessigBetydning": "Artene i Norge biter ikke mennesker, men kan ta med seg smittestoffer fra avløp og sluk til andre overflater. Store mengder innendørs kan tyde på en kloakklekkasje.",
     "tiltak": "Reduser matrester i vasken og rengjør avløp og sluk regelmessig, eventuelt med avfallsrist. Etablerte bestander bekjempes ved grundig rengjøring av avløp og oversvømming med kokende vann, mens insektmiddel kun brukes som siste utvei.",
@@ -895,72 +1040,85 @@
     "navnNo": "Springfluer",
     "navnLatin": "Sphaeroceridae",
     "kategori": "Fluer og mygg",
+    "kjennetegn": "0,7–5,5 mm. Oftest ensfarget svart/mørkebrun. Første fotledd på bakbein svært bredt – godt kjennetegn. Beveger seg med raske hopp.",
     "beskrivelse": "Springfluer er små, 0,7-5,5 mm fluer som vanligvis er ensfarget svarte eller mørkebrune. Det første fotleddet på det bakerste benparet er tydelig bredt, og mange arter har korte eller manglende vinger og beveger seg med raske hopp.",
     "helsemessigBetydning": "Springfluer har sannsynligvis liten helsemessig og økonomisk betydning, men kan oppleves som plagsomme i store mengder og kan i teorien overføre smittestoffer siden de sjelden besøker mat direkte.",
     "tiltak": "Fjern råtnende organisk materiale som fluene yngler i. I husdyrbygg reduseres bestanden ved hyppigere fjerning av avføring, og ved kloakklekkasjer må lekkasjen tettes og området rengjøres grundig.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Pukkelfluer (lik størrelse, men pukkelfluer er mer stillsittende og har pukkelrygg)."
   },
   {
     "id": "spyfluer",
     "navnNo": "Spyfluer",
     "navnLatin": "Calliphoridae",
     "kategori": "Fluer og mygg",
+    "kjennetegn": "3–18 mm. Mørke med metallisk skinnende farger. Kraftigere og mer kompakte enn husflue. Maggotformede larver.",
     "beskrivelse": "Spyfluer er en familie store, 3-18 mm fluer med metallisk skinnende farger, ofte blå eller grønn, og en kraftigere og mer kompakt kropp enn husflua. Larvene er hvite, opptil 22 mm lange med bred, avrundet bakende og spiss forende.",
     "helsemessigBetydning": "Fluene kan overføre sykdomsfremkallende mikroorganismer fra råtnende materiale til ferske matvarer, og legger gjerne egg på kjøtt og fisk. I sjeldne tilfeller kan larver utvikle seg i sår på levende dyr.",
     "tiltak": "Monter fluenetting i vinduer, ventiler og luftekanaler, og sørg for gode søppelrutiner. Ved problemer bør formeringsstedene fjernes, og enkeltindivider kan fjernes med støvsuger.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Husflue (grå, ikke-metallisk, 6–7 mm). Undergrupper: blå spyfluer (blå), gullfluer (grønn), loftsfluer (grå med krøllhår)."
   },
   {
     "id": "stikkflue",
     "navnNo": "Stikkflue",
     "navnLatin": "Stomoxys calcitrans",
     "kategori": "Fluer og mygg",
+    "kjennetegn": "Ligner husflue (grå, ~6–7 mm), men har en tydelig stikkende sugesnabel fremover. Suger blod. Finnes ved fjøs og stall.",
     "beskrivelse": "Stikkflua er grå med flere mørke felt på bakkroppen, 5-7 mm lang og har en tydelig stikkesnabel som peker rett fremover. Larvene er hvite og benløse, mens puppene er brune.",
     "helsemessigBetydning": "Stikkflua suger blod fra både mennesker og husdyr, og stikket føles som et nålestikk med hevelse og kløe. Den overfører ikke kjente sykdommer direkte, men kan transportere bakterier mellom dyr og redusere produktiviteten hos husdyr ved store mengder.",
     "tiltak": "Insektnetting i vinduer og dører samt limfeller og elektriske lysfeller kan redusere antallet innendørs. Den viktigste langsiktige løsningen er å begrense larvenes oppvekstmiljø i gjødsel og annet fuktig organisk materiale.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Husflue (nær identisk utseende, men husflue mangler stikkesnabel og suger ikke blod)."
   },
   {
     "id": "stikkmygg",
     "navnNo": "Stikkmygg",
     "navnLatin": "Culicidae",
     "kategori": "Fluer og mygg",
+    "kjennetegn": "5–8 mm, slank med lange tynne bein og smekker kropp. Lang stikkesugesnabel. Bare hunnen suger blod.",
     "beskrivelse": "Stikkmygg er slanke insekter på 5-8 mm med lange, tynne bein. Bare hunnene suger blod, mens hannene kjennes igjen på store, buskete antenner.",
     "helsemessigBetydning": "I Norge gir stikk hovedsakelig hevelse og kløe på grunn av spytt myggen sprøyter inn i huden. Globalt kan stikkmygg overføre sykdommer som malaria, men dette er ikke en risiko i Norge.",
     "tiltak": "Bruk myggmidler som DEET (virker i opptil 6 timer) og finmasket myggnetting i vinduer og over sengen. Myggspiraler eller pyretrumspray kan brukes innendørs, og hvitløk eller B-vitaminer har ingen dokumentert effekt.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Fjærmygg (ligner, men fjærmygg har fjærantenner og mangler stikkesnabel)."
   },
   {
     "id": "sviknott",
     "navnNo": "Sviknott",
     "navnLatin": "Culicoides spp.",
     "kategori": "Fluer og mygg",
+    "kjennetegn": "Svært liten. Sviende bitt. Trenger gjennom vanlig myggnetting og klesplagg. Aktiv i skumringen.",
     "beskrivelse": "Sviknott er svært små insekter, bare 1-3 mm, med tynne antenner og korte, nebbformede munndeler. Vingene har ofte mørke til lysegrå flekker.",
     "helsemessigBetydning": "Bitt fra sviknott gir en sviende følelse og hudreaksjoner, og er hovedsakelig et trivselsproblem i Norge. Internasjonalt og i husdyrhold er artene viktige fordi de er eneste kjente smittebærer for blåtungevirus.",
     "tiltak": "Bruk tette klær, myggmidler og tett myggnetting for å unngå bitt. Unngå utendørsaktivitet ved soloppgang og solnedgang når sviknott er mest aktive, siden de blir passive ved vind over 2,5 m/s.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Stikkmygg (mye større 5–8 mm; sviknott er for liten til å hindres av myggnetting)."
   },
   {
     "id": "australsk-tyvbille",
     "navnNo": "Australsk tyvbille",
     "navnLatin": "Ptinus tectus",
     "kategori": "Biller",
+    "kjennetegn": "2,5–4 mm. Mørk brun grunnfarge med tett lys filtaktig behåring. Kroppen innsnørt bak forbrystet – ser ut som to runde kuler. Lange bein. Vingeløs.",
     "beskrivelse": "Australsk tyvbille er en liten bille på 2,5-4 mm med en mørk brun grunnfarge som virker brunaktig på grunn av et tett, finhåret belegg. Kroppen er tydelig innsnørt mellom forkropp og bakkropp, noe som gir et spinkelt utseende, og antennene er lange og trådtynne med tydelige ledd. Larvene er 3-5 mm, gulhvite med brunt hode og tre par små ben fremst.",
     "helsemessigBetydning": "Arten utgjør ingen direkte helserisiko, men kan forurense og skade tørrvarer ved store populasjoner i matlagre. Larvene kan også bore seg gjennom emballasje under forpupping.",
     "tiltak": "Fjern angrepne matvarer og forbedre lagringsrutinene, gjerne med tette pakninger. Varme (45 °C i flere timer) eller kulde (-25 °C) dreper alle stadier, og luftfuktighet under 40 % hindrer videre utvikling.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Flekket tyvbille (hvite skjellflekker og V-formede hårtuster). Messingbille (gylne hår, messingglans)."
   },
   {
     "id": "barkbiller",
     "navnNo": "Barkbiller",
     "navnLatin": "Scolytinae",
     "kategori": "Biller",
+    "kjennetegn": "Små til mellomstore (1–8 mm), sylindiske mørke biller. Lever under bark. Lager karakteristiske gangmønstre. Kort avrundet bakkropp.",
     "beskrivelse": "Barkbiller er svært små biller på 1-8 mm med en sylindrisk, mørk brun til svart kropp der hodet er skjult av forkroppen sett fra oversiden. Vingedekkene ender butt bakerst, ofte med en kant av kraftige tenner, og antennene er korte med en klubbeformet ende. Larvene er hvite, beinløse og kroket med mørkere hodekapsel.",
     "helsemessigBetydning": "Barkbiller utgjør ingen helserisiko og gjør ingen skade på hus eller bygningsmaterialer. FHI mottar årlig noen få bekymrede henvendelser om biller funnet innendørs, men disse er helt ufarlige for boligen.",
     "tiltak": "Unngå å lagre ved med bark innendørs, siden biller som kommer inn via brensel eller ubarket trevirke ikke reproduserer seg innendørs og derfor ikke krever behandling. For skader på levende skog utendørs, særlig fra granbarkbille, viser FHI til NIBIOs informasjon om skogskader.",
@@ -972,28 +1130,33 @@
     "navnNo": "Blåbukk",
     "navnLatin": "Callidium violaceum",
     "kategori": "Biller",
+    "kjennetegn": "8–16 mm. Metallisk blå eller fiolett-glinsende med svart grunnfarge. Bredere brystskjold enn husbukk. Lever under bark.",
     "beskrivelse": "Blåbukk er en trelevende bille på 8-16 mm med svart grunnfarge og et blått eller fiolett skjær, samt tydelig lange antenner. Larvene blir opptil 26 mm, er hvite og bløte, bredest ved hodet og smalner mot bakenden, med gule flekker og tett hårdekke på forkroppen.",
     "helsemessigBetydning": "Arten utgjør ingen kjent helserisiko for mennesker.",
     "tiltak": "Blåbukk gjør liten skade siden den kun spiser tørr bark og ikke selve veden. Hvis biller dukker opp innendørs, kan ved med bark flyttes utendørs, og det beste tiltaket for byggematerialer er å fjerne gjenværende bark fra trevirket - impregneringsmidler på bark har liten effekt. Problemet forsvinner naturlig når barken er brukt opp.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Husbukk (brunsvart, to nakne flekker på brystskjold, borer inne i veden, ensfarget lyst boremel). Blåbukk har tofarget boremel (svart og hvitt)."
   },
   {
     "id": "blagronn-skinkebille",
     "navnNo": "Blågrønn skinkebille",
     "navnLatin": "Korynetes caeruleus",
     "kategori": "Biller",
+    "kjennetegn": "4–7 mm, metallisk mørkeblå eller blågrønn. Tydelige groper på dekkvingene. Tre-leddet antennekølle.",
     "beskrivelse": "Blågrønn skinkebille har en metallskinnende, mørkeblå til blågrønn overflate og blir 4-7 mm lang. Under forstørrelse ser man mange små groper og lange, svarte utstikkende hår, og antennene ender i en tydelig tredelt klubbe.",
     "helsemessigBetydning": "Arten utgjør ingen kjent helserisiko, men kan i sjeldne tilfeller forurense proteinrike tørrvarer som korn, tørket kjøtt, fisk og gamle bein. Den er først og fremst en rovbille som lever av larver fra trebiller, særlig stripet borebille.",
     "tiltak": "Kjølig oppbevaring av kjøtt og andre proteinrike, tørre matvarer reduserer risikoen for angrep. Hvis det opptrer mange individer innendørs, tyder det ofte på en bestand av trebiller (særlig stripet borebille) i bygningskonstruksjonen, og det er denne primærarten man bør bekjempe.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Råteborebille (svart med gul flekk). Blåbukk (8–16 mm, mye større trebukk)."
   },
   {
     "id": "bolverksbille",
     "navnNo": "Bolverksbille",
     "navnLatin": "Nacerdes melanura",
     "kategori": "Biller",
+    "kjennetegn": "Middels stor bille. Gulbrun til rødoransje med mørk/svart bakkropp. Lever i fuktig saltholdige trevirke – kaier, båter, fuktige kjellere.",
     "beskrivelse": "Bolverksbille er 9-13 mm lang med lyse brune eller gule vingedekker og ben som er svarte innerst og gulrøde lenger ut. Den kan minne om en løpebille eller smellbille i form, men tilhører en egen familie av mykvingede biller.",
     "helsemessigBetydning": "Arten utgjør ingen kjent helserisiko for mennesker. Skaden den gjør er av rent strukturell art på trevirke i bygninger og kaianlegg.",
     "tiltak": "Skift ut nedbrutt trevirke, og la trevirket tørke fullstendig - det fjerner grunnlaget for billen, som krever fuktig, salholdig ved for at larvene skal utvikle seg (omtrent to år til de er fullvoksne). Finn og fjern fuktkilden som ga grunnlag for angrepet. Lysfeller kan settes opp i sverm-perioden (juni-juli ute, hele året inne) ved store mengder.",
@@ -1005,94 +1168,111 @@
     "navnNo": "Brun pelsbille",
     "navnLatin": "Attagenus smirnovi",
     "kategori": "Biller",
+    "kjennetegn": "2,5–4 mm. Jevnt brun, uten hvite flekker. Kun innendørs i Norge. Lever av støv, hår og organiske rester.",
     "beskrivelse": "Brun pelsbille er 2,5-4 mm lang med rund kropp, brun bakkropp og svart forkropp, korte antenner med tredelt klubbe og ett enkelt punktøye i pannen. Larvene blir opptil 8 mm, er brune med gylne hår og en avsmalnende form med en lang, busket stjert bakerst.",
     "helsemessigBetydning": "Arten utgjør ingen direkte helserisiko, men larvene kan skade kulturhistoriske gjenstander som gamle klesdrakter av sel- eller reinsdyrskinn, samt ull og ubehandlet lær, og lager uregelmessige hull med frynsete kanter.",
     "tiltak": "Regelmessig støvsuging er det viktigste tiltaket, særlig under møbler, langs gulvlister og i sprekker. Frys utsatte gjenstander ved -18 °C i 24 timer, og vask ull før lengre oppbevaring i forseglede plastposer. Museer kan bruke oksygenfri behandling (0,3 % oksygen) som dreper 99 % på 88 timer.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Pelsbille (3,5–5,5 mm, karakteristiske hvite flekker på vinger og brystskjoldet)."
   },
   {
     "id": "brunsvart-melbille",
     "navnNo": "Brunsvart melbille",
     "navnLatin": "Tribolium destructor",
     "kategori": "Biller",
+    "kjennetegn": "4–6 mm. Glinsende mørkebrun, langstrakt oval form.",
     "beskrivelse": "Brunsvart melbille er 4-6 mm lang, glinsende mørkebrun og avlangt oval i formen. Larvene blir opptil 10 mm, glinsende gulbrune med mørkere hode og bakerste segmenter med to bakovervendte pigger. Arten er større enn rismelbiller (3,5-4 mm) men mindre enn melbiller (12-18 mm).",
     "helsemessigBetydning": "Arten er ikke en helserisiko i seg selv, men kan gi fullstendig ødeleggelse av matvarer ved store angrep. Billene avgir en sterk lukt som trekker inn i maten, og angriper blant annet mel, korn, kjeks, sjokolade, nøtter, krydder, tørket kjøtt og dyrefôr.",
     "tiltak": "Finn og fjern angrepne matvarer, ofte i bortgjemte hjørner av matskapet, og støvsug grundig. Frys ved -16 °C i 24 timer, -6 °C i 3 døgn, eller varm til +55 °C i 2 timer / +80 °C i noen minutter. I bygårder bør behandlingen koordineres mellom flere boenheter siden voksne biller lett vandrer mellom dem.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Stor melbille (12–18 mm, mye større). Rismelbille (3,5–4 mm, lysere)."
   },
   {
     "id": "brodbille",
     "navnNo": "Brødbille",
     "navnLatin": "Stegobium paniceum",
     "kategori": "Biller",
+    "kjennetegn": "2–3 mm, rødbrun. Utstående gylne hår. De tre siste antenneleddene markert lengre. Svake lengdestriper på dekkvingene.",
     "beskrivelse": "Brødbille er 2-3 mm lang, rødbrun og dekket av korte, gylne, utstående hår. Antennene har tre forlengede ytterledd, og vingedekkene har lengdestriper. Larvene blir opptil 5 mm, gulhvite og krummet som en U inni matvarene de angriper.",
     "helsemessigBetydning": "Arten gir ingen direkte helserisiko, men forurenser stivelsesholdige tørrvarer som brød, kjeks, krydder, nøtter og kakaobønner. Den er en av de eldste kjente lagerskadedyrene og har blant annet skadet egyptiske kornlagre for 2500 år siden og skipsproviant historisk sett.",
     "tiltak": "Finn og kast angrepne produkter, og kontroller resten av matskapet for spredning. Varm angrepne varer til 60 °C i 10 minutter, eller frys ved -20 °C i flere dager - støvsuging er bedre enn vask for å fjerne larver. Kjølig lagring under 10 °C hemmer aktivitet, mens en uke ved -10 °C dreper alle stadier. Store kommersielle angrep kan kreve profesjonell gassing.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Tobakksbille (glatt rygg, sagtakkete antenner, lutrygget). Svært like hverandre."
   },
   {
     "id": "bonnefrobille",
     "navnNo": "Bønnefrøbille",
     "navnLatin": "Acanthoscelides obtectus",
     "kategori": "Biller",
+    "kjennetegn": "3–4 mm. Gråbrun med mørke og lyse flekker. Kroppen smalner mot det smale hodet. Rødlige antenner og bein.",
     "beskrivelse": "Bønnefrøbille er 3-4 mm lang, gråbrun med mørke og lyse felt, rødlige antenner og ben, og kroppen smalner gradvis fra bakkroppen frem til et smalt hode. Larvene utvikler seg inni bønner og lager karakteristiske runde hull når de voksne billene klekker ut og forlater bønnen.",
     "helsemessigBetydning": "Arten gir ingen direkte helserisiko, men er en av de verste skadegjørerne på lagrede bønner og kan uthule bønnene helt, noe som gir stort næringstap.",
     "tiltak": "Kast angrepne beholdere og støvsug grundig i området. Oppbevar uangrepne varer i tette, solide beholdere, og frys angrepne bønner ved -18 °C i to døgn. For større mengder bør lagertemperaturen holdes under 12 °C, eller varmebehandling (55-60 °C) brukes. Profesjonell gassing er tilgjengelig for svært store partier.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Ertefrøbille (5 mm, brunsvart med hvitt 'kors' på bakkroppen). Kinafrøbille (lik, skilles under lupe)."
   },
   {
     "id": "ertefrobille",
     "navnNo": "Ertefrøbille",
     "navnLatin": "Bruchus pisorum",
     "kategori": "Biller",
+    "kjennetegn": "5 mm. Brunsvart med hvite hårflekker på dekkvingene. Dekkvingene dekker ikke bakkroppen – synlig hvitt 'kors' på nakne del. Rødlige innerste antenneledd og framben.",
     "beskrivelse": "Ertefrøbille er rundt 5 mm lang, brunsvart med hvite hårflekker på vingedekkene som ikke dekker hele bakkroppen, slik at et hvitt kryssmønster blir synlig. De fire innerste antenneleddene og deler av frambenene er rødlige. Larvene blir 5-6 mm og utvikler seg inni enkelte ertefrø, med opptil fem larver per ert.",
     "helsemessigBetydning": "Angrepne erter er ikke egnet som menneskemat, men kan brukes til dyrefôr. Skaden er ofte usynlig utenpå, og angrepet oppdages først når de voksne billene klekker ut av frøene.",
     "tiltak": "Alle stadier dør ved frysing under -20 °C i minst ett døgn eller oppvarming til 55-60 °C. I private hjem fryses og kastes angrepne varer. For større partier kreves full kontroll, fjerning av angrepne deler, kulde- eller varmebehandling, eller profesjonell gassing. De fleste angrep skjer på importerte erter, siden arten ikke kan reprodusere utendørs i Norge.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Bønnefrøbille (3–4 mm, gråbrun, ingen hvitt kors). Kinafrøbille (litt mindre, lik form)."
   },
   {
     "id": "kinafrobille",
     "navnNo": "Kinafrøbille",
     "navnLatin": "Callosobruchus chinensis",
     "kategori": "Biller",
+    "kjennetegn": "Liten frøbille, kompakt dråpeformet kropp, korte dekkvinger som ikke dekker bakkroppen. Variert farge og flekkmønster.",
     "beskrivelse": "Kinafrøbille er kun 2-4 mm lang med vingedekker i lys brun til rødbrun farge og en eller flere mørke flekker. Den har tette flekker av grove, hvite hår på sidene av bakkroppen, og hannenes antenner er tydelig kamtannede. Larvene er 2-3 mm.",
     "helsemessigBetydning": "Arten gir ingen kjent direkte helserisiko, men angrepne tørkede bønner og erter blir uspiselige for mennesker.",
     "tiltak": "Frys angrepne varer ved under -20 °C i minst ett døgn, eller varm til 55-60 °C. Oppbevar uangrepne produkter i tette beholdere for å hindre at billene kommer til. For større forsendelser kreves grundig inspeksjon, fjerning av angrepne deler og eventuelt profesjonell gassing - angrepne varer kan ellers kastes eller brukes til dyrefôr.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Flekket frøbille (svært lik; skilles bare i lupe). Bønnefrøbille og ertefrøbille."
   },
   {
     "id": "flekket-frobille",
     "navnNo": "Flekket frøbille",
     "navnLatin": "Callosobruchus maculatus",
     "kategori": "Biller",
+    "kjennetegn": "Kompakt dråpeformet kropp, korte dekkvinger som ikke dekker bakkroppen. Tydelige mørke flekker på dekkvingene.",
     "beskrivelse": "Flekket frøbille er svært lik kinafrøbille og blir bare 2-4 mm lang, med lys brune til rødbrune vingedekker og mørke flekker. Hårene på sidene av bakkroppen er tynne og hvite eller gulaktige, til forskjell fra kinafrøbillens grove hårflekker, og hannenes antenner er sagtannede i stedet for kamtannede. Larvene er 2-3 mm.",
     "helsemessigBetydning": "Arten gir ingen kjent direkte helserisiko, men angrepne tørkede bønner og erter blir uspiselige for mennesker.",
     "tiltak": "Frys angrepne varer ved under -20 °C i minst ett døgn, eller varm til 55-60 °C. Oppbevar uangrepne produkter i tette beholdere for å hindre at billene kommer til. For større forsendelser kreves grundig inspeksjon, fjerning av angrepne deler og eventuelt profesjonell gassing - angrepne varer kan ellers kastes eller brukes til dyrefôr.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Kinafrøbille (svært lik; skilles bare i lupe). Bønnefrøbille og ertefrøbille."
   },
   {
     "id": "flekket-tyvbille",
     "navnNo": "Flekket tyvbille",
     "navnLatin": "Ptinus fur",
     "kategori": "Biller",
+    "kjennetegn": "2,6–4,3 mm. Eggformet bakkropp, lysebrun til brunsvart med hvite flekker. Halsskjoldet har to karakteristiske hvitgule hårtuster i V-form. Klubbeformede lår.",
     "beskrivelse": "Flekket tyvbille er 2,6-4,3 mm lang med en eggformet kropp i lys til mørk brun, og hvite hårflekker fremst og bakerst. Halsskjoldet er rundt med to hvitgule hårdotter formet som en V. Hannene er mer parallellsidede med lengre antenner og mindre tydelige flekker enn hunnene. Larvene er kommaformede, gulhvite med brunt hode og når omtrent 4 mm.",
     "helsemessigBetydning": "Arten utgjør ingen kjent direkte helserisiko, men spiser alle slags tørre matvarer, inkludert tørkede insekter, kornprodukter, dyrefôr, tørket kjøtt, melkepulver og tørket frukt. I museer kan den skade utstoppede dyr, insektsamlinger og herbarier.",
     "tiltak": "Fjern angrepne matvarer og støvsug for å unngå opphopning av døde insekter. Pakk utsatte matvarer i bokser eller solide plastbeholdere. God hygiene og rask omløpshastighet på tørrvarer er gode forebyggende tiltak, og kjemisk bekjempelse er normalt ikke nødvendig siden arten sjelden når høye tettheter.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Australsk tyvbille (ensfarget filtbehåring, ingen hvite flekker). Messingbille (gylne hår, ingen hvite flekker)."
   },
   {
     "id": "frobiller",
     "navnNo": "Frøbiller",
     "navnLatin": "Bruchinae",
     "kategori": "Biller",
+    "kjennetegn": "Kompakt dråpeformet kropp med korte dekkvinger som ikke dekker hele bakkroppen. Oftest 2–7 mm. Finnes i erter, bønner, linser og korn.",
     "beskrivelse": "Frøbiller er en gruppe biller på 2-4 mm, noen opptil 7 mm, med en kompakt og dråpeformet kropp dekket av korte hår. Vingedekkene er tydelig korte og dekker ikke hele bakkroppen, og antennene er lange, ofte sagtannet eller kamformet.",
     "helsemessigBetydning": "Angrepne varer er ikke egnet som menneskemat, men kan brukes til dyrefôr. Hovedutfordringen er matforurensning i importerte tørkede erter, bønner og linser, ikke direkte helserisiko.",
     "tiltak": "Frys og kast angrepne varer i private hjem, og oppbevar uangrepne produkter i tette beholdere. Frysing under -20 °C eller oppvarming til 55-60 °C dreper alle stadier. For større mengder kan varmebehandling, kuldebehandling eller profesjonell gassing brukes.",
@@ -1104,61 +1284,72 @@
     "navnNo": "Gransnutebille",
     "navnLatin": "Hylobius abietis",
     "kategori": "Biller",
+    "kjennetegn": "10–12 mm. Svart/svartbrun med partier av gule hår som danner tverrliggende bånd på dekkvingene. Lang knebøyd snute.",
     "beskrivelse": "Gransnutebille er en bille på 10-12 mm, svart eller svartbrun med flekker av gule hår. Den har et langstrakt hode med en lang snute der antennene sitter, og antennene er bøyde med en tydelig klubbe på enden. Larvene blir 14-16 mm, hvite, beinløse, krokete med brun hodekapsel.",
     "helsemessigBetydning": "Arten utgjør ingen kjent helserisiko for mennesker.",
     "tiltak": "Billen gjør ingen skade på nye bygninger, selv om den kan dukke opp i store mengder og skremme huseiere. Den kan derimot gjøre stor skade på nyplantede bartrær ved at de voksne billene gnager på barken før egglegging. For tiltak mot skog- og planteskader viser FHI til NIBIOs fagark om skogplanting og skogforyngelse.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Veksthussnutebille (~10 mm, matt gråsvart uten gule hår, kan ikke fly)."
   },
   {
     "id": "husbukk",
     "navnNo": "Husbukk",
     "navnLatin": "Hylotrupes bajulus",
     "kategori": "Biller",
+    "kjennetegn": "8–20 mm. Svart eller brunsvart. Lange 11-leddete antenner. Brystskjoldet har to skinnende nakne flekker blant lange hår. Dekkvingene svarte eller med grå flekkebånd.",
     "beskrivelse": "Husbukk er 8-20 mm lang, svart eller brunsvart, med lange antenner og et hårete halsskjold som har to skinnende, bare flekker. Vingedekkene kan være helsvarte eller ha gråe felt som danner to bånd. Larvene er hvite og bløte med innsnøringer mellom hvert segment, smalner mot bakenden og når opptil 25 mm. De graver ovale eller flate gangsystemer på rundt 5 mm bredde fylt med fint, lysegult gnagemel, og utgangshullene er ovale, ca. 5-8 mm brede og 3-4 mm høye med litt fliset kant.",
     "helsemessigBetydning": "Arten utgjør ingen kjent helserisiko for mennesker.",
     "tiltak": "Forebygging med motstandsdyktig materiale som kjerneved av furu, lerk eller osp - billen angriper bare bartre med yteved. Ved aktivt angrep kan profesjonell gassing fjerne alle stadier umiddelbart, mens overflatebehandling med insektmiddel hindrer ny egglegging uten å fjerne eksisterende larver. Injeksjonsbehandling i skadet ved, mikrobølge- eller lokal varmebehandling til 52-53 °C, eller utskifting av treverk er andre alternativer. Kjemisk behandling bør unngås i oppholdsrom på grunn av damp fra middelet.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Blåbukk (metallisk blå/fiolett, lever under bark, tofarget boremel). Husbukk har ensfarget lyst boremel."
   },
   {
     "id": "husklanner",
     "navnNo": "Husklanner",
     "navnLatin": "Dermestes haemorrhoidalis",
     "kategori": "Biller",
+    "kjennetegn": "7–9 mm. Ensfarget mørkebrun/svart, avlang. Ligner fleskeklanner i form.",
     "beskrivelse": "Husklanner er 7-9 mm lang med brunsvart overside og en gyllen glans på undersiden på grunn av et finhåret dekke. Larvene blir omtrent 15 mm, brune på oversiden og lysere under, med lange bust som stikker ut fra alle kroppsledd.",
     "helsemessigBetydning": "Arten forurenser matvarer og emballasje når larvene borer seg inn i materialer før forpupping. Ved store angrep kan larvenes gnaging i treverk også svekke lagerbygg.",
     "tiltak": "Forebygging skjer ved kjølig oppbevaring av animalske produkter i tette, solide beholdere. I hjem med normal hygiene bør forurensede varer som tørr kjæledyrmat, tørket kjøtt og tørket fisk kastes, og matrester og dyrefôrrester fjernes nøye. Ved store angrep i lokaler med dårlig hygiene kreves grundig opprydding og rengjøring, eventuelt profesjonell hjelp for lagerbygg og avfallssjakter.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Fleskeklanner (7–9 mm, men med grått tverrbånd og 6 svarte prikker fremst på dekkvingene)."
   },
   {
     "id": "rismelbille",
     "navnNo": "Rismelbille",
     "navnLatin": "Tribolium confusum",
     "kategori": "Biller",
+    "kjennetegn": "2,5–4 mm, rødbrun. Gradvis fortykkede antenner uten skarpt avgrenset kølle.",
     "beskrivelse": "Rismelbille er 2,5-4 mm lang og rødbrun, med antenner som gradvis blir tykkere mot enden uten en tydelig avgrenset klubbe. Larvene starter hvite og blir senere gulbrune med brunt hode og to små krokete horn på det siste bakkroppssegmentet, og når opptil 6 mm.",
     "helsemessigBetydning": "Arten gir ingen direkte helserisiko, men forurenser matvarer betydelig - angrepne varer blir gråfarget, får ubehagelig lukt og smak, og blir uspiselige raskere enn uskadde varer. Billene sprer seg lett gjennom lagre fordi de kan krype gjennom svært små sprekker.",
     "tiltak": "Oppbevar matvarer i tette beholdere av glass eller solid plast, og kjøling hemmer reproduksjon. Angrepne varer kan fryses ved -10 °C i 24 timer eller varmebehandles ved 50 °C i 35 minutter, og skap med angrep bør støvsuges grundig flere ganger. I næringsmiddellager holdes temperaturen under 17 °C, varelageret roteres, og feromonfeller brukes til tidlig oppdaging - profesjonell gassing krever spesiell sertifisering.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Kastanjebrun melbille (svært lik, men med 3-leddet antennekølle ytterst)."
   },
   {
     "id": "kastanjebrun-melbille",
     "navnNo": "Kastanjebrun melbille",
     "navnLatin": "Tribolium castaneum",
     "kategori": "Biller",
+    "kjennetegn": "2,5–4 mm, rødbrun. 3-leddet kølle ytterst på antennen.",
     "beskrivelse": "Kastanjebrun melbille er 2,5-4 mm lang og rødbrun, men kan kjennes fra rismelbille ved en tydelig tredelt klubbe på enden av antennene. Larvene starter hvite og blir senere gulbrune med brunt hode og to små krokete horn på det siste bakkroppssegmentet, og når opptil 6 mm.",
     "helsemessigBetydning": "Arten gir ingen direkte helserisiko, men forurenser matvarer betydelig - angrepne varer blir gråfarget, får ubehagelig lukt og smak, og blir uspiselige raskere enn uskadde varer. Billene sprer seg lett gjennom lagre fordi de kan krype gjennom svært små sprekker.",
     "tiltak": "Oppbevar matvarer i tette beholdere av glass eller solid plast, og kjøling hemmer reproduksjon. Angrepne varer kan fryses ved -10 °C i 24 timer eller varmebehandles ved 50 °C i 35 minutter, og skap med angrep bør støvsuges grundig flere ganger. I næringsmiddellager holdes temperaturen under 17 °C, varelageret roteres, og feromonfeller brukes til tidlig oppdaging - profesjonell gassing krever spesiell sertifisering.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Rismelbille (svært lik, gradvis fortykkede antenner uten skarpt avgrenset kølle)."
   },
   {
     "id": "kortvinger",
     "navnNo": "Kortvinger",
     "navnLatin": "Staphylinidae",
     "kategori": "Biller",
+    "kjennetegn": "Avlange biller med korte dekkvinger som bare dekker halve bakkroppen – bakre bakkroppsledd nakne og synlige. Svarte/brune.",
     "beskrivelse": "Kortvinger er en stor billefamilie med nesten 1000 norske arter på 0,5-25 mm, vanligvis svarte eller brune. Vingedekkene er korte og dekker ikke hele bakkroppen, noe som gjør dem mer bevegelige enn andre biller. Eksempler er den lille arten Carpelimus bilineatus (2,8-3,4 mm), fettelskende Deleaster dichrous, glinsende svarte Philonthus-arter (5-12 mm) med store kjever, og de små klubbebillene i underfamilien Pselaphinae (0,5-6 mm) med klubbeformede antenner.",
     "helsemessigBetydning": "Kortvinger utgjør minimal helserisiko og er først og fremst tilfeldige gjester som har forvillet seg innendørs. De gjør ingen skade på mennesker, mat eller eiendom, men mat eller drikke som har vært i kontakt med dem bør ikke konsumeres på grunn av billenes ofte uhygieniske habitat.",
     "tiltak": "Ingen spesifikke tiltak er nødvendige. Philonthus-arter kan enkelt settes ut igjen utendørs, og klubbebiller vil ikke reprodusere innendørs og krever ingen håndtering.",
@@ -1170,17 +1361,20 @@
     "navnNo": "Liten melbille",
     "navnLatin": "Alphitobius diaperinus",
     "kategori": "Biller",
+    "kjennetegn": "5–6 mm, mørk skyggebille. Lever særlig i hønsehus og fjørfeanlegg. Skader isopor og skumisolasjon.",
     "beskrivelse": "Liten melbille er 5-7 mm lang, mørk svartbrun, glinsende og oval med rask, aktiv bevegelse. Larvene når 10-12 mm. Siden mange like biller finnes i fjørfehus, er nøyaktig størrelsesmåling viktig for identifikasjon.",
     "helsemessigBetydning": "Arten innfører ikke nye sykdommer til Norge, men kan fungere som reservoar for smittestoffer som allerede finnes, og laboratoriestudier har vist at den kan overføre disse til nye flokker. Dokumenterte smittestoffer inkluderer Mareks sykdom, E. coli, Campylobacter og Salmonella, og internasjonalt er arten knyttet til Newcastle disease og fugleinfluensa, selv om betydningen for smitteoverføring i felt er omdiskutert. Larvene kan også gjøre stor skade ved å bore inn i isolasjonsmaterialer som isopor, og kan ødelegge slik isolasjon helt innen 2-3 år.",
     "tiltak": "Billene dør innen få dager ved 0 °C eller kaldere, så vinterkjøling mellom innsett kan hjelpe. Tett overganger mellom gulv og vegg, og monter metallbeslag på trebjelker for å hindre at biller klatrer opp. Fjern gjødsel regelmessig gjennom produksjonssyklusen, og destruer angrepet gjødsel ved maling, tørking eller kompostering for å forhindre sverming.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Brunsvart melbille (4–6 mm, mer oval, finnes i matvarer)."
   },
   {
     "id": "lopebiller",
     "navnNo": "Løpebiller",
     "navnLatin": "Carabidae",
     "kategori": "Biller",
+    "kjennetegn": "Varierende størrelse (5–30 mm), oftest slanke, mørke/svarte biller med lange løpebein og flate dekkvinger.",
     "beskrivelse": "Løpebiller er lett gjenkjennelige, raske rovdyr med lange, rette antenner og langstrakt kropp. De fleste er ensfarget svarte, men noen har metallisk grønne, bronse-, røde eller blå farger. Norske arter varierer fra 2 til 40 mm. Vanlige innendørsarter inkluderer Calathus melanocephalus (6-9 mm, svart med gulrød halskant), Harpalus rufipes (10-17 mm, svart med røde ben), Carabus-arter (jordløpere, 15-30 mm, bronse- eller fiolettmetallisk, ikke flygeføre), og Pterostichus-arter (15-20 mm, jevnt glinsende svarte).",
     "helsemessigBetydning": "Løpebiller utgjør ingen helserisiko for mennesker og gjør ingen skade innendørs. De er nyttige rovdyr som begrenser andre skadedyr utendørs. Noen arter avgir en forsvarslukt når de blir skremt, men forårsaker ingen skade eller forurensning.",
     "tiltak": "Ingen insektmidler er nødvendige. Sopp inn dyr som kommer innendørs ut igjen med en sopelime, monter vindusnetting for å hindre at de kommer inn, og merk at løpebiller tørker ut og dør naturlig innendørs uten tiltak.",
@@ -1192,116 +1386,137 @@
     "navnNo": "Rissnutebille",
     "navnLatin": "Sitophilus oryzae",
     "kategori": "Biller",
+    "kjennetegn": "2–3,5 mm, brunsvart. Lang krum snute. To lyse rødlige flekker på dekkvingene. Smal glatt midtlinje på forbrystet.",
     "beskrivelse": "Rissnutebille er 2-3,5 mm lang, brunsvart med to rødlige flekker på hver dekkvinge, og har en lang, krum snute med munndelene på enden. Den kan skilles fra maissnutebille ved en smal, glatt linje langs midten av forkroppen. Larvene er kremfargede med lyst brunt hode.",
     "helsemessigBetydning": "Arten gir ingen kjent direkte helserisiko, men er en av de viktigste skadedyrene på lagrede kornprodukter og forårsaker store økonomiske tap gjennom matforurensning.",
     "tiltak": "Oppbevar kornprodukter i tette beholdere og kjølig, helst ved 15 °C eller lavere (gjerne 10 °C) for å stoppe utviklingen. Fjern angrepne matvarer og støvsug grundig for å fjerne rester og vandrende biller, og frys forurensede varer. Insektmidler frarådes nær matlagring på grunn av giftighet for mennesker.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Maissnutebille (svært lik, men mangler midtlinjen på forbrystet)."
   },
   {
     "id": "maissnutebille",
     "navnNo": "Maissnutebille",
     "navnLatin": "Sitophilus zeamais",
     "kategori": "Biller",
+    "kjennetegn": "2–3,5 mm, brunsvart. Lang krum snute. To lyse rødlige flekker på dekkvingene. Fordypningene i forbrystet jevnt fordelt (ingen midtlinje).",
     "beskrivelse": "Maissnutebille er 2-3,5 mm lang, vanligvis litt større enn rissnutebille, brunsvart med to rødlige flekker på hver dekkvinge, og har en lang, krum snute med munndelene på enden. Den kan skilles fra rissnutebille ved at fordypningene på forkroppen er jevnt fordelt i stedet for å danne en glatt midtlinje. Larvene er kremfargede med lyst brunt hode.",
     "helsemessigBetydning": "Arten gir ingen kjent direkte helserisiko, men er en av de viktigste skadedyrene på lagrede kornprodukter og forårsaker store økonomiske tap gjennom matforurensning.",
     "tiltak": "Oppbevar kornprodukter i tette beholdere og kjølig, helst ved 15 °C eller lavere (gjerne 10 °C) for å stoppe utviklingen. Fjern angrepne matvarer og støvsug grundig for å fjerne rester og vandrende biller, og frys forurensede varer. Insektmidler frarådes nær matlagring på grunn av giftighet for mennesker.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Rissnutebille (svært lik, men med smal glatt midtlinje på forbrystet)."
   },
   {
     "id": "messingbille",
     "navnNo": "Messingbille",
     "navnLatin": "Niptus hololeucus",
     "kategori": "Biller",
+    "kjennetegn": "3–4,5 mm. Brun kropp dekket av gyllengule hår (messingglans). Kroppen innsnørt i to kuleformede deler. Lange bein med klubbeformede lår. Vingeløs.",
     "beskrivelse": "Messingbille er 3,0-4,5 mm lang, brun med gyllengule hår over hele kroppen, relativt lange ben og en tydelig innsnøring bak halsskjoldet som deler kroppen i to runde deler, noe som gir et spiderlignende utseende. Lårene er klubbeformet (tykkere mot enden), og billen er vingeløs og kan ikke fly. Larvene blir 3-5 mm, gulhvite med brunt hode, krokete med små ben og lav bevegelighet.",
     "helsemessigBetydning": "Skaden er normalt av mindre økonomisk betydning. Hovedutfordringen er matforurensning gjennom avføring, døde insekter, kokonger og larvesilke, og billene oppleves mer som sjenerende enn farlige. Ingen allergi- eller smitterisiko er beskrevet.",
     "tiltak": "Forebygging med tett oppbevaring av mat i glass- eller solide plastbeholdere med lokk, god hygiene og rask omløpshastighet på tørrvarer. Ved aktive angrep er det vanligvis nok å fjerne angrepne varer og støvsuge grundig. Oppvarming av angrepne varer til 55 °C i flere timer er effektivt, mens insektmidler ikke anbefales på grunn av giftighet nær matvarer.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Australsk tyvbille (lysere brunfiltbehåring). Flekket tyvbille (hvite flekker, V-formede hårtuster)."
   },
   {
     "id": "myk-borebille",
     "navnNo": "Myk borebille",
     "navnLatin": "Ernobius mollis",
     "kategori": "Biller",
+    "kjennetegn": "3–6 mm. Gyldenbrun farge, oransjerødt felt bakerst på dekkvingene. Myke dekkvinger. Ingen striper.",
     "beskrivelse": "Myk borebille er 3-6 mm lang, gyllenbrun, ofte med et oransje felt ved vingetuppene, og har myke vingedekker uten striper. Hannene er mindre enn hunnene med proporsjonalt lengre og tynnere antenner. Larvene er hvite og krokete med tre tydelige benpar, og når opptil 8 mm.",
     "helsemessigBetydning": "Arten utgjør ingen kjent helserisiko for mennesker.",
     "tiltak": "Skaden på selve veden er minimal siden billene bare gnager på overflaten av yteveden, men barken kan bli helt oppspist. Larvene lager runde ganger på 1-2 mm i bark og ytterste yteved med tofarget gnagemel. Det beste tiltaket er å fjerne barken fra veden - bark kan ikke impregneres med trebeskyttelsesmidler.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Stripet borebille (striper, hardere dekkvinger). Brødbille (2–3 mm, gylne hår, striper)."
   },
   {
     "id": "pelsbille",
     "navnNo": "Pelsbille",
     "navnLatin": "Attagenus pellio",
     "kategori": "Biller",
+    "kjennetegn": "3,5–5,5 mm, oval. Karakteristiske hvite flekker på vingene og brystskjoldet. Lever både ute og inne.",
     "beskrivelse": "Pelsbille er eggformet og 3,5-5,5 mm lang, med svarte vingedekker som har en oval, hvit flekk på midten av hver vinge, samt tre hvite flekker bakerst på halsskjoldet. Larvene når omtrent 1 cm, smalner gradvis mot bakenden og er ofte krummet, brune med bånd av mørke, bakoverrettede hår og en børstelignende hårdott i bakenden.",
     "helsemessigBetydning": "Arten utgjør ingen kjent direkte helserisiko. Larvene kan oppholde seg i lagret korn uten nødvendigvis å spise av det.",
     "tiltak": "Tiltak er bare nødvendig ved kraftige angrep. Fjern fuglereir fra bygningskonstruksjoner der mulig, undersøk tekstiler, møbler og tepper for larver, og kast eller behandle angrepne gjenstander med støvsuging, utbanking eller varmebehandling ved 60 °C. Støvsug grundig i sprekker, skap og langs gulvlister, og kast støvsugerposer ved frysing eller kasting. Frysing er mindre effektivt siden pelsbillen tåler lave temperaturer godt.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Brun pelsbille (2,5–4 mm, ingen hvite flekker, kun innendørs)."
   },
   {
     "id": "rateborebille",
     "navnNo": "Råteborebille",
     "navnLatin": "Hadrobregmus pertinax",
     "kategori": "Biller",
+    "kjennetegn": "5–6 mm. Svart med én gul/oransje flekk på hver side av forbrystet. Blank overflate.",
     "beskrivelse": "Råteborebille er 5-6 mm lang, svart med langsgående striper på vingedekkene og lyse gule flekker på hver side av halsskjoldet. Den kan skilles fra den mindre, mer brune stripete borebillen (under 4 mm) som mangler de gule flekkene. Larvene er gulhvite og kroket, og når opptil 6-7 mm, og lever skjult i veden der de sjelden observeres.",
     "helsemessigBetydning": "Arten utgjør ingen kjent helserisiko for mennesker. Skaden er rent strukturell på trevirke i bygninger.",
     "tiltak": "Utskifting av råteskadet virke er det beste tiltaket, siden billen ikke kan angripe nytt, uskadet trevirke. Restaurering av bygningsdelen løser dermed både råteproblemet og angrepet samtidig. Kjemisk bekjempelse er ikke nødvendig.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Stripet borebille (2,5–4 mm, brun med striper). Blågrønn skinkebille (metallisk blågrønn)."
   },
   {
     "id": "ratesnutebille",
     "navnNo": "Råtesnutebille",
     "navnLatin": "Euophryum confine",
     "kategori": "Biller",
+    "kjennetegn": "2,5–3,6 mm. Blankt mørkebrun, sylindrisk kropp. Lang snute, korte knebøyde antenner. Tett besatt med prikkformede fordypninger.",
     "beskrivelse": "Råtesnutebille er mørkebrun, sylindrisk og 2,5-3,6 mm lang, med en lang snute og korte, bøyde antenner typisk for snutebiller. Overflaten er tett besatt med små groper. Larvene er kommaformede og hvite.",
     "helsemessigBetydning": "Arten utgjør ingen kjent helserisiko for mennesker.",
     "tiltak": "Råtesnutebillen gjør ingen skade i seg selv, men er et tegn på at veden er angrepet av råtesvamp. Tre under 21 % fuktighet blir ikke angrepet. Fjern angrepet trevirke minst 20 cm utenfor synlig råteskade, bytt til trykkimpregnert materiale hvis fuktproblemet ikke kan stoppes, eller la veden tørke godt dersom konstruksjonen fremdeles er solid. Arten stammer fra New Zealand og er mest etablert på Vestlandet, med flest funn i Bergen.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Rissnutebille og maissnutebille (brunsvart med lyse vingeflekker; råtesnutebille er jevnt mørkebrun uten flekker)."
   },
   {
     "id": "sagtannet-melbille",
     "navnNo": "Sagtannet melbille",
     "navnLatin": "Oryzaephilus surinamensis",
     "kategori": "Biller",
+    "kjennetegn": "2–3 mm, brunfarge, flat og oval. Karakteristiske sagtenner langs kantene av brystskjoldet – unikt kjennetegn.",
     "beskrivelse": "Sagtannet melbille er en flat bille på ca. 2,5 mm, mellombrun, med seks små tenner på hver side av forkroppen - derav navnet. Den har velutviklede vinger, men er ikke observert i flukt. Larvene er gulhvite med brunt hode og blir 3-4 mm lange. En nært beslektet art, sagtannet nøttebille (Oryzaephilus mercator), er nesten identisk men har større øyne og kan faktisk fly.",
     "helsemessigBetydning": "Hovedproblemet er matforurensning - billene forurenser matvarer med avføring, døde individer og annet avfall. De kan også skade settekorn og maltkorn ved å spise opp kornspiren, slik at spireevnen reduseres.",
     "tiltak": "Kjølig oppbevaring av matvarer reduserer problemet siden reproduksjonen stopper under 18 °C. Bruk tett, forseglet emballasje og lufttette beholdere, og hold god hygiene i lokaler og maskiner. Kast eller frys angrepne matvarer ved -18 °C i to døgn. Insektmidler bør unngås i hjem på grunn av forurensningsrisiko, og i bygårder kan koordinert innsats være nødvendig.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Andre melbiller (ingen andre melbiller har sagtennene langs brystskjoldet)."
   },
   {
     "id": "sankthansoldenborre",
     "navnNo": "Sankthansoldenborre",
     "navnLatin": "Amphimallon solstitialis",
     "kategori": "Biller",
+    "kjennetegn": "~20 mm, brun (Scarabaeidae). Behåret kropp. Aktiv ved midsommer, tiltrekkes av lys om kvelden.",
     "beskrivelse": "Sankthansoldenborre er 14-18 mm lang og gulbrun, med tett hårdekke som gir et loddent utseende, og bakkroppsspissen har spesielt tett behåring. Larvene blir opptil 30 mm, tykke og grågrønne med brunt hode og tre par ben, og ligger gjerne kroket i en U-form.",
     "helsemessigBetydning": "Billene er helt ufarlige for mennesker, men kan oppleves som sjenerende når de sverver rundt hus i skumringen rundt midtsommer.",
     "tiltak": "Det finnes ingen tiltak mot selve svermingen, som varer omtrent en uke og avtar naturlig. De voksne billene kan gjøre mindre skade på løv hos trær og busker, mens larvene kan gi brune flekker i gressplener og skade potet- og rotvekster - tiltak mot larvene følger NIBIOs anbefalinger. Arten finnes i Sør- og Østlandet nord til Sør-Trøndelag, og foretrekker tørre, solrike steder med sandjord.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Maibille (ligner, men maibille er større 20–30 mm og flyr om våren)."
   },
   {
     "id": "sebraklanner",
     "navnNo": "Sebraklanner",
     "navnLatin": "Trogoderma angustum",
     "kategori": "Biller",
+    "kjennetegn": "2,2–3,9 mm. Smal, med variert behåring. Oppdages ofte ved at billene svermer mot vinduet om våren.",
     "beskrivelse": "Sebraklanner har tydelig kjønnsforskjell: hannen er 2,2-2,8 mm, svart til mørkebrun med tre hvite bånd over vingedekkene (derav navnet sebra), mens hunnen er større (2,8-3,9 mm) og mer rødbrun med gulhvite tverrbånd. Hunnens antenner er korte og tynne med en tydelig mørkebrun klubbe av de tre siste leddene. Larvene blir opptil 8 mm, med lyst brunt hårdekke, en lang hårdott bakerst og mørkere korte hårdotter på de bakre segmentene.",
     "helsemessigBetydning": "Larvenes avkastede hudrester er tett besatt med pilformede småhår som kan løsne i luften og er allergifremkallende ved innånding. I hjem kan larvene skade tørre matvarer, tekstiler og bokbind av lær, og i museer kan de utgjøre en alvorlig trussel mot utstoppede dyr og samlinger.",
     "tiltak": "Finn og fjern larvenes mat- og oppholdskilder gjennom grundig rengjøring og støvsuging. Frysing eller kasting av angrepne materialer og utstyr er vanligvis tilstrekkelig. Museer bør fryse nye gjenstander før de tas inn i samlingen.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Vepsebolklanner (svært lik; larver nær identiske)."
   },
   {
     "id": "skinkebiller",
     "navnNo": "Skinkebiller",
     "navnLatin": "Necrobia spp.",
     "kategori": "Biller",
+    "kjennetegn": "Varierende størrelse. Metallisk farge (blå, grønn, blågrønn). Ligner den blågrønne skinkebillen i fargetone.",
     "beskrivelse": "Skinkebiller er 4-7 mm lange biller med metallisk blå eller blågrønn farge. Den vanligste arten, rødbeint skinkebille (Necrobia rufipes), har røde ben og antenner, mens rødhalset skinkebille (Necrobia ruficollis) har rødlig farge på hode og vingedekker. Larvene blir opptil 10 mm, grå- eller gulhvite med brunt hode, blålige flekker og to mørke hakekroker bakerst.",
     "helsemessigBetydning": "Billene kan forurense røkt og tørket kjøtt og fisk ved å bore seg inn i fett- og beinvev, og kan også angripe museumsobjekter og animalske produkter. Skinkebiller er likevel sjelden et problem i Norge.",
     "tiltak": "Kjølig oppbevaring av proteinrike matvarer hemmer utviklingen, siden billene krever varme. Frysing ved -20 °C i en uke fjerner angrep effektivt, men behandlet mat bør likevel kastes. Fjern døde dyr fra vegger og gulv, og sørg for god hygiene rundt potensielle yngleplasser - kjemiske midler er sjelden nødvendig i Norge.",
@@ -1313,83 +1528,98 @@
     "navnNo": "Splintvedbiller",
     "navnLatin": "Lyctinae",
     "kategori": "Biller",
+    "kjennetegn": "2,5–8 mm. Rødbrun til svart, avlang. Hode lett synlig ovenfra. Ytterste to antenneledd tykkere – danner en kølle.",
     "beskrivelse": "Splintvedbiller er rødbrune til svarte biller på 2,5-8 mm med en avlang kropp der hodet er synlig fra oversiden, og de to ytterste antenneleddene er tykkere og danner en klubbe. De to vanligste artene i Norge er eikesplintbille (Lyctus linearis) og parkettbille (Lyctus brunneus). Larvene er hvite med mørkt hode, bredere fremst enn bak, og har tydelig større åndehull bakerst enn de andre.",
     "helsemessigBetydning": "Arten utgjør ingen kjent helserisiko for mennesker.",
     "tiltak": "Undersøk nykjøpte trevarer for ferske utgangshull, og fjern angrepet trevirke for å hindre spredning. Kuldebehandling ved -18 °C i 72 timer eller varmebehandling ved 60 °C i 24 timer (kjernetemperaturen må nå dette) er effektivt. For verdifulle gjenstander kan profesjonell gassing utføres av sertifisert personell. Forebygging handler om å overvåke ubehandlede løvtrevarer innendørs.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Hettebiller (nær slekt; splintvedbiller er en underfamilie av hettebiller)."
   },
   {
     "id": "stor-melbille",
     "navnNo": "Stor melbille",
     "navnLatin": "Tenebrio molitor",
     "kategori": "Biller",
+    "kjennetegn": "12–18 mm. Brunsvart, langstrakt parallellsidet og noe flattrykt kropp.",
     "beskrivelse": "Stor melbille er 12-18 mm lang med en langstrakt, parallellsidet og noe flattrykt kroppsform i mørk brunsvart farge. Larvene (mel-makk) blir opptil 32 mm, gulbrune og nesten sylindriske med en hard, glatt og skinnende overflate, og har små mørke pigger på siste bakkroppssegment. En nært beslektet art, brun melbille, er klart mindre med kun 5 mm.",
     "helsemessigBetydning": "Hovedproblemet er matforurensning, ikke direkte helserisiko. Larvene er svært næringsrike og brukes blant annet kommersielt som fiskeagn og dyrefôr for eksotiske kjæledyr, og spises som mat i enkelte land.",
     "tiltak": "Godt renhold og rask omløpshastighet på tørrvarer forebygger angrep. Finn og fjern yngleplasser og matkilder ved angrep. Varmebehandling ved 44 °C i 24 timer dreper både larver og voksne. Kjemisk bekjempelse er ikke nødvendig ved god hygiene.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Brunsvart melbille (4–6 mm, mye mindre). Liten melbille (~6 mm, fjørfehus)."
   },
   {
     "id": "stripet-borebille",
     "navnNo": "Stripet borebille",
     "navnLatin": "Anobium punctatum",
     "kategori": "Biller",
+    "kjennetegn": "2,5–4 mm, brun med tydelige langsgående lyse striper på dekkvingene. Nedliggende hår. V-formet opphøyning på brystskjoldet.",
     "beskrivelse": "Stripet borebille er 2,5-4,0 mm lang som voksen, brun med lengdestriper på vingedekkene og nedliggende hår. Et kjennetegn er en karakteristisk V-formet opphøyning på halsskjoldet, og hodet er skjult under halsskjoldet sett fra oversiden. Larvene er hvite, krokete, blir opptil 5-6 mm og lever skjult i veden.",
     "helsemessigBetydning": "Arten utgjør ingen kjent helserisiko for mennesker. Dette er et byggskadedyr som ikke er forbundet med sykdom eller matforurensning.",
     "tiltak": "Reduser fuktigheten i treverket til under 12 % ved å tette lekkasjer og forbedre drenering og ventilasjon. Kuldebehandling ved -15 °C i flere dager eller varmebehandling ved 48 °C over lengre tid (lengre for store objekter) er effektivt. Treimpregneringsmidler kan påføres overflaten av profesjonelle skadedyrbekjempere. I moderne, tørre hus med normal fuktighet på 12-15 % kan billen ikke opprettholde et angrep.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Råteborebille (5–6 mm, svart med én gul flekk). Myk borebille (ingen striper, myke dekkvinger)."
   },
   {
     "id": "tobakksbille",
     "navnNo": "Tobakksbille",
     "navnLatin": "Lasioderma serricorne",
     "kategori": "Biller",
+    "kjennetegn": "2–4 mm, eggformet, ensfarget brungul. Sagtakkete antenner. Glatt rygg. Lett lutrygget profil.",
     "beskrivelse": "Tobakksbille er 2-4 mm lang, eggformet med brungul til rødbrun farge, sagtannede antenner og spredte, gylne, utstående hår på en jevn overflate. Den holder karakteristisk hodet bøyd nedover under kroppen. Larvene er omtrent 4 mm, gulhvite, krokete med lyst brunt hode og ben.",
     "helsemessigBetydning": "Hovedproblemet er matforurensning og bedervelse, ikke direkte helserisiko. Billen har en uvanlig evne til å bryte ned giftstoffer via tarmbakterier, og kan derfor spise pyretrumplanter og salholdige stoffer som er dødelige for andre insekter. Den angriper tørre matvarer, krydder, medisinske planter og museumsobjekter.",
     "tiltak": "Frys angrepne varer ved -18 °C i 24 timer eller -4 °C i 7 dager. Varmebehandling over 60 °C er også effektiv. Forebygg med tette beholdere, kjøling eller temperaturer under 18 °C, og bruk feromonfeller for overvåking. Larvicider basert på metopren er mer effektive enn permetrin ved kjemisk bekjempelse.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Brødbille (gylne hår, tre lange antenneledd, svake striper)."
   },
   {
     "id": "veksthussnutebille",
     "navnNo": "Veksthussnutebille",
     "navnLatin": "Otiorhynchus sulcatus",
     "kategori": "Biller",
+    "kjennetegn": "~10 mm. Matt gråsvart, eggformet kropp. Punkterte striper og flekkvis gulaktig behåring på dekkvingene. Sammenvokste dekkvinger – kan ikke fly.",
     "beskrivelse": "Veksthussnutebille er omtrent 10 mm lang, matt gråsvart med eggformet kropp, punkterte striper på vingedekkene og flekkvis gulaktig behåring. Vingedekkene er sammenvokst slik at billen ikke kan fly, og hodet går ut i en kort, bred snute som gir den et utseende som kan minne om gransnutebille. Larvene blir opptil 10 mm, kremfargede, krokete, beinløse med brunt hode.",
     "helsemessigBetydning": "Arten utgjør ingen kjent helserisiko for mennesker og truer ikke hus eller inventar - bekymringen gjelder kun skade på planter.",
     "tiltak": "Innendørs: fjern angrepne potter, bruk nyttenematoder fra hagesentre, eller plukk voksne biller manuelt. Utendørs: håndplukking om natten med lommelykt, nyttenematoder, og bevaring av naturlige predatorer som spissmus, piggsvin, frosk og fugl. I veksthus brukes insektnetting, tetting av sprekker, vekstskifte og nematodebehandling - kjemiske midler er sjelden nødvendig.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Gransnutebille (10–12 mm, med gule hår-tverrband, kan fly)."
   },
   {
     "id": "vepsebolklanner",
     "navnNo": "Vepsebolklanner",
     "navnLatin": "Reesa vespula",
     "kategori": "Biller",
+    "kjennetegn": "Liten klanner. Finnes i vinduskarmer om morgenen. Lever i vepse-/humlebol.",
     "beskrivelse": "Vepsebolklanner er 2-5 mm lang, med svart hode, halsskjold og fremre del av vingedekkene, etterfulgt av et lyst diagonalt bånd og brune ytterste vingedekker. Larvene blir opptil 6 mm, langstrakte og leddete med avsmalnende bakkropp, kryssbånd av fine hår på de tre bakerste ryggsegmentene, grovere bust, og en tynn hårdott i bakenden som kan nå halve kroppslengden. Den kan forveksles med larver av sebraklanner.",
     "helsemessigBetydning": "Arten utgjør ingen kjent helserisiko for mennesker. Den er først og fremst et problem for museumssamlinger og lagrede materialer.",
     "tiltak": "I museer dreper frysing ved -20 °C i 48 timer eller oppvarming til 55 °C i én time alle stadier, og oksygenfri lagring (0,3 % oksygen) fjerner 99 % av larvene på 54 timer. I private hjem er grundig støvsuging av steder billene oppholder seg viktigst, sammen med frysing eller kasting av støvsugerposer og tetting av sprekker i gulv.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Sebraklanner (svært lik – larver nær identiske, voksne skilles knapt uten lupe)."
   },
   {
     "id": "atselgraver",
     "navnNo": "Åtselgraver",
     "navnLatin": "Necrodes littoralis",
     "kategori": "Biller",
+    "kjennetegn": "15–25 mm. Helsvart. De ytterste tre antenneleddene rødlige; kølleformede antenner. Dekkvingene dekker ikke hele bakkroppen – bakre ledd synlige.",
     "beskrivelse": "Åtselgraver er en relativt stor og kraftig bille på 15-25 mm, helt svart bortsett fra de tre ytterste antenneleddene som er rødlige og klubbeformede. Vingedekkene har opphøyde lengderygger og dekker ikke hele bakkroppen - hos hannen er fem bakkroppssegmenter synlige, hos hunnen bare det siste. Larvene er mørke, velutviklede med ben og antenner, og når omtrent 20 mm.",
     "helsemessigBetydning": "Arten utgjør ingen kjent helserisiko for mennesker, men kan trekkes mot råtnende animalske matvarer i produksjonsbedrifter og butikker. Arten er også kjent fra rettsmedisinsk entomologi på grunn av sin tiltrekning til døde dyr.",
     "tiltak": "Fjern råtnende animalske matvarer, som er den viktigste årsaken til at billen dukker opp. Voksne biller og larver kan settes ut igjen utendørs, eller fjernes med støvsuger og posen fryses. Bekjempelse er normalt ikke nødvendig siden skaden er minimal og maten som tiltrekker billen allerede er bedervet og bør kastes uansett.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Kortvinger (lik korte dekkvinger, men åtselgraver er mye større og helsvart)."
   },
   {
     "id": "flaggermus",
     "navnNo": "Flaggermus",
     "navnLatin": "Chiroptera",
     "kategori": "Pattedyr",
+    "kjennetegn": "Eneste flygende pattedyr. Flyvehud mellom lange fingre, armer og kropp. Kropp 3–8 cm, pelskledde. Aktiv i skumring/natt.",
     "beskrivelse": "Flaggermus er de eneste flygende pattedyrene og kan ligne en liten mus med vinger, men har en helt annen tannbygning enn gnagere. Vingene består av en tynn flygehud mellom frem- og bakben og stjert. Norge har 11 dokumenterte arter, alle insektetende. Avføringen består kun av insektrester og er tørr og smuldrer lett mellom fingrene - til forskjell fra gnagerekskrementer.",
     "helsemessigBetydning": "Flaggermus utgjør normalt ingen helserisiko for mennesker, selv når de bor i bygninger. De kan i sjeldne tilfeller bære flaggermus-rabiesvirus, men smitte til mennesker i Europa er ekstremt sjeldent og ikke påvist i Norge - smitte kan skje ved bitt, kloring eller spyttkontakt med slimhinner eller skadet hud. Det viktigste problemet i praksis er lukt og misfarging av vegger og gulv fra avføring og urin ved store kolonier i dårlig ventilerte rom.",
     "tiltak": "Tetting er den eneste lovlige metoden og kan bare gjøres i september, ikke i yngletiden (sommer) eller under vinterhi - tett permanente åpninger over 7 mm med finmasket netting, plast eller fugemasse (flaggermus gnager seg ikke inn, så metall er ikke nødvendig). Bruk løst hengende netting som lar dyrene komme ut, men ikke inn igjen. Enkeltindivider kan fanges forsiktig med hansker eller ved å sette en boks over dem og slippes ut i skumringen. Å drepe, fange eller bruke ultralydapparater er forbudt. Økt ventilasjon og fjerning av avføring der det er mulig reduserer lukt.",
@@ -1401,50 +1631,59 @@
     "navnNo": "Buorm",
     "navnLatin": "Natrix natrix",
     "kategori": "Krypdyr / Reptiler",
+    "kjennetegn": "Opptil 130 cm. To karakteristiske gule/oransje nakkeflekker. Runde pupiller. Smidig og slank, mørkegrønn til svart.",
     "beskrivelse": "Buorm er Norges største innenlandske slangeart og kan bli over 100 cm, med et norsk lengderekord på 135 cm. Kroppen er slank og smidig med tydelige bukter når den beveger seg. Fargen er grå, brungrå eller svart med karakteristiske hvite til oransjegule nakkeflekker, og i sjeldne tilfeller er individer helt svarte. Den har runde pupiller, til forskjell fra hoggormens vertikale spalter.",
     "helsemessigBetydning": "Buorm utgjør ingen vesentlig helserisiko for mennesker og er ikke giftig. Bitt er mulig, men vil bare være smertefullt, ikke farlig. Reptiler kan i teorien bære bakterier som Salmonella, men direkte kontakt er sjelden siden buorm unngår mennesker.",
     "tiltak": "Siden buorm ikke gjør skade, er forebyggende tiltak generelt ikke nødvendig. For den som ønsker å redusere forekomsten kan vegetasjon, kratt, høyt gress og steinrøyser nær bygninger fjernes, siden dette reduserer byttedyr og dermed indirekte slangenes tilstedeværelse. Enkeltindivider kan fanges i et plast- eller pappørør lagt på bakken (sjekk på kjølige kvelder eller morgener når slangene er mindre aktive) og slippes ut igjen et annet sted. Alle slanger i Norge er fredet, og buorm kan ikke bekjempes siden den ikke utgjør noen trussel.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Hoggorm (sikksakkbånd, spalteformede pupiller, ingen nakkeflekker). Slettsnok (mørke flekker, ingen nakkeflekker)."
   },
   {
     "id": "hoggorm",
     "navnNo": "Hoggorm",
     "navnLatin": "Vipera berus",
     "kategori": "Krypdyr / Reptiler",
+    "kjennetegn": "≤65 cm. Tydelig svart sikksakkbånd langs ryggen. Spalteformede (vertikale) pupiller. Relativt tykk kropp, avrundet hode.",
     "beskrivelse": "Hoggorm er vanligvis under 65 cm, men kan bli opptil 86 cm. Det mest kjennetegnende trekket er et svart sikksakkbånd langs ryggen. Fargen varierer - grå individer (oftest hanner) og brune individer (oftest hunner), samt noen helt svarte. Pupillene er synlige som vertikale spalter, til forskjell fra buorm (hvite/gule nakkeflekker) og slettsnok (to rekker svarte prikker). Kroppen er robust og noe stiv med få bukter når den beveger seg.",
     "helsemessigBetydning": "Hoggorm er Norges eneste giftige slange. Omtrent 30 % av bitt er såkalte tørre bitt uten gift og er helt ufarlige. Ved giftbitt kan man få lokal smerte, hevelse og rødhet, og i alvorlige tilfeller hevelse over hele kroppen, oppkast, kvalme, magesmerter, hjerteklapp, sjokk, svimmelhet og bevisstløshet. Dødsfall er svært sjeldne i Norge. Ved bitt: kontakt Giftinformasjonen (22 59 13 00) eller nødnummer 113.",
     "tiltak": "Fjern vegetasjon, kratt, høyt gress og steinrøyser nær boliger, og tett sprekker i grunnmur samt skadde luftehull og vinduer. Bruk plast- eller pappørør som humane feller (sjekk om kveld eller morgen), og flytt fangede dyr - hanner må flyttes minst 1 km for å unngå at de returnerer. Kjemiske midler har ingen effekt. Riktig artsbestemmelse før tiltak er avgjørende, siden hoggorm kan forveksles med ufarlige arter.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Buorm (gule nakkeflekker, runde pupiller, smidigere). Slettsnok (to rader mørke flekker, runde pupiller)."
   },
   {
     "id": "slettsnok",
     "navnNo": "Slettsnok",
     "navnLatin": "Coronella austriaca",
     "kategori": "Krypdyr / Reptiler",
+    "kjennetegn": "40–75 cm. To rader med mørke flekker langs ryggen. Runde pupiller. Glatt skjelloverflate.",
     "beskrivelse": "Slettsnok når vanligvis omtrent 75 cm, med et norsk rekordeksemplar på 93 cm. Fargen er brun eller grå, med to rekker mørke prikker langs ryggen, en markert mørk tegning på hodet og en mørk strek langs siden av hodet. Hanner er ofte lysere enn hunner. Runde pupiller skiller den fra hoggormen, som har vertikale, spalteformede pupiller.",
     "helsemessigBetydning": "Slettsnok utgjør ingen risiko for mennesker. Arten har ikke gift og er helt ufarlig. Den er fredet og regnes som sårbar, med status nær trua i Norge.",
     "tiltak": "Bekjempelse er ikke nødvendig siden arten ikke gjør skade. For de som er bekymret kan tett vegetasjon, kratt, steinrøyser og bergformasjoner nær bygninger fjernes for å gjøre området mindre attraktivt. Enkeltindivider kan fanges i plast- eller pappørør lagt på bakken og slippes ut igjen et annet sted etter å ha sjekket rørene på kjølige morgener eller kvelder.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Hoggorm (sikksakkbånd, spalteformede pupiller). Buorm (gule nakkeflekker, lengre)."
   },
   {
     "id": "stalorm",
     "navnNo": "Stålorm",
     "navnLatin": "Anguis fragilis",
     "kategori": "Krypdyr / Reptiler",
+    "kjennetegn": "40–46 cm, beinløs øgle (ikke slange – har øyelokk og kan kaste halen). Glinsende brun/gråbrun, sylindrisk.",
     "beskrivelse": "Stålorm er en beinløs firfisle, ikke en slange, og blir 40-46 cm lang med en stiv og hard kropp på grunn av beinplater under huden. Hanner er vanligvis jevnt grå, mens hunner er lysebrune med mørke sidetegninger og en mørk ryggstripe. Unger har en mer gylden eller sølvfarget glans. Som andre firfisler kan den kaste av seg stjerten ved fare.",
     "helsemessigBetydning": "Stålorm utgjør ingen helserisiko for mennesker og er helt ufarlig - den gjør ingen skade.",
     "tiltak": "Arten er fredet, og bekjempelse er forbudt ved lov. Det eneste anbefalte tiltaket er å fjerne busker, kratt, høyt gress og komposthauger nær bygninger dersom man ønsker å redusere forekomsten nær huset. Stålorm er økologisk nyttig - den spiser meitemark, snegler og insekter, og er selv mat for rovfugler og annen fauna.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Slanger generelt (stålorm har øyelokk og kan avkaste halen – slanger kan ikke dette)."
   },
   {
     "id": "grevling",
     "navnNo": "Grevling",
     "navnLatin": "Meles meles",
     "kategori": "Pattedyr",
+    "kjennetegn": "67–90 cm. Karakteristisk svart-hvitt stripet hode (to svarte striper). Grålig raggete pels. Kraftig og lavbent.",
     "beskrivelse": "Grevling kjennes lett på det svarte og hvite hodet. Voksne dyr har en kroppslengde på 67-90 cm og stjert på 11-20 cm. Hanner veier vanligvis 9-17 kg (opptil 22 kg er registrert), hunner er mindre med 6-14 kg. Pelsen er grå og raggete på rygg og sider, bena er korte og kraftige med lange klør for graving. Sporene er karakteristiske - de peker litt innover og er bredere enn de er lange, med kloavtrykk i en bue.",
     "helsemessigBetydning": "Grevling utgjør minimal helserisiko for mennesker. Den er et fredfullt dyr som ikke angriper folk, og selv om mange tror grevlinger biter aggressivt, flykter de ved forstyrrelse og viser bare tenner hvis de blir hjørnet og trues.",
     "tiltak": "Sikre hager med solide gjerder, selv om grevling kan grave seg under. Sikre avfallsbeholdere og kompost, og fjern nedfallsfrukt. Tett ikke igangsatte hi-innganger, siden dette kan stenge inne unger eller forårsake mer skade. Skadefelling krever at skaden har betydelig økonomisk omfang - mindre gressplen- eller kompostskade kvalifiserer ikke. Levende fangst og flytting er forbudt uten spesiell tillatelse, og profesjonell hjelp anbefales i tråd med viltforskriftene.",
@@ -1456,39 +1695,46 @@
     "navnNo": "Mink",
     "navnLatin": "Neovison vison",
     "kategori": "Pattedyr",
+    "kjennetegn": "35–45 cm kropp. Langstrakt, mørk brun (nær svart) pels med liten hvit flekk under haken.",
     "beskrivelse": "Mink har en langstrakt og smidig kropp med korte ben. Kroppslengden inkludert stjert er 45-70 cm, og stjerten utgjør omtrent en tredjedel av denne lengden. Vekten er typisk 1-2 kg. Pelsen er vanligvis brun, men rømte oppdrettsmink har gitt fargevarianter fra hvitt til svart i ville bestander. Et karakteristisk kjennetegn er en nesten alltid tilstedeværende hvit flekk på haken.",
     "helsemessigBetydning": "Det er ikke beskrevet smitte- eller helserisiko for mennesker. Problemene er hovedsakelig knyttet til skade på eiendom og økologi.",
     "tiltak": "Innendørs kan mink gi forurensning fra avføring og urin, ødelegge gjenstander og gi luktproblemer fra lagret, ruttent fiskeavfall og hiplasser. Økologisk gjør arten betydelig skade ved å ta fugler og andre dyr, og påvirker fuglebestander, amfibier, kreps og fisk, særlig i akvakulturanlegg. Tett alle åpninger større enn 2,5 cm med fugemasse eller netting, sikre vinduer og luftekanaler med metallnetting, og beskytt rørgjennomføringer og dreneringssystemer. Lisensiert jakt er tillatt hele året ved økonomisk betydelig skade og etter at forebyggende tiltak er forsøkt - dødelige feller og levendefangstbur er godkjent, mens gift er forbudt.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Mår (55–70 cm, gulhvit strupeflekk, busket hale). Røyskatt (18–31 cm, hvit vinterpels med svart halespiss)."
   },
   {
     "id": "mar",
     "navnNo": "Mår",
     "navnLatin": "Martes martes",
     "kategori": "Pattedyr",
+    "kjennetegn": "55–70 cm kropp. Gulhvit strupeflekk. Brun/gråbrun pels. Busket hale.",
     "beskrivelse": "Mår er et mellomstort rovdyr med langstrakt kropp og relativt korte ben. Kroppslengden er 36-56 cm, stjerten 17-28 cm, og vekten opptil 2 kg. Pelsen er brun med en karakteristisk gulhvit strupeflekk som ofte strekker seg ned mot brystet. Den har en lang, busket stjert og lengre ører enn mink, med lyse ytterkanter. Avføringen er 8-10 cm lang, pølseformet, vridd og tilspisset, mørkegrå til svart med hår og bein, og har en distinkt, ubehagelig muskuslukt. Sporene viser et karakteristisk hoppende parspor med vekslende korte og lange hopp.",
     "helsemessigBetydning": "Mår gjør normalt ingen skade på menneskelige interesser, og ingen smitterisiko er beskrevet. Hovedproblemet er luktproblemer når dyr bosetter seg i bygninger.",
     "tiltak": "Forebygging skjer ved å tette alle åpninger større enn 5-6 cm (omtrent eggstørrelse) på bygninger, inkludert høytliggende åpninger, før dyrene etablerer seg. Felling med klappfeller, fallfeller eller andre feller er tillatt i tråd med viltforskriftene, og honning fungerer som effektiv åte. Dødelig bekjempelse krever at lovens kriterier om økonomisk skade og forsøkte forebyggende tiltak er oppfylt.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Mink (mørk brun nær svart, hvit hakeflekk). Røyskatt (mye mindre, hvit vinterpels)."
   },
   {
     "id": "royskatt",
     "navnNo": "Røyskatt",
     "navnLatin": "Mustela erminea",
     "kategori": "Pattedyr",
+    "kjennetegn": "18–31 cm kropp. Sommer: brun rygg, hvit buk. Vinter: helt hvit pels med karakteristisk svart halespiss.",
     "beskrivelse": "Røyskatt er en liten mårdyrart med kroppslengde 18-31 cm og stjert på 5-12 cm, og veier opptil 450 gram. Vinterpelsen er helt hvit bortsett fra den karakteristiske svarte stjertspissen, mens sommerpelsen er brun på oversiden med gulhvit underside. Sporene viser det typiske hoppende parsporet til mårdyr - frampotene gir avtrykk på ca. 2 x 1,5 cm og bakpotene 3,5 x 1,3 cm. Avføringen er omtrent 5 mm tykk, pølseformet, vridd og tilspisset, og inneholder hår, fjær og bein.",
     "helsemessigBetydning": "Det er ikke beskrevet smitte- eller helserisiko for mennesker. Røyskatt regnes generelt som nyttig siden den spiser store mengder smågnagere. Indirekte problemer kan oppstå som lukt fra lagret byttedyr i bygninger, eller skade på lagrede varer.",
     "tiltak": "Tett alle åpninger i bygninger - røyskatt er en utmerket klatrer, så også høytliggende sprekker må sikres. Levendefeller med agn som smågnagere, egg eller fisk er effektive, og dødelige feller må fungere slik at dyret dør umiddelbart. Kjemisk gift er forbudt, og ultralydapparater har ingen vitenskapelig dokumentert effekt. Bruk av skytevåpen i boligområder krever politiltillatelse.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Mink (mørk brun, hvit hakeflekk). Mår (mye større, gul strupeflekk). Den svarte halespissen er unik for røyskatt."
   },
   {
     "id": "gulloyne",
     "navnNo": "Gulløyne",
     "navnLatin": "Chrysoperla carnea",
     "kategori": "Smådyr",
+    "kjennetegn": "Mellomstort insekt, slank lysegrønn kropp (rødbrun om høsten), 12–20 mm. Fire store gjennomsiktige iriserende vinger med finmasket ribbemønster, holdes som tak i hvile. Lange trådformede antenner. Gullglinsende øyne.",
     "beskrivelse": "Gulløyne er middels store insekter med øyne som hos levende individer skinner som glinsende rødt gull. Kroppen er lysegrønn eller brun, og vingene er store, gjennomsiktige og iriserende med et fint nettverk av årer. Antennene er lange og trådtynne. Vingespennet er 20-40 mm, og den vanligste av Norges 14 arter måler 24-32 mm. De flyr sakte og noe klossete, og skifter farge med sesongen - grønn om sommeren, rødbrun om høsten, og grønn igjen om våren. Larvene, kalt bladlusløver, er rovdyr som fester rester av byttedyr på kroppen som kamuflasje.",
     "helsemessigBetydning": "Gulløyne er ufarlige for mennesker. Larvene har lange, spisse, hule kjever for å injisere fordøyelsesenzymer i byttedyr, og kan i sjeldne tilfeller bite mennesker ved håndtering av planter der larvene lever - bittet er ufarlig, men kan være smertefullt og gi betydelig hevelse hos noen.",
     "tiltak": "Ingen tiltak er nødvendig for voksne individer som overvintrer innendørs - de kan enkelt slippes ut igjen når våren kommer. Gulløyne er et nyttedyr som spiser bladlus, og naturlige bestander bør støttes snarere enn bekjempes.",
@@ -1500,6 +1746,7 @@
     "navnNo": "Hussiriss",
     "navnLatin": "Acheta domestica",
     "kategori": "Smådyr",
+    "kjennetegn": "Gulbrun med mørke flekker, 15–20 mm. Vinger taklagt over ryggen. Bakre beinpar er hoppebein. Hunn med langt eggleggingsrør. Lager sterkt gnissende/plystrende lyd.",
     "beskrivelse": "Hussiriss er omtrent 2 cm lang som voksen, lys gulbrun til gråbrun med brunsvarte tegninger på hode og bryst. Hunnene har et tydelig forlenget eggleggingsrør som peker bakover. Til forskjell fra markgresshopper ligger vingene flatt på kroppen. Hannene kan overfladisk minne om kakerlakker, men har et tydelig synlig hode, mens kakerlakkers hode er skjult under halsskjoldet sett fra oversiden.",
     "helsemessigBetydning": "Arten gir ingen kjent direkte helserisiko. Hovedproblemet er at hannene lager en skarp, skrapende lyd ved å gni forvingene mot hverandre, noe som kan være sjenerende og vanskelig å lokalisere innendørs.",
     "tiltak": "Hussiriss gjør ingen strukturell skade, men kan skade matvarer og gnage hull i papir og tekstiler - den regnes likevel ikke som et seriøst skadedyr. Tett sprekker der insektene søker tilhold nær varmekilder, og hindre tilgang til mat. Ved store angrep bør yngleplasser i kompost eller avfallsdeponier oppsøkes og fjernes. Innendørs dør sirissene ofte naturlig på grunn av for lav luftfuktighet og mangel på egnede eggleggingssteder.",
@@ -1511,6 +1758,7 @@
     "navnNo": "Hårormer",
     "navnLatin": "Gordius spp.",
     "kategori": "Smådyr",
+    "kjennetegn": "Ekstremt lange (30–40 cm) men bare ~1 mm tykke, trådformede. Gråhvit til brun/svart. Liten fortykkelse i hodeenden; ingen synlige lemmer.",
     "beskrivelse": "Hårormer, også kalt taglormer, er trådtynne dyr som kan minne om langt, viklete hestehår. De er 30-40 cm lange, men bare omtrent 1 mm i diameter, og fargen varierer fra gråhvitt til brunt og svart. I forenden er det en liten fortykkelse, men dyrene har verken munn eller fordøyelsessystem som voksne. I Norge er slekten Gordius den vanligste.",
     "helsemessigBetydning": "Hårormer er helt ufarlige for mennesker. Verken voksne dyr eller larver kan utvikle seg i mennesker. Et funn i drikkevann viser bare at insekter har hatt tilgang til vannkilden, og er ikke i seg selv et tegn på forurensning.",
     "tiltak": "Ingen tiltak er nødvendig siden dyrene er ufarlige. De lever i ferskvann som tjern, dammer og bekker over hele Norge, og dukker av og til opp i brønner, særlig i juli. Dersom man ønsker å unngå dem i drikkevann, bør brønnen sikres mot innsekter og overflatevann.",
@@ -1522,6 +1770,7 @@
     "navnNo": "Saksedyr",
     "navnLatin": "Forficula auricularia",
     "kategori": "Smådyr",
+    "kjennetegn": "Brunrød, 10–16 mm (uten klosaks). Tydelig klosaks/tang bakerst på bakkroppen, kraftigst hos hannen. Korte dekkvinger, flyr ikke.",
     "beskrivelse": "Saksedyr kjennetegnes lett på de sakseformede vedhengene (cerci) bakerst på kroppen. Den vanlige arten i Norge blir 15-20 mm lang, med brun kropp og lysere brune bein. Hannen har krumme, buede saksetenger, mens hunnens er rette med en liten bøy i tippen.",
     "helsemessigBetydning": "Saksedyr er helt ufarlige og gjør ingen skade på mennesker eller bygninger. De regnes ikke som skadedyr, selv om noen finner dem ubehagelige eller skremmende når de kommer inn i huset.",
     "tiltak": "Insektmidler er unødvendig mot saksedyr. Fjern fuktig vegetasjon, løv og komposthauger nær husvegger for å redusere yngleplasser. Inne i huset er støvsuging eller oppsamling med sopp og skuffebrett effektivt for å fjerne enkeltindivider.",
@@ -1533,28 +1782,33 @@
     "navnNo": "Skjeggkre",
     "navnLatin": "Ctenolepisma longicaudatum",
     "kategori": "Smådyr",
+    "kjennetegn": "Vingeløst, skjellkledd, mørkegrå og spraglet, 10–14 mm (opptil 18 mm). Tre lange haletråder der midtre ≈ kroppslengden og sidetrådene peker vinkelrett ut. Tydelig hår-/skjeggbehåring. Kan klatre på vegger og tak.",
     "beskrivelse": "Skjeggkre er et vingeløst insekt med skjellkledd, mørkegrå kropp, normalt 10-14 mm, men kan bli opptil 18 mm. Den ligner sølvkre, men er større, har lengre haletråder og mer fremtredende hårdekke.",
     "helsemessigBetydning": "Skjeggkre utgjør liten direkte helserisiko og gjør for det meste lite skade i boliger, men mange finner dem ubehagelige. Ved store bestander kan de skade bøker, museumsgjenstander og tekstiler.",
     "tiltak": "Forgiftet åte, for eksempel produkter med indoxacarb, lagt som små dråper langs vegger er hovedmetoden mot skjeggkre. I tillegg bør matrester reduseres ved støvsuging, sprekker og åpninger tettes, klisterfeller brukes til overvåking, og lufta holdes tørr og kjølig. Varme- eller kuldebehandling kan brukes på utsatte gjenstander. Best resultat oppnås ved å kombinere flere tiltak.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Sølvkre (lysere/jevnt sølvglinsende, mindre, korte haletråder, lite behåring, holder seg til bad/kjøkken)."
   },
   {
     "id": "skolopendere",
     "navnNo": "Skolopendere",
     "navnLatin": "Lithobius forficatus",
     "kategori": "Smådyr",
+    "kjennetegn": "Langstrakt, flattrykt kropp med mange ledd. Steinkrypere kraftige (opptil 30 mm), jordkrypere slanke (opptil 70 mm). Ett beinpar per ledd. Giftklør bak hodet.",
     "beskrivelse": "Skolopendere har en langstrakt, flattrykt kropp med mange kroppsledd og bein, og er vanligvis brune, gule eller røde. I Norge finnes to hovedgrupper: steinkrypere (Lithobiomorpha), som har en kraftigere kropp og blir opptil 30 mm (Lithobius forficatus er størst), og jordkrypere (Geophilomorpha), som har en slankere kropp og kan bli opptil 70 mm (Stigmatogaster subterraneus er lengst).",
     "helsemessigBetydning": "Ingen norske skolopendere er farlige for mennesker. De regnes ikke som skadedyr, selv om de kan komme inn i hus innimellom.",
     "tiltak": "Kjemiske midler er unødvendige. Tett sprekker og åpninger der dyrene kommer inn. Skolopendere som har kommet innendørs kan enkelt fjernes ved støvsuging eller ved å fei dem ut - de tørker ofte ut og dør naturlig i det tørre inneklimaet.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Tusenbein (to beinpar per ledd fra 5. ring, sylindrisk/rundt tverrsnitt, tregere)."
   },
   {
     "id": "skrukketroll",
     "navnNo": "Skrukketroll",
     "navnLatin": "Porcellio scaber",
     "kategori": "Smådyr",
+    "kjennetegn": "Flattrykt, ovalt krepsdyr med trilobittlignende utseende, 1–2 cm. Syv par bein, to antenner. Grå til brungrå panserlignende skall.",
     "beskrivelse": "Skrukketroll er flattrykte, ovale krepsdyr med syv par bein og to antenner, vanligvis 1-2 cm lange. I Norge finnes 22 utearter, samt fire arter som lever i veksthus. De to vanligste artene innendørs er Porcellio scaber og Oniscus asellus.",
     "helsemessigBetydning": "Skrukketroll utgjør ingen helsefare for mennesker og overfører ingen sykdommer. De er helt ufarlige krepsdyr, men kan i veksthus gjøre noe skade på unge planter og lagrede grønnsaker som potet og kål.",
     "tiltak": "Det viktigste tiltaket er å redusere fuktighet gjennom bedre ventilasjon, oppvarming og fuktsperrer, samt sette netting over luftehull for å hindre at de kommer inn. Innendørs kan de enkelt fjernes med kost og sopelapp - dette er mer miljøvennlig enn å bruke insektmidler. Ved uvanlig store bestander bør komposthauger og dødt plantemateriale flyttes bort fra huset. Skrukketroll har en nyttig økologisk rolle som nedbrytere av dødt plantemateriale.",
@@ -1566,39 +1820,33 @@
     "navnNo": "Spretthaler",
     "navnLatin": "Collembola",
     "kategori": "Smådyr",
+    "kjennetegn": "Svært små, 1–5 mm (opptil 1 cm), bløt kropp. Springgaffel under bakkroppen – hopper når skremt. Korte eller lange antenner; kroppen kort/rund eller langstrakt. Fargen varierer mye.",
     "beskrivelse": "Spretthaler er små leddyr, nære slektninger av insektene, og kan være enten avlange eller runde. De er vanligvis under 2 mm, opptil rundt 1 cm i sjeldne tilfeller. På undersiden har de en karakteristisk hoppegaffel som gir dem navnet, og de kan innendørs forveksles med støvlus. Et eksempel på en art som forekommer innendørs er Willowsia nigromaculata.",
     "helsemessigBetydning": "Spretthaler regnes ikke som skadedyr og spiller en viktig økologisk rolle som nedbrytere og resirkulerere av næringsstoffer i jord. De utgjør ingen direkte helserisiko, men forekomst innendørs er ofte et tegn på fuktproblemer. Et lite antall arter kan skade spirer og grønnsaker, men de fleste artene er nyttige.",
     "tiltak": "Det viktigste tiltaket er å redusere fuktigheten, gjennom bedre ventilasjon, oppvarming, drenering og isolasjon - de fleste angrep løser seg naturlig når underlaget tørker ut. Insektmidler er normalt ikke nødvendig. I veksthus finnes biologiske preparater for plantebeskyttelse mot skadelige arter.",
     "bildeUrl": "",
-    "region": "Norge"
-  },
-  {
-    "id": "svommekloe",
-    "navnNo": "Svømmekløe",
-    "navnLatin": "Trichobilharzia spp.",
-    "kategori": "Smådyr",
-    "beskrivelse": "Svømmekløe oppstår når mikroskopiske larver (cercarier) av flatmark som normalt smitter vannfugler, ved et feiltrinn borer seg inn i menneskehud under bading i ferskvann. Larvene dør under huden kort tid etter, men kan utløse en allergisk hudreaksjon.",
-    "helsemessigBetydning": "Larvene er ikke farlige og kan ikke utvikle seg videre i mennesker, men de kan gi en allergisk reaksjon av varierende styrke. De fleste får bare lette symptomer, mens noen kan få sterkere reaksjoner med hevelse, forstørrede lymfeknuter, feber, kvalme og diaré. Man merker først en stikkende, kilende følelse i huden 4-20 minutter etter at man går ut av vannet, deretter utvikles røde kviser som når maksimal størrelse innen et døgn og som ofte ligner myggstikk. Kløen avtar normalt innen en til to uker, men kan variere med tidligere eksponering.",
-    "tiltak": "Bad gjerne på steder med lite vannvegetasjon og få snegler, og unngå grunne, vindstille områder der larvene samler seg. Tørk og dusj kroppen umiddelbart etter bading, og bruk eventuelt vannfast solkrem med beskyttelse mot brennmaneter. Heldekkende badeklær reduserer eksponert hudområde i utsatte vann.",
-    "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Støvlus (lik størrelse og levested; spretthaler kjennes på springgaffel og hoppeevne)."
   },
   {
     "id": "solvkre",
     "navnNo": "Sølvkre",
     "navnLatin": "Lepisma saccharina",
     "kategori": "Smådyr",
+    "kjennetegn": "Vingeløst, skjellkledd, jevnt sølvglinsende. Kropp 7–12 mm, flattrykt og avsmalnende. Tre haletråder, ikke lengre enn halve kroppslengden. To lange antenner.",
     "beskrivelse": "Sølvkre er et vingeløst insekt med flattrykt kropp i grå og sølvskinnende farge, dekket av skjell. Voksne dyr er 7-12 mm lange, med tre haletråder og to lange antenner.",
     "helsemessigBetydning": "Sølvkre utgjør liten helserisiko og gjør lite skade - de regnes som ufarlige, om enn lite estetisk tiltalende, gjester i hjemmet. De spiser mugg og krever høy luftfuktighet (75-90 %) for å overleve, så forekomst kan tyde på et fuktproblem i boligen.",
     "tiltak": "Hovedtiltaket er å redusere fuktigheten - øk temperaturen, forbedre ventilasjonen og få luftfuktigheten under 60 %. Støvsuging (med forsvarlig tømming av posen) er å foretrekke over våtrengjøring, og sprekker bør tettes for å fjerne fuktkilder. I vedvarende tilfeller kan godkjente skadedyrbekjempere legge ut forgiftet åte langs vegger og gulvlister, men dette er bare nødvendig i spesielle tilfeller.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Skjeggkre (mørkere/spraglet, større 10–18 mm, lengre haletråder, mer behåring, finnes overalt i huset)."
   },
   {
     "id": "trips",
     "navnNo": "Trips",
     "navnLatin": "Frankliniella occidentalis",
     "kategori": "Smådyr",
+    "kjennetegn": "Svært liten, smal, langstrakt insekt. Kan opptre innendørs fra potteplanter eller som svermende individer utenfra. Kan stikke.",
     "beskrivelse": "Trips er svært små insekter på 0,5-12 mm, vanligvis under 3 mm, med langstrakt kropp i brunt, svart, hvitt eller gult. De har to par smale vinger med lange hårfrynser, sugende munndeler og små sugeskiver på fotleddene. Nymfer er vingeløse og gjennomsiktige. Amerikansk blomstertrips (Frankliniella occidentalis) ble introdusert til Norge i 1986 og er en kjent art.",
     "helsemessigBetydning": "Trips gjør ingen skade på bygninger, men kan stikke mennesker. Stikkene skjer vanligvis utendørs i varmt vær på bar hud og kan ligne myggstikk. Både rovtrips og plantespisende trips kan stikke, men de suger ikke blod - årsaken er ikke fullt klarlagt, men kan skyldes hudsekreter eller fuktsøking.",
     "tiltak": "På innendørs planter holdes trips i sjakk ved å sørge for kjølige og tørre forhold, regelmessig vanning eller dusjing av plantene og manuell fjerning av angrepne deler. Biologisk bekjempelse med rovmidd eller rovtrips er tilgjengelig, og kjemiske midler kan brukes ved større angrep i hjemmet.",
@@ -1610,72 +1858,85 @@
     "navnNo": "Tusenbein",
     "navnLatin": "Ommatoiulus sabulosus",
     "kategori": "Smådyr",
+    "kjennetegn": "Langstrakt, oftest sylindrisk, 10–40 mm. To beinpar per ledd fra 5. ring og bakover. Hardt mørkt ensfarget skall. Skiller ut illeluktende væske.",
     "beskrivelse": "Tusenbein har en langstrakt kropp med svært mange kroppsledd og bein, vanligvis 10-40 mm lange som voksne, med en sylindrisk eller flattrykt form og en hard, kalkrik, mørk overflate. Ommatoiulus sabulosus kan bli opptil 47 mm, mens Ophyiulus pilosus kan ha opptil 117 beinpar.",
     "helsemessigBetydning": "Tusenbein er ufarlige for mennesker og gjør ingen skade innendørs. De overlever ikke lenge inne på grunn av det tørre inneklimaet. Ved fare kan de skille ut et illeluktende forsvarssekret, men dette er ikke skadelig for mennesker.",
     "tiltak": "Kjemiske midler er ikke nødvendig. Fjern tusenbein ved støvsuging eller fei dem ut. Tett åpninger i bygningen der de kommer inn, og slå av utelys om kvelden, siden noen arter kan trekkes mot lys.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Skolopendere (ett beinpar per ledd, flatere kropp, raskere). Børstetusenbein (under 4 mm, med børster)."
   },
   {
     "id": "rod-skogsmaur",
     "navnNo": "Rød skogsmaur",
     "navnLatin": "Formica rufa",
     "kategori": "Maur",
+    "kjennetegn": "4,5–9 mm. Tofarget: rødt/rødbrunt hode og fremre del, svart bakkropp. Humpete rygg. Spruter maursyre.",
     "beskrivelse": "Rød skogsmaur er en gruppe nært beslektede arter (Formica rufa-gruppen) med tofarget kropp - svart med oransjerødt - og et karakteristisk tofarget hode. Arbeidere er 4,5-9 mm, mens dronninger og hanner kan bli 8-11 mm.",
     "helsemessigBetydning": "Rød skogsmaur utgjør liten helserisiko. Ved forstyrrelse kan de bite og sprute myresyre, noe som er ubehagelig, men ikke farlig. Arten er først og fremst nyttig i skog - den sprer frø, bidrar til næringssirkulasjon og er mat for fugler.",
     "tiltak": "Begrens vegetasjon nær bygninger for å redusere risikoen for at bol etableres der. Bol som er kommet innendørs bør fjernes mekanisk, for eksempel med spade eller industristøvsuger, heller enn med kjemiske midler. Utendørs kan klister rundt trestammer hindre tilgang til mat. Utendørs bol bør bare fjernes ved svært stor aktivitet, og da må hele den underjordiske delen graves ut - kjemisk bekjempelse er lite effektivt fordi midlene brytes raskt ned, og kjemisk forebygging frarådes generelt av miljøhensyn.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Stokkmaur (helt svart, jevn rygg, spruter ikke syre)."
   },
   {
     "id": "fleskeklanner",
     "navnNo": "Fleskeklanner",
     "navnLatin": "Dermestes lardarius",
     "kategori": "Biller",
+    "kjennetegn": "7–9 mm. Svart kropp med grått-gult tverrbånd over fremre del av dekkvingene, prydet med 6 svarte prikker.",
     "beskrivelse": "7–9 mm lang bille, svart med et gul-grått tverrbånd med seks svarte prikker over fremre del av dekkvingene.",
     "helsemessigBetydning": "Regnes ikke som helsefarlig. Kan gjøre skade på proteinrik tørrmat, skinn og pels.",
     "tiltak": "Fjern angrepne matvarer, rengjør grundig og tett sprekker. Sjelden behov for kjemisk bekjempelse.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Husklanner (7–9 mm, ensfarget svart/mørkebrun – mangler tverrbåndet med prikker)."
   },
   {
     "id": "museumsbille",
     "navnNo": "Museumsbille",
     "navnLatin": "Anthrenus museorum",
     "kategori": "Biller",
+    "kjennetegn": "2,2–3,6 mm. Eggformet, svart eller brunsvart. Tett besatt med hvite og okerfargede skjell som danner tre uregelmessige tverrstriper. Slites til ensfarget svart over tid.",
     "beskrivelse": "2,2–3,6 mm lang, eggformet bille med små skjell i hvitt og oker som danner tverrstriper.",
     "helsemessigBetydning": "Ikke helsefarlig. Larvene kan skade ull, pels og naturhistoriske samlinger.",
     "tiltak": "Rengjøring, fjerning av døde insekter den lever av, og oppbevaring av tekstiler i tette poser.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Sebraklanner og vepsebolklanner (svært like; museumsbille har tre skjell-tverrstriper)."
   },
   {
     "id": "klesmoll",
     "navnNo": "Klesmøll",
     "navnLatin": "Tineola bisselliella",
     "kategori": "Sommerfugler og møll",
+    "kjennetegn": "Vingespenn 9–16 mm, kropp 5–8 mm. Ensfargede blanke gylne/messinggule forvinger uten mønster. Rødgule hår på hodet. Vinger taklagt i hvile.",
     "beskrivelse": "Liten gulaktig møll. Larvene spinner og spiser dyriske fibre som ull og pels.",
     "helsemessigBetydning": "Ikke helsefarlig, men kan gjøre vesentlig skade på klær og tekstiler.",
     "tiltak": "Vask/frys angrepne tekstiler, støvsug, og oppbevar ull i tette poser.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Pelsmøll (gråbrungule vinger med 2–3 mørke punkter). Brunhodereirmøll (mørkere flekkete vinger)."
   },
   {
     "id": "husflue",
     "navnNo": "Husflue",
     "navnLatin": "Musca domestica",
     "kategori": "Fluer og mygg",
+    "kjennetegn": "6–7 mm, grå. Fire mørke langstriper på ryggskjoldet. Ikke-metallisk. Rødbrune fasettøyne.",
     "beskrivelse": "Grå flue, 6–7 mm, med fire mørke langstriper på ryggskjoldet. Svært vanlig nær mennesker og husdyr.",
     "helsemessigBetydning": "Kan overføre smittestoffer mekanisk mellom avfall og mat.",
     "tiltak": "Hindre tilgang og hekkesteder (avfall, gjødsel), bruk insektnetting, og fjern matkilder.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Stikkflue (svært lik, men stikkflue har stikkesnabel og suger blod). Loftsfluer (gylne krøllhår, mer metallisk)."
   },
   {
     "id": "maker",
     "navnNo": "Måker",
     "navnLatin": "Laridae",
     "kategori": "Fugler",
+    "kjennetegn": "Hvit kropp med grå rygg og vinger. Kraftig gult nebb med rød flekk. Kraftige skrikende lyder. Størrelse varierer.",
     "beskrivelse": "Måker (Laridae) er en familie middels store til store fugler, som for det meste er hvite med grå eller gråsvart rygg og overside på vingene. Størrelsen varierer mye mellom artene - fra rundt 500 gram for de minste til omtrent 2 kg for de største.",
     "helsemessigBetydning": "Måker kan utgjøre en helserisiko fordi avføringen kan forurense mat, overflater og drikkevann, og kan inneholde smittestoffer som Salmonella og Campylobacter. Avføringen er sur og kan over tid skade kjøretøy og bygninger. Måkeegg kan også inneholde høye nivåer av dioksiner og PCB. Fugleinfluensa har i perioder forårsaket stor dødelighet blant måker i Norge.",
     "tiltak": "Forebygging er det viktigste tiltaket - sikre bygninger med netting og piggmatter mot hekking, fjern tilgjengelig matavfall og andre matkilder, og fjern hekkeplasser. Reir kan fjernes lovlig før egglegging er fullført. Skadefelling krever kommunal tillatelse og at det dokumenteres betydelig økonomisk skade, samt at forebyggende tiltak er forsøkt først. Fangst og bruk av gift er forbudt.",
@@ -1687,39 +1948,46 @@
     "navnNo": "Børstetusenbein",
     "navnLatin": "Polyxenus lagurus",
     "kategori": "Smådyr",
+    "kjennetegn": "Under 4 mm, myk kropp. Tydelige utstående børster langs sidene + to penselformede hårdusker bak. 13 beinpar.",
     "beskrivelse": "Børstetusenbein er Norges minste tusenbeinart, under 4 mm lang med en myk kropp. Den kjennetegnes ved tydelige, utstående børster på sidene og to penselformede hårdusker bakerst, og har 13 par bein - til forskjell fra billelarver, som bare har tre par bein og som den ellers kan forveksles med. Arten finnes i hele landet opp til Bodø og lever under løs bark, i fuktige murer, steinfundamenter og løvstrø i løvskog.",
     "helsemessigBetydning": "Børstetusenbein er en helt harmløs skapning og utgjør ingen helserisiko for mennesker.",
     "tiltak": "Ingen tiltak er nødvendig siden arten ikke gjør noen skade. Den kan av og til komme inn i hus, for eksempel via ved, blomsterpotter eller sprekker i fuktige grunnmurer, men forårsaker ingen skade innendørs.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Billelarver av klannere (ligner, men klannere-larver har bare 3 beinpar mot børstetusenbeinets 13)."
   },
   {
     "id": "hettebille",
     "navnNo": "Hettebille",
     "navnLatin": "Bostrichidae",
     "kategori": "Biller",
+    "kjennetegn": "Karakteristisk hetteformet/kuppelformet brystskjold som dekker/rager over hodet. Borer i treverk eller tørre matvarer.",
     "beskrivelse": "Hettebiller er rødbrune til mørkebrune eller svarte biller, vanligvis 3-6 mm lange (noen arter opptil 22 mm), med en langstrakt, sylindrisk kropp. Brystskjoldet er hetteformet og dekker hodet sett fra oversiden, og antennene har 8-11 ledd som ender i en forstørret kølle. Larvene er bleke, C-formede og 5-8 mm lange. Eksempler er liten bambusborer (Dinoderus minutus) og arter i slekten Sinoxylon, som utvikler seg i løvtrevirke.",
     "helsemessigBetydning": "Hettebiller regnes som alvorlige skadedyr på treverk og lagrede matvarer i opphavslandene sine, men kommer til Norge nesten bare med importerte varer og klarer seg dårlig i norsk klima - de etablerer seg sjelden.",
     "tiltak": "Finn og fjern kilden til angrepet, typisk importert treverk eller matvarer. Kuldebehandling i minst tre døgn ved -20 °C eller varmebehandling i minst seks timer ved 60 °C dreper alle stadier.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Splintvedbiller (underfamilie av hettebiller; splintvedbillene er smalere med synlig hode ovenfra)."
   },
   {
     "id": "muggbiller",
     "navnNo": "Muggbiller",
     "navnLatin": "Latridiidae",
     "kategori": "Biller",
+    "kjennetegn": "Svært små, 1–3 mm, avlange, oftest brune. Lever av muggsopp på fuktige steder innendørs.",
     "beskrivelse": "Muggbiller er små biller på 1-3,5 mm, lysebrune, rødbrune eller svarte, med dekkvinger som har rekker av små groper og antenner som ofte ender i en liten kølle. De finnes oftest på fuktige steder der det har dannet seg mugg, eller i mugne matrester. Det er registrert 64 muggbille-arter i Norge, i tillegg til den nært beslektede gruppen fuktbiller.",
     "helsemessigBetydning": "Billene er ikke skadedyr i seg selv, men forekomsten innendørs er ofte et tegn på fukt- og muggproblemer i bygningen. De kan være uønsket dersom matvarer forurenses med kroppsdeler og ekskrementer.",
     "tiltak": "Tørrlegg og ventiler fuktige områder, og fjern fuktige eller mugne materialer - dette gjør forholdene ugunstige for muggvekst og fjerner samtidig billenes næringsgrunnlag. Støvsuging er å foretrekke framfor vasking ved fjerning innendørs.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Fuktbiller (svært lik; finnes på de samme stedene)."
   },
   {
     "id": "korngnager",
     "navnNo": "Korngnager",
     "navnLatin": "Tenebroides mauritanicus",
     "kategori": "Biller",
+    "kjennetegn": "6–11 mm, flat, brunsvart. Kraftige kjever. Lever i kornlager, møller og bakerier.",
     "beskrivelse": "Korngnageren er en relativt stor, ca. 10 mm lang, svart bille med flattrykt kropp og en markert innsnevring («midje») mellom bryst og bakkropp, der brystets fremre hjørner strekker seg spisst fram mot hodet. Larven blir opptil 15 mm, grøtaktig med brunsvart hode og ryggplate på første brystsegment.",
     "helsemessigBetydning": "Finnes i kornlagre, møller og bakerier samt i importerte råvarer som korn, ris, nøtter og oljekaker, men store bestander er ikke påvist i norske virksomheter. Både voksne og larver spiser mel, korn og nøtter, og larvene kan også opptre som rovdyr på andre insektlarver. Ved forpupping gnager de lange, ovale ganger inn i treverk, noe som kan skade kornbinger og bygninger og samtidig gi gjemmesteder for andre skadedyr. De voksne billene kan leve i 1-2 år og tåler både kulde og lange perioder uten mat.",
     "tiltak": "Hold kornlagre, møller og bakerier fri for matrester og søl, og kontroller importerte råvarer som korn, ris og nøtter for tegn til angrep. Fjern og destruer angrepne varer og treverk med gnagegjenger for å hindre videre spredning.",
@@ -1731,10 +1999,12 @@
     "navnNo": "Smalvinget styltestøvlus",
     "navnLatin": "Dorypteryx domestica",
     "kategori": "Smådyr",
+    "kjennetegn": "1,5–1,8 mm. Smale langstrakte vinger med lange hår på ribber og vingekant. Lys kropp med to lysebrune tverrbånd på bakkroppen.",
     "beskrivelse": "Smalvinget styltestøvlus er en liten støvlus på 1,5-1,8 mm med smale vinger som har lange hår på både ribbene og vingekanten. Kroppen er lys med to tydelige lysebrune tverrbånd på bakkroppen. Arten er bare observert innendørs i Norge og tåler tørrere forhold enn andre vanlige innendørsarter som brun støvlus og boklus.",
     "helsemessigBetydning": "Regnes ikke som skadedyr - tilstedeværelsen innendørs er normal og merkes i de aller fleste tilfeller ikke. Et høyt antall kan likevel indikere fuktige forhold eller gode levekår for støvlus i bygningen.",
     "tiltak": "Reduser luftfuktigheten gjennom bedre ventilasjon, oppvarming eller drenering - dette holder bestanden på et lavt, umerkelig nivå. Kjemisk bekjempelse er normalt ikke nødvendig.",
     "bildeUrl": "",
-    "region": "Norge"
+    "region": "Norge",
+    "forveksling": "Andre støvlus (kjennes på de smale hårete vingene og tverrbåndene)."
   }
 ]

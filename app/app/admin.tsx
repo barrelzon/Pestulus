@@ -57,11 +57,16 @@ export default function AdminScreen() {
   }, [loadStats, token]);
 
   async function handleLogin() {
-    if (busy || password.trim().length === 0) return;
+    if (busy) return;
+    const nextPassword = password.trim();
+    if (nextPassword.length === 0) {
+      setError('Skriv inn passord.');
+      return;
+    }
     setBusy(true);
     setError(null);
     try {
-      const result = await adminLogin(password);
+      const result = await adminLogin(nextPassword);
       setToken(result.token);
       setPassword('');
     } catch (err) {
@@ -102,9 +107,13 @@ export default function AdminScreen() {
             <IconSymbol name="lock.fill" size={20} color={Colors.accent} />
             <Text style={styles.sectionTitle}>Logg inn</Text>
           </View>
+          <Text style={styles.inputLabel}>Passord</Text>
           <TextInput
             value={password}
-            onChangeText={setPassword}
+            onChangeText={(value) => {
+              setPassword(value);
+              if (error) setError(null);
+            }}
             placeholder="Passord"
             placeholderTextColor={Colors.textMuted}
             secureTextEntry
@@ -351,11 +360,15 @@ const styles = StyleSheet.create({
     minHeight: 52,
     borderRadius: Radius.lg,
     borderWidth: 1,
-    borderColor: Colors.border,
-    backgroundColor: Colors.surfaceAlt,
+    borderColor: Colors.accentMuted,
+    backgroundColor: Colors.surface,
     paddingHorizontal: Spacing.md,
     ...Typography.body,
     color: Colors.text,
+  },
+  inputLabel: {
+    ...Typography.label,
+    color: Colors.textSecondary,
   },
   primaryButton: {
     minHeight: 52,

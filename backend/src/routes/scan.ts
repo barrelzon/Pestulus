@@ -1,5 +1,6 @@
 import { Router } from "express";
 import species from "../data/species.json" with { type: "json" };
+import { parseScanImages } from "../lib/scan-input.js";
 import { identifyPest } from "../lib/vision.js";
 import { withImage } from "../lib/images.js";
 
@@ -7,13 +8,17 @@ export const scanRouter = Router();
 
 /**
  * POST /scan
- * Body: { imageBase64: string }  // bilde uten "data:..."-prefiks
+ * Body: { imageBase64: string } eller { imageBase64List: string[] }
+ * Bilder sendes uten "data:..."-prefiks.
  * Svar: { status, treff: [{ navnNo, navnLatin, kategori, konfidens, species? }] }
  */
 scanRouter.post("/", async (req, res) => {
-  const imageBase64: unknown = req.body?.imageBase64;
-  if (typeof imageBase64 !== "string" || imageBase64.length < 100) {
-    return res.status(400).json({ error: "Mangler gyldig imageBase64" });
+  let imageBase64List: string[];
+  try {
+    imageBase64List = parseScanImages(req.body);
+  } catch (err) {
+    const message = err instanceof Error ? err.message : "Mangler gyldig bilde";
+    return res.status(400).json({ error: message });
   }
 
   try {
@@ -25,7 +30,7 @@ scanRouter.post("/", async (req, res) => {
       forveksling: (s as { forveksling?: string }).forveksling,
     }));
 
-    const result = await identifyPest(imageBase64, candidates);
+    const result = await identifyPest(imageBase64List, candidates);
 
     // Berik hvert treff med full artsinfo fra databasen.
     const treff = result.treff.map((t) => {

@@ -1,6 +1,13 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, useWindowDimensions } from 'react-native';
 
 import { Colors, Radius, Spacing, Typography } from '@/constants/theme';
+
+const WIDE_LAYOUT_BREAKPOINT = 1180;
+
+export function useWideContentLayout() {
+  const { width } = useWindowDimensions();
+  return width >= WIDE_LAYOUT_BREAKPOINT;
+}
 
 /** Delte stiler for liste-/detaljskjermer (Oversikt, History). */
 export const screenStyles = StyleSheet.create({
@@ -18,6 +25,12 @@ export const screenStyles = StyleSheet.create({
   listContent: {
     padding: Spacing.md,
     gap: Spacing.sm,
+  },
+  wideContent: {
+    width: '50%',
+    minWidth: 720,
+    maxWidth: 1040,
+    alignSelf: 'center',
   },
   row: {
     flexDirection: 'row',

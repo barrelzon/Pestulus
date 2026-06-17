@@ -3,13 +3,14 @@ import { ActivityIndicator, FlatList, Pressable, Text, View } from 'react-native
 import { router, Stack, useLocalSearchParams } from 'expo-router';
 
 import { GlassPanel } from '@/components/glass-panel';
-import { screenStyles } from '@/components/shared-styles';
+import { screenStyles, useWideContentLayout } from '@/components/shared-styles';
 import { IconSymbol } from '@/components/ui/icon-symbol';
 import { Colors } from '@/constants/theme';
 import { ApiError, fetchSpecies, type Species } from '@/lib/api';
 
 export default function KategoriScreen() {
   const { kategori } = useLocalSearchParams<{ kategori: string }>();
+  const wideContent = useWideContentLayout();
   const [species, setSpecies] = useState<Species[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -50,7 +51,7 @@ export default function KategoriScreen() {
         <FlatList
           data={species}
           keyExtractor={(item) => item.id}
-          contentContainerStyle={screenStyles.listContent}
+          contentContainerStyle={[screenStyles.listContent, wideContent && screenStyles.wideContent]}
           ListEmptyComponent={
             <Text style={screenStyles.emptyText}>Ingen arter i denne kategorien ennå.</Text>
           }

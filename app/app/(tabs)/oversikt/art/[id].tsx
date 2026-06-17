@@ -6,7 +6,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { CategoryBadge } from '@/components/category-badge';
 import { KjennetegnKort, ForvekslingsKort, MetricPill, extractMetrics } from '@/components/species-cards';
-import { screenStyles } from '@/components/shared-styles';
+import { screenStyles, useWideContentLayout } from '@/components/shared-styles';
 import { SpeciesHero } from '@/components/species-hero';
 import { IconSymbol } from '@/components/ui/icon-symbol';
 import { Colors, Radius, Spacing, Typography } from '@/constants/theme';
@@ -16,6 +16,7 @@ import { useAllSpecies } from '@/hooks/use-all-species';
 export default function ArtDetailScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const insets = useSafeAreaInsets();
+  const wideContent = useWideContentLayout();
   const [species, setSpecies] = useState<Species | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -63,7 +64,9 @@ export default function ArtDetailScreen() {
     <View style={styles.root}>
       <Stack.Screen options={{ headerShown: false, title: species.navnNo }} />
 
-      <ScrollView style={screenStyles.container} contentContainerStyle={styles.scrollContent}>
+      <ScrollView
+        style={screenStyles.container}
+        contentContainerStyle={[styles.scrollContent, wideContent && screenStyles.wideContent]}>
         <SpeciesHero imageUrl={resolveImageUrl(species.bildeUrl)} />
 
         <View style={styles.body}>
@@ -100,14 +103,16 @@ export default function ArtDetailScreen() {
       </ScrollView>
 
       <View style={[styles.floatingHeader, { top: insets.top + Spacing.sm }]} pointerEvents="box-none">
-        <Pressable style={styles.glassPill} onPress={goBack} hitSlop={8}>
-          <BlurView intensity={50} tint="dark" style={StyleSheet.absoluteFill} />
-          <View style={[StyleSheet.absoluteFill, styles.glassTint]} />
-          <IconSymbol name="chevron.left" size={22} color={Colors.text} />
-          <Text style={styles.floatingTitle} numberOfLines={1}>
-            {species.navnNo}
-          </Text>
-        </Pressable>
+        <View style={[styles.floatingHeaderInner, wideContent && screenStyles.wideContent]}>
+          <Pressable style={styles.glassPill} onPress={goBack} hitSlop={8}>
+            <BlurView intensity={50} tint="dark" style={StyleSheet.absoluteFill} />
+            <View style={[StyleSheet.absoluteFill, styles.glassTint]} />
+            <IconSymbol name="chevron.left" size={22} color={Colors.text} />
+            <Text style={styles.floatingTitle} numberOfLines={1}>
+              {species.navnNo}
+            </Text>
+          </Pressable>
+        </View>
       </View>
     </View>
   );
@@ -182,6 +187,10 @@ const styles = StyleSheet.create({
     position: 'absolute',
     left: Spacing.md,
     right: Spacing.md,
+  },
+  floatingHeaderInner: {
+    width: '100%',
+    alignSelf: 'center',
   },
   glassPill: {
     flexDirection: 'row',

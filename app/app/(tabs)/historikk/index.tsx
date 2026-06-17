@@ -5,7 +5,7 @@ import { router, useFocusEffect } from 'expo-router';
 
 import { CategoryBadge } from '@/components/category-badge';
 import { GlassPanel } from '@/components/glass-panel';
-import { screenStyles } from '@/components/shared-styles';
+import { screenStyles, useWideContentLayout } from '@/components/shared-styles';
 import { SpeciesLink } from '@/components/species-link';
 import { IconSymbol } from '@/components/ui/icon-symbol';
 import { Colors, Radius, Spacing } from '@/constants/theme';
@@ -13,6 +13,7 @@ import { deleteHistoryRecord, getHistory, type ScanRecord } from '@/lib/history'
 import { useAllSpecies } from '@/hooks/use-all-species';
 
 export default function HistorikkScreen() {
+  const wideContent = useWideContentLayout();
   const [history, setHistory] = useState<ScanRecord[] | null>(null);
   const allSpecies = useAllSpecies();
 
@@ -55,7 +56,7 @@ export default function HistorikkScreen() {
       <FlatList
         data={history}
         keyExtractor={(item) => item.id}
-        contentContainerStyle={screenStyles.listContent}
+        contentContainerStyle={[screenStyles.listContent, wideContent && screenStyles.wideContent]}
         renderItem={({ item }) => (
           <Pressable
             onPress={() => router.push({ pathname: '/historikk/[id]', params: { id: item.id } })}>

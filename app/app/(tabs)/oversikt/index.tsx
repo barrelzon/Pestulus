@@ -3,7 +3,7 @@ import { ActivityIndicator, FlatList, Pressable, StyleSheet, Text, TextInput, Vi
 import { router, Stack } from 'expo-router';
 
 import { GlassPanel } from '@/components/glass-panel';
-import { screenStyles } from '@/components/shared-styles';
+import { screenStyles, useWideContentLayout } from '@/components/shared-styles';
 import { IconSymbol } from '@/components/ui/icon-symbol';
 import { Colors, Radius, Spacing, Typography } from '@/constants/theme';
 import { ApiError, fetchCategories, fetchSpecies, type Category, type Species } from '@/lib/api';
@@ -15,6 +15,7 @@ const CATEGORY_ORDER = [
 ];
 
 export default function OversiktScreen() {
+  const wideContent = useWideContentLayout();
   const [categories, setCategories] = useState<Category[]>([]);
   const [species, setSpecies] = useState<Species[]>([]);
   const [query, setQuery] = useState('');
@@ -102,7 +103,7 @@ export default function OversiktScreen() {
         <FlatList
           data={filteredSpecies}
           keyExtractor={(item) => item.id}
-          contentContainerStyle={screenStyles.listContent}
+          contentContainerStyle={[screenStyles.listContent, wideContent && screenStyles.wideContent]}
           keyboardShouldPersistTaps="handled"
           ListHeaderComponent={ListHeader}
           ListEmptyComponent={
@@ -125,7 +126,7 @@ export default function OversiktScreen() {
         <FlatList
           data={categories}
           keyExtractor={(item) => item.navn}
-          contentContainerStyle={screenStyles.listContent}
+          contentContainerStyle={[screenStyles.listContent, wideContent && screenStyles.wideContent]}
           ListHeaderComponent={ListHeader}
           renderItem={({ item }) => (
             <Pressable

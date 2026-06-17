@@ -6,7 +6,7 @@ import { router, Stack, useFocusEffect, useLocalSearchParams } from 'expo-router
 import { CategoryBadge } from '@/components/category-badge';
 import { MetricPill, extractMetrics } from '@/components/species-cards';
 import { SpeciesLink } from '@/components/species-link';
-import { screenStyles } from '@/components/shared-styles';
+import { screenStyles, useWideContentLayout } from '@/components/shared-styles';
 import { IconSymbol } from '@/components/ui/icon-symbol';
 import { Colors, Radius, Spacing, Typography } from '@/constants/theme';
 import { confidenceColor, confidenceLabel } from '@/lib/confidence';
@@ -15,6 +15,7 @@ import { useAllSpecies } from '@/hooks/use-all-species';
 
 export default function HistorikkDetaljScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
+  const wideContent = useWideContentLayout();
   const [record, setRecord] = useState<ScanRecord | null | undefined>(undefined);
   const allSpecies = useAllSpecies();
 
@@ -51,7 +52,9 @@ export default function HistorikkDetaljScreen() {
     : { size: null, color: null };
 
   return (
-    <ScrollView style={screenStyles.container} contentContainerStyle={styles.content}>
+    <ScrollView
+      style={screenStyles.container}
+      contentContainerStyle={[styles.content, wideContent && screenStyles.wideContent]}>
       <Stack.Screen options={{ title: record.treff.navnNo }} />
 
       <Image source={{ uri: record.brukerBilde }} style={styles.image} />

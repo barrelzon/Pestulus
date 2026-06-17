@@ -66,6 +66,7 @@ export default function HistorikkScreen() {
                   navnNo={item.treff.navnNo}
                   allSpecies={allSpecies}
                   style={screenStyles.rowTitle}
+                  noUnderline
                 />
                 <Text style={screenStyles.rowMeta}>{formatDate(item.tidspunkt)}</Text>
               </View>

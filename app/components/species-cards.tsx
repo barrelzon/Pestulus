@@ -106,6 +106,30 @@ function parseForveksling(tekst: string, allSpecies: Species[]): ForvekslingsIte
   });
 }
 
+// ── MetricPill ───────────────────────────────────────────────────────────────
+
+export function MetricPill({ label }: { label: string }) {
+  return (
+    <View style={styles.metricPill}>
+      <Text style={styles.metricPillText}>{label}</Text>
+    </View>
+  );
+}
+
+export type Metrics = { size: string | null; color: string | null };
+
+export function extractMetrics(kjennetegn: string): Metrics {
+  const sizeMatch = kjennetegn.match(/\d+[,–\-]\d+\s*(?:mm|cm)|\d+\s*(?:mm|cm)/i);
+  const size = sizeMatch ? sizeMatch[0].replace(/\s+/g, ' ') : null;
+
+  const colorWords =
+    /(?:mørk\s+|lys\s+|lys[ea]\s*)?(?:brun|svart|grå|grønn|gul|rød|hvit|blå|metallisk|oransje|gjennomsiktig|lysebrun|mørkebrun)/i;
+  const colorMatch = kjennetegn.match(colorWords);
+  const color = colorMatch ? colorMatch[0].toLowerCase() : null;
+
+  return { size, color };
+}
+
 // ── Styles ───────────────────────────────────────────────────────────────────
 
 const styles = StyleSheet.create({
@@ -159,5 +183,15 @@ const styles = StyleSheet.create({
     ...Typography.body,
     color: Colors.textSecondary,
     marginTop: 2,
+  },
+  metricPill: {
+    borderRadius: Radius.pill,
+    backgroundColor: Colors.accent,
+    paddingVertical: 3,
+    paddingHorizontal: Spacing.sm,
+  },
+  metricPillText: {
+    ...Typography.label,
+    color: Colors.accentText,
   },
 });

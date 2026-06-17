@@ -8,6 +8,12 @@ import { IconSymbol } from '@/components/ui/icon-symbol';
 import { Colors, Radius, Spacing, Typography } from '@/constants/theme';
 import { ApiError, fetchCategories, fetchSpecies, type Category, type Species } from '@/lib/api';
 
+const CATEGORY_ORDER = [
+  'Smådyr', 'Maur', 'Fluer og mygg', 'Veggedyr og andre teger', 'Kakerlakker',
+  'Biller', 'Sommerfugler og møll', 'Lus', 'Edderkopper, midd og flått',
+  'Veps, bier & humler', 'Gnagere', 'Fugler', 'Pattedyr', 'Krypdyr / Reptiler',
+];
+
 export default function OversiktScreen() {
   const [categories, setCategories] = useState<Category[]>([]);
   const [species, setSpecies] = useState<Species[]>([]);
@@ -20,7 +26,15 @@ export default function OversiktScreen() {
     setError(null);
     try {
       const [cats, allSpecies] = await Promise.all([fetchCategories(), fetchSpecies()]);
-      setCategories(cats);
+      const sorted = [...cats].sort((a, b) => {
+        const ai = CATEGORY_ORDER.indexOf(a.navn);
+        const bi = CATEGORY_ORDER.indexOf(b.navn);
+        if (ai === -1 && bi === -1) return 0;
+        if (ai === -1) return 1;
+        if (bi === -1) return -1;
+        return ai - bi;
+      });
+      setCategories(sorted);
       setSpecies(allSpecies);
     } catch (err) {
       setError(err instanceof ApiError ? err.message : 'Kunne ikke laste artsdata.');

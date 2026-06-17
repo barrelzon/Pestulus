@@ -342,6 +342,7 @@ function ScanResultContent({ result, onClose }: { result: ScanUiResult; onClose:
                 navnNo={result.treff.navnNo}
                 allSpecies={allSpecies}
                 style={styles.resultTitle}
+                noUnderline
               />
               <Text style={styles.resultLatin}>{result.treff.navnLatin}</Text>
             </View>
@@ -353,7 +354,7 @@ function ScanResultContent({ result, onClose }: { result: ScanUiResult; onClose:
           <View style={styles.metaRow}>
             <CategoryBadge label={result.treff.kategori} />
             <Text style={[styles.confidenceLabel, { color: confidenceColor(result.treff.konfidens) }]}>
-              {confidenceLabel(result.treff.konfidens)}
+              {Math.round(result.treff.konfidens * 100)}% · {confidenceLabel(result.treff.konfidens)}
             </Text>
           </View>
 

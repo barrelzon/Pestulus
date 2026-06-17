@@ -4,6 +4,7 @@ import { Image } from 'expo-image';
 import { router, Stack, useFocusEffect, useLocalSearchParams } from 'expo-router';
 
 import { CategoryBadge } from '@/components/category-badge';
+import { MetricPill, extractMetrics } from '@/components/species-cards';
 import { SpeciesLink } from '@/components/species-link';
 import { screenStyles } from '@/components/shared-styles';
 import { IconSymbol } from '@/components/ui/icon-symbol';
@@ -45,6 +46,9 @@ export default function HistorikkDetaljScreen() {
   }
 
   const konfidens = record.treff.konfidens;
+  const metrics = record.treff.species?.kjennetegn
+    ? extractMetrics(record.treff.species.kjennetegn)
+    : { size: null, color: null };
 
   return (
     <ScrollView style={screenStyles.container} contentContainerStyle={styles.content}>
@@ -53,14 +57,20 @@ export default function HistorikkDetaljScreen() {
       <Image source={{ uri: record.brukerBilde }} style={styles.image} />
 
       <View style={styles.header}>
-        <SpeciesLink navnNo={record.treff.navnNo} allSpecies={allSpecies} style={styles.title} />
+        <SpeciesLink navnNo={record.treff.navnNo} allSpecies={allSpecies} style={styles.title} noUnderline />
         <Text style={styles.latin}>{record.treff.navnLatin}</Text>
         <View style={styles.metaRow}>
           <CategoryBadge label={record.treff.kategori} />
           <Text style={[styles.confidenceText, { color: confidenceColor(konfidens) }]}>
-            {confidenceLabel(konfidens)}
+            {Math.round(konfidens * 100)}% · {confidenceLabel(konfidens)}
           </Text>
         </View>
+        {(metrics.size || metrics.color) && (
+          <View style={styles.pillRow}>
+            {metrics.size && <MetricPill label={metrics.size} />}
+            {metrics.color && <MetricPill label={metrics.color} />}
+          </View>
+        )}
         <Text style={styles.date}>{formatDate(record.tidspunkt)}</Text>
       </View>
 
@@ -193,5 +203,10 @@ const styles = StyleSheet.create({
   deleteButtonText: {
     ...Typography.bodyStrong,
     color: Colors.danger,
+  },
+  pillRow: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: Spacing.xs,
   },
 });

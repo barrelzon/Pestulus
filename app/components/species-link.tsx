@@ -7,16 +7,17 @@ type LinkProps = {
   navnNo: string;
   allSpecies: Species[];
   style?: TextStyle;
+  noUnderline?: boolean;
 };
 
-export function SpeciesLink({ navnNo, allSpecies, style }: LinkProps) {
+export function SpeciesLink({ navnNo, allSpecies, style, noUnderline }: LinkProps) {
   const match = allSpecies.find((s) => s.navnNo === navnNo);
   if (!match) {
     return <Text style={style}>{navnNo}</Text>;
   }
   return (
     <Text
-      style={[style, styles.link]}
+      style={[style, styles.link, noUnderline && styles.noUnderline]}
       onPress={() => router.push({ pathname: '/oversikt/art/[id]', params: { id: match.id } })}>
       {navnNo}
     </Text>
@@ -93,5 +94,8 @@ const styles = StyleSheet.create({
   link: {
     color: Colors.accent,
     textDecorationLine: 'underline',
+  },
+  noUnderline: {
+    textDecorationLine: 'none',
   },
 });

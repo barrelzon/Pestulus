@@ -5,7 +5,7 @@ import { router, Stack, useLocalSearchParams } from 'expo-router';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { CategoryBadge } from '@/components/category-badge';
-import { KjennetegnKort, ForvekslingsKort } from '@/components/species-cards';
+import { KjennetegnKort, ForvekslingsKort, MetricPill, extractMetrics } from '@/components/species-cards';
 import { screenStyles } from '@/components/shared-styles';
 import { SpeciesHero } from '@/components/species-hero';
 import { IconSymbol } from '@/components/ui/icon-symbol';
@@ -122,28 +122,6 @@ function Section({ title, text }: { title: string; text: string }) {
   );
 }
 
-function MetricPill({ label }: { label: string }) {
-  return (
-    <View style={styles.metricPill}>
-      <Text style={styles.metricPillText}>{label}</Text>
-    </View>
-  );
-}
-
-type Metrics = { size: string | null; color: string | null };
-
-function extractMetrics(kjennetegn: string): Metrics {
-  const sizeMatch = kjennetegn.match(/\d+[,–\-]\d+\s*(?:mm|cm)|\d+\s*(?:mm|cm)/i);
-  const size = sizeMatch ? sizeMatch[0].replace(/\s+/g, ' ') : null;
-
-  const colorWords =
-    /(?:mørk\s+|lys\s+|lys[ea]\s*)?(?:brun|svart|grå|grønn|gul|rød|hvit|blå|metallisk|oransje|gjennomsiktig|lysebrun|mørkebrun)/i;
-  const colorMatch = kjennetegn.match(colorWords);
-  const color = colorMatch ? colorMatch[0].toLowerCase() : null;
-
-  return { size, color };
-}
-
 const styles = StyleSheet.create({
   root: {
     flex: 1,
@@ -173,17 +151,6 @@ const styles = StyleSheet.create({
     ...Typography.heading,
     color: Colors.text,
     fontStyle: 'italic',
-  },
-  metricPill: {
-    borderRadius: Radius.pill,
-    borderWidth: 1,
-    borderColor: Colors.accent,
-    paddingVertical: 3,
-    paddingHorizontal: Spacing.sm,
-  },
-  metricPillText: {
-    ...Typography.label,
-    color: Colors.accent,
   },
   section: {
     gap: Spacing.xs,

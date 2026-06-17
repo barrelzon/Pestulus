@@ -6,12 +6,15 @@ import { router, useFocusEffect } from 'expo-router';
 import { CategoryBadge } from '@/components/category-badge';
 import { GlassPanel } from '@/components/glass-panel';
 import { screenStyles } from '@/components/shared-styles';
+import { SpeciesLink } from '@/components/species-link';
 import { IconSymbol } from '@/components/ui/icon-symbol';
 import { Colors, Radius, Spacing } from '@/constants/theme';
 import { deleteHistoryRecord, getHistory, type ScanRecord } from '@/lib/history';
+import { useAllSpecies } from '@/hooks/use-all-species';
 
 export default function HistorikkScreen() {
   const [history, setHistory] = useState<ScanRecord[] | null>(null);
+  const allSpecies = useAllSpecies();
 
   useFocusEffect(
     useCallback(() => {
@@ -59,7 +62,11 @@ export default function HistorikkScreen() {
             <GlassPanel variant="card" style={screenStyles.row}>
               <Image source={{ uri: item.brukerBilde }} style={styles.thumbnail} />
               <View style={screenStyles.rowText}>
-                <Text style={screenStyles.rowTitle}>{item.treff.navnNo}</Text>
+                <SpeciesLink
+                  navnNo={item.treff.navnNo}
+                  allSpecies={allSpecies}
+                  style={screenStyles.rowTitle}
+                />
                 <Text style={screenStyles.rowMeta}>{formatDate(item.tidspunkt)}</Text>
               </View>
               <CategoryBadge label={item.treff.kategori} />

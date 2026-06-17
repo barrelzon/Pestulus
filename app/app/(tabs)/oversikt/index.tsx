@@ -62,33 +62,35 @@ export default function OversiktScreen() {
 
   const showSearchResults = query.trim().length > 0;
 
+  const ListHeader = (
+    <View style={styles.header}>
+      <Text style={styles.title}>Oversikt</Text>
+      <View style={styles.searchBar}>
+        <IconSymbol name="magnifyingglass" size={18} color={Colors.textMuted} />
+        <TextInput
+          style={styles.searchInput}
+          placeholder="Søk etter art…"
+          placeholderTextColor={Colors.textMuted}
+          value={query}
+          onChangeText={setQuery}
+          autoCorrect={false}
+          autoCapitalize="none"
+        />
+      </View>
+    </View>
+  );
+
   return (
     <View style={screenStyles.container}>
       <Stack.Screen options={{ headerShown: false }} />
 
-      <View style={styles.header}>
-        <Text style={styles.title}>Oversikt</Text>
-        <View style={styles.searchBar}>
-          <IconSymbol name="magnifyingglass" size={18} color={Colors.textMuted} />
-          <TextInput
-            style={styles.searchInput}
-            placeholder="Søk etter art…"
-            placeholderTextColor={Colors.textMuted}
-            value={query}
-            onChangeText={setQuery}
-            autoCorrect={false}
-            autoCapitalize="none"
-          />
-        </View>
-      </View>
-
       {showSearchResults ? (
         <FlatList
-          style={styles.list}
           data={filteredSpecies}
           keyExtractor={(item) => item.id}
           contentContainerStyle={screenStyles.listContent}
           keyboardShouldPersistTaps="handled"
+          ListHeaderComponent={ListHeader}
           ListEmptyComponent={
             <Text style={screenStyles.emptyText}>Ingen arter samsvarer med søket.</Text>
           }
@@ -107,10 +109,10 @@ export default function OversiktScreen() {
         />
       ) : (
         <FlatList
-          style={styles.list}
           data={categories}
           keyExtractor={(item) => item.navn}
           contentContainerStyle={screenStyles.listContent}
+          ListHeaderComponent={ListHeader}
           renderItem={({ item }) => (
             <Pressable
               onPress={() =>
@@ -159,8 +161,5 @@ const styles = StyleSheet.create({
     ...Typography.body,
     color: Colors.text,
     padding: 0,
-  },
-  list: {
-    flex: 1,
   },
 });

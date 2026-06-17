@@ -5,7 +5,7 @@ import { router, Stack, useLocalSearchParams } from 'expo-router';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { CategoryBadge } from '@/components/category-badge';
-import { ForvekslingText } from '@/components/species-link';
+import { KjennetegnKort, ForvekslingsKort } from '@/components/species-cards';
 import { screenStyles } from '@/components/shared-styles';
 import { SpeciesHero } from '@/components/species-hero';
 import { IconSymbol } from '@/components/ui/icon-symbol';
@@ -57,6 +57,7 @@ export default function ArtDetailScreen() {
   }
 
   const goBack = () => (router.canGoBack() ? router.back() : router.replace('/oversikt'));
+  const metrics = extractMetrics(species.kjennetegn ?? '');
 
   return (
     <View style={styles.root}>
@@ -69,25 +70,17 @@ export default function ArtDetailScreen() {
           <View style={styles.header}>
             <Text style={styles.navnNo}>{species.navnNo}</Text>
             <Text style={styles.latin}>{species.navnLatin}</Text>
-            <CategoryBadge label={species.kategori} style={styles.badge} />
+            <View style={styles.pillRow}>
+              <CategoryBadge label={species.kategori} />
+              {metrics.size && <MetricPill label={metrics.size} />}
+              {metrics.color && <MetricPill label={metrics.color} />}
+            </View>
           </View>
 
-          {species.kjennetegn && (
-            <View style={styles.section}>
-              <Text style={styles.sectionTitle}>Kjennetegn</Text>
-              <Text style={styles.sectionText}>{species.kjennetegn}</Text>
-            </View>
-          )}
+          {species.kjennetegn && <KjennetegnKort tekst={species.kjennetegn} />}
 
           {species.forveksling && (
-            <View style={styles.section}>
-              <Text style={styles.sectionTitle}>Kan forveksles med</Text>
-              <ForvekslingText
-                tekst={species.forveksling}
-                allSpecies={allSpecies}
-                textStyle={styles.sectionText}
-              />
-            </View>
+            <ForvekslingsKort tekst={species.forveksling} allSpecies={allSpecies} />
           )}
 
           <Section title="Beskrivelse" text={species.beskrivelse} />
@@ -129,6 +122,28 @@ function Section({ title, text }: { title: string; text: string }) {
   );
 }
 
+function MetricPill({ label }: { label: string }) {
+  return (
+    <View style={styles.metricPill}>
+      <Text style={styles.metricPillText}>{label}</Text>
+    </View>
+  );
+}
+
+type Metrics = { size: string | null; color: string | null };
+
+function extractMetrics(kjennetegn: string): Metrics {
+  const sizeMatch = kjennetegn.match(/\d+[,–\-]\d+\s*(?:mm|cm)|\d+\s*(?:mm|cm)/i);
+  const size = sizeMatch ? sizeMatch[0].replace(/\s+/g, ' ') : null;
+
+  const colorWords =
+    /(?:mørk\s+|lys\s+|lys[ea]\s*)?(?:brun|svart|grå|grønn|gul|rød|hvit|blå|metallisk|oransje|gjennomsiktig|lysebrun|mørkebrun)/i;
+  const colorMatch = kjennetegn.match(colorWords);
+  const color = colorMatch ? colorMatch[0].toLowerCase() : null;
+
+  return { size, color };
+}
+
 const styles = StyleSheet.create({
   root: {
     flex: 1,
@@ -142,11 +157,13 @@ const styles = StyleSheet.create({
     gap: Spacing.lg,
   },
   header: {
-    gap: 4,
+    gap: Spacing.sm,
   },
-  badge: {
+  pillRow: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: Spacing.xs,
     marginTop: Spacing.xs,
-    alignSelf: 'flex-start',
   },
   navnNo: {
     ...Typography.title,
@@ -156,6 +173,17 @@ const styles = StyleSheet.create({
     ...Typography.heading,
     color: Colors.text,
     fontStyle: 'italic',
+  },
+  metricPill: {
+    borderRadius: Radius.pill,
+    borderWidth: 1,
+    borderColor: Colors.accent,
+    paddingVertical: 3,
+    paddingHorizontal: Spacing.sm,
+  },
+  metricPillText: {
+    ...Typography.label,
+    color: Colors.accent,
   },
   section: {
     gap: Spacing.xs,

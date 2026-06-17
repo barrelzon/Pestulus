@@ -18,13 +18,15 @@ import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-na
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { CategoryBadge } from '@/components/category-badge';
-import { ForvekslingText, SpeciesLink } from '@/components/species-link';
+import { SpeciesLink } from '@/components/species-link';
+import { KjennetegnKort, ForvekslingsKort } from '@/components/species-cards';
 import { GlassPanel } from '@/components/glass-panel';
 import { SpeciesPickerModal } from '@/components/species-picker-modal';
 import { IconSymbol } from '@/components/ui/icon-symbol';
 import { Colors, Radius, Spacing, Typography } from '@/constants/theme';
 import { ApiError, scanImage, sendFeedback, type Species, type Treff } from '@/lib/api';
 import { useAllSpecies } from '@/hooks/use-all-species';
+import { confidenceColor, confidenceLabel } from '@/lib/confidence';
 import { addHistoryRecord } from '@/lib/history';
 
 type ScanUiResult =
@@ -265,29 +267,11 @@ function ConfirmationOverlay({
 }
 
 function ConfidenceMeter({ value }: { value: number }) {
-  const color = value >= 0.7 ? '#5A9E6F' : value >= 0.5 ? Colors.accent : Colors.danger;
+  const color = confidenceColor(value);
   return (
     <View style={styles.confidenceTrack}>
       <View style={[styles.confidenceFill, { flex: value, backgroundColor: color }]} />
       <View style={{ flex: Math.max(0, 1 - value) }} />
-    </View>
-  );
-}
-
-function InfoCard({ title, text }: { title: string; text: string }) {
-  return (
-    <View style={styles.infoCard}>
-      <Text style={styles.infoCardTitle}>{title}</Text>
-      <Text style={styles.infoCardText}>{text}</Text>
-    </View>
-  );
-}
-
-function ForvekslingsKort({ tekst, allSpecies }: { tekst: string; allSpecies: Species[] }) {
-  return (
-    <View style={styles.infoCard}>
-      <Text style={styles.infoCardTitle}>Kan forveksles med</Text>
-      <ForvekslingText tekst={tekst} allSpecies={allSpecies} textStyle={styles.infoCardText} />
     </View>
   );
 }
@@ -368,33 +352,19 @@ function ScanResultContent({ result, onClose }: { result: ScanUiResult; onClose:
 
           <View style={styles.metaRow}>
             <CategoryBadge label={result.treff.kategori} />
-            <Text
-              style={[
-                styles.confidenceLabel,
-                {
-                  color:
-                    result.treff.konfidens >= 0.7
-                      ? '#5A9E6F'
-                      : result.treff.konfidens >= 0.5
-                        ? Colors.accent
-                        : Colors.danger,
-                },
-              ]}>
-              {Math.round(result.treff.konfidens * 100)}% sannsynlig
+            <Text style={[styles.confidenceLabel, { color: confidenceColor(result.treff.konfidens) }]}>
+              {confidenceLabel(result.treff.konfidens)}
             </Text>
           </View>
 
           <ConfidenceMeter value={result.treff.konfidens} />
 
           {result.treff.species?.kjennetegn && (
-            <InfoCard title="Kjennetegn" text={result.treff.species.kjennetegn} />
+            <KjennetegnKort tekst={result.treff.species.kjennetegn} />
           )}
 
           {result.treff.species?.forveksling && (
-            <ForvekslingsKort
-              tekst={result.treff.species.forveksling}
-              allSpecies={allSpecies}
-            />
+            <ForvekslingsKort tekst={result.treff.species.forveksling} allSpecies={allSpecies} />
           )}
 
           {feedback === null ? (
@@ -500,10 +470,7 @@ function ScanResultContent({ result, onClose }: { result: ScanUiResult; onClose:
           )}
 
           {displayedUncertain[0]?.species?.forveksling && (
-            <ForvekslingsKort
-              tekst={displayedUncertain[0].species.forveksling}
-              allSpecies={allSpecies}
-            />
+            <ForvekslingsKort tekst={displayedUncertain[0].species.forveksling} allSpecies={allSpecies} />
           )}
 
           <Pressable style={styles.secondaryButton} onPress={onClose}>
@@ -788,23 +755,6 @@ const styles = StyleSheet.create({
   confidenceFill: {
     borderRadius: Radius.pill,
   },
-  infoCard: {
-    backgroundColor: Colors.surface,
-    borderRadius: Radius.md,
-    borderWidth: 1,
-    borderColor: Colors.border,
-    padding: Spacing.md,
-    gap: Spacing.xs,
-  },
-  infoCardTitle: {
-    ...Typography.label,
-    color: Colors.textMuted,
-    textTransform: 'uppercase',
-  },
-  infoCardText: {
-    ...Typography.body,
-    color: Colors.text,
-  },
   candidateSectionLabel: {
     ...Typography.label,
     color: Colors.textMuted,
@@ -814,6 +764,7 @@ const styles = StyleSheet.create({
   feedbackRow: {
     flexDirection: 'row',
     gap: Spacing.sm,
+    justifyContent: 'center',
   },
   feedbackButton: {
     flexDirection: 'row',

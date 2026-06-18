@@ -1,5 +1,5 @@
 /**
- * Genererer PWA-ikoner fra app-icon.png ved hjelp av sharp.
+ * Genererer PWA-ikoner fra kanonisk app-ikon ved hjelp av sharp.
  * Kjør: node scripts/generate-icons.mjs
  */
 import sharp from 'sharp';
@@ -8,7 +8,7 @@ import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const src      = join(__dirname, '../../app-icon.png');
+const src      = join(__dirname, '../assets/images/app-icon-yellow.png');
 const iconsDir = join(__dirname, '../public/icons');
 const pubDir   = join(__dirname, '../public');
 

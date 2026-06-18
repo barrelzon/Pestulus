@@ -1,4 +1,5 @@
-import { StyleSheet, Text, View, type StyleProp, type ViewStyle } from 'react-native';
+import { Image } from 'expo-image';
+import { StyleSheet, View, type StyleProp, type ViewStyle } from 'react-native';
 
 import { Colors, Radius, Spacing } from '@/constants/theme';
 
@@ -8,20 +9,21 @@ type LogoSize = 'sm' | 'md' | 'lg';
 type PestulusLogoProps = {
   variant?: LogoVariant;
   size?: LogoSize;
-  color?: string;
   style?: StyleProp<ViewStyle>;
 };
 
 const metrics = {
-  sm: { mark: 40, radius: Radius.md, p: 34, word: 38, gap: Spacing.sm },
-  md: { mark: 52, radius: Radius.lg, p: 44, word: 48, gap: Spacing.md },
-  lg: { mark: 72, radius: Radius.xl, p: 62, word: 66, gap: Spacing.md },
+  sm: { mark: 40, radius: Radius.md, wordWidth: 132, wordHeight: 46, gap: Spacing.sm },
+  md: { mark: 52, radius: Radius.lg, wordWidth: 236, wordHeight: 82, gap: Spacing.md },
+  lg: { mark: 72, radius: Radius.xl, wordWidth: 276, wordHeight: 96, gap: Spacing.md },
 } as const;
+
+const wordmarkSource = require('../assets/images/pestulus-wordmark-muted-brass.png');
+const markSource = require('../assets/images/icon.png');
 
 export function PestulusLogo({
   variant = 'horizontal',
   size = 'md',
-  color = Colors.accent,
   style,
 }: PestulusLogoProps) {
   const logo = metrics[size];
@@ -43,37 +45,17 @@ export function PestulusLogo({
               width: logo.mark,
               height: logo.mark,
               borderRadius: logo.radius,
-              backgroundColor: color,
             },
           ]}>
-          <Text
-            allowFontScaling={false}
-            style={[
-              styles.markLetter,
-              {
-                color: Colors.accentText,
-                fontSize: logo.p,
-                lineHeight: logo.mark,
-              },
-            ]}>
-            P
-          </Text>
+          <Image source={markSource} contentFit="cover" style={StyleSheet.absoluteFill} />
         </View>
       )}
       {!markOnly && (
-        <Text
-          allowFontScaling={false}
-          numberOfLines={1}
-          style={[
-            styles.wordmark,
-            {
-              color,
-              fontSize: logo.word,
-              lineHeight: logo.word + 6,
-            },
-          ]}>
-          Pestulus
-        </Text>
+        <Image
+          source={wordmarkSource}
+          contentFit="contain"
+          style={[styles.wordmark, { width: logo.wordWidth, height: logo.wordHeight }]}
+        />
       )}
     </View>
   );
@@ -94,14 +76,9 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: 'rgba(255, 255, 255, 0.14)',
     overflow: 'hidden',
-  },
-  markLetter: {
-    fontFamily: 'PestulusLogo',
-    letterSpacing: 0,
-    textAlign: 'center',
+    backgroundColor: Colors.background,
   },
   wordmark: {
-    fontFamily: 'PestulusLogo',
-    letterSpacing: 0,
+    flexShrink: 0,
   },
 });

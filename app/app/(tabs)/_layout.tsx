@@ -1,15 +1,16 @@
 import { Image } from 'expo-image';
 import { router, Slot, usePathname } from 'expo-router';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { IconSymbol } from '@/components/ui/icon-symbol';
 import { Colors } from '@/constants/theme';
 
 const WEB_NAV_HEIGHT = 76;
 const WEB_NAV_BOTTOM_OFFSET = 0;
-const WEB_NAV_ICON_SIZE = 28;
-const WEB_NAV_ACTIVE_ICON_SIZE = 28;
-const WEB_NAV_SCAN_ICON_SIZE = 34;
+const WEB_NAV_ICON_SIZE = 34;
+const WEB_NAV_ACTIVE_ICON_SIZE = 34;
+const WEB_NAV_SCAN_ICON_SIZE = 42;
 const scanTabIcon = require('../../assets/images/bug-search-streamline-core.png');
 
 const navItems = [
@@ -35,13 +36,15 @@ const navItems = [
 
 export default function WebTabLayout() {
   const pathname = usePathname();
+  const insets = useSafeAreaInsets();
+  const navHeight = WEB_NAV_HEIGHT + insets.bottom;
 
   return (
     <View style={styles.layout}>
-      <View style={styles.scene}>
+      <View style={[styles.scene, { paddingBottom: navHeight }]}>
         <Slot />
       </View>
-      <View style={styles.nav} role="navigation">
+      <View style={[styles.nav, { height: navHeight, paddingBottom: insets.bottom }]} role="navigation">
         {navItems.map((item) => {
           const focused =
             item.match === '/'
@@ -98,7 +101,6 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     bottom: WEB_NAV_BOTTOM_OFFSET,
-    height: WEB_NAV_HEIGHT,
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: Colors.surface,

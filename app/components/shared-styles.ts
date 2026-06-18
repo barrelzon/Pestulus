@@ -1,9 +1,8 @@
-import { Platform, StyleSheet, useWindowDimensions } from 'react-native';
+import { StyleSheet, useWindowDimensions } from 'react-native';
 
 import { Colors, Radius, Spacing, Typography } from '@/constants/theme';
 
 const WIDE_LAYOUT_BREAKPOINT = 1180;
-const LIST_BOTTOM_PADDING = Platform.OS === 'web' ? 96 : Spacing.md;
 
 export function useWideContentLayout() {
   const { width } = useWindowDimensions();
@@ -25,7 +24,6 @@ export const screenStyles = StyleSheet.create({
   },
   listContent: {
     padding: Spacing.md,
-    paddingBottom: LIST_BOTTOM_PADDING,
     gap: Spacing.sm,
   },
   wideContent: {

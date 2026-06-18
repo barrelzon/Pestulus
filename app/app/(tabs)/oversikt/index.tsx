@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { ActivityIndicator, FlatList, Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
 import { router, Stack } from 'expo-router';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { GlassPanel } from '@/components/glass-panel';
 import { screenStyles, useWideContentLayout } from '@/components/shared-styles';
@@ -17,6 +18,7 @@ const CATEGORY_ORDER = [
 
 export default function OversiktScreen() {
   const wideContent = useWideContentLayout();
+  const insets = useSafeAreaInsets();
   const [categories, setCategories] = useState<Category[]>([]);
   const [species, setSpecies] = useState<Species[]>([]);
   const [query, setQuery] = useState('');
@@ -76,7 +78,7 @@ export default function OversiktScreen() {
   const resultCountText = filteredSpecies.length === 1 ? '1 treff' : `${filteredSpecies.length} treff`;
 
   const ListHeader = (
-    <View style={styles.header}>
+    <View style={[styles.header, { paddingTop: insets.top + Spacing.md }]}>
       <View style={styles.searchBar}>
         <IconSymbol name="magnifyingglass" size={18} color={Colors.textMuted} />
         <TextInput

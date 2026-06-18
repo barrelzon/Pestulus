@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'flex-end',
     gap: 0,
-    paddingBottom: 1,
+    paddingBottom: 6,
   },
   navLabel: {
     fontSize: 10,

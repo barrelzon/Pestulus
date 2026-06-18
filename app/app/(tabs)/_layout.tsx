@@ -4,7 +4,7 @@ import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { IconSymbol } from '@/components/ui/icon-symbol';
 import { Colors } from '@/constants/theme';
 
-const WEB_NAV_HEIGHT = 54;
+const WEB_NAV_HEIGHT = 64;
 const WEB_NAV_BOTTOM_OFFSET = 12;
 const WEB_NAV_ICON_SIZE = 28;
 const WEB_NAV_ACTIVE_ICON_SIZE = 30;

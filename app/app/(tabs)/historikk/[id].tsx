@@ -61,7 +61,7 @@ export default function HistorikkDetaljScreen() {
 
       <View style={styles.header}>
         <SpeciesLink navnNo={record.treff.navnNo} allSpecies={allSpecies} style={styles.title} noUnderline />
-        <Text style={styles.latin}>{record.treff.navnLatin}</Text>
+        <Text selectable style={styles.latin}>{record.treff.navnLatin}</Text>
         <View style={styles.metaRow}>
           <CategoryBadge label={record.treff.kategori} />
           <Text style={[styles.confidenceText, { color: confidenceColor(konfidens) }]}>
@@ -94,7 +94,7 @@ export default function HistorikkDetaljScreen() {
             <View key={`${treff.navnNo}-${index}`} style={styles.candidateRow}>
               <View style={styles.candidateInfo}>
                 <SpeciesLink navnNo={treff.navnNo} allSpecies={allSpecies} style={styles.candidateName} />
-                <Text style={styles.candidateLatin}>{treff.navnLatin}</Text>
+                <Text selectable style={styles.candidateLatin}>{treff.navnLatin}</Text>
               </View>
               <Text style={[styles.confidenceText, { color: confidenceColor(treff.konfidens) }]}>
                 {Math.round(treff.konfidens * 100)}%

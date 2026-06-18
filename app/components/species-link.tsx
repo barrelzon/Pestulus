@@ -13,10 +13,11 @@ type LinkProps = {
 export function SpeciesLink({ navnNo, allSpecies, style, noUnderline }: LinkProps) {
   const match = allSpecies.find((s) => s.navnNo === navnNo);
   if (!match) {
-    return <Text style={style}>{navnNo}</Text>;
+    return <Text selectable style={style}>{navnNo}</Text>;
   }
   return (
     <Text
+      selectable
       style={[style, styles.link, noUnderline && styles.noUnderline]}
       onPress={() => router.push({ pathname: '/oversikt/art/[id]', params: { id: match.id } })}>
       {navnNo}
@@ -33,10 +34,11 @@ type TextProps = {
 export function ForvekslingText({ tekst, allSpecies, textStyle }: TextProps) {
   const segments = parseForveksling(tekst, allSpecies);
   return (
-    <Text style={textStyle}>
+    <Text selectable style={textStyle}>
       {segments.map((seg, i) =>
         seg.speciesId ? (
           <Text
+            selectable
             key={i}
             style={styles.link}
             onPress={() =>
@@ -45,7 +47,7 @@ export function ForvekslingText({ tekst, allSpecies, textStyle }: TextProps) {
             {seg.text}
           </Text>
         ) : (
-          <Text key={i}>{seg.text}</Text>
+          <Text selectable key={i}>{seg.text}</Text>
         )
       )}
     </Text>

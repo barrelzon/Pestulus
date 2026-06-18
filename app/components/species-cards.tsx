@@ -18,7 +18,7 @@ export function KjennetegnKort({ tekst }: { tekst: string }) {
         {punkter.map((p, i) => (
           <View key={i} style={styles.bulletRow}>
             <Text style={styles.bullet}>•</Text>
-            <Text style={styles.bulletText}>{p}</Text>
+            <Text selectable style={styles.bulletText}>{p}</Text>
           </View>
         ))}
       </View>
@@ -58,13 +58,13 @@ export function ForvekslingsKort({
               onPress={() =>
                 router.push({ pathname: '/oversikt/art/[id]', params: { id: item.id! } })
               }>
-              <Text style={styles.forvekslingsNavn}>{item.navnNo}</Text>
+              <Text selectable style={styles.forvekslingsNavn}>{item.navnNo}</Text>
             </Pressable>
           ) : (
-            <Text style={styles.forvekslingsNavnPlain}>{item.navnNo}</Text>
+            <Text selectable style={styles.forvekslingsNavnPlain}>{item.navnNo}</Text>
           )}
           {item.beskrivelse.length > 0 && (
-            <Text style={styles.forvekslingsBeskrivelse}>{item.beskrivelse}</Text>
+            <Text selectable style={styles.forvekslingsBeskrivelse}>{item.beskrivelse}</Text>
           )}
         </View>
       ))}

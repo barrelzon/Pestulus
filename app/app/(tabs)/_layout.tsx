@@ -4,26 +4,24 @@ import { Tabs } from 'expo-router';
 import Head from 'expo-router/head';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
-import { IconSymbol } from '@/components/ui/icon-symbol';
 import { Colors } from '@/constants/theme';
 
 const WEB_NAV_HEIGHT = 76;
 const WEB_NAV_ICON_SIZE = 34;
 const WEB_NAV_SCAN_ICON_SIZE = 42;
 const scanTabIcon = require('../../assets/images/bug-search-streamline-core.png');
+const speciesTabIcon = require('../../assets/images/species-tab-icon.png');
+const historyTabIcon = require('../../assets/images/history-tab-icon.png');
 
 const TAB_CONFIG = {
   oversikt: {
     label: 'Arter',
-    icon: 'square.grid.2x2.fill',
   },
   index: {
     label: 'Scan',
-    icon: 'camera.fill',
   },
   historikk: {
     label: 'Historikk',
-    icon: 'clock.arrow.circlepath',
   },
 } as const;
 
@@ -65,6 +63,8 @@ function PestulusTabBar({ state, descriptors, navigation, insets }: BottomTabBar
         const options = descriptors[route.key].options;
         const color = focused ? Colors.accent : Colors.textMuted;
         const iconSize = route.name === 'index' ? WEB_NAV_SCAN_ICON_SIZE : WEB_NAV_ICON_SIZE;
+        const iconSource =
+          route.name === 'index' ? scanTabIcon : route.name === 'oversikt' ? speciesTabIcon : historyTabIcon;
 
         const onPress = () => {
           const event = navigation.emit({
@@ -94,17 +94,15 @@ function PestulusTabBar({ state, descriptors, navigation, insets }: BottomTabBar
             onLongPress={onLongPress}
             onPress={onPress}
             style={styles.navItem}>
-            {route.name === 'index' ? (
-              <Image
-                source={scanTabIcon}
-                contentFit="contain"
-                tintColor={color}
-                style={[styles.navImageIcon, { width: iconSize, height: iconSize }]}
-              />
-            ) : (
-              <IconSymbol name={config.icon} size={iconSize} color={color} />
-            )}
-            <Text numberOfLines={1} style={[styles.navLabel, { color }]}>
+            <Image
+              source={iconSource}
+              contentFit="contain"
+              tintColor={color}
+              style={[styles.navImageIcon, { width: iconSize, height: iconSize }]}
+            />
+            <Text
+              numberOfLines={1}
+              style={[styles.navLabel, route.name !== 'index' && styles.navLabelLower, { color }]}>
               {config.label}
             </Text>
           </Pressable>
@@ -143,6 +141,9 @@ const styles = StyleSheet.create({
     fontSize: 10,
     lineHeight: 11,
     fontWeight: '500',
+  },
+  navLabelLower: {
+    transform: [{ translateY: 4 }],
   },
   navImageIcon: {
     display: 'flex',

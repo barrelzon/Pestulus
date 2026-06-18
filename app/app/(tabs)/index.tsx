@@ -42,8 +42,10 @@ type ScanUiResult =
 const SHEET_OFFSET = 560;
 const MAX_SCAN_IMAGES = 3;
 const WEB_CAMERA_RESET_ZOOM = 0.001;
-const SCAN_ENTRY_BOTTOM_CLEARANCE = 120;
+const SCAN_ENTRY_BOTTOM_CLEARANCE = Spacing.md;
 const ENTRY_CAMERA_BLUR_INTENSITY = 64;
+const cameraLockIcon = require('../../assets/images/camera-lock.png');
+const buttonRightIcon = require('../../assets/images/button-right-icon.png');
 const ZOOM_OPTIONS = [
   { label: '1x', value: 0 },
   { label: '2x', value: 0.35 },
@@ -406,19 +408,38 @@ function ScanEntry({
       <View style={styles.entryActions}>
         <Pressable style={styles.entryPrimaryButton} onPress={onStartCamera}>
           <View style={styles.entryButtonLeft}>
-            <IconSymbol name="camera.fill" size={24} color={Colors.accentText} />
+            {cameraReady ? (
+              <IconSymbol name="camera.fill" size={24} color={Colors.accentText} />
+            ) : (
+              <Image
+                source={cameraLockIcon}
+                contentFit="contain"
+                tintColor={Colors.accentText}
+                style={styles.entryButtonIcon}
+              />
+            )}
             <Text style={styles.entryPrimaryButtonText}>
               {cameraReady ? 'Start kamera' : 'Gi kameratilgang'}
             </Text>
           </View>
-          <IconSymbol name="chevron.right" size={20} color={Colors.accentText} />
+          <Image
+            source={buttonRightIcon}
+            contentFit="contain"
+            tintColor={Colors.accentText}
+            style={styles.entryButtonRightIcon}
+          />
         </Pressable>
         <Pressable style={styles.entrySecondaryButton} onPress={onPickImage}>
           <View style={styles.entryButtonLeft}>
             <IconSymbol name="photo.fill" size={24} color={Colors.accent} />
             <Text style={styles.entrySecondaryButtonText}>Last opp bilde</Text>
           </View>
-          <IconSymbol name="chevron.right" size={20} color={Colors.textSecondary} />
+          <Image
+            source={buttonRightIcon}
+            contentFit="contain"
+            tintColor={Colors.textSecondary}
+            style={styles.entryButtonRightIcon}
+          />
         </Pressable>
         <View style={styles.entryPrivacyGroup}>
           <Text style={styles.entryPrivacy}>Flere bilder av samme funn gir bedre treffsikkerhet. Ikke bland ulike funn i samme analyse. Gode bilder hjelper spesielt ved små skadedyr som insekter og fluer.</Text>
@@ -576,7 +597,7 @@ function ScanResultContent({ result, onClose }: { result: ScanUiResult; onClose:
                 style={styles.resultTitle}
                 noUnderline
               />
-              <Text style={styles.resultLatin}>{result.treff.navnLatin}</Text>
+              <Text selectable style={styles.resultLatin}>{result.treff.navnLatin}</Text>
             </View>
             <Pressable onPress={onClose} style={styles.closeButton} hitSlop={8}>
               <IconSymbol name="xmark" size={18} color={Colors.textSecondary} />
@@ -765,8 +786,8 @@ function CandidateRow({ treff }: { treff: Treff }) {
         speciesId && router.push({ pathname: '/oversikt/art/[id]', params: { id: speciesId } })
       }>
       <View style={styles.candidateInfo}>
-        <Text style={styles.candidateName}>{treff.navnNo}</Text>
-        <Text style={styles.candidateLatin}>{treff.navnLatin}</Text>
+        <Text selectable style={styles.candidateName}>{treff.navnNo}</Text>
+        <Text selectable style={styles.candidateLatin}>{treff.navnLatin}</Text>
       </View>
       <View style={styles.candidateRight}>
         <Text style={styles.confidenceText}>{Math.round(treff.konfidens * 100)}%</Text>
@@ -815,11 +836,14 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   entryActions: {
+    alignItems: 'center',
     gap: Spacing.md,
   },
   entryPrimaryButton: {
-    minHeight: 76,
-    borderRadius: Radius.lg,
+    width: '84%',
+    maxWidth: 420,
+    minHeight: 64,
+    borderRadius: Radius.pill,
     backgroundColor: Colors.accent,
     paddingHorizontal: Spacing.lg,
     flexDirection: 'row',
@@ -827,8 +851,10 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   entrySecondaryButton: {
-    minHeight: 72,
-    borderRadius: Radius.lg,
+    width: '84%',
+    maxWidth: 420,
+    minHeight: 60,
+    borderRadius: Radius.pill,
     borderWidth: 1,
     borderColor: Colors.border,
     backgroundColor: Colors.surface,
@@ -841,6 +867,14 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: Spacing.md,
+  },
+  entryButtonIcon: {
+    width: 24,
+    height: 24,
+  },
+  entryButtonRightIcon: {
+    width: 20,
+    height: 20,
   },
   entryPrimaryButtonText: {
     ...Typography.bodyStrong,

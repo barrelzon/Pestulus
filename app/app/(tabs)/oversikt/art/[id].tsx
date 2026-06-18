@@ -71,8 +71,8 @@ export default function ArtDetailScreen() {
 
         <View style={styles.body}>
           <View style={styles.header}>
-            <Text style={styles.navnNo}>{species.navnNo}</Text>
-            <Text style={styles.latin}>{species.navnLatin}</Text>
+            <Text selectable style={styles.navnNo}>{species.navnNo}</Text>
+            <Text selectable style={styles.latin}>{species.navnLatin}</Text>
             <View style={styles.pillRow}>
               <CategoryBadge label={species.kategori} />
               {metrics.size && <MetricPill label={metrics.size} />}
@@ -91,7 +91,7 @@ export default function ArtDetailScreen() {
           <Section title="Tiltak" text={species.tiltak} />
 
           <View style={styles.sourceBox}>
-            <Text style={styles.sourceText}>
+            <Text selectable style={styles.sourceText}>
               Kilde: FHIs skadedyrhåndbok. Innholdet er veiledende — ved helserisiko eller behov for
               bekjempelse, kontakt FHI eller en profesjonell skadedyrbekjemper.
             </Text>
@@ -119,7 +119,7 @@ function Section({ title, text }: { title: string; text: string }) {
   return (
     <View style={styles.section}>
       <Text style={styles.sectionTitle}>{title}</Text>
-      <Text style={styles.sectionText}>{text}</Text>
+      <Text selectable style={styles.sectionText}>{text}</Text>
     </View>
   );
 }

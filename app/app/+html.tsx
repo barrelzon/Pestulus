@@ -36,10 +36,10 @@ export default function Root({ children }: PropsWithChildren) {
         <meta name="apple-mobile-web-app-title" content="Pestulus" />
         <meta name="theme-color" content="#15171A" />
         <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png" />
-        <link rel="icon" type="image/png" sizes="512x512" href="/icons/icon-512.png" />
-        <link rel="icon" type="image/png" sizes="192x192" href="/icons/icon-192.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon.png" />
-        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" type="image/png" sizes="512x512" href="/icons/favicon-512.png?v=2" />
+        <link rel="icon" type="image/png" sizes="192x192" href="/icons/favicon-192.png?v=2" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon.png?v=2" />
+        <link rel="icon" href="/favicon.ico?v=2" sizes="any" />
         <link rel="manifest" href="/manifest.json" />
 
         <ScrollViewStyleReset />
@@ -50,11 +50,59 @@ export default function Root({ children }: PropsWithChildren) {
                 background-color: #1F2226;
                 padding: 0;
                 margin: 0;
+                -webkit-touch-callout: none;
+                -webkit-user-select: none;
+                user-select: none;
               }
 
               #root {
                 background-color: #15171A;
               }
+
+              input,
+              textarea,
+              [contenteditable="true"],
+              [data-text-selectable="true"],
+              [data-text-selectable="true"] * {
+                -webkit-touch-callout: default;
+                -webkit-user-select: text;
+                user-select: text;
+              }
+
+              img,
+              picture,
+              video,
+              canvas,
+              [role="img"] {
+                -webkit-user-drag: none;
+                user-drag: none;
+              }
+            `,
+          }}
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              document.addEventListener('dragstart', function (event) {
+                var target = event.target;
+                if (target instanceof Element && target.closest('img, picture, video, canvas, [role="img"]')) {
+                  event.preventDefault();
+                }
+              }, true);
+
+              document.addEventListener('contextmenu', function (event) {
+                var node = event.target instanceof Element ? event.target : null;
+                while (node && node !== document.documentElement) {
+                  if (
+                    node.matches('img, picture, video, canvas, [role="img"]') ||
+                    window.getComputedStyle(node).backgroundImage !== 'none'
+                  ) {
+                    event.preventDefault();
+                    return;
+                  }
+                  node = node.parentElement;
+                }
+              }, true);
             `,
           }}
         />

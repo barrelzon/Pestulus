@@ -20,6 +20,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { CategoryBadge } from '@/components/category-badge';
 import { GlassPanel } from '@/components/glass-panel';
 import { PestulusLogo } from '@/components/pestulus-logo';
+import { screenStyles, useWideContentLayout } from '@/components/shared-styles';
 import { KjennetegnKort, ForvekslingsKort } from '@/components/species-cards';
 import { SpeciesLink } from '@/components/species-link';
 import { SpeciesPickerModal } from '@/components/species-picker-modal';
@@ -58,6 +59,7 @@ export default function ScanScreen() {
   const [result, setResult] = useState<ScanUiResult | null>(null);
   const [sheetVisible, setSheetVisible] = useState(false);
   const cameraRef = useRef<CameraView>(null);
+  const wideContent = useWideContentLayout();
 
   const translateY = useSharedValue(SHEET_OFFSET);
 
@@ -243,6 +245,7 @@ export default function ScanScreen() {
           onPickImage={handlePickImage}
           insetsTop={insets.top}
           insetsBottom={insets.bottom}
+          wideContent={wideContent}
         />
       )}
 
@@ -316,6 +319,7 @@ export default function ScanScreen() {
           onAnalyze={handleAnalyzeSelectedImages}
           onRetakeLatest={handleRetakeLatest}
           onRemoveImage={removeSelectedImage}
+          wideContent={wideContent}
         />
       )}
 
@@ -345,6 +349,7 @@ function ScanEntry({
   onPickImage,
   insetsTop,
   insetsBottom,
+  wideContent,
 }: {
   webBlocked: boolean;
   canAskAgain: boolean;
@@ -353,11 +358,13 @@ function ScanEntry({
   onPickImage: () => void;
   insetsTop: number;
   insetsBottom: number;
+  wideContent: boolean;
 }) {
   return (
     <View
       style={[
         styles.entryContent,
+        wideContent && screenStyles.wideContent,
         {
           paddingTop: insetsTop + Spacing.xl,
           paddingBottom: insetsBottom + Spacing.xl,
@@ -414,6 +421,7 @@ function ScanReviewTray({
   onAnalyze,
   onRetakeLatest,
   onRemoveImage,
+  wideContent,
 }: {
   images: SelectedScanImage[];
   canAddImages: boolean;
@@ -423,45 +431,48 @@ function ScanReviewTray({
   onAnalyze: () => void;
   onRetakeLatest: () => void;
   onRemoveImage: (id: string) => void;
+  wideContent: boolean;
 }) {
   const count = images.length;
 
   return (
-    <View style={[styles.reviewTray, { paddingBottom: insetBottom + Spacing.md }]}>
-      <View style={styles.reviewHeader}>
-        <Text style={styles.reviewTitle}>{count}/3 bilder valgt</Text>
-        <Pressable onPress={onRetakeLatest}>
-          <Text style={styles.reviewLink}>Ta siste på nytt</Text>
-        </Pressable>
-      </View>
-      <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.thumbnailRow}>
-        {images.map((image, index) => (
-          <View key={image.id} style={[styles.reviewThumbnailWrap, index === images.length - 1 && styles.reviewThumbnailActive]}>
-            <Image source={{ uri: image.uri }} style={styles.reviewThumbnail} contentFit="cover" />
-            <Pressable style={styles.removeThumbnailButton} onPress={() => onRemoveImage(image.id)}>
-              <IconSymbol name="xmark" size={14} color={Colors.text} />
-            </Pressable>
-          </View>
-        ))}
-      </ScrollView>
-      <View style={styles.reviewActions}>
-        {canAddImages && (
-          <View style={styles.reviewAddRow}>
-            <Pressable style={styles.reviewSecondaryButton} onPress={onAddFromCamera}>
-              <IconSymbol name="camera.fill" size={18} color={Colors.textSecondary} />
-              <Text style={styles.reviewSecondaryButtonText}>Ta bilde</Text>
-            </Pressable>
-            <Pressable style={styles.reviewSecondaryButton} onPress={onAddFromLibrary}>
-              <IconSymbol name="photo.fill" size={18} color={Colors.textSecondary} />
-              <Text style={styles.reviewSecondaryButtonText}>Last opp</Text>
-            </Pressable>
-          </View>
-        )}
-        <Pressable style={styles.reviewPrimaryButton} onPress={onAnalyze}>
-          <Text style={styles.primaryButtonText}>
-            {count === 1 ? 'Analyser 1 bilde' : `Analyser ${count} bilder`}
-          </Text>
-        </Pressable>
+    <View style={[styles.reviewTrayOuter, { paddingBottom: insetBottom + Spacing.md }]}>
+      <View style={[styles.reviewTrayContent, wideContent && screenStyles.wideContent]}>
+        <View style={styles.reviewHeader}>
+          <Text style={styles.reviewTitle}>{count}/3 bilder valgt</Text>
+          <Pressable onPress={onRetakeLatest}>
+            <Text style={styles.reviewLink}>Ta siste på nytt</Text>
+          </Pressable>
+        </View>
+        <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.thumbnailRow}>
+          {images.map((image, index) => (
+            <View key={image.id} style={[styles.reviewThumbnailWrap, index === images.length - 1 && styles.reviewThumbnailActive]}>
+              <Image source={{ uri: image.uri }} style={styles.reviewThumbnail} contentFit="cover" />
+              <Pressable style={styles.removeThumbnailButton} onPress={() => onRemoveImage(image.id)}>
+                <IconSymbol name="xmark" size={14} color={Colors.text} />
+              </Pressable>
+            </View>
+          ))}
+        </ScrollView>
+        <View style={styles.reviewActions}>
+          {canAddImages && (
+            <View style={styles.reviewAddRow}>
+              <Pressable style={styles.reviewSecondaryButton} onPress={onAddFromCamera}>
+                <IconSymbol name="camera.fill" size={18} color={Colors.textSecondary} />
+                <Text style={styles.reviewSecondaryButtonText}>Ta bilde</Text>
+              </Pressable>
+              <Pressable style={styles.reviewSecondaryButton} onPress={onAddFromLibrary}>
+                <IconSymbol name="photo.fill" size={18} color={Colors.textSecondary} />
+                <Text style={styles.reviewSecondaryButtonText}>Last opp</Text>
+              </Pressable>
+            </View>
+          )}
+          <Pressable style={styles.reviewPrimaryButton} onPress={onAnalyze}>
+            <Text style={styles.primaryButtonText}>
+              {count === 1 ? 'Analyser 1 bilde' : `Analyser ${count} bilder`}
+            </Text>
+          </Pressable>
+        </View>
       </View>
     </View>
   );
@@ -934,7 +945,7 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     backgroundColor: Colors.text,
   },
-  reviewTray: {
+  reviewTrayOuter: {
     position: 'absolute',
     left: 0,
     right: 0,
@@ -942,6 +953,8 @@ const styles = StyleSheet.create({
     paddingTop: Spacing.md,
     paddingHorizontal: Spacing.md,
     backgroundColor: Colors.overlay,
+  },
+  reviewTrayContent: {
     gap: Spacing.sm,
   },
   reviewHeader: {

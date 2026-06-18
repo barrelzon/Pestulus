@@ -79,7 +79,6 @@ export default function OversiktScreen() {
 
   const ListHeader = (
     <View style={styles.header}>
-      <Text style={styles.title}>Oversikt</Text>
       <View style={styles.searchBar}>
         <IconSymbol name="magnifyingglass" size={18} color={Colors.textMuted} />
         <TextInput
@@ -155,10 +154,6 @@ const styles = StyleSheet.create({
     paddingTop: Spacing.md,
     paddingBottom: Spacing.sm,
     gap: Spacing.sm,
-  },
-  title: {
-    ...Typography.title,
-    color: Colors.text,
   },
   searchBar: {
     flexDirection: 'row',

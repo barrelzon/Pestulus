@@ -4,10 +4,10 @@ import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { IconSymbol } from '@/components/ui/icon-symbol';
 import { Colors } from '@/constants/theme';
 
-const WEB_NAV_HEIGHT = 52;
-const WEB_NAV_BOTTOM_OFFSET = 40;
-const WEB_NAV_ICON_SIZE = 34;
-const WEB_NAV_ACTIVE_ICON_SIZE = 38;
+const WEB_NAV_HEIGHT = 54;
+const WEB_NAV_BOTTOM_OFFSET = 12;
+const WEB_NAV_ICON_SIZE = 28;
+const WEB_NAV_ACTIVE_ICON_SIZE = 30;
 
 const navItems = [
   {
@@ -84,18 +84,19 @@ const styles = StyleSheet.create({
     bottom: WEB_NAV_BOTTOM_OFFSET,
     height: WEB_NAV_HEIGHT,
     flexDirection: 'row',
-    alignItems: 'flex-start',
+    alignItems: 'center',
     backgroundColor: Colors.background,
     borderTopColor: Colors.border,
     borderTopWidth: StyleSheet.hairlineWidth,
-    paddingTop: 20,
+    paddingTop: 0,
   },
   navItem: {
     flex: 1,
     height: WEB_NAV_HEIGHT,
     alignItems: 'center',
-    justifyContent: 'flex-start',
+    justifyContent: 'flex-end',
     gap: 0,
+    paddingBottom: 1,
   },
   navLabel: {
     fontSize: 10,

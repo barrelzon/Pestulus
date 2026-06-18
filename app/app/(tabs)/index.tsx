@@ -236,12 +236,12 @@ export default function ScanScreen() {
 
       {showEntry && (
         <ScanEntry
-          cameraReady={cameraReady}
           webBlocked={webBlocked}
           canAskAgain={permission.canAskAgain}
           onStartCamera={handleStartCamera}
           onOpenSettings={() => Linking.openSettings()}
           onPickImage={handlePickImage}
+          insetsTop={insets.top}
           insetsBottom={insets.bottom}
         />
       )}
@@ -338,30 +338,33 @@ export default function ScanScreen() {
 }
 
 function ScanEntry({
-  cameraReady,
   webBlocked,
   canAskAgain,
   onStartCamera,
   onOpenSettings,
   onPickImage,
+  insetsTop,
   insetsBottom,
 }: {
-  cameraReady: boolean;
   webBlocked: boolean;
   canAskAgain: boolean;
   onStartCamera: () => void;
   onOpenSettings: () => void;
   onPickImage: () => void;
+  insetsTop: number;
   insetsBottom: number;
 }) {
   return (
-    <View style={[styles.entryContent, { paddingBottom: insetsBottom + Spacing.xl }]}>
+    <View
+      style={[
+        styles.entryContent,
+        {
+          paddingTop: insetsTop + Spacing.xl,
+          paddingBottom: insetsBottom + Spacing.xl,
+        },
+      ]}>
       <View style={styles.entryHeader}>
-        <PestulusLogo size="md" />
-        <View style={styles.statusPill}>
-          <View style={styles.statusDot} />
-          <Text style={styles.statusText}>{cameraReady ? 'Kamera er klart' : 'Klar for scan'}</Text>
-        </View>
+        <PestulusLogo variant="wordmark" size="md" />
       </View>
 
       <View style={styles.entryCopy}>
@@ -757,33 +760,10 @@ const styles = StyleSheet.create({
   entryContent: {
     flex: 1,
     paddingHorizontal: Spacing.lg,
-    paddingTop: Spacing.xl,
     justifyContent: 'space-between',
   },
   entryHeader: {
-    alignItems: 'flex-start',
-    gap: Spacing.md,
-  },
-  statusPill: {
-    flexDirection: 'row',
     alignItems: 'center',
-    gap: Spacing.xs,
-    borderRadius: Radius.pill,
-    borderWidth: 1,
-    borderColor: Colors.border,
-    backgroundColor: Colors.overlay,
-    paddingVertical: Spacing.sm,
-    paddingHorizontal: Spacing.md,
-  },
-  statusDot: {
-    width: 7,
-    height: 7,
-    borderRadius: 4,
-    backgroundColor: Colors.accent,
-  },
-  statusText: {
-    ...Typography.caption,
-    color: Colors.textSecondary,
   },
   entryCopy: {
     gap: Spacing.sm,

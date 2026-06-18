@@ -12,7 +12,7 @@ export default function HistorikkLayout() {
         headerShadowVisible: false,
         contentStyle: { backgroundColor: Colors.background },
       }}>
-      <Stack.Screen name="index" options={{ title: 'Historikk' }} />
+      <Stack.Screen name="index" options={{ headerShown: false }} />
       <Stack.Screen name="[id]" />
     </Stack>
   );

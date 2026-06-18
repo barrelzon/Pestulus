@@ -1,4 +1,5 @@
 import { Image } from 'expo-image';
+import { BlurView } from 'expo-blur';
 import { CameraView, useCameraPermissions, type CameraType } from 'expo-camera';
 import * as ImagePicker from 'expo-image-picker';
 import { ImageManipulator, SaveFormat } from 'expo-image-manipulator';
@@ -40,6 +41,14 @@ type ScanUiResult =
 
 const SHEET_OFFSET = 560;
 const MAX_SCAN_IMAGES = 3;
+const WEB_CAMERA_RESET_ZOOM = 0.001;
+const SCAN_ENTRY_BOTTOM_CLEARANCE = 120;
+const ENTRY_CAMERA_BLUR_INTENSITY = 80;
+const ZOOM_OPTIONS = [
+  { label: '1x', value: 0 },
+  { label: '2x', value: 0.35 },
+  { label: '4x', value: 0.7 },
+] as const;
 
 type SelectedScanImage = {
   id: string;
@@ -82,6 +91,7 @@ export default function ScanScreen() {
   const showCamera = cameraReady && cameraActive && !sheetVisible;
   const showEntry = !cameraActive && !sheetVisible && !hasSelectedImages;
   const showReview = hasSelectedImages && !sheetVisible && !cameraActive;
+  const cameraZoom = Platform.OS === 'web' && zoom === 0 ? WEB_CAMERA_RESET_ZOOM : zoom;
 
   function makeScanImage(uri: string, source: ScanImageSource): SelectedScanImage {
     return { id: `${Date.now()}-${Math.random().toString(36).slice(2)}`, uri, source };
@@ -118,7 +128,6 @@ export default function ScanScreen() {
 
     const response = await requestPermission();
     if (response.granted) {
-      setCameraActive(true);
       setZoom(0);
     }
   }
@@ -230,11 +239,16 @@ export default function ScanScreen() {
           style={StyleSheet.absoluteFill}
           facing={facing}
           flash={flash}
-          zoom={zoom}
+          zoom={cameraZoom}
         />
       )}
 
-      {showEntry && cameraReady && <View style={styles.entryCameraScrim} />}
+      {showEntry && cameraReady && (
+        <>
+          <BlurView intensity={ENTRY_CAMERA_BLUR_INTENSITY} tint="dark" style={StyleSheet.absoluteFill} />
+          <View style={styles.entryCameraScrim} />
+        </>
+      )}
 
       {showEntry && (
         <ScanEntry
@@ -246,6 +260,7 @@ export default function ScanScreen() {
           insetsTop={insets.top}
           insetsBottom={insets.bottom}
           wideContent={wideContent}
+          cameraReady={cameraReady}
         />
       )}
 
@@ -277,13 +292,13 @@ export default function ScanScreen() {
 
       {showCamera && (
         <View style={[styles.zoomControls, { bottom: insets.bottom + 132 }]}>
-          {[0, 0.35, 0.7].map((value, index) => (
+          {ZOOM_OPTIONS.map((option) => (
             <Pressable
-              key={value}
-              style={[styles.zoomButton, zoom === value && styles.zoomButtonActive]}
-              onPress={() => setZoom(value)}>
-              <Text style={[styles.zoomButtonText, zoom === value && styles.zoomButtonTextActive]}>
-                {index === 0 ? '1x' : index === 1 ? '2x' : '4x'}
+              key={option.value}
+              style={[styles.zoomButton, zoom === option.value && styles.zoomButtonActive]}
+              onPress={() => setZoom(option.value)}>
+              <Text style={[styles.zoomButtonText, zoom === option.value && styles.zoomButtonTextActive]}>
+                {option.label}
               </Text>
             </Pressable>
           ))}
@@ -292,9 +307,6 @@ export default function ScanScreen() {
 
       {showCamera && (
         <View style={[styles.bottomArea, { bottom: insets.bottom + Spacing.xl }]}>
-          <Text style={styles.privacyText}>
-            Ta ett eller flere bilder av samme funn. Bildene lagres bare lokalt i scan-historikken.
-          </Text>
           <View style={styles.captureRow}>
             <Pressable onPress={handlePickImage} disabled={busy}>
               <GlassPanel variant="card" style={styles.galleryButton}>
@@ -350,6 +362,7 @@ function ScanEntry({
   insetsTop,
   insetsBottom,
   wideContent,
+  cameraReady,
 }: {
   webBlocked: boolean;
   canAskAgain: boolean;
@@ -359,6 +372,7 @@ function ScanEntry({
   insetsTop: number;
   insetsBottom: number;
   wideContent: boolean;
+  cameraReady: boolean;
 }) {
   return (
     <View
@@ -367,7 +381,7 @@ function ScanEntry({
         wideContent && screenStyles.wideContent,
         {
           paddingTop: insetsTop + Spacing.xl,
-          paddingBottom: insetsBottom + Spacing.xl,
+          paddingBottom: insetsBottom + SCAN_ENTRY_BOTTOM_CLEARANCE,
         },
       ]}>
       <View style={styles.entryHeader}>
@@ -375,13 +389,11 @@ function ScanEntry({
       </View>
 
       <View style={styles.entryCopy}>
-        <Text style={styles.entryTitle}>Identifiser skadedyr</Text>
-        <Text style={styles.entrySubtitle}>
-          Start kameraet når du er klar, eller analyser bilder du allerede har.
-        </Text>
+        <Text style={styles.entryTitle}>Analyser skadedyr</Text>
+        <Text style={styles.entrySubtitle}>Skann med kamera, eller last opp bilder.</Text>
         {webBlocked && (
           <Text style={styles.entryHelp}>
-            Nettleseren har blokkert kamera. Bruk kamera- eller hengelås-ikonet i adressefeltet for å gi tilgang.
+            Kamera er blokkert. Gi tilgang fra adressefeltet.
           </Text>
         )}
         {!canAskAgain && Platform.OS !== 'web' && (
@@ -395,7 +407,9 @@ function ScanEntry({
         <Pressable style={styles.entryPrimaryButton} onPress={onStartCamera}>
           <View style={styles.entryButtonLeft}>
             <IconSymbol name="camera.fill" size={24} color={Colors.accentText} />
-            <Text style={styles.entryPrimaryButtonText}>Start kamera</Text>
+            <Text style={styles.entryPrimaryButtonText}>
+              {cameraReady ? 'Start kamera' : 'Gi kameratilgang'}
+            </Text>
           </View>
           <IconSymbol name="chevron.right" size={20} color={Colors.accentText} />
         </Pressable>
@@ -406,7 +420,10 @@ function ScanEntry({
           </View>
           <IconSymbol name="chevron.right" size={20} color={Colors.textSecondary} />
         </Pressable>
-        <Text style={styles.entryPrivacy}>Du kan bruke opptil tre bilder for bedre treff.</Text>
+        <View style={styles.entryPrivacyGroup}>
+          <Text style={styles.entryPrivacy}>Flere bilder av samme funn gir bedre treffsikkerhet. Ikke bland ulike funn i samme analyse. Gode bilder hjelper spesielt ved små skadedyr som insekter og fluer.</Text>
+          <Text numberOfLines={1} style={styles.entryPrivacyNote}>Bildene lagres kun lokalt i historikken.</Text>
+        </View>
       </View>
     </View>
   );
@@ -766,7 +783,7 @@ const styles = StyleSheet.create({
   },
   entryCameraScrim: {
     ...StyleSheet.absoluteFillObject,
-    backgroundColor: 'rgba(10, 11, 13, 0.7)',
+    backgroundColor: 'rgba(10, 11, 13, 0.86)',
   },
   entryContent: {
     flex: 1,
@@ -777,19 +794,25 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   entryCopy: {
+    alignItems: 'center',
     gap: Spacing.sm,
   },
   entryTitle: {
     ...Typography.title,
     color: Colors.text,
+    textAlign: 'center',
   },
   entrySubtitle: {
     ...Typography.body,
     color: Colors.textSecondary,
+    maxWidth: 520,
+    textAlign: 'center',
   },
   entryHelp: {
     ...Typography.caption,
     color: Colors.textSecondary,
+    maxWidth: 460,
+    textAlign: 'center',
   },
   entryActions: {
     gap: Spacing.md,
@@ -830,6 +853,20 @@ const styles = StyleSheet.create({
   entryPrivacy: {
     ...Typography.caption,
     color: Colors.textMuted,
+    maxWidth: 520,
+    textAlign: 'center',
+    alignSelf: 'center',
+  },
+  entryPrivacyGroup: {
+    alignItems: 'center',
+    gap: Spacing.xs,
+  },
+  entryPrivacyNote: {
+    ...Typography.caption,
+    color: Colors.textMuted,
+    maxWidth: 520,
+    textAlign: 'center',
+    alignSelf: 'center',
   },
   entryTextButton: {
     alignSelf: 'flex-start',
@@ -908,12 +945,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     gap: Spacing.md,
   },
-  privacyText: {
-    ...Typography.caption,
-    color: Colors.textSecondary,
-    textAlign: 'center',
-    paddingHorizontal: Spacing.xl,
-  },
   captureRow: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -935,7 +966,7 @@ const styles = StyleSheet.create({
     height: 76,
     borderRadius: 38,
     borderWidth: 4,
-    borderColor: Colors.accent,
+    borderColor: Colors.accentText,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -943,7 +974,7 @@ const styles = StyleSheet.create({
     width: 60,
     height: 60,
     borderRadius: 30,
-    backgroundColor: Colors.text,
+    backgroundColor: Colors.accent,
   },
   reviewTrayOuter: {
     position: 'absolute',

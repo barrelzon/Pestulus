@@ -5,7 +5,7 @@ import { IconSymbol } from '@/components/ui/icon-symbol';
 import { Colors } from '@/constants/theme';
 
 const WEB_NAV_HEIGHT = 64;
-const WEB_NAV_BOTTOM_OFFSET = 12;
+const WEB_NAV_BOTTOM_OFFSET = 0;
 const WEB_NAV_ICON_SIZE = 28;
 const WEB_NAV_ACTIVE_ICON_SIZE = 30;
 
@@ -75,7 +75,6 @@ const styles = StyleSheet.create({
   },
   scene: {
     flex: 1,
-    paddingBottom: WEB_NAV_HEIGHT + WEB_NAV_BOTTOM_OFFSET,
   },
   nav: {
     position: 'fixed',
@@ -85,7 +84,7 @@ const styles = StyleSheet.create({
     height: WEB_NAV_HEIGHT,
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: Colors.background,
+    backgroundColor: Colors.surface,
     borderTopColor: Colors.border,
     borderTopWidth: StyleSheet.hairlineWidth,
     paddingTop: 0,
@@ -94,9 +93,9 @@ const styles = StyleSheet.create({
     flex: 1,
     height: WEB_NAV_HEIGHT,
     alignItems: 'center',
-    justifyContent: 'flex-end',
+    justifyContent: 'center',
     gap: 0,
-    paddingBottom: 6,
+    paddingBottom: 0,
   },
   navLabel: {
     fontSize: 10,

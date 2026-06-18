@@ -43,7 +43,7 @@ const SHEET_OFFSET = 560;
 const MAX_SCAN_IMAGES = 3;
 const WEB_CAMERA_RESET_ZOOM = 0.001;
 const SCAN_ENTRY_BOTTOM_CLEARANCE = 120;
-const ENTRY_CAMERA_BLUR_INTENSITY = 80;
+const ENTRY_CAMERA_BLUR_INTENSITY = 64;
 const ZOOM_OPTIONS = [
   { label: '1x', value: 0 },
   { label: '2x', value: 0.35 },
@@ -783,7 +783,7 @@ const styles = StyleSheet.create({
   },
   entryCameraScrim: {
     ...StyleSheet.absoluteFillObject,
-    backgroundColor: 'rgba(10, 11, 13, 0.86)',
+    backgroundColor: 'rgba(10, 11, 13, 0.68)',
   },
   entryContent: {
     flex: 1,

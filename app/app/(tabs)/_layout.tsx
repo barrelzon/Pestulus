@@ -1,106 +1,128 @@
+import type { BottomTabBarProps } from '@react-navigation/bottom-tabs';
 import { Image } from 'expo-image';
-import { router, Slot, usePathname } from 'expo-router';
+import { Tabs } from 'expo-router';
+import Head from 'expo-router/head';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { IconSymbol } from '@/components/ui/icon-symbol';
 import { Colors } from '@/constants/theme';
 
 const WEB_NAV_HEIGHT = 76;
-const WEB_NAV_BOTTOM_OFFSET = 0;
 const WEB_NAV_ICON_SIZE = 34;
-const WEB_NAV_ACTIVE_ICON_SIZE = 34;
 const WEB_NAV_SCAN_ICON_SIZE = 42;
 const scanTabIcon = require('../../assets/images/bug-search-streamline-core.png');
 
-const navItems = [
-  {
-    href: '/oversikt',
-    match: '/oversikt',
+const TAB_CONFIG = {
+  oversikt: {
     label: 'Arter',
     icon: 'square.grid.2x2.fill',
   },
-  {
-    href: '/',
-    match: '/',
+  index: {
     label: 'Scan',
     icon: 'camera.fill',
   },
-  {
-    href: '/historikk',
-    match: '/historikk',
+  historikk: {
     label: 'Historikk',
     icon: 'clock.arrow.circlepath',
   },
-] as const;
+} as const;
+
+type TabRouteName = keyof typeof TAB_CONFIG;
 
 export default function WebTabLayout() {
-  const pathname = usePathname();
-  const insets = useSafeAreaInsets();
-  const navHeight = WEB_NAV_HEIGHT + insets.bottom;
+  return (
+    <>
+      <Head>
+        <title>Pestulus</title>
+      </Head>
+      <Tabs
+        initialRouteName="index"
+        tabBar={(props) => <PestulusTabBar {...props} />}
+        screenOptions={{
+          headerShown: false,
+          sceneStyle: styles.scene,
+        }}>
+        <Tabs.Screen name="oversikt" options={{ title: TAB_CONFIG.oversikt.label }} />
+        <Tabs.Screen name="index" options={{ title: TAB_CONFIG.index.label }} />
+        <Tabs.Screen name="historikk" options={{ title: TAB_CONFIG.historikk.label }} />
+      </Tabs>
+    </>
+  );
+}
+
+function PestulusTabBar({ state, descriptors, navigation, insets }: BottomTabBarProps) {
+  const tabBarHeight = WEB_NAV_HEIGHT + insets.bottom;
 
   return (
-    <View style={styles.layout}>
-      <View style={[styles.scene, { paddingBottom: navHeight }]}>
-        <Slot />
-      </View>
-      <View style={[styles.nav, { height: navHeight, paddingBottom: insets.bottom }]} role="navigation">
-        {navItems.map((item) => {
-          const focused =
-            item.match === '/'
-              ? pathname === '/'
-              : pathname === item.match || pathname.startsWith(`${item.match}/`);
-          const color = focused ? Colors.accent : Colors.textMuted;
-          const iconSize =
-            item.href === '/'
-              ? WEB_NAV_SCAN_ICON_SIZE
-              : focused
-                ? WEB_NAV_ACTIVE_ICON_SIZE
-                : WEB_NAV_ICON_SIZE;
+    <View style={[styles.nav, { height: tabBarHeight, paddingBottom: insets.bottom }]} role="tablist">
+      {state.routes.map((route, index) => {
+        if (!isTabRoute(route.name)) {
+          return null;
+        }
 
-          return (
-            <Pressable
-              key={item.href}
-              accessibilityRole="link"
-              accessibilityState={focused ? { selected: true } : {}}
-              onPress={() => {
-                if (!focused) router.push(item.href);
-              }}
-              style={styles.navItem}>
-              {item.href === '/' ? (
-                <Image
-                  source={scanTabIcon}
-                  contentFit="contain"
-                  tintColor={color}
-                  style={[styles.navImageIcon, { width: iconSize, height: iconSize }]}
-                />
-              ) : (
-                <IconSymbol name={item.icon} size={iconSize} color={color} />
-              )}
-              <Text numberOfLines={1} style={[styles.navLabel, { color }]}>
-                {item.label}
-              </Text>
-            </Pressable>
-          );
-        })}
-      </View>
+        const focused = state.index === index;
+        const config = TAB_CONFIG[route.name];
+        const options = descriptors[route.key].options;
+        const color = focused ? Colors.accent : Colors.textMuted;
+        const iconSize = route.name === 'index' ? WEB_NAV_SCAN_ICON_SIZE : WEB_NAV_ICON_SIZE;
+
+        const onPress = () => {
+          const event = navigation.emit({
+            type: 'tabPress',
+            target: route.key,
+            canPreventDefault: true,
+          });
+
+          if (!focused && !event.defaultPrevented) {
+            navigation.navigate(route.name, route.params);
+          }
+        };
+
+        const onLongPress = () => {
+          navigation.emit({
+            type: 'tabLongPress',
+            target: route.key,
+          });
+        };
+
+        return (
+          <Pressable
+            key={route.key}
+            accessibilityLabel={options.tabBarAccessibilityLabel}
+            accessibilityRole="tab"
+            accessibilityState={focused ? { selected: true } : {}}
+            onLongPress={onLongPress}
+            onPress={onPress}
+            style={styles.navItem}>
+            {route.name === 'index' ? (
+              <Image
+                source={scanTabIcon}
+                contentFit="contain"
+                tintColor={color}
+                style={[styles.navImageIcon, { width: iconSize, height: iconSize }]}
+              />
+            ) : (
+              <IconSymbol name={config.icon} size={iconSize} color={color} />
+            )}
+            <Text numberOfLines={1} style={[styles.navLabel, { color }]}>
+              {config.label}
+            </Text>
+          </Pressable>
+        );
+      })}
     </View>
   );
 }
 
+function isTabRoute(name: string): name is TabRouteName {
+  return name in TAB_CONFIG;
+}
+
 const styles = StyleSheet.create({
-  layout: {
-    flex: 1,
+  scene: {
     backgroundColor: Colors.background,
   },
-  scene: {
-    flex: 1,
-  },
   nav: {
-    position: 'fixed',
-    left: 0,
-    right: 0,
-    bottom: WEB_NAV_BOTTOM_OFFSET,
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: Colors.surface,

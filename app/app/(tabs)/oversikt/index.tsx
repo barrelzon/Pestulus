@@ -7,6 +7,7 @@ import { screenStyles, useWideContentLayout } from '@/components/shared-styles';
 import { IconSymbol } from '@/components/ui/icon-symbol';
 import { Colors, Radius, Spacing, Typography } from '@/constants/theme';
 import { ApiError, fetchCategories, fetchSpecies, type Category, type Species } from '@/lib/api';
+import { filterAndRankSpecies } from '@/lib/species-search';
 
 const CATEGORY_ORDER = [
   'Smådyr', 'Maur', 'Fluer og mygg', 'Veggedyr og andre teger', 'Kakerlakker',
@@ -49,11 +50,7 @@ export default function OversiktScreen() {
   }, [load]);
 
   const filteredSpecies = useMemo(() => {
-    const q = query.trim().toLowerCase();
-    if (!q) return [];
-    return species.filter(
-      (s) => s.navnNo.toLowerCase().includes(q) || s.navnLatin.toLowerCase().includes(q)
-    );
+    return filterAndRankSpecies(species, query);
   }, [species, query]);
 
   if (loading) {
@@ -76,6 +73,7 @@ export default function OversiktScreen() {
   }
 
   const showSearchResults = query.trim().length > 0;
+  const resultCountText = filteredSpecies.length === 1 ? '1 treff' : `${filteredSpecies.length} treff`;
 
   const ListHeader = (
     <View style={styles.header}>
@@ -91,6 +89,7 @@ export default function OversiktScreen() {
           autoCapitalize="none"
         />
       </View>
+      {showSearchResults && <Text style={styles.resultCount}>{resultCountText}</Text>}
     </View>
   );
 
@@ -171,5 +170,10 @@ const styles = StyleSheet.create({
     ...Typography.body,
     color: Colors.text,
     padding: 0,
+  },
+  resultCount: {
+    ...Typography.caption,
+    color: Colors.textMuted,
+    paddingHorizontal: Spacing.sm,
   },
 });

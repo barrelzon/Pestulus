@@ -1,19 +1,22 @@
+import { Image } from 'expo-image';
 import { router, Slot, usePathname } from 'expo-router';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 import { IconSymbol } from '@/components/ui/icon-symbol';
 import { Colors } from '@/constants/theme';
 
-const WEB_NAV_HEIGHT = 64;
+const WEB_NAV_HEIGHT = 76;
 const WEB_NAV_BOTTOM_OFFSET = 0;
 const WEB_NAV_ICON_SIZE = 28;
-const WEB_NAV_ACTIVE_ICON_SIZE = 30;
+const WEB_NAV_ACTIVE_ICON_SIZE = 28;
+const WEB_NAV_SCAN_ICON_SIZE = 34;
+const scanTabIcon = require('../../assets/images/bug-search-streamline-core.png');
 
 const navItems = [
   {
     href: '/oversikt',
     match: '/oversikt',
-    label: 'Oversikt',
+    label: 'Arter',
     icon: 'square.grid.2x2.fill',
   },
   {
@@ -45,7 +48,12 @@ export default function WebTabLayout() {
               ? pathname === '/'
               : pathname === item.match || pathname.startsWith(`${item.match}/`);
           const color = focused ? Colors.accent : Colors.textMuted;
-          const iconSize = focused ? WEB_NAV_ACTIVE_ICON_SIZE : WEB_NAV_ICON_SIZE;
+          const iconSize =
+            item.href === '/'
+              ? WEB_NAV_SCAN_ICON_SIZE
+              : focused
+                ? WEB_NAV_ACTIVE_ICON_SIZE
+                : WEB_NAV_ICON_SIZE;
 
           return (
             <Pressable
@@ -56,7 +64,16 @@ export default function WebTabLayout() {
                 if (!focused) router.push(item.href);
               }}
               style={styles.navItem}>
-              <IconSymbol name={item.icon} size={iconSize} color={color} />
+              {item.href === '/' ? (
+                <Image
+                  source={scanTabIcon}
+                  contentFit="contain"
+                  tintColor={color}
+                  style={[styles.navImageIcon, { width: iconSize, height: iconSize }]}
+                />
+              ) : (
+                <IconSymbol name={item.icon} size={iconSize} color={color} />
+              )}
               <Text numberOfLines={1} style={[styles.navLabel, { color }]}>
                 {item.label}
               </Text>
@@ -101,5 +118,8 @@ const styles = StyleSheet.create({
     fontSize: 10,
     lineHeight: 11,
     fontWeight: '500',
+  },
+  navImageIcon: {
+    display: 'flex',
   },
 });

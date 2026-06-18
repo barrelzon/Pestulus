@@ -107,10 +107,7 @@ export default function ArtDetailScreen() {
           <Pressable style={styles.glassPill} onPress={goBack} hitSlop={8}>
             <BlurView intensity={50} tint="dark" style={StyleSheet.absoluteFill} />
             <View style={[StyleSheet.absoluteFill, styles.glassTint]} />
-            <IconSymbol name="chevron.left" size={22} color={Colors.text} />
-            <Text style={styles.floatingTitle} numberOfLines={1}>
-              {species.navnNo}
-            </Text>
+            <IconSymbol name="chevron.left" size={28} color={Colors.text} />
           </Pressable>
         </View>
       </View>
@@ -191,22 +188,17 @@ const styles = StyleSheet.create({
   floatingHeaderInner: {
     width: '100%',
     alignSelf: 'center',
+    alignItems: 'flex-start',
   },
   glassPill: {
-    flexDirection: 'row',
     alignItems: 'center',
-    gap: Spacing.sm,
-    height: 44,
-    paddingHorizontal: Spacing.md,
+    justifyContent: 'center',
+    width: 48,
+    height: 48,
     borderRadius: Radius.pill,
     overflow: 'hidden',
   },
   glassTint: {
     backgroundColor: Colors.overlay,
-  },
-  floatingTitle: {
-    ...Typography.bodyStrong,
-    color: Colors.text,
-    flexShrink: 1,
   },
 });

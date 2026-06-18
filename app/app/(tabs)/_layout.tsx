@@ -124,7 +124,7 @@ const styles = StyleSheet.create({
   },
   nav: {
     flexDirection: 'row',
-    alignItems: 'center',
+    alignItems: 'flex-start',
     backgroundColor: Colors.surface,
     borderTopColor: Colors.border,
     borderTopWidth: StyleSheet.hairlineWidth,

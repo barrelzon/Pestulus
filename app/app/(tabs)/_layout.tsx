@@ -50,11 +50,9 @@ export default function WebTabLayout() {
   );
 }
 
-function PestulusTabBar({ state, descriptors, navigation, insets }: BottomTabBarProps) {
-  const tabBarHeight = WEB_NAV_HEIGHT + insets.bottom;
-
+function PestulusTabBar({ state, descriptors, navigation }: BottomTabBarProps) {
   return (
-    <View style={[styles.nav, { height: tabBarHeight, paddingBottom: insets.bottom }]} role="tablist">
+    <View style={styles.nav} role="tablist">
       {state.routes.map((route, index) => {
         if (!isTabRoute(route.name)) {
           return null;
@@ -123,6 +121,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.background,
   },
   nav: {
+    height: WEB_NAV_HEIGHT,
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: Colors.surface,

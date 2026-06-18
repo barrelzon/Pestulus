@@ -27,10 +27,14 @@ export default function Root({ children }: PropsWithChildren) {
         <style
           dangerouslySetInnerHTML={{
             __html: `
-              html, body, #root {
-                background-color: #15171A;
+              html, body {
+                background-color: #1F2226;
                 padding: 0;
                 margin: 0;
+              }
+
+              #root {
+                background-color: #15171A;
               }
             `,
           }}

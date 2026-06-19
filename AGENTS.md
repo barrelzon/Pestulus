@@ -54,6 +54,8 @@ Expo-app (etter at den er generert):
   `useSafeAreaInsets().top`; Dynamic Island spiser første kort.
 - IKKE vis scan-resultatkort med bare brukerens opplastede bilde når arten har
   `bildeUrl`; artsbildet skal være hovedbilde, brukerbildene thumbnails.
+- IKKE bruk emoji-flagg som eneste flaggvisning på web; desktop-fonter kan vise
+  dem som NO/SE/DK i stedet for flagg.
 - IKKE hardkod vision-leverandørens API-form fra hukommelsen — les leverandørens
   gjeldende docs og verifiser request/response før du fullfører `src/lib/vision.ts`.
 - IKKE stol på skjulte/ugjettbare URL-er som admin-sikkerhet — bruk backend-auth

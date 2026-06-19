@@ -59,8 +59,10 @@ Expo-app (etter at den er generert):
 - IKKE forenkle artskjennetegn slik at gruppearter får én feil farge/variant;
   skill vanlige arter fra sjeldne varianter når FHI gjør det.
 - IKKE la sjeldne varianter dominere artsgjenkjenning; for helsvart maur skal
-  modellen vurdere svart jordmaur/sauemaur før stokkmaur med mindre tydelige
-  stokkmaurtrekk vises.
+  modellen ikke bruke stokkmaur som standard bildetreff. Vurder svart jordmaur,
+  sauemaur eller svart tremaur først.
+- IKKE stol på modellens fritekst for navn/kategori når id finnes; normaliser
+  alltid treff mot artsdatabasen før logging og visning.
 - IKKE hardkod vision-leverandørens API-form fra hukommelsen — les leverandørens
   gjeldende docs og verifiser request/response før du fullfører `src/lib/vision.ts`.
 - IKKE stol på skjulte/ugjettbare URL-er som admin-sikkerhet — bruk backend-auth

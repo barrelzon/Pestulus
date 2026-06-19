@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import { buildSpeciesPrompt, type Candidate } from "./vision.js";
+import { buildGenerationConfig, buildSpeciesPrompt, type Candidate } from "./vision.js";
 
 test("species prompt does not default all-black ants to rare black stokkmaur", () => {
   const candidates: Candidate[] = [
@@ -32,7 +32,16 @@ test("species prompt does not default all-black ants to rare black stokkmaur", (
   const prompt = buildSpeciesPrompt(candidates);
 
   assert.match(prompt, /helsvart maur/i);
-  assert.match(prompt, /ikke.*Stokkmaur.*bare fordi.*sotstokkmaur/i);
+  assert.match(prompt, /ikke.*Stokkmaur.*bare fordi.*sjelden helsvart stokkmaurvariant/i);
+  assert.match(prompt, /Ikke velg Stokkmaur for helsvarte maur/i);
+  assert.match(prompt, /Sjeldne helsvarte stokkmaurvarianter skal ikke brukes som standard bildetreff/i);
   assert.match(prompt, /Svart jordmaur/i);
   assert.match(prompt, /Sauemaur/i);
+});
+
+test("vision model calls use deterministic JSON generation", () => {
+  const config = buildGenerationConfig({ type: "OBJECT" });
+
+  assert.equal(config.temperature, 0);
+  assert.equal(config.responseMimeType, "application/json");
 });

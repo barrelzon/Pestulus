@@ -19,9 +19,14 @@ export type Candidate = {
 export type Treff = Candidate & { konfidens: number };
 export type VisionStatus = "treff" | "usikker" | "ikke_skadedyr";
 export type VisionResult = { status: VisionStatus; treff: Treff[] };
+export type AntVisualAudit = {
+  colorPattern: "helsvart" | "tofarget_rodbrun_sort" | "uklar";
+  redBrownVisible: boolean;
+};
 
 const CONFIDENCE_THRESHOLD = Number(process.env.CONFIDENCE_THRESHOLD ?? 0.7);
 const CONFIDENCE_MARGIN_THRESHOLD = Number(process.env.CONFIDENCE_MARGIN_THRESHOLD ?? 0.15);
+const BLACK_ANT_ALTERNATIVE_IDS = ["sauemaur", "svart-jordmaur", "svart-tremaur"];
 
 // Schema for trinn 1 — kategorigjenkjenning
 const CATEGORY_SCHEMA = {
@@ -54,6 +59,18 @@ const SPECIES_SCHEMA = {
     },
   },
   required: ["status", "treff"],
+};
+
+const ANT_VISUAL_AUDIT_SCHEMA = {
+  type: "OBJECT",
+  properties: {
+    colorPattern: {
+      type: "STRING",
+      enum: ["helsvart", "tofarget_rodbrun_sort", "uklar"],
+    },
+    redBrownVisible: { type: "BOOLEAN" },
+  },
+  required: ["colorPattern", "redBrownVisible"],
 };
 
 function buildCategoryPrompt(categories: string[]): string {
@@ -89,7 +106,7 @@ REGLER:
 - Bruk id, navnNo og navnLatin NØYAKTIG slik de står i lista. Bruk kategori fra lista.
 - Returner ALLTID de 5 mest sannsynlige artene (med mindre bildet ikke viser noe skadedyr i det hele tatt), sortert med høyest konfidens først.
 - Vær realistisk og forsiktig med konfidens. Sett høy konfidens (over ca. 0.8) KUN når kjennetegnene i bildet er tydelige og entydige for én art. Fordel ellers sannsynligheten mer jevnt.
-- Ikke bruk en sjelden variant som hovedforklaring når bildet bare viser et vanlig trekk. For maur: en helsvart maur skal ikke identifiseres som Stokkmaur bare fordi sotstokkmaur kan være ensfarget sort. Velg Stokkmaur først når stor/kraftig kropp, jevnt krummet rygg og øvrige stokkmaurtrekk er tydelige; vurder Svart jordmaur eller Sauemaur for små eller middels helsvarte maur.
+- Ikke bruk en sjelden variant som hovedforklaring når bildet bare viser et vanlig trekk. For maur: en helsvart maur skal ikke identifiseres som Stokkmaur bare fordi en sjelden helsvart stokkmaurvariant finnes. Ikke velg Stokkmaur for helsvarte maur. Sjeldne helsvarte stokkmaurvarianter skal ikke brukes som standard bildetreff. Når bildet viser helsvarte maur uten tydelig rødbrun/sort tofarging, velg Svart jordmaur, Sauemaur eller Svart tremaur, eller sett "status": "usikker". Velg Stokkmaur først når stor/kraftig kropp, jevnt krummet rygg og øvrige stokkmaurtrekk er tydelige.
 - Hvis du er usikker, sett "status": "usikker".
 - Hvis bildet ikke viser et dyr/skadedyr, sett "status": "ikke_skadedyr" og "treff": [].
 - Ellers sett "status": "treff".
@@ -102,15 +119,41 @@ KANDIDATLISTE (id | navnNo | navnLatin | kjennetegn):
 ${liste}`;
 }
 
+function buildAntVisualAuditPrompt(): string {
+  return `Du skal bare beskrive synlige trekk hos maurene på bildet, ikke artsbestemme.
+
+REGLER:
+- Sett colorPattern til "helsvart" når maurene fremstår svarte/mørke uten tydelig rødbrunt bryst eller kroppsparti.
+- Sett colorPattern til "tofarget_rodbrun_sort" bare når både rødbrunt og sort er tydelig synlig på samme maur.
+- Sett colorPattern til "uklar" hvis fargene ikke kan vurderes sikkert.
+- Sett redBrownVisible til true bare når rødbrunt kroppsparti er tydelig synlig.
+- Svar KUN med gyldig JSON.
+
+SVARFORMAT: {"colorPattern":"helsvart"|"tofarget_rodbrun_sort"|"uklar","redBrownVisible":true|false}`;
+}
+
 function parseModelJson(text: string): unknown {
   const cleaned = text.replace(/```json|```/g, "").trim();
   return JSON.parse(cleaned);
+}
+
+export function buildGenerationConfig(responseSchema: unknown): {
+  responseMimeType: "application/json";
+  responseSchema: unknown;
+  temperature: 0;
+} {
+  return {
+    responseMimeType: "application/json",
+    responseSchema,
+    temperature: 0,
+  };
 }
 
 async function callModel(
   systemPrompt: string,
   imageBase64List: string[],
   responseSchema: unknown,
+  userPrompt?: string,
 ): Promise<string> {
   const apiKey = process.env.VISION_API_KEY;
   const apiUrl = process.env.VISION_API_URL;
@@ -125,9 +168,10 @@ async function callModel(
     inlineData: { mimeType: "image/jpeg", data: imageBase64 },
   }));
   const imagePrompt =
-    imageBase64List.length === 1
+    userPrompt ??
+    (imageBase64List.length === 1
       ? "Hvilken art viser dette bildet?"
-      : `Hvilken art viser disse ${imageBase64List.length} bildene? Bildene viser samme funn fra ulike vinkler. Bruk samlet visuell informasjon.`;
+      : `Hvilken art viser disse ${imageBase64List.length} bildene? Bildene viser samme funn fra ulike vinkler. Bruk samlet visuell informasjon.`);
 
   const response = await fetch(url, {
     method: "POST",
@@ -148,10 +192,7 @@ async function callModel(
           ],
         },
       ],
-      generationConfig: {
-        responseMimeType: "application/json",
-        responseSchema,
-      },
+      generationConfig: buildGenerationConfig(responseSchema),
     }),
   });
 
@@ -167,6 +208,84 @@ async function callModel(
     throw new Error("Fant ikke tekst i Gemini-svaret");
   }
   return text;
+}
+
+function isAntColorPattern(value: unknown): value is AntVisualAudit["colorPattern"] {
+  return value === "helsvart" || value === "tofarget_rodbrun_sort" || value === "uklar";
+}
+
+async function auditAntVisuals(imageBase64List: string[]): Promise<AntVisualAudit | null> {
+  const raw = await callModel(
+    buildAntVisualAuditPrompt(),
+    imageBase64List,
+    ANT_VISUAL_AUDIT_SCHEMA,
+    imageBase64List.length === 1
+      ? "Beskriv bare synlig fargemønster hos maurene i bildet."
+      : `Beskriv bare synlig fargemønster hos maurene i disse ${imageBase64List.length} bildene av samme funn.`,
+  );
+  const parsed = parseModelJson(raw) as { colorPattern?: unknown; redBrownVisible?: unknown };
+  if (!isAntColorPattern(parsed.colorPattern) || typeof parsed.redBrownVisible !== "boolean") {
+    return null;
+  }
+  return { colorPattern: parsed.colorPattern, redBrownVisible: parsed.redBrownVisible };
+}
+
+export function applyAntVisualGuard(
+  result: VisionResult,
+  audit: AntVisualAudit | null,
+): VisionResult {
+  const top = result.treff[0];
+  if (!top || top.id !== "stokkmaur" || audit === null) return result;
+  if (audit.colorPattern !== "helsvart" || audit.redBrownVisible) return result;
+
+  const preferred = result.treff.filter((treff) => BLACK_ANT_ALTERNATIVE_IDS.includes(treff.id));
+  const loweredStokkmaur = { ...top, konfidens: Math.min(top.konfidens, 0.25) };
+  if (preferred.length === 0) {
+    return { ...result, status: "usikker", treff: [loweredStokkmaur, ...result.treff.slice(1)] };
+  }
+
+  const adjustedPreferred = preferred.map((treff, index) => ({
+    ...treff,
+    konfidens: Math.max(treff.konfidens, Math.max(0.3, 0.55 - index * 0.1)),
+  }));
+  const remaining = result.treff.filter(
+    (treff) =>
+      treff.id !== top.id && !adjustedPreferred.some((preferredTreff) => preferredTreff.id === treff.id),
+  );
+
+  return {
+    status: "usikker",
+    treff: [...adjustedPreferred, ...remaining, loweredStokkmaur],
+  };
+}
+
+export function normalizeVisionResult(result: VisionResult, candidates: Candidate[]): VisionResult {
+  return {
+    ...result,
+    treff: result.treff.map((treff) => {
+      const canonical = candidates.find(
+        (candidate) =>
+          candidate.id === treff.id ||
+          candidate.navnNo === treff.navnNo ||
+          candidate.navnLatin === treff.navnLatin,
+      );
+      return canonical ? { ...canonical, konfidens: treff.konfidens } : treff;
+    }),
+  };
+}
+
+async function applyVisualGuards(
+  imageBase64List: string[],
+  result: VisionResult,
+): Promise<VisionResult> {
+  if (result.treff[0]?.id !== "stokkmaur") return result;
+  try {
+    const audit = await auditAntVisuals(imageBase64List);
+    return applyAntVisualGuard(result, audit);
+  } catch (err) {
+    console.warn("maur-fargeaudit-feil:", err);
+    return result;
+  }
 }
 
 /** Trinn 1: velg kategori fra bildet. Returnerer kategorinavn eller null. */
@@ -194,7 +313,7 @@ async function identifySpecies(
   if (!result || !Array.isArray(result.treff)) {
     throw new Error("Uventet svarformat fra modellen");
   }
-  return result;
+  return normalizeVisionResult(result, candidates);
 }
 
 export async function identifyPest(
@@ -213,7 +332,10 @@ export async function identifyPest(
   // Sikkerhetsnett: fallback til alle hvis kategorien er tom
   const finalCandidates = narrowed.length > 0 ? narrowed : candidates;
 
-  const result = await identifySpecies(imageBase64List, finalCandidates);
+  const result = await applyVisualGuards(
+    imageBase64List,
+    await identifySpecies(imageBase64List, finalCandidates),
+  );
 
   // Sikkerhetsnett: degrader "treff" til "usikker" hvis konfidens er for lav
   if (result.status === "treff") {

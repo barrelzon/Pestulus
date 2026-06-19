@@ -50,9 +50,12 @@ REGLER:
   ellers sannsynligheten mer jevnt mellom kandidatene.
 - Ikke bruk en sjelden variant som hovedforklaring når bildet bare viser et vanlig
   trekk. For maur: en helsvart maur skal ikke identifiseres som Stokkmaur bare
-  fordi sotstokkmaur kan være ensfarget sort. Velg Stokkmaur først når
-  stor/kraftig kropp, jevnt krummet rygg og øvrige stokkmaurtrekk er tydelige;
-  vurder Svart jordmaur eller Sauemaur for små eller middels helsvarte maur.
+  fordi en sjelden helsvart stokkmaurvariant finnes. Ikke velg Stokkmaur for
+  helsvarte maur. Sjeldne helsvarte stokkmaurvarianter skal ikke brukes som
+  standard bildetreff. Når bildet viser helsvarte maur uten tydelig rødbrun/sort
+  tofarging, velg Svart jordmaur, Sauemaur eller Svart tremaur, eller sett
+  "status": "usikker". Velg Stokkmaur først når stor/kraftig kropp, jevnt
+  krummet rygg og øvrige stokkmaurtrekk er tydelige.
 - Hvis du er usikker, sett "status": "usikker".
 - Hvis bildet ikke viser et dyr/skadedyr, sett "status": "ikke_skadedyr" og
   "treff": [].
@@ -73,6 +76,12 @@ KANDIDATLISTE (navnNo | navnLatin | kjennetegn):
 - To API-kall per `/scan`-forespørsel (kategori → art).
 - Trinn 1 bruker `responseSchema` med `{ kategori, status }`.
 - Trinn 2 bruker `responseSchema` med `{ status, treff[] }` som før.
+- Treff normaliseres mot artsdatabasen med `id`, slik at modellens fritekst for
+  `navnNo`, `navnLatin` og `kategori` ikke kan overstyre kanoniske verdier.
+- Hvis trinn 2 gir `stokkmaur` som toppkandidat, gjør backend en ekstra
+  fargeaudit som kun vurderer om maurene er helsvarte eller tydelig
+  rødbrun/sort. Helsvarte funn blir satt til `usikker` og svarte alternativer
+  (`Sauemaur`, `Svart jordmaur`, `Svart tremaur`) flyttes foran `Stokkmaur`.
 - Hvis trinn 1 returnerer `"ikke_skadedyr"` → avbryt; returner tom liste.
 - Hvis kategorien fra trinn 1 ikke finnes i artsdatabasen → fallback til alle
   arter (sikkernhet mot kategori-hallusinasjon).

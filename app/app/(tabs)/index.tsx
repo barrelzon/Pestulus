@@ -636,24 +636,10 @@ function ScanResultContent({ result, onClose }: { result: ScanUiResult; onClose:
 
   function handleDislike() {
     if (result.kind !== 'treff' || feedback) return;
-    setFeedback('dislike');
     setPickerVisible(true);
-    sendFeedback({
-      scanId: result.scanId,
-      vote: 'dislike',
-      treff: {
-        id: result.treff.id,
-        navnNo: result.treff.navnNo,
-        navnLatin: result.treff.navnLatin,
-        kategori: result.treff.kategori,
-        kategoriId: result.treff.kategoriId,
-      },
-    }).catch(() => {});
   }
 
-  function handleSelectSpecies(species: Species) {
-    setPickerVisible(false);
-    setCorrected(species);
+  function sendDislikeFeedback(correctedSpeciesId?: string) {
     if (result.kind !== 'treff') return;
     sendFeedback({
       scanId: result.scanId,
@@ -665,16 +651,25 @@ function ScanResultContent({ result, onClose }: { result: ScanUiResult; onClose:
         kategori: result.treff.kategori,
         kategoriId: result.treff.kategoriId,
       },
-      korrigertArtId: species.id,
+      korrigertArtId: correctedSpeciesId,
     }).catch(() => {});
   }
 
-  const excludeIds =
-    result.kind === 'treff'
-      ? [result.treff.species?.id, ...result.alternative.map((t) => t.species?.id)].filter(
-          (id): id is string => typeof id === 'string'
-        )
-      : [];
+  function handleSelectSpecies(species: Species) {
+    setPickerVisible(false);
+    setCorrected(species);
+    setFeedback('dislike');
+    sendDislikeFeedback(species.id);
+  }
+
+  function handleUnknownSpecies() {
+    setPickerVisible(false);
+    setCorrected(null);
+    setFeedback('dislike');
+    sendDislikeFeedback();
+  }
+
+  const excludedSpeciesId = result.kind === 'treff' ? (result.treff.species?.id ?? result.treff.id ?? null) : null;
 
   const displayedAlternatives = result.kind === 'treff' ? result.alternative.slice(0, 2) : [];
   const displayedUncertain = result.kind === 'usikker' ? result.treff.slice(0, 3) : [];
@@ -784,8 +779,9 @@ function ScanResultContent({ result, onClose }: { result: ScanUiResult; onClose:
           <SpeciesPickerModal
             visible={pickerVisible}
             kategori={result.treff.kategori}
-            excludeIds={excludeIds}
+            excludedSpeciesId={excludedSpeciesId}
             onSelect={handleSelectSpecies}
+            onUnknown={handleUnknownSpecies}
             onClose={() => setPickerVisible(false)}
           />
         </>

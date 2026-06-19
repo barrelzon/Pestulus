@@ -19,6 +19,9 @@ npm-debug.log*
 yarn-debug.*
 yarn-error.*
 
+# Lokale admin-opplastinger fra scan-tester
+backend/src/data/admin-scan-images/
+
 # OS / editor
 .DS_Store
 Thumbs.db

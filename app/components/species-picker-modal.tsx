@@ -6,12 +6,14 @@ import { IconSymbol } from '@/components/ui/icon-symbol';
 import { Colors, Radius, Spacing, Typography } from '@/constants/theme';
 import { ApiError, fetchSpecies, type Species } from '@/lib/api';
 import { useI18n } from '@/lib/i18n';
+import { getSpeciesPickerOptions } from '@/lib/species-picker-options';
 
 type SpeciesPickerModalProps = {
   visible: boolean;
   kategori: string;
-  excludeIds: string[];
+  excludedSpeciesId: string | null;
   onSelect: (species: Species) => void;
+  onUnknown: () => void;
   onClose: () => void;
 };
 
@@ -19,15 +21,15 @@ type SpeciesPickerModalProps = {
 export function SpeciesPickerModal({
   visible,
   kategori,
-  excludeIds,
+  excludedSpeciesId,
   onSelect,
+  onUnknown,
   onClose,
 }: SpeciesPickerModalProps) {
   const { language, t } = useI18n();
   const [species, setSpecies] = useState<Species[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const excludeKey = excludeIds.join(',');
 
   useEffect(() => {
     if (!visible) return;
@@ -35,15 +37,10 @@ export function SpeciesPickerModal({
     setLoading(true);
     setError(null);
 
-    const exclude = new Set(excludeKey.split(',').filter(Boolean));
     fetchSpecies(language)
       .then((all) => {
         if (cancelled) return;
-        setSpecies(
-          all
-            .filter((s) => ((s.kategoriId ?? s.kategori) === kategori || s.kategori === kategori) && !exclude.has(s.id))
-            .sort((a, b) => a.navnNo.localeCompare(b.navnNo, language === 'no' ? 'nb' : language))
-        );
+        setSpecies(getSpeciesPickerOptions(all, kategori, excludedSpeciesId, language));
       })
       .catch((err) => {
         if (cancelled) return;
@@ -56,7 +53,7 @@ export function SpeciesPickerModal({
     return () => {
       cancelled = true;
     };
-  }, [visible, kategori, excludeKey, language, t]);
+  }, [visible, kategori, excludedSpeciesId, language, t]);
 
   return (
     <Modal visible={visible} transparent animationType="fade" onRequestClose={onClose}>
@@ -93,6 +90,12 @@ export function SpeciesPickerModal({
                   </Pressable>
                 )}
               />
+            )}
+
+            {!loading && !error && (
+              <Pressable style={styles.unknownButton} onPress={onUnknown}>
+                <Text style={styles.unknownButtonText}>{t('picker.unknown')}</Text>
+              </Pressable>
             )}
           </GlassPanel>
         </Pressable>
@@ -144,6 +147,21 @@ const styles = StyleSheet.create({
   },
   list: {
     maxHeight: 320,
+  },
+  unknownButton: {
+    minHeight: 44,
+    borderRadius: Radius.md,
+    borderWidth: 1,
+    borderColor: Colors.border,
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingHorizontal: Spacing.md,
+    paddingVertical: Spacing.sm,
+    marginTop: Spacing.sm,
+  },
+  unknownButtonText: {
+    ...Typography.bodyStrong,
+    color: Colors.text,
   },
   separator: {
     height: 1,

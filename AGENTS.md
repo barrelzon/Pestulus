@@ -56,6 +56,8 @@ Expo-app (etter at den er generert):
   `bildeUrl`; artsbildet skal være hovedbilde, brukerbildene thumbnails.
 - IKKE la scan-resultatarket strekke seg i full widescreen på desktop; begrens
   selve resultatpanelet med maks-bredde og hold det sentrert.
+- IKKE filtrer bort alternative kandidater i «Feil art»-dialogen; vis alle arter
+  i kategorien bortsett fra appens opprinnelige toppsvar, og tilby «Vet ikke».
 - IKKE bruk emoji-flagg som eneste flaggvisning på web; desktop-fonter kan vise
   dem som NO/SE/DK i stedet for flagg.
 - IKKE forenkle artskjennetegn slik at gruppearter får én feil farge/variant;

@@ -28,17 +28,27 @@ import { SpeciesLink } from '@/components/species-link';
 import { SpeciesPickerModal } from '@/components/species-picker-modal';
 import { IconSymbol } from '@/components/ui/icon-symbol';
 import { Colors, Radius, Spacing, Typography } from '@/constants/theme';
-import { ApiError, scanImages, sendFeedback, type ScanImageSource, type Species, type Treff } from '@/lib/api';
+import {
+  ApiError,
+  resolveImageUrl,
+  scanImages,
+  sendFeedback,
+  type ScanImageSource,
+  type Species,
+  type Treff,
+} from '@/lib/api';
 import { useAllSpecies } from '@/hooks/use-all-species';
 import { getClientId } from '@/lib/client-id';
 import { confidenceColor, confidenceLabel } from '@/lib/confidence';
 import { addHistoryRecord } from '@/lib/history';
 import { useI18n } from '@/lib/i18n';
 
+type ScanPhotoResult = { scanId?: string; photoUri: string; photoUris: string[] };
+
 type ScanUiResult =
-  | { kind: 'treff'; scanId?: string; photoUri: string; treff: Treff; alternative: Treff[] }
-  | { kind: 'usikker'; scanId?: string; photoUri: string; treff: Treff[] }
-  | { kind: 'ikke_skadedyr'; scanId?: string; photoUri: string }
+  | ({ kind: 'treff'; treff: Treff; alternative: Treff[] } & ScanPhotoResult)
+  | ({ kind: 'usikker'; treff: Treff[] } & ScanPhotoResult)
+  | ({ kind: 'ikke_skadedyr' } & ScanPhotoResult)
   | { kind: 'error'; message: string };
 
 const SHEET_OFFSET = 560;
@@ -97,6 +107,8 @@ export default function ScanScreen() {
   const showEntry = !cameraActive && !sheetVisible && !hasSelectedImages;
   const showReview = hasSelectedImages && !sheetVisible && !cameraActive;
   const cameraZoom = Platform.OS === 'web' && zoom === 0 ? WEB_CAMERA_RESET_ZOOM : zoom;
+  const showResultBackdrop = sheetVisible && cameraReady && !showCamera && !showEntry;
+  const showCameraBackdrop = cameraReady && (showCamera || showEntry || showResultBackdrop);
 
   function makeScanImage(uri: string, source: ScanImageSource): SelectedScanImage {
     return { id: `${Date.now()}-${Math.random().toString(36).slice(2)}`, uri, source };
@@ -153,6 +165,7 @@ export default function ScanScreen() {
       );
       const primaryPhotoUri = processed[0]?.photoUri;
       if (!primaryPhotoUri) throw new Error(t('scan.processImageError'));
+      const photoUris = processed.map((image) => image.photoUri);
 
       const clientId = await getClientId();
       const apiResult = await scanImages(processed.map((image) => image.base64), {
@@ -164,11 +177,24 @@ export default function ScanScreen() {
       if (apiResult.status === 'treff' && apiResult.treff[0]) {
         const [top, ...alternative] = apiResult.treff;
         await addHistoryRecord({ brukerBilde: primaryPhotoUri, treff: top, alternativeTreff: alternative });
-        setResult({ kind: 'treff', scanId: apiResult.scanId, photoUri: primaryPhotoUri, treff: top, alternative });
+        setResult({
+          kind: 'treff',
+          scanId: apiResult.scanId,
+          photoUri: primaryPhotoUri,
+          photoUris,
+          treff: top,
+          alternative,
+        });
       } else if (apiResult.status === 'usikker') {
-        setResult({ kind: 'usikker', scanId: apiResult.scanId, photoUri: primaryPhotoUri, treff: apiResult.treff });
+        setResult({
+          kind: 'usikker',
+          scanId: apiResult.scanId,
+          photoUri: primaryPhotoUri,
+          photoUris,
+          treff: apiResult.treff,
+        });
       } else {
-        setResult({ kind: 'ikke_skadedyr', scanId: apiResult.scanId, photoUri: primaryPhotoUri });
+        setResult({ kind: 'ikke_skadedyr', scanId: apiResult.scanId, photoUri: primaryPhotoUri, photoUris });
       }
       clearSelectedImages();
     } catch (err) {
@@ -239,7 +265,7 @@ export default function ScanScreen() {
 
   return (
     <View style={styles.container}>
-      {cameraReady && (showCamera || showEntry) && (
+      {showCameraBackdrop && (
         <CameraView
           ref={cameraRef}
           style={StyleSheet.absoluteFill}
@@ -249,7 +275,7 @@ export default function ScanScreen() {
         />
       )}
 
-      {showEntry && cameraReady && (
+      {(showEntry || showResultBackdrop) && cameraReady && (
         <>
           <BlurView intensity={ENTRY_CAMERA_BLUR_INTENSITY} tint="dark" style={StyleSheet.absoluteFill} />
           <View style={styles.entryCameraScrim} />
@@ -534,6 +560,39 @@ function ConfidenceMeter({ value }: { value: number }) {
   );
 }
 
+function getSpeciesImageUri(species: Species | null | undefined) {
+  return species?.bildeUrl ? resolveImageUrl(species.bildeUrl) : null;
+}
+
+function ResultMedia({
+  mainUri,
+  userPhotoUris,
+}: {
+  mainUri: string;
+  userPhotoUris: string[];
+}) {
+  const showUserThumbnails =
+    userPhotoUris.length > 0 && (mainUri !== userPhotoUris[0] || userPhotoUris.length > 1);
+
+  return (
+    <View style={styles.resultMedia}>
+      <Image source={{ uri: mainUri }} style={styles.resultHeroImage} contentFit="cover" />
+      {showUserThumbnails && (
+        <View style={styles.resultThumbnailRow}>
+          {userPhotoUris.map((uri, index) => (
+            <Image
+              key={`${uri}-${index}`}
+              source={{ uri }}
+              style={styles.resultUserThumbnail}
+              contentFit="cover"
+            />
+          ))}
+        </View>
+      )}
+    </View>
+  );
+}
+
 function ScanResultContent({ result, onClose }: { result: ScanUiResult; onClose: () => void }) {
   const { language, t } = useI18n();
   const confidenceLabels = {
@@ -615,14 +674,17 @@ function ScanResultContent({ result, onClose }: { result: ScanUiResult; onClose:
 
   const displayedAlternatives = result.kind === 'treff' ? result.alternative.slice(0, 2) : [];
   const displayedUncertain = result.kind === 'usikker' ? result.treff.slice(0, 3) : [];
+  const speciesImageUri = result.kind === 'treff' ? getSpeciesImageUri(result.treff.species) : null;
+  const uncertainSpeciesImageUri = result.kind === 'usikker' ? getSpeciesImageUri(displayedUncertain[0]?.species) : null;
 
   return (
     <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.sheetContent}>
       {/* ─── TREFF ─── */}
       {result.kind === 'treff' && (
         <>
+          <ResultMedia mainUri={speciesImageUri ?? result.photoUri} userPhotoUris={result.photoUris} />
+
           <View style={styles.sheetHeader}>
-            <Image source={{ uri: result.photoUri }} style={styles.thumbnail} />
             <View style={styles.sheetHeaderText}>
               <SpeciesLink
                 navnNo={result.treff.navnNo}
@@ -646,12 +708,21 @@ function ScanResultContent({ result, onClose }: { result: ScanUiResult; onClose:
 
           <ConfidenceMeter value={result.treff.konfidens} />
 
-          {result.treff.species?.kjennetegn && (
-            <KjennetegnKort tekst={result.treff.species.kjennetegn} />
+          {result.treff.species && (
+            <Pressable
+              style={styles.primaryButton}
+              onPress={() =>
+                router.push({
+                  pathname: '/oversikt/art/[id]',
+                  params: { id: result.treff.species!.id },
+                })
+              }>
+              <Text style={styles.primaryButtonText}>{t('scan.fullDescription')}</Text>
+            </Pressable>
           )}
 
-          {result.treff.species?.forveksling && (
-            <ForvekslingsKort tekst={result.treff.species.forveksling} allSpecies={allSpecies} />
+          {result.treff.species?.kjennetegn && (
+            <KjennetegnKort tekst={result.treff.species.kjennetegn} />
           )}
 
           {feedback === null ? (
@@ -675,17 +746,12 @@ function ScanResultContent({ result, onClose }: { result: ScanUiResult; onClose:
             </Text>
           )}
 
-          {result.treff.species && (
-            <Pressable
-              style={styles.primaryButton}
-              onPress={() =>
-                router.push({
-                  pathname: '/oversikt/art/[id]',
-                  params: { id: result.treff.species!.id },
-                })
-              }>
-              <Text style={styles.primaryButtonText}>{t('scan.fullDescription')}</Text>
-            </Pressable>
+          {result.treff.species?.forveksling && (
+            <ForvekslingsKort
+              tekst={result.treff.species.forveksling}
+              allSpecies={allSpecies}
+              defaultCollapsed
+            />
           )}
 
           {displayedAlternatives.length > 0 && (
@@ -724,8 +790,9 @@ function ScanResultContent({ result, onClose }: { result: ScanUiResult; onClose:
       {/* ─── USIKKER ─── */}
       {result.kind === 'usikker' && (
         <>
+          <ResultMedia mainUri={uncertainSpeciesImageUri ?? result.photoUri} userPhotoUris={result.photoUris} />
+
           <View style={styles.sheetHeader}>
-            <Image source={{ uri: result.photoUri }} style={styles.thumbnail} />
             <View style={styles.sheetHeaderText}>
               <View style={styles.warningBanner}>
                 <IconSymbol name="exclamationmark.triangle.fill" size={14} color={Colors.accent} />
@@ -757,7 +824,11 @@ function ScanResultContent({ result, onClose }: { result: ScanUiResult; onClose:
           )}
 
           {displayedUncertain[0]?.species?.forveksling && (
-            <ForvekslingsKort tekst={displayedUncertain[0].species.forveksling} allSpecies={allSpecies} />
+            <ForvekslingsKort
+              tekst={displayedUncertain[0].species.forveksling}
+              allSpecies={allSpecies}
+              defaultCollapsed
+            />
           )}
 
           <Pressable style={styles.secondaryButton} onPress={onClose}>
@@ -769,8 +840,9 @@ function ScanResultContent({ result, onClose }: { result: ScanUiResult; onClose:
       {/* ─── IKKE SKADEDYR ─── */}
       {result.kind === 'ikke_skadedyr' && (
         <>
+          <ResultMedia mainUri={result.photoUri} userPhotoUris={result.photoUris} />
+
           <View style={styles.sheetHeader}>
-            <Image source={{ uri: result.photoUri }} style={styles.thumbnail} />
             <View style={styles.sheetHeaderText}>
               <Text style={styles.resultTitle}>{t('scan.noPestTitle')}</Text>
               <Text style={styles.resultBody}>
@@ -1154,6 +1226,27 @@ const styles = StyleSheet.create({
   },
   sheetContent: {
     gap: Spacing.md,
+  },
+  resultMedia: {
+    gap: Spacing.sm,
+  },
+  resultHeroImage: {
+    width: '100%',
+    height: 172,
+    borderRadius: Radius.lg,
+    backgroundColor: Colors.surfaceAlt,
+  },
+  resultThumbnailRow: {
+    flexDirection: 'row',
+    gap: Spacing.xs,
+  },
+  resultUserThumbnail: {
+    width: 48,
+    height: 48,
+    borderRadius: Radius.sm,
+    borderWidth: 1,
+    borderColor: Colors.border,
+    backgroundColor: Colors.surfaceAlt,
   },
   sheetHeader: {
     flexDirection: 'row',

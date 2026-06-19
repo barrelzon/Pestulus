@@ -2,6 +2,7 @@ import { useCallback, useState } from 'react';
 import { ActivityIndicator, FlatList, Pressable, StyleSheet, Text, View } from 'react-native';
 import { Image } from 'expo-image';
 import { router, useFocusEffect } from 'expo-router';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { CategoryBadge } from '@/components/category-badge';
 import { GlassPanel } from '@/components/glass-panel';
@@ -17,6 +18,7 @@ import type { Species, Treff } from '@/lib/api';
 export default function HistorikkScreen() {
   const { language, t } = useI18n();
   const wideContent = useWideContentLayout();
+  const insets = useSafeAreaInsets();
   const [history, setHistory] = useState<ScanRecord[] | null>(null);
   const allSpecies = useAllSpecies(language);
 
@@ -57,7 +59,11 @@ export default function HistorikkScreen() {
       <FlatList
         data={history}
         keyExtractor={(item) => item.id}
-        contentContainerStyle={[screenStyles.listContent, wideContent && screenStyles.wideContent]}
+        contentContainerStyle={[
+          screenStyles.listContent,
+          { paddingTop: insets.top + Spacing.md },
+          wideContent && screenStyles.wideContent,
+        ]}
         renderItem={({ item }) => {
           const displaySpecies = findLocalizedSpecies(item.treff, allSpecies);
           const displayName = displaySpecies?.navnNo ?? item.treff.navnNo;

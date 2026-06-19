@@ -2,9 +2,11 @@
  * Gjenbrukbare kort-komponenter for kjennetegn og forveksling.
  * Brukes i scan-resultatet og i artsdetaljsiden.
  */
+import { useEffect, useState } from 'react';
 import { router } from 'expo-router';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { Colors, Radius, Spacing, Typography } from '@/constants/theme';
+import { IconSymbol } from '@/components/ui/icon-symbol';
 import type { Species } from '@/lib/api';
 import { useI18n } from '@/lib/i18n';
 
@@ -43,17 +45,35 @@ type ForvekslingsItem = { navnNo: string; id: string | null; beskrivelse: string
 export function ForvekslingsKort({
   tekst,
   allSpecies,
+  defaultCollapsed = false,
 }: {
   tekst: string;
   allSpecies: Species[];
+  defaultCollapsed?: boolean;
 }) {
   const { t } = useI18n();
+  const [collapsed, setCollapsed] = useState(defaultCollapsed);
   const items = parseForveksling(tekst, allSpecies);
+
+  useEffect(() => {
+    setCollapsed(defaultCollapsed);
+  }, [defaultCollapsed, tekst]);
 
   return (
     <View style={styles.card}>
-      <Text style={styles.cardTitle}>{t('species.confusedWith')}</Text>
-      {items.map((item, i) => (
+      <Pressable
+        accessibilityRole="button"
+        accessibilityState={{ expanded: !collapsed }}
+        onPress={() => setCollapsed((current) => !current)}
+        style={styles.collapsibleHeader}>
+        <Text style={styles.cardTitle}>{t('species.confusedWith')}</Text>
+        <IconSymbol
+          name={collapsed ? 'chevron.down' : 'chevron.up'}
+          size={18}
+          color={Colors.textMuted}
+        />
+      </Pressable>
+      {!collapsed && items.map((item, i) => (
         <View key={i}>
           {i > 0 && <View style={styles.separator} />}
           {item.id ? (
@@ -153,6 +173,13 @@ const styles = StyleSheet.create({
     ...Typography.label,
     color: Colors.textMuted,
     textTransform: 'uppercase',
+  },
+  collapsibleHeader: {
+    minHeight: 28,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    gap: Spacing.sm,
   },
   bulletList: {
     gap: Spacing.xs,

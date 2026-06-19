@@ -50,6 +50,10 @@ Expo-app (etter at den er generert):
 - IKKE bruk neon eller skrikende gradienter; hold designet stilrent.
 - IKKE hardkod `env(safe-area-inset-bottom)` i tabbar/web-PWA; React Navigation
   håndterer safe-area selv, og Safari hjemskjerm får ellers tom bunnpadding.
+- IKKE skjul stack-header på en tab-skjerm uten å gi første scroll/liste eksplisitt
+  `useSafeAreaInsets().top`; Dynamic Island spiser første kort.
+- IKKE vis scan-resultatkort med bare brukerens opplastede bilde når arten har
+  `bildeUrl`; artsbildet skal være hovedbilde, brukerbildene thumbnails.
 - IKKE hardkod vision-leverandørens API-form fra hukommelsen — les leverandørens
   gjeldende docs og verifiser request/response før du fullfører `src/lib/vision.ts`.
 - IKKE stol på skjulte/ugjettbare URL-er som admin-sikkerhet — bruk backend-auth

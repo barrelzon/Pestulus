@@ -11,7 +11,7 @@ type LinkProps = {
 };
 
 export function SpeciesLink({ navnNo, allSpecies, style, noUnderline }: LinkProps) {
-  const match = allSpecies.find((s) => s.navnNo === navnNo);
+  const match = allSpecies.find((s) => s.navnNo === navnNo || s.navnOriginalNo === navnNo);
   if (!match) {
     return <Text selectable style={style}>{navnNo}</Text>;
   }
@@ -61,11 +61,16 @@ function parseForveksling(tekst: string, allSpecies: Species[]): Segment[] {
   const matches: Match[] = [];
 
   for (const sp of allSpecies) {
-    let pos = 0;
-    let idx: number;
-    while ((idx = tekst.indexOf(sp.navnNo, pos)) !== -1) {
-      matches.push({ start: idx, end: idx + sp.navnNo.length, id: sp.id });
-      pos = idx + 1;
+    const names = [sp.navnNo, sp.navnOriginalNo].filter(
+      (name): name is string => typeof name === 'string' && name.length > 0
+    );
+    for (const name of [...new Set(names)]) {
+      let pos = 0;
+      let idx: number;
+      while ((idx = tekst.indexOf(name, pos)) !== -1) {
+        matches.push({ start: idx, end: idx + name.length, id: sp.id });
+        pos = idx + 1;
+      }
     }
   }
 

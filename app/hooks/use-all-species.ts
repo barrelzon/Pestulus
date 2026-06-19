@@ -1,18 +1,22 @@
 import { useEffect, useState } from 'react';
-import { fetchSpecies, type Species } from '@/lib/api';
+import { fetchSpecies, type ApiLanguage, type Species } from '@/lib/api';
 
-let cache: Species[] | null = null;
+const cache = new Map<ApiLanguage, Species[]>();
 
-export function useAllSpecies(): Species[] {
-  const [species, setSpecies] = useState<Species[]>(cache ?? []);
+export function useAllSpecies(language: ApiLanguage = 'no'): Species[] {
+  const [species, setSpecies] = useState<Species[]>(cache.get(language) ?? []);
   useEffect(() => {
-    if (cache) return;
-    fetchSpecies()
+    const cached = cache.get(language);
+    if (cached) {
+      setSpecies(cached);
+      return;
+    }
+    fetchSpecies(language)
       .then((data) => {
-        cache = data;
+        cache.set(language, data);
         setSpecies(data);
       })
       .catch(() => {});
-  }, []);
+  }, [language]);
   return species;
 }

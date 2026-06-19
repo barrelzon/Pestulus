@@ -5,6 +5,7 @@ import { GlassPanel } from '@/components/glass-panel';
 import { IconSymbol } from '@/components/ui/icon-symbol';
 import { Colors, Radius, Spacing, Typography } from '@/constants/theme';
 import { ApiError, fetchSpecies, type Species } from '@/lib/api';
+import { useI18n } from '@/lib/i18n';
 
 type SpeciesPickerModalProps = {
   visible: boolean;
@@ -22,6 +23,7 @@ export function SpeciesPickerModal({
   onSelect,
   onClose,
 }: SpeciesPickerModalProps) {
+  const { language, t } = useI18n();
   const [species, setSpecies] = useState<Species[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -34,18 +36,18 @@ export function SpeciesPickerModal({
     setError(null);
 
     const exclude = new Set(excludeKey.split(',').filter(Boolean));
-    fetchSpecies()
+    fetchSpecies(language)
       .then((all) => {
         if (cancelled) return;
         setSpecies(
           all
-            .filter((s) => s.kategori === kategori && !exclude.has(s.id))
-            .sort((a, b) => a.navnNo.localeCompare(b.navnNo, 'nb'))
+            .filter((s) => ((s.kategoriId ?? s.kategori) === kategori || s.kategori === kategori) && !exclude.has(s.id))
+            .sort((a, b) => a.navnNo.localeCompare(b.navnNo, language === 'no' ? 'nb' : language))
         );
       })
       .catch((err) => {
         if (cancelled) return;
-        setError(err instanceof ApiError ? err.message : 'Kunne ikke laste arter.');
+        setError(err instanceof ApiError ? err.message : t('picker.loadError'));
       })
       .finally(() => {
         if (!cancelled) setLoading(false);
@@ -54,7 +56,7 @@ export function SpeciesPickerModal({
     return () => {
       cancelled = true;
     };
-  }, [visible, kategori, excludeKey]);
+  }, [visible, kategori, excludeKey, language, t]);
 
   return (
     <Modal visible={visible} transparent animationType="fade" onRequestClose={onClose}>
@@ -62,19 +64,19 @@ export function SpeciesPickerModal({
         <Pressable style={styles.sheet} onPress={(e) => e.stopPropagation()}>
           <GlassPanel variant="sheet" style={styles.panel}>
             <View style={styles.header}>
-              <Text style={styles.title}>Velg riktig art</Text>
+              <Text style={styles.title}>{t('picker.title')}</Text>
               <Pressable onPress={onClose} hitSlop={8}>
                 <IconSymbol name="xmark" size={18} color={Colors.textSecondary} />
               </Pressable>
             </View>
-            <Text style={styles.subtitle}>Hvilken art i kategorien «{kategori}» var det egentlig?</Text>
+            <Text style={styles.subtitle}>{t('picker.subtitle', { category: kategori })}</Text>
 
             {loading ? (
               <ActivityIndicator size="small" color={Colors.accent} style={styles.spinner} />
             ) : error ? (
               <Text style={styles.message}>{error}</Text>
             ) : species.length === 0 ? (
-              <Text style={styles.message}>Ingen flere arter i denne kategorien.</Text>
+              <Text style={styles.message}>{t('picker.empty')}</Text>
             ) : (
               <FlatList
                 data={species}

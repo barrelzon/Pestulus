@@ -1,5 +1,6 @@
 type SearchableSpecies = {
   navnNo: string;
+  navnOriginalNo?: string;
   navnLatin: string;
 };
 
@@ -19,6 +20,7 @@ function getSearchRank<T extends SearchableSpecies>(
   originalIndex: number
 ): RankedSpecies<T> | null {
   const navnNo = normalizeSearchText(species.navnNo);
+  const navnOriginalNo = normalizeSearchText(species.navnOriginalNo ?? '');
   const navnLatin = normalizeSearchText(species.navnLatin);
 
   if (navnNo.includes(query)) {
@@ -29,11 +31,19 @@ function getSearchRank<T extends SearchableSpecies>(
     };
   }
 
+  if (navnOriginalNo.includes(query)) {
+    return {
+      species,
+      group: 1,
+      originalIndex,
+    };
+  }
+
   if (!navnLatin.includes(query)) return null;
 
   return {
     species,
-    group: 1,
+    group: 2,
     originalIndex,
   };
 }

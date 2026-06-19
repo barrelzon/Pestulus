@@ -6,14 +6,16 @@ import { router } from 'expo-router';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { Colors, Radius, Spacing, Typography } from '@/constants/theme';
 import type { Species } from '@/lib/api';
+import { useI18n } from '@/lib/i18n';
 
 // ── Kjennetegn ──────────────────────────────────────────────────────────────
 
 export function KjennetegnKort({ tekst }: { tekst: string }) {
+  const { t } = useI18n();
   const punkter = parseKjennetegn(tekst);
   return (
     <View style={styles.card}>
-      <Text style={styles.cardTitle}>Kjennetegn</Text>
+      <Text style={styles.cardTitle}>{t('species.characteristics')}</Text>
       <View style={styles.bulletList}>
         {punkter.map((p, i) => (
           <View key={i} style={styles.bulletRow}>
@@ -45,11 +47,12 @@ export function ForvekslingsKort({
   tekst: string;
   allSpecies: Species[];
 }) {
+  const { t } = useI18n();
   const items = parseForveksling(tekst, allSpecies);
 
   return (
     <View style={styles.card}>
-      <Text style={styles.cardTitle}>Kan forveksles med</Text>
+      <Text style={styles.cardTitle}>{t('species.confusedWith')}</Text>
       {items.map((item, i) => (
         <View key={i}>
           {i > 0 && <View style={styles.separator} />}
@@ -77,11 +80,16 @@ function parseForveksling(tekst: string, allSpecies: Species[]): ForvekslingsIte
   const hits: Hit[] = [];
 
   for (const sp of allSpecies) {
-    let pos = 0;
-    let idx: number;
-    while ((idx = tekst.indexOf(sp.navnNo, pos)) !== -1) {
-      hits.push({ start: idx, end: idx + sp.navnNo.length, navnNo: sp.navnNo, id: sp.id });
-      pos = idx + 1;
+    const names = [sp.navnNo, sp.navnOriginalNo].filter(
+      (name): name is string => typeof name === 'string' && name.length > 0
+    );
+    for (const name of [...new Set(names)]) {
+      let pos = 0;
+      let idx: number;
+      while ((idx = tekst.indexOf(name, pos)) !== -1) {
+        hits.push({ start: idx, end: idx + name.length, navnNo: sp.navnNo, id: sp.id });
+        pos = idx + 1;
+      }
     }
   }
 

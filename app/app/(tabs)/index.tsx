@@ -20,6 +20,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { CategoryBadge } from '@/components/category-badge';
 import { GlassPanel } from '@/components/glass-panel';
+import { LanguageSwitcher } from '@/components/language-switcher';
 import { PestulusLogo } from '@/components/pestulus-logo';
 import { screenStyles, useWideContentLayout } from '@/components/shared-styles';
 import { KjennetegnKort, ForvekslingsKort } from '@/components/species-cards';
@@ -32,6 +33,7 @@ import { useAllSpecies } from '@/hooks/use-all-species';
 import { getClientId } from '@/lib/client-id';
 import { confidenceColor, confidenceLabel } from '@/lib/confidence';
 import { addHistoryRecord } from '@/lib/history';
+import { useI18n } from '@/lib/i18n';
 
 type ScanUiResult =
   | { kind: 'treff'; scanId?: string; photoUri: string; treff: Treff; alternative: Treff[] }
@@ -59,6 +61,7 @@ type SelectedScanImage = {
 };
 
 export default function ScanScreen() {
+  const { language, t } = useI18n();
   const insets = useSafeAreaInsets();
   const [permission, requestPermission] = useCameraPermissions();
   const [facing, setFacing] = useState<CameraType>('back');
@@ -140,7 +143,7 @@ export default function ScanScreen() {
         images.map(async (image) => {
           const rendered = await ImageManipulator.manipulate(image.uri).resize({ width: 1024 }).renderAsync();
           const saved = await rendered.saveAsync({ compress: 0.6, format: SaveFormat.JPEG, base64: true });
-          if (!saved.base64) throw new Error('Kunne ikke behandle bildet.');
+          if (!saved.base64) throw new Error(t('scan.processImageError'));
 
           return {
             base64: saved.base64,
@@ -149,12 +152,13 @@ export default function ScanScreen() {
         })
       );
       const primaryPhotoUri = processed[0]?.photoUri;
-      if (!primaryPhotoUri) throw new Error('Kunne ikke behandle bildet.');
+      if (!primaryPhotoUri) throw new Error(t('scan.processImageError'));
 
       const clientId = await getClientId();
       const apiResult = await scanImages(processed.map((image) => image.base64), {
         clientId,
         imageSources: images.map((image) => image.source),
+        language,
       });
 
       if (apiResult.status === 'treff' && apiResult.treff[0]) {
@@ -168,7 +172,7 @@ export default function ScanScreen() {
       }
       clearSelectedImages();
     } catch (err) {
-      const message = err instanceof ApiError ? err.message : 'Noe gikk feil. Prøv igjen.';
+      const message = err instanceof ApiError ? err.message : t('scan.genericError');
       setResult({ kind: 'error', message });
     } finally {
       setBusy(false);
@@ -182,7 +186,7 @@ export default function ScanScreen() {
     const photo = await cameraRef.current.takePictureAsync({ quality: 0.5 }).catch(() => null);
     setBusy(false);
     if (!photo?.uri) {
-      setResult({ kind: 'error', message: 'Noe gikk feil. Prøv igjen.' });
+      setResult({ kind: 'error', message: t('scan.genericError') });
       setSheetVisible(true);
       return;
     }
@@ -207,7 +211,7 @@ export default function ScanScreen() {
       addSelectedUris(uris, 'library');
       exitCamera();
     } catch {
-      setResult({ kind: 'error', message: 'Kunne ikke åpne bildevelgeren. Prøv igjen.' });
+      setResult({ kind: 'error', message: t('scan.pickerError') });
       setSheetVisible(true);
     }
   }
@@ -340,7 +344,7 @@ export default function ScanScreen() {
       {busy && (
         <View style={styles.loadingOverlay}>
           <ActivityIndicator size="large" color={Colors.accent} />
-          <Text style={styles.loadingText}>Analyserer bilde…</Text>
+          <Text style={styles.loadingText}>{t('scan.loading')}</Text>
         </View>
       )}
 
@@ -376,6 +380,8 @@ function ScanEntry({
   wideContent: boolean;
   cameraReady: boolean;
 }) {
+  const { t } = useI18n();
+
   return (
     <View
       style={[
@@ -388,19 +394,20 @@ function ScanEntry({
       ]}>
       <View style={styles.entryHeader}>
         <PestulusLogo variant="wordmark" size="md" />
+        <LanguageSwitcher />
       </View>
 
       <View style={styles.entryCopy}>
-        <Text style={styles.entryTitle}>Analyser skadedyr</Text>
-        <Text style={styles.entrySubtitle}>Skann med kamera, eller last opp bilder.</Text>
+        <Text style={styles.entryTitle}>{t('scan.title')}</Text>
+        <Text style={styles.entrySubtitle}>{t('scan.subtitle')}</Text>
         {webBlocked && (
           <Text style={styles.entryHelp}>
-            Kamera er blokkert. Gi tilgang fra adressefeltet.
+            {t('scan.cameraBlocked')}
           </Text>
         )}
         {!canAskAgain && Platform.OS !== 'web' && (
           <Pressable style={styles.entryTextButton} onPress={onOpenSettings}>
-            <Text style={styles.secondaryButtonText}>Åpne innstillinger</Text>
+            <Text style={styles.secondaryButtonText}>{t('scan.openSettings')}</Text>
           </Pressable>
         )}
       </View>
@@ -419,7 +426,7 @@ function ScanEntry({
               />
             )}
             <Text style={styles.entryPrimaryButtonText}>
-              {cameraReady ? 'Start kamera' : 'Gi kameratilgang'}
+              {cameraReady ? t('scan.startCamera') : t('scan.grantCamera')}
             </Text>
           </View>
           <Image
@@ -432,7 +439,7 @@ function ScanEntry({
         <Pressable style={styles.entrySecondaryButton} onPress={onPickImage}>
           <View style={styles.entryButtonLeft}>
             <IconSymbol name="photo.fill" size={24} color={Colors.accent} />
-            <Text style={styles.entrySecondaryButtonText}>Last opp bilde</Text>
+            <Text style={styles.entrySecondaryButtonText}>{t('scan.uploadImage')}</Text>
           </View>
           <Image
             source={buttonRightIcon}
@@ -442,8 +449,8 @@ function ScanEntry({
           />
         </Pressable>
         <View style={styles.entryPrivacyGroup}>
-          <Text style={styles.entryPrivacy}>Flere bilder av samme funn gir bedre treffsikkerhet. Ikke bland ulike funn i samme analyse. Gode bilder hjelper spesielt ved små skadedyr som insekter og fluer.</Text>
-          <Text numberOfLines={1} style={styles.entryPrivacyNote}>Bildene lagres kun lokalt i historikken.</Text>
+          <Text style={styles.entryPrivacy}>{t('scan.privacy')}</Text>
+          <Text numberOfLines={1} style={styles.entryPrivacyNote}>{t('scan.localOnly')}</Text>
         </View>
       </View>
     </View>
@@ -471,15 +478,16 @@ function ScanReviewTray({
   onRemoveImage: (id: string) => void;
   wideContent: boolean;
 }) {
+  const { t } = useI18n();
   const count = images.length;
 
   return (
     <View style={[styles.reviewTrayOuter, { paddingBottom: insetBottom + Spacing.md }]}>
       <View style={[styles.reviewTrayContent, wideContent && screenStyles.wideContent]}>
         <View style={styles.reviewHeader}>
-          <Text style={styles.reviewTitle}>{count}/3 bilder valgt</Text>
+          <Text style={styles.reviewTitle}>{t('scan.reviewTitle', { count })}</Text>
           <Pressable onPress={onRetakeLatest}>
-            <Text style={styles.reviewLink}>Ta siste på nytt</Text>
+            <Text style={styles.reviewLink}>{t('scan.retakeLatest')}</Text>
           </Pressable>
         </View>
         <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.thumbnailRow}>
@@ -497,17 +505,17 @@ function ScanReviewTray({
             <View style={styles.reviewAddRow}>
               <Pressable style={styles.reviewSecondaryButton} onPress={onAddFromCamera}>
                 <IconSymbol name="camera.fill" size={18} color={Colors.textSecondary} />
-                <Text style={styles.reviewSecondaryButtonText}>Ta bilde</Text>
+                <Text style={styles.reviewSecondaryButtonText}>{t('scan.takePhoto')}</Text>
               </Pressable>
               <Pressable style={styles.reviewSecondaryButton} onPress={onAddFromLibrary}>
                 <IconSymbol name="photo.fill" size={18} color={Colors.textSecondary} />
-                <Text style={styles.reviewSecondaryButtonText}>Last opp</Text>
+                <Text style={styles.reviewSecondaryButtonText}>{t('scan.upload')}</Text>
               </Pressable>
             </View>
           )}
           <Pressable style={styles.reviewPrimaryButton} onPress={onAnalyze}>
             <Text style={styles.primaryButtonText}>
-              {count === 1 ? 'Analyser 1 bilde' : `Analyser ${count} bilder`}
+              {count === 1 ? t('scan.analyzeOne') : t('scan.analyzeMany', { count })}
             </Text>
           </Pressable>
         </View>
@@ -527,11 +535,18 @@ function ConfidenceMeter({ value }: { value: number }) {
 }
 
 function ScanResultContent({ result, onClose }: { result: ScanUiResult; onClose: () => void }) {
+  const { language, t } = useI18n();
+  const confidenceLabels = {
+    high: t('confidence.high'),
+    good: t('confidence.good'),
+    moderate: t('confidence.moderate'),
+    low: t('confidence.low'),
+  };
   const [feedback, setFeedback] = useState<'like' | 'dislike' | null>(null);
   const [pickerVisible, setPickerVisible] = useState(false);
   const [corrected, setCorrected] = useState<Species | null>(null);
   const [showAlternatives, setShowAlternatives] = useState(false);
-  const allSpecies = useAllSpecies();
+  const allSpecies = useAllSpecies(language);
 
   useEffect(() => {
     setFeedback(null);
@@ -546,7 +561,13 @@ function ScanResultContent({ result, onClose }: { result: ScanUiResult; onClose:
     sendFeedback({
       scanId: result.scanId,
       vote: 'like',
-      treff: { navnNo: result.treff.navnNo, navnLatin: result.treff.navnLatin, kategori: result.treff.kategori },
+      treff: {
+        id: result.treff.id,
+        navnNo: result.treff.navnNo,
+        navnLatin: result.treff.navnLatin,
+        kategori: result.treff.kategori,
+        kategoriId: result.treff.kategoriId,
+      },
     }).catch(() => {});
   }
 
@@ -557,7 +578,13 @@ function ScanResultContent({ result, onClose }: { result: ScanUiResult; onClose:
     sendFeedback({
       scanId: result.scanId,
       vote: 'dislike',
-      treff: { navnNo: result.treff.navnNo, navnLatin: result.treff.navnLatin, kategori: result.treff.kategori },
+      treff: {
+        id: result.treff.id,
+        navnNo: result.treff.navnNo,
+        navnLatin: result.treff.navnLatin,
+        kategori: result.treff.kategori,
+        kategoriId: result.treff.kategoriId,
+      },
     }).catch(() => {});
   }
 
@@ -568,7 +595,13 @@ function ScanResultContent({ result, onClose }: { result: ScanUiResult; onClose:
     sendFeedback({
       scanId: result.scanId,
       vote: 'dislike',
-      treff: { navnNo: result.treff.navnNo, navnLatin: result.treff.navnLatin, kategori: result.treff.kategori },
+      treff: {
+        id: result.treff.id,
+        navnNo: result.treff.navnNo,
+        navnLatin: result.treff.navnLatin,
+        kategori: result.treff.kategori,
+        kategoriId: result.treff.kategoriId,
+      },
       korrigertArtId: species.id,
     }).catch(() => {});
   }
@@ -605,9 +638,9 @@ function ScanResultContent({ result, onClose }: { result: ScanUiResult; onClose:
           </View>
 
           <View style={styles.metaRow}>
-            <CategoryBadge label={result.treff.kategori} />
+            <CategoryBadge label={result.treff.kategori} categoryId={result.treff.kategoriId} />
             <Text style={[styles.confidenceLabel, { color: confidenceColor(result.treff.konfidens) }]}>
-              {Math.round(result.treff.konfidens * 100)}% · {confidenceLabel(result.treff.konfidens)}
+              {Math.round(result.treff.konfidens * 100)}% · {confidenceLabel(result.treff.konfidens, confidenceLabels)}
             </Text>
           </View>
 
@@ -625,20 +658,20 @@ function ScanResultContent({ result, onClose }: { result: ScanUiResult; onClose:
             <View style={styles.feedbackRow}>
               <Pressable style={styles.feedbackButton} onPress={handleLike}>
                 <IconSymbol name="hand.thumbsup.fill" size={16} color={Colors.textSecondary} />
-                <Text style={styles.feedbackButtonText}>Riktig art</Text>
+                <Text style={styles.feedbackButtonText}>{t('scan.correctSpecies')}</Text>
               </Pressable>
               <Pressable style={styles.feedbackButton} onPress={handleDislike}>
                 <IconSymbol name="hand.thumbsdown.fill" size={16} color={Colors.textSecondary} />
-                <Text style={styles.feedbackButtonText}>Feil art</Text>
+                <Text style={styles.feedbackButtonText}>{t('scan.wrongSpecies')}</Text>
               </Pressable>
             </View>
           ) : (
             <Text style={styles.feedbackThanks}>
               {feedback === 'like'
-                ? 'Takk for tilbakemeldingen!'
+                ? t('scan.feedbackThanks')
                 : corrected
-                  ? `Takk! Vi registrerer at det egentlig var ${corrected.navnNo}.`
-                  : 'Takk for tilbakemeldingen.'}
+                  ? t('scan.feedbackThanksCorrection', { species: corrected.navnNo })
+                  : t('scan.feedbackThanks')}
             </Text>
           )}
 
@@ -651,7 +684,7 @@ function ScanResultContent({ result, onClose }: { result: ScanUiResult; onClose:
                   params: { id: result.treff.species!.id },
                 })
               }>
-              <Text style={styles.primaryButtonText}>Se full artsbeskrivelse →</Text>
+              <Text style={styles.primaryButtonText}>{t('scan.fullDescription')}</Text>
             </Pressable>
           )}
 
@@ -662,8 +695,8 @@ function ScanResultContent({ result, onClose }: { result: ScanUiResult; onClose:
                 onPress={() => setShowAlternatives((current) => !current)}>
                 <Text style={styles.alternativesToggleText}>
                   {showAlternatives
-                    ? 'Skjul andre muligheter'
-                    : `Andre muligheter (${displayedAlternatives.length})`}
+                    ? t('scan.hideAlternatives')
+                    : t('scan.otherPossibilities', { count: displayedAlternatives.length })}
                 </Text>
                 <IconSymbol
                   name={showAlternatives ? 'chevron.up' : 'chevron.down'}
@@ -696,10 +729,10 @@ function ScanResultContent({ result, onClose }: { result: ScanUiResult; onClose:
             <View style={styles.sheetHeaderText}>
               <View style={styles.warningBanner}>
                 <IconSymbol name="exclamationmark.triangle.fill" size={14} color={Colors.accent} />
-                <Text style={styles.warningBannerText}>Usikkert resultat</Text>
+                <Text style={styles.warningBannerText}>{t('scan.uncertainResult')}</Text>
               </View>
               <Text style={styles.resultBody}>
-                Bildet er vanskelig å identifisere sikkert.
+                {t('scan.uncertainBody')}
               </Text>
             </View>
             <Pressable onPress={onClose} style={styles.closeButton} hitSlop={8}>
@@ -709,14 +742,14 @@ function ScanResultContent({ result, onClose }: { result: ScanUiResult; onClose:
 
           {displayedUncertain[0] && (
             <View>
-              <Text style={styles.candidateSectionLabel}>Mest sannsynlig</Text>
+              <Text style={styles.candidateSectionLabel}>{t('scan.mostLikely')}</Text>
               <CandidateRow treff={displayedUncertain[0]} />
             </View>
           )}
 
           {displayedUncertain.length > 1 && (
             <View>
-              <Text style={styles.candidateSectionLabel}>Kan også være</Text>
+              <Text style={styles.candidateSectionLabel}>{t('scan.alsoPossible')}</Text>
               {displayedUncertain.slice(1).map((t, index) => (
                 <CandidateRow key={`${t.navnNo}-${index}`} treff={t} />
               ))}
@@ -728,7 +761,7 @@ function ScanResultContent({ result, onClose }: { result: ScanUiResult; onClose:
           )}
 
           <Pressable style={styles.secondaryButton} onPress={onClose}>
-            <Text style={styles.secondaryButtonText}>Ta nytt bilde</Text>
+            <Text style={styles.secondaryButtonText}>{t('scan.newPhoto')}</Text>
           </Pressable>
         </>
       )}
@@ -739,9 +772,9 @@ function ScanResultContent({ result, onClose }: { result: ScanUiResult; onClose:
           <View style={styles.sheetHeader}>
             <Image source={{ uri: result.photoUri }} style={styles.thumbnail} />
             <View style={styles.sheetHeaderText}>
-              <Text style={styles.resultTitle}>Ingen skadedyr funnet</Text>
+              <Text style={styles.resultTitle}>{t('scan.noPestTitle')}</Text>
               <Text style={styles.resultBody}>
-                Vi fant ikke noe skadedyr i bildet. Prøv å ta bildet nærmere eller med bedre lys.
+                {t('scan.noPestBody')}
               </Text>
             </View>
             <Pressable onPress={onClose} style={styles.closeButton} hitSlop={8}>
@@ -759,7 +792,7 @@ function ScanResultContent({ result, onClose }: { result: ScanUiResult; onClose:
               <IconSymbol name="exclamationmark.triangle.fill" size={26} color={Colors.danger} />
             </View>
             <View style={styles.sheetHeaderText}>
-              <Text style={styles.resultTitle}>Noe gikk feil</Text>
+              <Text style={styles.resultTitle}>{t('common.errorTitle')}</Text>
               <Text style={styles.resultBody}>{result.message}</Text>
             </View>
             <Pressable onPress={onClose} style={styles.closeButton} hitSlop={8}>
@@ -767,7 +800,7 @@ function ScanResultContent({ result, onClose }: { result: ScanUiResult; onClose:
             </Pressable>
           </View>
           <Pressable style={styles.primaryButton} onPress={onClose}>
-            <Text style={styles.primaryButtonText}>Lukk</Text>
+            <Text style={styles.primaryButtonText}>{t('common.close')}</Text>
           </Pressable>
         </>
       )}

@@ -8,6 +8,7 @@ import { screenStyles, useWideContentLayout } from '@/components/shared-styles';
 import { IconSymbol } from '@/components/ui/icon-symbol';
 import { Colors, Radius, Spacing, Typography } from '@/constants/theme';
 import { ApiError, fetchCategories, fetchSpecies, type Category, type Species } from '@/lib/api';
+import { useI18n } from '@/lib/i18n';
 import { filterAndRankSpecies } from '@/lib/species-search';
 
 const CATEGORY_ORDER = [
@@ -17,6 +18,7 @@ const CATEGORY_ORDER = [
 ];
 
 export default function OversiktScreen() {
+  const { language, t } = useI18n();
   const wideContent = useWideContentLayout();
   const insets = useSafeAreaInsets();
   const [categories, setCategories] = useState<Category[]>([]);
@@ -29,10 +31,10 @@ export default function OversiktScreen() {
     setLoading(true);
     setError(null);
     try {
-      const [cats, allSpecies] = await Promise.all([fetchCategories(), fetchSpecies()]);
+      const [cats, allSpecies] = await Promise.all([fetchCategories(language), fetchSpecies(language)]);
       const sorted = [...cats].sort((a, b) => {
-        const ai = CATEGORY_ORDER.indexOf(a.navn);
-        const bi = CATEGORY_ORDER.indexOf(b.navn);
+        const ai = CATEGORY_ORDER.indexOf(a.id ?? a.navn);
+        const bi = CATEGORY_ORDER.indexOf(b.id ?? b.navn);
         if (ai === -1 && bi === -1) return 0;
         if (ai === -1) return 1;
         if (bi === -1) return -1;
@@ -41,11 +43,11 @@ export default function OversiktScreen() {
       setCategories(sorted);
       setSpecies(allSpecies);
     } catch (err) {
-      setError(err instanceof ApiError ? err.message : 'Kunne ikke laste artsdata.');
+      setError(err instanceof ApiError ? err.message : t('species.loadError'));
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [language, t]);
 
   useEffect(() => {
     load();
@@ -68,14 +70,15 @@ export default function OversiktScreen() {
       <View style={screenStyles.centered}>
         <Text style={screenStyles.errorText}>{error}</Text>
         <Pressable style={screenStyles.retryButton} onPress={load}>
-          <Text style={screenStyles.retryButtonText}>Prøv igjen</Text>
+          <Text style={screenStyles.retryButtonText}>{t('common.retry')}</Text>
         </Pressable>
       </View>
     );
   }
 
   const showSearchResults = query.trim().length > 0;
-  const resultCountText = filteredSpecies.length === 1 ? '1 treff' : `${filteredSpecies.length} treff`;
+  const resultCountText =
+    filteredSpecies.length === 1 ? t('species.oneHit') : t('species.hitCount', { count: filteredSpecies.length });
 
   const ListHeader = (
     <View style={[styles.header, { paddingTop: insets.top + Spacing.md }]}>
@@ -83,7 +86,7 @@ export default function OversiktScreen() {
         <IconSymbol name="magnifyingglass" size={18} color={Colors.textMuted} />
         <TextInput
           style={styles.searchInput}
-          placeholder="Søk etter art…"
+          placeholder={t('species.searchPlaceholder')}
           placeholderTextColor={Colors.textMuted}
           value={query}
           onChangeText={setQuery}
@@ -107,7 +110,7 @@ export default function OversiktScreen() {
           keyboardShouldPersistTaps="handled"
           ListHeaderComponent={ListHeader}
           ListEmptyComponent={
-            <Text style={screenStyles.emptyText}>Ingen arter samsvarer med søket.</Text>
+            <Text style={screenStyles.emptyText}>{t('species.noSearchResults')}</Text>
           }
           renderItem={({ item }) => (
             <Pressable
@@ -125,18 +128,18 @@ export default function OversiktScreen() {
       ) : (
         <FlatList
           data={categories}
-          keyExtractor={(item) => item.navn}
+          keyExtractor={(item) => item.id ?? item.navn}
           contentContainerStyle={[screenStyles.listContent, wideContent && screenStyles.wideContent]}
           ListHeaderComponent={ListHeader}
           renderItem={({ item }) => (
             <Pressable
               onPress={() =>
-                router.push({ pathname: '/oversikt/[kategori]', params: { kategori: item.navn } })
+                router.push({ pathname: '/oversikt/[kategori]', params: { kategori: item.id ?? item.navn } })
               }>
               <GlassPanel variant="card" style={screenStyles.row}>
                 <View style={screenStyles.rowText}>
                   <Text style={screenStyles.rowTitle}>{item.navn}</Text>
-                  <Text style={screenStyles.rowMeta}>{item.antall} arter</Text>
+                  <Text style={screenStyles.rowMeta}>{t('species.count', { count: item.antall })}</Text>
                 </View>
                 <IconSymbol name="chevron.right" size={18} color={Colors.textMuted} />
               </GlassPanel>

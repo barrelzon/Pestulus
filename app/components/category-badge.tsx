@@ -21,12 +21,14 @@ const categoryColors: Record<string, { backgroundColor: string; color: string }>
 
 export function CategoryBadge({
   label,
+  categoryId,
   style,
 }: {
   label: string;
+  categoryId?: string;
   style?: StyleProp<TextStyle>;
 }) {
-  const colors = categoryColors[label] ?? {
+  const colors = categoryColors[categoryId ?? label] ?? {
     backgroundColor: Colors.accentMuted,
     color: Colors.accent,
   };

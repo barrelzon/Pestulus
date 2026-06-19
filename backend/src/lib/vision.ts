@@ -9,6 +9,7 @@
  */
 
 export type Candidate = {
+  id: string;
   navnNo: string;
   navnLatin: string;
   kategori: string;
@@ -46,8 +47,9 @@ const SPECIES_SCHEMA = {
           navnLatin: { type: "STRING" },
           kategori: { type: "STRING" },
           konfidens: { type: "NUMBER" },
+          id: { type: "STRING" },
         },
-        required: ["navnNo", "navnLatin", "kategori", "konfidens"],
+        required: ["id", "navnNo", "navnLatin", "kategori", "konfidens"],
       },
     },
   },
@@ -76,7 +78,7 @@ function buildSpeciesPrompt(candidates: Candidate[]): string {
     .map((c) => {
       const kj = c.kjennetegn ? ` | ${c.kjennetegn}` : "";
       const forv = c.forveksling ? `\n  NB forveksling: ${c.forveksling}` : "";
-      return `${c.navnNo} | ${c.navnLatin}${kj}${forv}`;
+      return `${c.id} | ${c.navnNo} | ${c.navnLatin}${kj}${forv}`;
     })
     .join("\n");
 
@@ -84,7 +86,7 @@ function buildSpeciesPrompt(candidates: Candidate[]): string {
 
 REGLER:
 - Velg KUN blant artene i kandidatlista under. Ikke finn på arter utenfor lista.
-- Bruk navnNo og navnLatin NØYAKTIG slik de står i lista. Bruk kategori fra lista.
+- Bruk id, navnNo og navnLatin NØYAKTIG slik de står i lista. Bruk kategori fra lista.
 - Returner ALLTID de 5 mest sannsynlige artene (med mindre bildet ikke viser noe skadedyr i det hele tatt), sortert med høyest konfidens først.
 - Vær realistisk og forsiktig med konfidens. Sett høy konfidens (over ca. 0.8) KUN når kjennetegnene i bildet er tydelige og entydige for én art. Fordel ellers sannsynligheten mer jevnt.
 - Hvis du er usikker, sett "status": "usikker".
@@ -93,9 +95,9 @@ REGLER:
 - Svar KUN med gyldig JSON.
 
 SVARFORMAT:
-{"status":"treff"|"usikker"|"ikke_skadedyr","treff":[{"navnNo":"string","navnLatin":"string","kategori":"string","konfidens":0.0}]}
+{"status":"treff"|"usikker"|"ikke_skadedyr","treff":[{"id":"string","navnNo":"string","navnLatin":"string","kategori":"string","konfidens":0.0}]}
 
-KANDIDATLISTE (navnNo | navnLatin | kjennetegn):
+KANDIDATLISTE (id | navnNo | navnLatin | kjennetegn):
 ${liste}`;
 }
 

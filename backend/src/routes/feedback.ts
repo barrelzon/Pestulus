@@ -4,7 +4,7 @@ import { logFeedbackEvent } from "../lib/activity-log.js";
 
 export const feedbackRouter = Router();
 
-type FeedbackTreff = { navnNo: string; navnLatin: string; kategori: string };
+type FeedbackTreff = { id?: string; navnNo: string; navnLatin: string; kategori: string; kategoriId?: string };
 
 function isFeedbackTreff(value: unknown): value is FeedbackTreff {
   if (!value || typeof value !== "object") return false;
@@ -12,8 +12,28 @@ function isFeedbackTreff(value: unknown): value is FeedbackTreff {
   return (
     typeof t.navnNo === "string" &&
     typeof t.navnLatin === "string" &&
-    typeof t.kategori === "string"
+    typeof t.kategori === "string" &&
+    (t.id === undefined || typeof t.id === "string") &&
+    (t.kategoriId === undefined || typeof t.kategoriId === "string")
   );
+}
+
+function canonicalizeFeedbackTreff(treff: FeedbackTreff): { navnNo: string; navnLatin: string; kategori: string } {
+  const match = species.find(
+    (item) => item.id === treff.id || item.navnLatin === treff.navnLatin || item.navnNo === treff.navnNo,
+  );
+  if (!match) {
+    return {
+      navnNo: treff.navnNo,
+      navnLatin: treff.navnLatin,
+      kategori: treff.kategoriId ?? treff.kategori,
+    };
+  }
+  return {
+    navnNo: match.navnNo,
+    navnLatin: match.navnLatin,
+    kategori: match.kategori,
+  };
 }
 
 /**
@@ -49,7 +69,7 @@ feedbackRouter.post("/", async (req, res) => {
     scanId: linkedScanId,
     tidspunkt: new Date().toISOString(),
     vote: voteValue,
-    treff,
+    treff: canonicalizeFeedbackTreff(treff),
     korrigertArtId: correctedSpeciesId,
   };
 

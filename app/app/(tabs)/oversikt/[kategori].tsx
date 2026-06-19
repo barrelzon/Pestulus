@@ -7,9 +7,11 @@ import { screenStyles, useWideContentLayout } from '@/components/shared-styles';
 import { IconSymbol } from '@/components/ui/icon-symbol';
 import { Colors } from '@/constants/theme';
 import { ApiError, fetchSpecies, type Species } from '@/lib/api';
+import { useI18n } from '@/lib/i18n';
 
 export default function KategoriScreen() {
   const { kategori } = useLocalSearchParams<{ kategori: string }>();
+  const { language, t } = useI18n();
   const wideContent = useWideContentLayout();
   const [species, setSpecies] = useState<Species[]>([]);
   const [loading, setLoading] = useState(true);
@@ -19,22 +21,24 @@ export default function KategoriScreen() {
     setLoading(true);
     setError(null);
     try {
-      const all = await fetchSpecies();
-      setSpecies(all.filter((s) => s.kategori === kategori));
+      const all = await fetchSpecies(language);
+      setSpecies(all.filter((s) => (s.kategoriId ?? s.kategori) === kategori));
     } catch (err) {
-      setError(err instanceof ApiError ? err.message : 'Kunne ikke laste arter.');
+      setError(err instanceof ApiError ? err.message : t('picker.loadError'));
     } finally {
       setLoading(false);
     }
-  }, [kategori]);
+  }, [kategori, language, t]);
 
   useEffect(() => {
     load();
   }, [load]);
 
+  const title = species[0]?.kategori ?? kategori;
+
   return (
     <View style={screenStyles.container}>
-      <Stack.Screen options={{ title: kategori }} />
+      <Stack.Screen options={{ title }} />
 
       {loading ? (
         <View style={screenStyles.centered}>
@@ -44,7 +48,7 @@ export default function KategoriScreen() {
         <View style={screenStyles.centered}>
           <Text style={screenStyles.errorText}>{error}</Text>
           <Pressable style={screenStyles.retryButton} onPress={load}>
-            <Text style={screenStyles.retryButtonText}>Prøv igjen</Text>
+            <Text style={screenStyles.retryButtonText}>{t('common.retry')}</Text>
           </Pressable>
         </View>
       ) : (
@@ -53,7 +57,7 @@ export default function KategoriScreen() {
           keyExtractor={(item) => item.id}
           contentContainerStyle={[screenStyles.listContent, wideContent && screenStyles.wideContent]}
           ListEmptyComponent={
-            <Text style={screenStyles.emptyText}>Ingen arter i denne kategorien ennå.</Text>
+            <Text style={screenStyles.emptyText}>{t('species.emptyCategory')}</Text>
           }
           renderItem={({ item }) => (
             <Pressable

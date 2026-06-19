@@ -8,9 +8,12 @@ export function confidenceColor(value: number): string {
   return RED;
 }
 
-export function confidenceLabel(value: number): string {
-  if (value >= 0.85) return 'Høy sikkerhet';
-  if (value >= 0.7)  return 'God sikkerhet';
-  if (value >= 0.5)  return 'Moderat sikkerhet';
-  return 'Lav sikkerhet';
+export function confidenceLabel(
+  value: number,
+  labels: { high: string; good: string; moderate: string; low: string }
+): string {
+  if (value >= 0.85) return labels.high;
+  if (value >= 0.7)  return labels.good;
+  if (value >= 0.5)  return labels.moderate;
+  return labels.low;
 }

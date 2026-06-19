@@ -3,6 +3,7 @@ import { router, Stack } from 'expo-router';
 
 import { IconSymbol } from '@/components/ui/icon-symbol';
 import { Colors, Spacing, Typography } from '@/constants/theme';
+import { useI18n } from '@/lib/i18n';
 
 function BackButton() {
   return (
@@ -16,6 +17,8 @@ function BackButton() {
 }
 
 export default function OversiktLayout() {
+  const { t } = useI18n();
+
   return (
     <Stack
       screenOptions={{
@@ -25,7 +28,7 @@ export default function OversiktLayout() {
         headerShadowVisible: false,
         contentStyle: { backgroundColor: Colors.background },
       }}>
-      <Stack.Screen name="index" options={{ title: 'Oversikt' }} />
+      <Stack.Screen name="index" options={{ title: t('species.overviewTitle') }} />
       <Stack.Screen name="[kategori]" />
       <Stack.Screen name="art/[id]" options={{ headerLeft: () => <BackButton /> }} />
     </Stack>

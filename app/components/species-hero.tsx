@@ -4,6 +4,7 @@ import { StyleSheet, Text, View } from 'react-native';
 
 import { IconSymbol } from '@/components/ui/icon-symbol';
 import { Colors, Radius, Typography } from '@/constants/theme';
+import { useI18n } from '@/lib/i18n';
 
 export const HERO_HEIGHT = 380;
 
@@ -13,6 +14,8 @@ export const HERO_HEIGHT = 380;
  * gradient med "Bilde kommer" når arten ikke har bilde.
  */
 export function SpeciesHero({ imageUrl }: { imageUrl: string }) {
+  const { t } = useI18n();
+
   return (
     <View style={styles.container}>
       {imageUrl ? (
@@ -29,7 +32,7 @@ export function SpeciesHero({ imageUrl }: { imageUrl: string }) {
             <View style={styles.placeholderIcon}>
               <IconSymbol name="photo.fill" size={28} color={Colors.accent} />
             </View>
-            <Text style={styles.placeholderText}>Bilde kommer</Text>
+            <Text style={styles.placeholderText}>{t('species.imageComing')}</Text>
           </View>
         </>
       )}

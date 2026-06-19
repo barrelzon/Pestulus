@@ -1,0 +1,2828 @@
+{
+  "maskeringstege": {
+    "sv": {
+      "name": "smutsstinkfly",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Vägglöss och andra skinnbaggar",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Masketæge",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Væggelus og andre tæger",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "svaletege": {
+    "sv": {
+      "name": "svalans vägglus",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Vägglöss och andra skinnbaggar",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Svaletæge",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Væggelus og andre tæger",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "veggedyr": {
+    "sv": {
+      "name": "vägglus",
+      "nameStatus": "verified",
+      "nameSource": "manual override",
+      "category": "Vägglöss och andra skinnbaggar",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "væggelus",
+      "nameStatus": "verified",
+      "nameSource": "manual override",
+      "category": "Væggelus og andre tæger",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "flatlus": {
+    "sv": {
+      "name": "flatlus",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Löss",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Fladlus",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Lus",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "hodelus": {
+    "sv": {
+      "name": "huvudlus",
+      "nameStatus": "verified",
+      "nameSource": "manual common-name override",
+      "category": "Löss",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "hovedlus",
+      "nameStatus": "verified",
+      "nameSource": "manual common-name override",
+      "category": "Lus",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "kroppslus": {
+    "sv": {
+      "name": "klädlus",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Löss",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Menneskelus",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Lus",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "fugleloppe": {
+    "sv": {
+      "name": "hönsloppa",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Småkryp",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Hønseloppe",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Smådyr",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "katteloppe": {
+    "sv": {
+      "name": "kattloppa",
+      "nameStatus": "verified",
+      "nameSource": "manual override",
+      "category": "Småkryp",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "katteloppe",
+      "nameStatus": "verified",
+      "nameSource": "manual override",
+      "category": "Smådyr",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "boklus": {
+    "sv": {
+      "name": "husboklus",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Småkryp",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "boglus",
+      "nameStatus": "verified",
+      "nameSource": "manual common-name override",
+      "category": "Smådyr",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "brun-stovlus": {
+    "sv": {
+      "name": "streckstövlus",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Småkryp",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "brun støvlus",
+      "nameStatus": "verified",
+      "nameSource": "manual common-name override",
+      "category": "Smådyr",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "stovlus": {
+    "sv": {
+      "name": "stövsländor",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Småkryp",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Bark- & boglus",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Smådyr",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "bydue": {
+    "sv": {
+      "name": "tamduva",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Fåglar",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Klippedue",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Fugle",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "graspurv": {
+    "sv": {
+      "name": "gråsparv",
+      "nameStatus": "verified",
+      "nameSource": "manual override",
+      "category": "Fåglar",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "gråspurv",
+      "nameStatus": "verified",
+      "nameSource": "manual override",
+      "category": "Fugle",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "hakkespetter": {
+    "sv": {
+      "name": "hackspettar",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Fåglar",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Spætter",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Fugle",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "kloverbrunmidd": {
+    "sv": {
+      "name": "soldyrkare",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Spindlar, kvalster och fästingar",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "kløvermide",
+      "nameStatus": "verified",
+      "nameSource": "manual common-name override",
+      "category": "Edderkopper, mider og flåter",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "mosskorpioner": {
+    "sv": {
+      "name": "klokrypare",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Spindlar, kvalster och fästingar",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Mosskorpioner",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Edderkopper, mider og flåter",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "rod-honsemidd": {
+    "sv": {
+      "name": "hönskvalster",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Spindlar, kvalster och fästingar",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Kyllingemide",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Edderkopper, mider og flåter",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "skabb": {
+    "sv": {
+      "name": "skabb",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Spindlar, kvalster och fästingar",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Fnatmide",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Edderkopper, mider og flåter",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "stor-husedderkopp": {
+    "sv": {
+      "name": "större husspindel",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Spindlar, kvalster och fästingar",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Stor husedderkop",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Edderkopper, mider og flåter",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "vevkjerringer": {
+    "sv": {
+      "name": "lockespindlar",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Spindlar, kvalster och fästingar",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Mejere",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Edderkopper, mider og flåter",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "flatt": {
+    "sv": {
+      "name": "fästing",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Spindlar, kvalster och fästingar",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Skovflåt",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Edderkopper, mider og flåter",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "brunrotte": {
+    "sv": {
+      "name": "brunråtta",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Gnagare",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Brun rotte",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Gnavere",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "husmus": {
+    "sv": {
+      "name": "husmus",
+      "nameStatus": "verified",
+      "nameSource": "manual override",
+      "category": "Gnagare",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "husmus",
+      "nameStatus": "verified",
+      "nameSource": "manual override",
+      "category": "Gnavere",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "klatremus": {
+    "sv": {
+      "name": "ängssork",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Gnagare",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Rødmus",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Gnavere",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "rodmus": {
+    "sv": {
+      "name": "rödsork",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Gnagare",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "nordlig rødmus",
+      "nameStatus": "verified",
+      "nameSource": "manual common-name override",
+      "category": "Gnavere",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "smaskogmus": {
+    "sv": {
+      "name": "Mindre skogsmus",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Gnagare",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Skovmus",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Gnavere",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "storskogmus": {
+    "sv": {
+      "name": "halsbandsmus",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Gnagare",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Halsbåndmus",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Gnavere",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "svartrotte": {
+    "sv": {
+      "name": "hanråtta",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Gnagare",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Husrotte",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Gnavere",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "vand": {
+    "sv": {
+      "name": "vattensork",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Gnagare",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Mosegris",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Gnavere",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "honningbie": {
+    "sv": {
+      "name": "tambi",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Getingar, bin och humlor",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Honningbi",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Hvepse, bier og humlebier",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "humler": {
+    "sv": {
+      "name": "humlor",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Getingar, bin och humlor",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Humlebier",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Hvepse, bier og humlebier",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "kjempetreveps": {
+    "sv": {
+      "name": "gul vedstekel",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Getingar, bin och humlor",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Kæmpetræhveps",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Hvepse, bier og humlebier",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "stikkeveps": {
+    "sv": {
+      "name": "Getingar",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Getingar, bin och humlor",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Gedehamse",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Hvepse, bier og humlebier",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "brun-tremaur": {
+    "sv": {
+      "name": "träjordmyra",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Myror",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Brun træmyre",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Myrer",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "eitermaur": {
+    "sv": {
+      "name": "rödmyror",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Myror",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Stikmyrer",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Myrer",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "faraomaur": {
+    "sv": {
+      "name": "faraomyra",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Myror",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Faraomyre",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Myrer",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "kompostmaur": {
+    "sv": {
+      "name": "stickmyra",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Myror",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Kompostmyre",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Myrer",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "sauemaur": {
+    "sv": {
+      "name": "svart slavmyra",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Myror",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Sort slavemyre",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Myrer",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "spokelsesmaur": {
+    "sv": {
+      "name": "spökmyra",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Myror",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "spøgelsesmyre",
+      "nameStatus": "verified",
+      "nameSource": "manual common-name override",
+      "category": "Myrer",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "stokkmaur": {
+    "sv": {
+      "name": "hushästmyra",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Myror",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Herkulesmyre",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Myrer",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "svart-jordmaur": {
+    "sv": {
+      "name": "svartmyra",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Myror",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Havemyre",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Myrer",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "svart-tremaur": {
+    "sv": {
+      "name": "kartongmyra",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Myror",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Orangemyre",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Myrer",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "daddelsmalmott": {
+    "sv": {
+      "name": "dadelmott",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Fjärilar och malar",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Daddelmøl",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Sommerfugle og møl",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "flatmoll": {
+    "sv": {
+      "name": "allmän plattmal",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Fjärilar och malar",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Almindelig fladmøl",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Sommerfugle og møl",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "fromoll": {
+    "sv": {
+      "name": "husmal",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Fjärilar och malar",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Frømøl",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Sommerfugle og møl",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "humlebolvoksmott": {
+    "sv": {
+      "name": "humlemott",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Fjärilar och malar",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Humlevoksmøl",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Sommerfugle og møl",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "husfly": {
+    "sv": {
+      "name": "allmänt lövfly",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Fjärilar och malar",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Tagorm",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Sommerfugle og møl",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "brunhodereirmoll": {
+    "sv": {
+      "name": "sparvbomal",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Fjärilar och malar",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "brown house moth",
+      "nameStatus": "english_fallback",
+      "nameSource": "manual English fallback",
+      "category": "Sommerfugle og møl",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "klistermoll": {
+    "sv": {
+      "name": "vithuvad kornmal",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Fjärilar och malar",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Klistermøl",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Sommerfugle og møl",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "kornkjukemoll": {
+    "sv": {
+      "name": "kornmal",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Fjärilar och malar",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Kornmøl",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Sommerfugle og møl",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "broket-kjukemoll": {
+    "sv": {
+      "name": "gårdsvampmal",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Fjärilar och malar",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "pale-backed clothes moth",
+      "nameStatus": "english_fallback",
+      "nameSource": "manual English fallback",
+      "category": "Sommerfugle og møl",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "melsmalmott": {
+    "sv": {
+      "name": "kvarnmott",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Fjärilar och malar",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Melmøl",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Sommerfugle og møl",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "pelsmoll": {
+    "sv": {
+      "name": "pälsmal",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Fjärilar och malar",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Pelsmøl",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Sommerfugle og møl",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "torrfruktsmalmott": {
+    "sv": {
+      "name": "köksmott",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Fjärilar och malar",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Kakaomøl",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Sommerfugle og møl",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "amerikansk-kakerlakk": {
+    "sv": {
+      "name": "amerikansk kackerlacka",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Kackerlackor",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Amerikansk kakerlak",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Kakerlakker",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "australsk-kakerlakk": {
+    "sv": {
+      "name": "australisk kackerlacka",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Kackerlackor",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Australsk kakerlak",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Kakerlakker",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "banankakerlakker": {
+    "sv": {
+      "name": "banankackerlackor",
+      "nameStatus": "verified",
+      "nameSource": "manual common-name override",
+      "category": "Kackerlackor",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "banankakerlakker",
+      "nameStatus": "verified",
+      "nameSource": "manual common-name override",
+      "category": "Kakerlakker",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "brunbeltet-kakerlakk": {
+    "sv": {
+      "name": "radiokackerlacka",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Kackerlackor",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Brunstribet kakerlak",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Kakerlakker",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "brun-kakerlakk": {
+    "sv": {
+      "name": "brun kackerlacka",
+      "nameStatus": "verified",
+      "nameSource": "manual common-name override",
+      "category": "Kackerlackor",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "brun kakerlak",
+      "nameStatus": "verified",
+      "nameSource": "manual common-name override",
+      "category": "Kakerlakker",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "madeirakakerlakk": {
+    "sv": {
+      "name": "Madeirakackerlacka",
+      "nameStatus": "verified",
+      "nameSource": "manual common-name override",
+      "category": "Kackerlackor",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Madeirakakerlak",
+      "nameStatus": "verified",
+      "nameSource": "manual common-name override",
+      "category": "Kakerlakker",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "markkakerlakk": {
+    "sv": {
+      "name": "skogskackerlacka",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Kackerlackor",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Skovkakerlak",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Kakerlakker",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "orientalsk-kakerlakk": {
+    "sv": {
+      "name": "orientalisk kackerlacka",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Kackerlackor",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Orientalsk kakerlak",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Kakerlakker",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "orkidekakerlakk": {
+    "sv": {
+      "name": "orkidékackerlacka",
+      "nameStatus": "verified",
+      "nameSource": "manual common-name override",
+      "category": "Kackerlackor",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "orkidékakerlak",
+      "nameStatus": "verified",
+      "nameSource": "manual common-name override",
+      "category": "Kakerlakker",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "rokbrun-kakerlakk": {
+    "sv": {
+      "name": "rökbrun kackerlacka",
+      "nameStatus": "verified",
+      "nameSource": "manual common-name override",
+      "category": "Kackerlackor",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "røgbrun kakerlak",
+      "nameStatus": "verified",
+      "nameSource": "manual common-name override",
+      "category": "Kakerlakker",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "tysk-kakerlakk": {
+    "sv": {
+      "name": "tysk kackerlacka",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Kackerlackor",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Tysk kakerlak",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Kakerlakker",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "veksthuskakerlakk": {
+    "sv": {
+      "name": "växthuskackerlacka",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Kackerlackor",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "væksthuskakerlak",
+      "nameStatus": "verified",
+      "nameSource": "manual common-name override",
+      "category": "Kakerlakker",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "appelsinflue": {
+    "sv": {
+      "name": "medelhavsfruktfluga",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Flugor och myggor",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "middelhavsfrugtflue",
+      "nameStatus": "verified",
+      "nameSource": "manual common-name override",
+      "category": "Fluer og myg",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "bla-spyfluer": {
+    "sv": {
+      "name": "koboltspyflugor",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Flugor och myggor",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "blå spyfluer",
+      "nameStatus": "verified",
+      "nameSource": "manual common-name override",
+      "category": "Fluer og myg",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "bremser": {
+    "sv": {
+      "name": "hudkorm",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Flugor och myggor",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "bremser",
+      "nameStatus": "verified",
+      "nameSource": "manual common-name override",
+      "category": "Fluer og myg",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "fjaermygg": {
+    "sv": {
+      "name": "fjädermyggor",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Flugor och myggor",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Dansemyg",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Fluer og myg",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "fruktfluer-eddikfluer": {
+    "sv": {
+      "name": "daggflugor",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Flugor och myggor",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Bananfluer",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Fluer og myg",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "gressflue": {
+    "sv": {
+      "name": "gräsfluga",
+      "nameStatus": "verified",
+      "nameSource": "manual common-name override",
+      "category": "Flugor och myggor",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "græsflue",
+      "nameStatus": "verified",
+      "nameSource": "manual common-name override",
+      "category": "Fluer og myg",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "gullfluer": {
+    "sv": {
+      "name": "guldflugor",
+      "nameStatus": "verified",
+      "nameSource": "manual common-name override",
+      "category": "Flugor och myggor",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "guldfluer",
+      "nameStatus": "verified",
+      "nameSource": "manual common-name override",
+      "category": "Fluer og myg",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "hjortelusflue": {
+    "sv": {
+      "name": "älglus",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Flugor och myggor",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Hjortelus",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Fluer og myg",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "humlebolflue": {
+    "sv": {
+      "name": "humleblomfluga",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Flugor och myggor",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Foranderlig humlesvirreflue",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Fluer og myg",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "vepsebolflue": {
+    "sv": {
+      "name": "fönsterblomfluga",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Flugor och myggor",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Hvidbåndet humlesvirreflue",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Fluer og myg",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "sorgemygg-haermygg": {
+    "sv": {
+      "name": "sorgmyggor",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Flugor och myggor",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Sørgemyg",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Fluer og myg",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "klegg": {
+    "sv": {
+      "name": "bromsar",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Flugor och myggor",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Klæger",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Fluer og myg",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "loftsfluer": {
+    "sv": {
+      "name": "vindsflugor",
+      "nameStatus": "verified",
+      "nameSource": "manual common-name override",
+      "category": "Flugor och myggor",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "loftsfluer",
+      "nameStatus": "verified",
+      "nameSource": "manual common-name override",
+      "category": "Fluer og myg",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "pukkelfluer": {
+    "sv": {
+      "name": "djur",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Flugor och myggor",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Dyreriget",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Fluer og myg",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "sommerfuglmygg": {
+    "sv": {
+      "name": "fjärilsmyggor",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Flugor och myggor",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Sommerfuglemyg",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Fluer og myg",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "springfluer": {
+    "sv": {
+      "name": "hoppflugor",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Flugor och myggor",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Springfluer",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Fluer og myg",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "spyfluer": {
+    "sv": {
+      "name": "spyflugor",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Flugor och myggor",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Spyfluer",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Fluer og myg",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "stikkflue": {
+    "sv": {
+      "name": "vanlig stickfluga",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Flugor och myggor",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Stikflue",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Fluer og myg",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "stikkmygg": {
+    "sv": {
+      "name": "stickmyggor",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Flugor och myggor",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Stikmyg",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Fluer og myg",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "sviknott": {
+    "sv": {
+      "name": "svidknott",
+      "nameStatus": "verified",
+      "nameSource": "manual common-name override",
+      "category": "Flugor och myggor",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "svidemyg",
+      "nameStatus": "verified",
+      "nameSource": "manual common-name override",
+      "category": "Fluer og myg",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "australsk-tyvbille": {
+    "sv": {
+      "name": "australisk tjuvbagge",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Skalbaggar",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Australsk tyv",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Biller",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "barkbiller": {
+    "sv": {
+      "name": "barkborrar",
+      "nameStatus": "verified",
+      "nameSource": "manual common-name override",
+      "category": "Skalbaggar",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "barkbiller",
+      "nameStatus": "verified",
+      "nameSource": "manual common-name override",
+      "category": "Biller",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "blabukk": {
+    "sv": {
+      "name": "blåhjon",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Skalbaggar",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Blåbuk",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Biller",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "blagronn-skinkebille": {
+    "sv": {
+      "name": "Blue-green ham beetle",
+      "nameStatus": "english_fallback",
+      "nameSource": "GBIF; English fallback",
+      "category": "Skalbaggar",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Skinkebille",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Biller",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "bolverksbille": {
+    "sv": {
+      "name": "skeppsbagge",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Skalbaggar",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Bolværksbille",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Biller",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "brun-pelsbille": {
+    "sv": {
+      "name": "brun pälsänger",
+      "nameStatus": "verified",
+      "nameSource": "manual common-name override",
+      "category": "Skalbaggar",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Brun pelsklanner",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Biller",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "brunsvart-melbille": {
+    "sv": {
+      "name": "lysolbagge",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Skalbaggar",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Lysolbille",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Biller",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "brodbille": {
+    "sv": {
+      "name": "brödbagge",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Skalbaggar",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Brødbille",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Biller",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "bonnefrobille": {
+    "sv": {
+      "name": "bönbagge",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Skalbaggar",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "bønnefrøbille",
+      "nameStatus": "verified",
+      "nameSource": "manual common-name override",
+      "category": "Biller",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "ertefrobille": {
+    "sv": {
+      "name": "ärtsmyg",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Skalbaggar",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "ærtefrøbille",
+      "nameStatus": "verified",
+      "nameSource": "manual common-name override",
+      "category": "Biller",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "kinafrobille": {
+    "sv": {
+      "name": "kinesisk bönbagge",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Skalbaggar",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "kinafrøbille",
+      "nameStatus": "verified",
+      "nameSource": "manual common-name override",
+      "category": "Biller",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "flekket-frobille": {
+    "sv": {
+      "name": "mungbönsbagge",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Skalbaggar",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "plettet frøbille",
+      "nameStatus": "verified",
+      "nameSource": "manual common-name override",
+      "category": "Biller",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "flekket-tyvbille": {
+    "sv": {
+      "name": "vanlig tjuvbagge",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Skalbaggar",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Tyv",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Biller",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "frobiller": {
+    "sv": {
+      "name": "fröbaggar",
+      "nameStatus": "verified",
+      "nameSource": "manual common-name override",
+      "category": "Skalbaggar",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "frøbiller",
+      "nameStatus": "verified",
+      "nameSource": "manual common-name override",
+      "category": "Biller",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "gransnutebille": {
+    "sv": {
+      "name": "snytbagge",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Skalbaggar",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Gransnudebille",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Biller",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "husbukk": {
+    "sv": {
+      "name": "husbock",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Skalbaggar",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Husbuk",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Biller",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "husklanner": {
+    "sv": {
+      "name": "husänger",
+      "nameStatus": "verified",
+      "nameSource": "manual common-name override",
+      "category": "Skalbaggar",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Husklanner",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Biller",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "rismelbille": {
+    "sv": {
+      "name": "rismjölbagge",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Skalbaggar",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Rismelbille",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Biller",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "kastanjebrun-melbille": {
+    "sv": {
+      "name": "kastanjebrun mjölbagge",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Skalbaggar",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Rødbrun rismelbille",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Biller",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "kortvinger": {
+    "sv": {
+      "name": "kortvingar",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Skalbaggar",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Rovbiller",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Biller",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "liten-melbille": {
+    "sv": {
+      "name": "liten mjölbagge",
+      "nameStatus": "verified",
+      "nameSource": "manual common-name override",
+      "category": "Skalbaggar",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Hønseribille",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Biller",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "lopebiller": {
+    "sv": {
+      "name": "jordlöpare",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Skalbaggar",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Løbebiller",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Biller",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "rissnutebille": {
+    "sv": {
+      "name": "risvivel",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Skalbaggar",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Rissnudebille",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Biller",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "maissnutebille": {
+    "sv": {
+      "name": "majsvivel",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Skalbaggar",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Majssnudebille",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Biller",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "messingbille": {
+    "sv": {
+      "name": "mässingsbagge",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Skalbaggar",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Messingtyv",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Biller",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "myk-borebille": {
+    "sv": {
+      "name": "mjuk trägnagare",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Skalbaggar",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Blød borebille",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Biller",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "pelsbille": {
+    "sv": {
+      "name": "pälsänger",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Skalbaggar",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Pelsklan",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Biller",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "rateborebille": {
+    "sv": {
+      "name": "dödsur",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Skalbaggar",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Stivnakke",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Biller",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "ratesnutebille": {
+    "sv": {
+      "name": "källarvedvivel",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Skalbaggar",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "New Zealand weevil",
+      "nameStatus": "english_fallback",
+      "nameSource": "GBIF; English fallback",
+      "category": "Biller",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "sagtannet-melbille": {
+    "sv": {
+      "name": "sågtandad plattbagge",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Skalbaggar",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Savtakket kornbille",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Biller",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "sankthansoldenborre": {
+    "sv": {
+      "name": "summer chafer",
+      "nameStatus": "english_fallback",
+      "nameSource": "manual English fallback",
+      "category": "Skalbaggar",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "summer chafer",
+      "nameStatus": "english_fallback",
+      "nameSource": "manual English fallback",
+      "category": "Biller",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "sebraklanner": {
+    "sv": {
+      "name": "Skin beetle",
+      "nameStatus": "english_fallback",
+      "nameSource": "GBIF; English fallback",
+      "category": "Skalbaggar",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Smal frøklanner",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Biller",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "skinkebiller": {
+    "sv": {
+      "name": "Ham beetles",
+      "nameStatus": "english_fallback",
+      "nameSource": "GBIF; English fallback",
+      "category": "Skalbaggar",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Ham beetles",
+      "nameStatus": "english_fallback",
+      "nameSource": "GBIF; English fallback",
+      "category": "Biller",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "splintvedbiller": {
+    "sv": {
+      "name": "powderpost beetles",
+      "nameStatus": "english_fallback",
+      "nameSource": "manual English fallback",
+      "category": "Skalbaggar",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "powderpost beetles",
+      "nameStatus": "english_fallback",
+      "nameSource": "manual English fallback",
+      "category": "Biller",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "stor-melbille": {
+    "sv": {
+      "name": "mjölmask",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Skalbaggar",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Melorm",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Biller",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "stripet-borebille": {
+    "sv": {
+      "name": "strimmig trägnagare",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Skalbaggar",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Bogorm",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Biller",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "tobakksbille": {
+    "sv": {
+      "name": "tobaksbagge",
+      "nameStatus": "verified",
+      "nameSource": "manual common-name override",
+      "category": "Skalbaggar",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Tobaksbille",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Biller",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "veksthussnutebille": {
+    "sv": {
+      "name": "växthusöronvivel",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Skalbaggar",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Furet snudebille",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Biller",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "vepsebolklanner": {
+    "sv": {
+      "name": "wasp nest dermestid",
+      "nameStatus": "english_fallback",
+      "nameSource": "GBIF; English fallback",
+      "category": "Skalbaggar",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Amerikansk klanner",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Biller",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "atselgraver": {
+    "sv": {
+      "name": "kadaverbagge",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Skalbaggar",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Ligrøver",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Biller",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "flaggermus": {
+    "sv": {
+      "name": "fladdermöss",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Däggdjur",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Flagermus",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Pattedyr",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "buorm": {
+    "sv": {
+      "name": "snok",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Kräldjur / reptiler",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Snog",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Krybdyr / reptiler",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "hoggorm": {
+    "sv": {
+      "name": "huggorm",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Kräldjur / reptiler",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Hugorm",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Krybdyr / reptiler",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "slettsnok": {
+    "sv": {
+      "name": "hasselsnok",
+      "nameStatus": "verified",
+      "nameSource": "manual common-name override",
+      "category": "Kräldjur / reptiler",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "glatsnog",
+      "nameStatus": "verified",
+      "nameSource": "manual common-name override",
+      "category": "Krybdyr / reptiler",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "stalorm": {
+    "sv": {
+      "name": "ormslå",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Kräldjur / reptiler",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Stålorm",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Krybdyr / reptiler",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "grevling": {
+    "sv": {
+      "name": "Grävling",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Däggdjur",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Grævling",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Pattedyr",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "mink": {
+    "sv": {
+      "name": "mink",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Däggdjur",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "mink",
+      "nameStatus": "verified",
+      "nameSource": "manual common-name override",
+      "category": "Pattedyr",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "mar": {
+    "sv": {
+      "name": "skogsmård",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Däggdjur",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Skovmår",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Pattedyr",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "royskatt": {
+    "sv": {
+      "name": "lekatt",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Däggdjur",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Lækat",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Pattedyr",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "gulloyne": {
+    "sv": {
+      "name": "vanlig stinkslända",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Småkryp",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Almindelig guldøje",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Smådyr",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "hussiriss": {
+    "sv": {
+      "name": "hussyrsa",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Småkryp",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Husfårekylling",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Smådyr",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "harormer": {
+    "sv": {
+      "name": "tagelmaskar",
+      "nameStatus": "verified",
+      "nameSource": "manual common-name override",
+      "category": "Småkryp",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "tagelorme",
+      "nameStatus": "verified",
+      "nameSource": "manual common-name override",
+      "category": "Smådyr",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "saksedyr": {
+    "sv": {
+      "name": "vanlig tvestjärt",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Småkryp",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Almindelig ørentvist",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Smådyr",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "skjeggkre": {
+    "sv": {
+      "name": "långsprötad silverfisk",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Småkryp",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Skægkræ",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Smådyr",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "skolopendere": {
+    "sv": {
+      "name": "brun stenkrypare",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Småkryp",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Stenskolopender",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Smådyr",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "skrukketroll": {
+    "sv": {
+      "name": "källargråsugga",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Småkryp",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Grå bænkebider",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Smådyr",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "spretthaler": {
+    "sv": {
+      "name": "hoppstjärtar",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Småkryp",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "springhaler",
+      "nameStatus": "verified",
+      "nameSource": "manual common-name override",
+      "category": "Smådyr",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "solvkre": {
+    "sv": {
+      "name": "silverfisk",
+      "nameStatus": "verified",
+      "nameSource": "manual override",
+      "category": "Småkryp",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "sølvkræ",
+      "nameStatus": "verified",
+      "nameSource": "manual override",
+      "category": "Smådyr",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "trips": {
+    "sv": {
+      "name": "trips",
+      "nameStatus": "verified",
+      "nameSource": "manual common-name override",
+      "category": "Småkryp",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Saintpauliatrips",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Smådyr",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "tusenbein": {
+    "sv": {
+      "name": "Bandkejsarfoting",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Småkryp",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Stor bånd-tusindben",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Smådyr",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "rod-skogsmaur": {
+    "sv": {
+      "name": "röd skogsmyra",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Myror",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Rød skovmyre",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Myrer",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "fleskeklanner": {
+    "sv": {
+      "name": "fläskänger",
+      "nameStatus": "verified",
+      "nameSource": "manual override",
+      "category": "Skalbaggar",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "flæskeklanner",
+      "nameStatus": "verified",
+      "nameSource": "manual override",
+      "category": "Biller",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "museumsbille": {
+    "sv": {
+      "name": "museiänger",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Skalbaggar",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Museumsklan",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Biller",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "klesmoll": {
+    "sv": {
+      "name": "klädesmal",
+      "nameStatus": "verified",
+      "nameSource": "manual override",
+      "category": "Fjärilar och malar",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "klædemøl",
+      "nameStatus": "verified",
+      "nameSource": "manual override",
+      "category": "Sommerfugle og møl",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "husflue": {
+    "sv": {
+      "name": "husfluga",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Flugor och myggor",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Stueflue",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Fluer og myg",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "maker": {
+    "sv": {
+      "name": "måsar",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Fåglar",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Mågefugle",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Fugle",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "borstetusenbein": {
+    "sv": {
+      "name": "Penselfoting",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Småkryp",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Penseltusindben",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Smådyr",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "hettebille": {
+    "sv": {
+      "name": "kapuschongbaggar",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Skalbaggar",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Hættebiller",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Biller",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "muggbiller": {
+    "sv": {
+      "name": "mögelbaggar",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Skalbaggar",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Skimmelbiller",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Biller",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "korngnager": {
+    "sv": {
+      "name": "spannmålsgnagare",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Skalbaggar",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "Korngnaver",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Biller",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  },
+  "smalvinget-styltestovlus": {
+    "sv": {
+      "name": "kilvingad styltlus",
+      "nameStatus": "verified",
+      "nameSource": "GBIF",
+      "category": "Småkryp",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    },
+    "da": {
+      "name": "smalvinget styltestøvlus",
+      "nameStatus": "verified",
+      "nameSource": "manual common-name override",
+      "category": "Smådyr",
+      "region": "Norge",
+      "textStatus": "untranslated"
+    }
+  }
+}

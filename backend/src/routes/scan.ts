@@ -10,8 +10,15 @@ import {
 import { parseScanInput } from "../lib/scan-input.js";
 import { identifyPest } from "../lib/vision.js";
 import { withImage } from "../lib/images.js";
+import {
+  getSupportedLanguage,
+  localizeSpeciesRecord,
+  localizeTreff,
+  type CanonicalSpecies,
+} from "../lib/localization.js";
 
 export const scanRouter = Router();
+const allSpecies = species as CanonicalSpecies[];
 
 /**
  * POST /scan
@@ -20,6 +27,7 @@ export const scanRouter = Router();
  * Svar: { status, treff: [{ navnNo, navnLatin, kategori, konfidens, species? }] }
  */
 scanRouter.post("/", async (req, res) => {
+  const language = getSupportedLanguage(req.query.lang, req.headers["accept-language"]);
   let imageBase64List: string[];
   let clientId: string | null;
   let imageSources: ScanImageSource[];
@@ -34,7 +42,8 @@ scanRouter.post("/", async (req, res) => {
   }
 
   try {
-    const candidates = species.map((s) => ({
+    const candidates = allSpecies.map((s) => ({
+      id: s.id,
       navnNo: s.navnNo,
       navnLatin: s.navnLatin,
       kategori: s.kategori,
@@ -76,10 +85,13 @@ scanRouter.post("/", async (req, res) => {
 
     // Berik hvert treff med full artsinfo fra databasen.
     const treff = result.treff.map((t) => {
-      const full = species.find(
-        (s) => s.navnNo === t.navnNo || s.navnLatin === t.navnLatin,
+      const full = allSpecies.find(
+        (s) => s.id === t.id || s.navnNo === t.navnNo || s.navnLatin === t.navnLatin,
       );
-      return { ...t, species: full ? withImage(full) : null };
+      return {
+        ...localizeTreff(t, allSpecies, language),
+        species: full ? localizeSpeciesRecord(withImage(full), language) : null,
+      };
     });
 
     res.json({ scanId, status: result.status, treff });

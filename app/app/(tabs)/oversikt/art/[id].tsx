@@ -12,27 +12,29 @@ import { IconSymbol } from '@/components/ui/icon-symbol';
 import { Colors, Radius, Spacing, Typography } from '@/constants/theme';
 import { ApiError, fetchSpeciesById, resolveImageUrl, type Species } from '@/lib/api';
 import { useAllSpecies } from '@/hooks/use-all-species';
+import { useI18n } from '@/lib/i18n';
 
 export default function ArtDetailScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
+  const { language, t } = useI18n();
   const insets = useSafeAreaInsets();
   const wideContent = useWideContentLayout();
   const [species, setSpecies] = useState<Species | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const allSpecies = useAllSpecies();
+  const allSpecies = useAllSpecies(language);
 
   const load = useCallback(async () => {
     setLoading(true);
     setError(null);
     try {
-      setSpecies(await fetchSpeciesById(id));
+      setSpecies(await fetchSpeciesById(id, language));
     } catch (err) {
-      setError(err instanceof ApiError ? err.message : 'Kunne ikke laste arten.');
+      setError(err instanceof ApiError ? err.message : t('species.loadSpeciesError'));
     } finally {
       setLoading(false);
     }
-  }, [id]);
+  }, [id, language, t]);
 
   useEffect(() => {
     load();
@@ -49,9 +51,9 @@ export default function ArtDetailScreen() {
   if (error || !species) {
     return (
       <View style={screenStyles.centered}>
-        <Text style={screenStyles.errorText}>{error ?? 'Fant ikke arten.'}</Text>
+        <Text style={screenStyles.errorText}>{error ?? t('species.notFound')}</Text>
         <Pressable style={screenStyles.retryButton} onPress={load}>
-          <Text style={screenStyles.retryButtonText}>Prøv igjen</Text>
+          <Text style={screenStyles.retryButtonText}>{t('common.retry')}</Text>
         </Pressable>
       </View>
     );
@@ -74,7 +76,7 @@ export default function ArtDetailScreen() {
             <Text selectable style={styles.navnNo}>{species.navnNo}</Text>
             <Text selectable style={styles.latin}>{species.navnLatin}</Text>
             <View style={styles.pillRow}>
-              <CategoryBadge label={species.kategori} />
+              <CategoryBadge label={species.kategori} categoryId={species.kategoriId} />
               {metrics.size && <MetricPill label={metrics.size} />}
               {metrics.color && <MetricPill label={metrics.color} />}
             </View>
@@ -86,14 +88,13 @@ export default function ArtDetailScreen() {
             <ForvekslingsKort tekst={species.forveksling} allSpecies={allSpecies} />
           )}
 
-          <Section title="Beskrivelse" text={species.beskrivelse} />
-          <Section title="Helsemessig betydning" text={species.helsemessigBetydning} />
-          <Section title="Tiltak" text={species.tiltak} />
+          <Section title={t('species.description')} text={species.beskrivelse} />
+          <Section title={t('species.health')} text={species.helsemessigBetydning} />
+          <Section title={t('species.measures')} text={species.tiltak} />
 
           <View style={styles.sourceBox}>
             <Text selectable style={styles.sourceText}>
-              Kilde: FHIs skadedyrhåndbok. Innholdet er veiledende — ved helserisiko eller behov for
-              bekjempelse, kontakt FHI eller en profesjonell skadedyrbekjemper.
+              {t('species.sourceText')}
             </Text>
             <Pressable onPress={() => Linking.openURL('https://www.fhi.no/sk/skadedyrhandboka/')}>
               <Text style={styles.sourceLink}>fhi.no/sk/skadedyrhandboka</Text>

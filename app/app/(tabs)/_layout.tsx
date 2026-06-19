@@ -5,6 +5,7 @@ import Head from 'expo-router/head';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 import { Colors } from '@/constants/theme';
+import { useI18n } from '@/lib/i18n';
 
 const WEB_NAV_HEIGHT = 76;
 const WEB_NAV_ICON_SIZE = 34;
@@ -14,20 +15,16 @@ const speciesTabIcon = require('../../assets/images/species-tab-icon.png');
 const historyTabIcon = require('../../assets/images/history-tab-icon.png');
 
 const TAB_CONFIG = {
-  oversikt: {
-    label: 'Arter',
-  },
-  index: {
-    label: 'Scan',
-  },
-  historikk: {
-    label: 'Historikk',
-  },
+  oversikt: 'tabs.species',
+  index: 'tabs.scan',
+  historikk: 'tabs.history',
 } as const;
 
 type TabRouteName = keyof typeof TAB_CONFIG;
 
 export default function WebTabLayout() {
+  const { t } = useI18n();
+
   return (
     <>
       <Head>
@@ -40,9 +37,9 @@ export default function WebTabLayout() {
           headerShown: false,
           sceneStyle: styles.scene,
         }}>
-        <Tabs.Screen name="oversikt" options={{ title: TAB_CONFIG.oversikt.label }} />
-        <Tabs.Screen name="index" options={{ title: TAB_CONFIG.index.label }} />
-        <Tabs.Screen name="historikk" options={{ title: TAB_CONFIG.historikk.label }} />
+        <Tabs.Screen name="oversikt" options={{ title: t(TAB_CONFIG.oversikt) }} />
+        <Tabs.Screen name="index" options={{ title: t(TAB_CONFIG.index) }} />
+        <Tabs.Screen name="historikk" options={{ title: t(TAB_CONFIG.historikk) }} />
       </Tabs>
     </>
   );
@@ -50,6 +47,7 @@ export default function WebTabLayout() {
 
 function PestulusTabBar({ state, descriptors, navigation, insets }: BottomTabBarProps) {
   const navHeight = Math.max(0, WEB_NAV_HEIGHT - insets.bottom);
+  const { t } = useI18n();
 
   return (
     <View style={[styles.nav, { height: navHeight }]} role="tablist">
@@ -59,7 +57,7 @@ function PestulusTabBar({ state, descriptors, navigation, insets }: BottomTabBar
         }
 
         const focused = state.index === index;
-        const config = TAB_CONFIG[route.name];
+        const label = t(TAB_CONFIG[route.name]);
         const options = descriptors[route.key].options;
         const color = focused ? Colors.accent : Colors.textMuted;
         const iconSize = route.name === 'index' ? WEB_NAV_SCAN_ICON_SIZE : WEB_NAV_ICON_SIZE;
@@ -103,7 +101,7 @@ function PestulusTabBar({ state, descriptors, navigation, insets }: BottomTabBar
             <Text
               numberOfLines={1}
               style={[styles.navLabel, route.name !== 'index' && styles.navLabelLower, { color }]}>
-              {config.label}
+              {label}
             </Text>
           </Pressable>
         );

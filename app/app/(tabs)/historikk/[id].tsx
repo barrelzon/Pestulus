@@ -12,12 +12,15 @@ import { Colors, Radius, Spacing, Typography } from '@/constants/theme';
 import { confidenceColor, confidenceLabel } from '@/lib/confidence';
 import { deleteHistoryRecord, getHistoryRecord, type ScanRecord } from '@/lib/history';
 import { useAllSpecies } from '@/hooks/use-all-species';
+import { localeForLanguage, useI18n } from '@/lib/i18n';
+import type { Species, Treff } from '@/lib/api';
 
 export default function HistorikkDetaljScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
+  const { language, t } = useI18n();
   const wideContent = useWideContentLayout();
   const [record, setRecord] = useState<ScanRecord | null | undefined>(undefined);
-  const allSpecies = useAllSpecies();
+  const allSpecies = useAllSpecies(language);
 
   useFocusEffect(
     useCallback(() => {
@@ -41,31 +44,42 @@ export default function HistorikkDetaljScreen() {
   if (record === null) {
     return (
       <View style={screenStyles.centered}>
-        <Text style={screenStyles.errorText}>Fant ikke dette søket. Det kan ha blitt slettet.</Text>
+        <Text style={screenStyles.errorText}>{t('history.notFound')}</Text>
       </View>
     );
   }
 
   const konfidens = record.treff.konfidens;
-  const metrics = record.treff.species?.kjennetegn
-    ? extractMetrics(record.treff.species.kjennetegn)
-    : { size: null, color: null };
+  const confidenceLabels = {
+    high: t('confidence.high'),
+    good: t('confidence.good'),
+    moderate: t('confidence.moderate'),
+    low: t('confidence.low'),
+  };
+  const displaySpecies = findLocalizedSpecies(record.treff, allSpecies);
+  const displayName = displaySpecies?.navnNo ?? record.treff.navnNo;
+  const displayLatin = displaySpecies?.navnLatin ?? record.treff.navnLatin;
+  const displayCategory = displaySpecies?.kategori ?? record.treff.kategori;
+  const displayCategoryId = displaySpecies?.kategoriId ?? record.treff.kategoriId;
+  const detailSpeciesId = displaySpecies?.id ?? record.treff.species?.id ?? record.treff.id;
+  const metricsSource = displaySpecies?.kjennetegn ?? record.treff.species?.kjennetegn;
+  const metrics = metricsSource ? extractMetrics(metricsSource) : { size: null, color: null };
 
   return (
     <ScrollView
       style={screenStyles.container}
       contentContainerStyle={[styles.content, wideContent && screenStyles.wideContent]}>
-      <Stack.Screen options={{ title: record.treff.navnNo }} />
+      <Stack.Screen options={{ title: displayName }} />
 
       <Image source={{ uri: record.brukerBilde }} style={styles.image} />
 
       <View style={styles.header}>
-        <SpeciesLink navnNo={record.treff.navnNo} allSpecies={allSpecies} style={styles.title} noUnderline />
-        <Text selectable style={styles.latin}>{record.treff.navnLatin}</Text>
+        <SpeciesLink navnNo={displayName} allSpecies={allSpecies} style={styles.title} noUnderline />
+        <Text selectable style={styles.latin}>{displayLatin}</Text>
         <View style={styles.metaRow}>
-          <CategoryBadge label={record.treff.kategori} />
+          <CategoryBadge label={displayCategory} categoryId={displayCategoryId} />
           <Text style={[styles.confidenceText, { color: confidenceColor(konfidens) }]}>
-            {Math.round(konfidens * 100)}% · {confidenceLabel(konfidens)}
+            {Math.round(konfidens * 100)}% · {confidenceLabel(konfidens, confidenceLabels)}
           </Text>
         </View>
         {(metrics.size || metrics.color) && (
@@ -74,46 +88,60 @@ export default function HistorikkDetaljScreen() {
             {metrics.color && <MetricPill label={metrics.color} />}
           </View>
         )}
-        <Text style={styles.date}>{formatDate(record.tidspunkt)}</Text>
+        <Text style={styles.date}>{formatDate(record.tidspunkt, language)}</Text>
       </View>
 
-      {record.treff.species && (
+      {detailSpeciesId && (
         <Pressable
           style={styles.primaryButton}
           onPress={() =>
-            router.push({ pathname: '/oversikt/art/[id]', params: { id: record.treff.species!.id } })
+            router.push({ pathname: '/oversikt/art/[id]', params: { id: detailSpeciesId } })
           }>
-          <Text style={styles.primaryButtonText}>Se artsinformasjon</Text>
+          <Text style={styles.primaryButtonText}>{t('history.viewSpecies')}</Text>
         </Pressable>
       )}
 
       {record.alternativeTreff.length > 0 && (
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Andre kandidater</Text>
-          {record.alternativeTreff.map((treff, index) => (
-            <View key={`${treff.navnNo}-${index}`} style={styles.candidateRow}>
-              <View style={styles.candidateInfo}>
-                <SpeciesLink navnNo={treff.navnNo} allSpecies={allSpecies} style={styles.candidateName} />
-                <Text selectable style={styles.candidateLatin}>{treff.navnLatin}</Text>
+          <Text style={styles.sectionTitle}>{t('history.otherCandidates')}</Text>
+          {record.alternativeTreff.map((treff, index) => {
+            const candidateSpecies = findLocalizedSpecies(treff, allSpecies);
+            const candidateName = candidateSpecies?.navnNo ?? treff.navnNo;
+            const candidateLatin = candidateSpecies?.navnLatin ?? treff.navnLatin;
+
+            return (
+              <View key={`${treff.navnNo}-${index}`} style={styles.candidateRow}>
+                <View style={styles.candidateInfo}>
+                  <SpeciesLink navnNo={candidateName} allSpecies={allSpecies} style={styles.candidateName} />
+                  <Text selectable style={styles.candidateLatin}>{candidateLatin}</Text>
+                </View>
+                <Text style={[styles.confidenceText, { color: confidenceColor(treff.konfidens) }]}>
+                  {Math.round(treff.konfidens * 100)}%
+                </Text>
               </View>
-              <Text style={[styles.confidenceText, { color: confidenceColor(treff.konfidens) }]}>
-                {Math.round(treff.konfidens * 100)}%
-              </Text>
-            </View>
-          ))}
+            );
+          })}
         </View>
       )}
 
       <Pressable style={styles.deleteButton} onPress={handleDelete}>
         <IconSymbol name="trash.fill" size={18} color={Colors.danger} />
-        <Text style={styles.deleteButtonText}>Slett fra historikk</Text>
+        <Text style={styles.deleteButtonText}>{t('history.delete')}</Text>
       </Pressable>
     </ScrollView>
   );
 }
 
-function formatDate(iso: string) {
-  return new Date(iso).toLocaleString('nb-NO', { dateStyle: 'long', timeStyle: 'short' });
+function formatDate(iso: string, language: ReturnType<typeof useI18n>['language']) {
+  return new Date(iso).toLocaleString(localeForLanguage(language), { dateStyle: 'long', timeStyle: 'short' });
+}
+
+function findLocalizedSpecies(treff: Treff, allSpecies: Species[]): Species | undefined {
+  const id = treff.id ?? treff.species?.id;
+  if (id) return allSpecies.find((species) => species.id === id);
+  return allSpecies.find(
+    (species) => species.navnNo === treff.navnNo || species.navnOriginalNo === treff.navnNo
+  );
 }
 
 const styles = StyleSheet.create({

@@ -3,6 +3,7 @@
  * en backend på nettverket (f.eks. ved testing på fysisk enhet via Expo Go).
  */
 const API_URL = process.env.EXPO_PUBLIC_API_URL ?? 'http://localhost:8787';
+export type ApiLanguage = 'no' | 'sv' | 'da';
 
 export type VisionStatus = 'treff' | 'usikker' | 'ikke_skadedyr';
 export type ScanImageSource = 'camera' | 'library' | 'unknown';
@@ -10,8 +11,10 @@ export type ScanImageSource = 'camera' | 'library' | 'unknown';
 export type Species = {
   id: string;
   navnNo: string;
+  navnOriginalNo?: string;
   navnLatin: string;
   kategori: string;
+  kategoriId?: string;
   kjennetegn: string;
   forveksling?: string;
   beskrivelse: string;
@@ -19,19 +22,30 @@ export type Species = {
   tiltak: string;
   bildeUrl: string;
   region: string;
+  language?: ApiLanguage;
+  nameStatus?: 'canonical' | 'verified' | 'english_fallback';
+  nameSource?: string;
+  textStatus?: 'canonical' | 'verified' | 'machine_draft' | 'untranslated';
 };
 
 export type Category = {
+  id: string;
   navn: string;
   antall: number;
 };
 
 export type Treff = {
+  id?: string;
   navnNo: string;
+  navnOriginalNo?: string;
   navnLatin: string;
   kategori: string;
+  kategoriId?: string;
   konfidens: number;
   species: Species | null;
+  language?: ApiLanguage;
+  nameStatus?: 'canonical' | 'verified' | 'english_fallback';
+  nameSource?: string;
 };
 
 export type ScanResult = {
@@ -43,6 +57,7 @@ export type ScanResult = {
 export type ScanRequestMetadata = {
   clientId?: string;
   imageSources?: ScanImageSource[];
+  language?: ApiLanguage;
 };
 
 export type AdminScanTreff = {
@@ -107,14 +122,21 @@ async function request<T>(path: string, init?: RequestInit): Promise<T> {
   return response.json() as Promise<T>;
 }
 
+function withLanguage(path: string, language?: ApiLanguage): string {
+  if (!language) return path;
+  const separator = path.includes('?') ? '&' : '?';
+  return `${path}${separator}lang=${encodeURIComponent(language)}`;
+}
+
 export function scanImages(
   imageBase64List: string[],
   metadata: ScanRequestMetadata = {},
 ): Promise<ScanResult> {
-  return request<ScanResult>('/scan', {
+  const { language, ...requestMetadata } = metadata;
+  return request<ScanResult>(withLanguage('/scan', language), {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ imageBase64List, ...metadata }),
+    body: JSON.stringify({ imageBase64List, ...requestMetadata }),
   });
 }
 
@@ -122,16 +144,16 @@ export function scanImage(imageBase64: string): Promise<ScanResult> {
   return scanImages([imageBase64]);
 }
 
-export function fetchCategories(): Promise<Category[]> {
-  return request<Category[]>('/categories');
+export function fetchCategories(language?: ApiLanguage): Promise<Category[]> {
+  return request<Category[]>(withLanguage('/categories', language));
 }
 
-export function fetchSpecies(): Promise<Species[]> {
-  return request<Species[]>('/species');
+export function fetchSpecies(language?: ApiLanguage): Promise<Species[]> {
+  return request<Species[]>(withLanguage('/species', language));
 }
 
-export function fetchSpeciesById(id: string): Promise<Species> {
-  return request<Species>(`/species/${encodeURIComponent(id)}`);
+export function fetchSpeciesById(id: string, language?: ApiLanguage): Promise<Species> {
+  return request<Species>(withLanguage(`/species/${encodeURIComponent(id)}`, language));
 }
 
 /** Gjør en relativ bilde-sti fra backend (f.eks. "/images/Veggedyr.jpg") om til full URL. */
@@ -145,7 +167,7 @@ export type FeedbackVote = 'like' | 'dislike';
 export type FeedbackPayload = {
   scanId?: string;
   vote: FeedbackVote;
-  treff: { navnNo: string; navnLatin: string; kategori: string };
+  treff: { id?: string; navnNo: string; navnLatin: string; kategori: string; kategoriId?: string };
   korrigertArtId?: string;
 };
 

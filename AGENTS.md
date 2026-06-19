@@ -54,6 +54,8 @@ Expo-app (etter at den er generert):
   `useSafeAreaInsets().top`; Dynamic Island spiser første kort.
 - IKKE vis scan-resultatkort med bare brukerens opplastede bilde når arten har
   `bildeUrl`; artsbildet skal være hovedbilde, brukerbildene thumbnails.
+- IKKE la scan-resultatarket strekke seg i full widescreen på desktop; begrens
+  selve resultatpanelet med maks-bredde og hold det sentrert.
 - IKKE bruk emoji-flagg som eneste flaggvisning på web; desktop-fonter kan vise
   dem som NO/SE/DK i stedet for flagg.
 - IKKE forenkle artskjennetegn slik at gruppearter får én feil farge/variant;

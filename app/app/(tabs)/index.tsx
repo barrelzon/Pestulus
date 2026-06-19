@@ -13,6 +13,7 @@ import {
   ScrollView,
   StyleSheet,
   Text,
+  useWindowDimensions,
   View,
 } from 'react-native';
 import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
@@ -42,6 +43,7 @@ import { getClientId } from '@/lib/client-id';
 import { confidenceColor, confidenceLabel } from '@/lib/confidence';
 import { addHistoryRecord } from '@/lib/history';
 import { useI18n } from '@/lib/i18n';
+import { getScanResultPanelStyle } from '@/lib/scan-result-layout';
 
 type ScanPhotoResult = { scanId?: string; photoUri: string; photoUris: string[] };
 
@@ -84,6 +86,8 @@ export default function ScanScreen() {
   const [sheetVisible, setSheetVisible] = useState(false);
   const cameraRef = useRef<CameraView>(null);
   const wideContent = useWideContentLayout();
+  const { width: viewportWidth } = useWindowDimensions();
+  const scanResultPanelStyle = getScanResultPanelStyle(viewportWidth);
 
   const translateY = useSharedValue(SHEET_OFFSET);
 
@@ -377,7 +381,7 @@ export default function ScanScreen() {
       <Animated.View
         style={[styles.sheetWrapper, sheetStyle]}
         pointerEvents={sheetVisible ? 'auto' : 'none'}>
-        <GlassPanel variant="sheet" style={styles.sheetPanel}>
+        <GlassPanel variant="sheet" style={[styles.sheetPanel, scanResultPanelStyle]}>
           {result && <ScanResultContent result={result} onClose={closeSheet} />}
         </GlassPanel>
       </Animated.View>

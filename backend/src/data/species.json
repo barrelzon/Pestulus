@@ -504,15 +504,15 @@
   {
     "id": "stokkmaur",
     "navnNo": "Stokkmaur",
-    "navnLatin": "Camponotus herculeanus",
+    "navnLatin": "Camponotus spp.",
     "kategori": "Maur",
-    "kjennetegn": "5–18 mm, helt svart. Jevn rygglinje uten pukkel. Spruter ikke syre.",
-    "beskrivelse": "Norges største maur, med dronninger opptil 18 mm og arbeidere fra 5–14 mm. Hodet er helt svart og ryggen jevnt rundet, noe som skiller den fra rød skogmyr som har rødt på hodet og sprøyter myresyre.",
+    "kjennetegn": "5–18 mm. Vanlige skogstokkmaur og jordstokkmaur er tofarget rødbrun/sort; sjelden sotstokkmaur er ensfarget sort. Helt svart hode. Jevnt krummet rygg. Spruter ikke maursyre.",
+    "beskrivelse": "Norges største maur, med dronninger opptil 18 mm og arbeidere fra 5–14 mm. I Norge finnes tre stokkmaurarter: skogstokkmaur og jordstokkmaur er vanlige og tofarget rødbrun/sort, mens sotstokkmaur er sjelden og ensfarget sort. Stokkmaur skilles fra rød skogsmaur ved helt svart hode, jevnt krummet rygg og at den ikke spruter maursyre når den forstyrres.",
     "helsemessigBetydning": "Ingen kjent helserisiko. Arten er først og fremst et problem for bygninger, siden den gnager ut tre eller isolasjonsmateriale for å lage reir.",
     "tiltak": "Fjern overhengende greiner mot bygninger, råteskadet trevirke nær grunnmuren, og sørg for god ventilasjon i krypkjellere. Synlige reir kan fjernes fysisk eller behandles direkte, mens skjulte reir krever forgiftet åte og tett oppfølging over tid. Profesjonell bekjempelse anbefales.",
     "bildeUrl": "",
     "region": "Norge",
-    "forveksling": "Rød skogsmaur (rødbrunt hode, humpete rygg, spruter syre). Brun tremaur (gult bryst, mye mindre)."
+    "forveksling": "Rød skogsmaur (rødt og svart hode, humpete rygg, spruter maursyre). Svart jordmaur og sauemaur (mindre og helt svarte; vanlige stokkmaur er større og rødbrun/sort). Brun tremaur (gult bryst, mye mindre)."
   },
   {
     "id": "svart-jordmaur",
@@ -1877,7 +1877,7 @@
     "tiltak": "Begrens vegetasjon nær bygninger for å redusere risikoen for at bol etableres der. Bol som er kommet innendørs bør fjernes mekanisk, for eksempel med spade eller industristøvsuger, heller enn med kjemiske midler. Utendørs kan klister rundt trestammer hindre tilgang til mat. Utendørs bol bør bare fjernes ved svært stor aktivitet, og da må hele den underjordiske delen graves ut - kjemisk bekjempelse er lite effektivt fordi midlene brytes raskt ned, og kjemisk forebygging frarådes generelt av miljøhensyn.",
     "bildeUrl": "",
     "region": "Norge",
-    "forveksling": "Stokkmaur (helt svart, jevn rygg, spruter ikke syre)."
+    "forveksling": "Stokkmaur (helt svart hode, jevnt krummet rygg, spruter ikke maursyre; vanlige arter er større og rødbrun/sort)."
   },
   {
     "id": "fleskeklanner",

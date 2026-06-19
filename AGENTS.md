@@ -56,6 +56,8 @@ Expo-app (etter at den er generert):
   `bildeUrl`; artsbildet skal være hovedbilde, brukerbildene thumbnails.
 - IKKE bruk emoji-flagg som eneste flaggvisning på web; desktop-fonter kan vise
   dem som NO/SE/DK i stedet for flagg.
+- IKKE forenkle artskjennetegn slik at gruppearter får én feil farge/variant;
+  skill vanlige arter fra sjeldne varianter når FHI gjør det.
 - IKKE hardkod vision-leverandørens API-form fra hukommelsen — les leverandørens
   gjeldende docs og verifiser request/response før du fullfører `src/lib/vision.ts`.
 - IKKE stol på skjulte/ugjettbare URL-er som admin-sikkerhet — bruk backend-auth

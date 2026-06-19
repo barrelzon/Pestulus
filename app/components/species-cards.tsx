@@ -150,9 +150,10 @@ export function extractMetrics(kjennetegn: string): Metrics {
   const sizeMatch = kjennetegn.match(/\d+[,–\-]\d+\s*(?:mm|cm)|\d+\s*(?:mm|cm)/i);
   const size = sizeMatch ? sizeMatch[0].replace(/\s+/g, ' ') : null;
 
+  const compoundColorMatch = kjennetegn.match(/\brødbrun\/sort\b/i);
   const colorWords =
-    /(?:mørk\s+|lys\s+|lys[ea]\s*)?(?:brun|svart|grå|grønn|gul|rød|hvit|blå|metallisk|oransje|gjennomsiktig|lysebrun|mørkebrun)/i;
-  const colorMatch = kjennetegn.match(colorWords);
+    /(?:mørk\s+|lys\s+|lys[ea]\s*)?(?:rødbrun|mørkebrun|lysebrun|brun|svart|sort|grå|grønn|gul|rød|hvit|blå|metallisk|oransje|gjennomsiktig)/i;
+  const colorMatch = compoundColorMatch ?? kjennetegn.match(colorWords);
   const color = colorMatch ? colorMatch[0].toLowerCase() : null;
 
   return { size, color };

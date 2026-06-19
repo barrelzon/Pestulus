@@ -65,6 +65,9 @@ Expo-app (etter at den er generert):
 - IKKE la sjeldne varianter dominere artsgjenkjenning; for helsvart maur skal
   modellen ikke bruke stokkmaur som standard bildetreff. Vurder svart jordmaur,
   sauemaur eller svart tremaur først.
+- IKKE behold stokkmaur som toppresultat uten positiv tofargeaudit på selve
+  maurkroppen; uklar audit eller svarte maur-alternativer i topp-5 skal gi
+  usikkert resultat.
 - IKKE stol på modellens fritekst for navn/kategori når id finnes; normaliser
   alltid treff mot artsdatabasen før logging og visning.
 - IKKE hardkod vision-leverandørens API-form fra hukommelsen — les leverandørens

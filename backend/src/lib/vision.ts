@@ -124,9 +124,9 @@ function buildAntVisualAuditPrompt(): string {
 
 REGLER:
 - Sett colorPattern til "helsvart" når maurene fremstår svarte/mørke uten tydelig rødbrunt bryst eller kroppsparti.
-- Sett colorPattern til "tofarget_rodbrun_sort" bare når både rødbrunt og sort er tydelig synlig på samme maur.
+- Sett colorPattern til "tofarget_rodbrun_sort" bare når både rødbrunt og sort er tydelig synlig på samme maur, på maurens kropp. Brun flis, treverk, jord, skygger, gjenskinn eller uskarp bakgrunn teller ikke.
 - Sett colorPattern til "uklar" hvis fargene ikke kan vurderes sikkert.
-- Sett redBrownVisible til true bare når rødbrunt kroppsparti er tydelig synlig.
+- Sett redBrownVisible til true bare når rødbrunt kroppsparti på mauren er tydelig synlig; ellers false.
 - Svar KUN med gyldig JSON.
 
 SVARFORMAT: {"colorPattern":"helsvart"|"tofarget_rodbrun_sort"|"uklar","redBrownVisible":true|false}`;
@@ -235,10 +235,12 @@ export function applyAntVisualGuard(
   audit: AntVisualAudit | null,
 ): VisionResult {
   const top = result.treff[0];
-  if (!top || top.id !== "stokkmaur" || audit === null) return result;
-  if (audit.colorPattern !== "helsvart" || audit.redBrownVisible) return result;
-
+  if (!top || top.id !== "stokkmaur") return result;
   const preferred = result.treff.filter((treff) => BLACK_ANT_ALTERNATIVE_IDS.includes(treff.id));
+  const hasPositiveStokkmaurColor =
+    audit?.colorPattern === "tofarget_rodbrun_sort" && audit.redBrownVisible;
+  if (hasPositiveStokkmaurColor && preferred.length === 0) return result;
+
   const loweredStokkmaur = { ...top, konfidens: Math.min(top.konfidens, 0.25) };
   if (preferred.length === 0) {
     return { ...result, status: "usikker", treff: [loweredStokkmaur, ...result.treff.slice(1)] };

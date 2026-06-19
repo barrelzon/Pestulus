@@ -48,7 +48,56 @@ test("demotes stokkmaur when visual audit says ants are all black", () => {
   assert.ok((guarded.treff.at(-1)?.konfidens ?? 1) <= 0.25);
 });
 
+test("demotes stokkmaur when visual audit is unclear", () => {
+  const audit: AntVisualAudit = { colorPattern: "uklar", redBrownVisible: false };
+
+  const guarded = applyAntVisualGuard(stokkmaurTop, audit);
+
+  assert.equal(guarded.status, "usikker");
+  assert.equal(guarded.treff[0]?.id, "sauemaur");
+  assert.equal(guarded.treff.at(-1)?.id, "stokkmaur");
+});
+
+test("demotes stokkmaur when visual audit fails", () => {
+  const guarded = applyAntVisualGuard(stokkmaurTop, null);
+
+  assert.equal(guarded.status, "usikker");
+  assert.equal(guarded.treff[0]?.id, "sauemaur");
+  assert.equal(guarded.treff.at(-1)?.id, "stokkmaur");
+});
+
 test("keeps stokkmaur when red-brown coloring is visible", () => {
+  const stokkmaurWithNonBlackAlternatives: VisionResult = {
+    status: "treff",
+    treff: [
+      stokkmaurTop.treff[0]!,
+      {
+        id: "rod-skogsmaur",
+        navnNo: "Rød skogsmaur",
+        navnLatin: "Formica rufa",
+        kategori: "Maur",
+        konfidens: 0.04,
+      },
+      {
+        id: "brun-tremaur",
+        navnNo: "Brun tremaur",
+        navnLatin: "Lasius brunneus",
+        kategori: "Maur",
+        konfidens: 0.02,
+      },
+    ],
+  };
+  const audit: AntVisualAudit = {
+    colorPattern: "tofarget_rodbrun_sort",
+    redBrownVisible: true,
+  };
+
+  const guarded = applyAntVisualGuard(stokkmaurWithNonBlackAlternatives, audit);
+
+  assert.deepEqual(guarded, stokkmaurWithNonBlackAlternatives);
+});
+
+test("demotes stokkmaur when black ant alternatives are present even if audit is too optimistic", () => {
   const audit: AntVisualAudit = {
     colorPattern: "tofarget_rodbrun_sort",
     redBrownVisible: true,
@@ -56,7 +105,10 @@ test("keeps stokkmaur when red-brown coloring is visible", () => {
 
   const guarded = applyAntVisualGuard(stokkmaurTop, audit);
 
-  assert.deepEqual(guarded, stokkmaurTop);
+  assert.equal(guarded.status, "usikker");
+  assert.equal(guarded.treff[0]?.id, "sauemaur");
+  assert.equal(guarded.treff[1]?.id, "svart-jordmaur");
+  assert.equal(guarded.treff.at(-1)?.id, "stokkmaur");
 });
 
 test("normalizes model treff fields from canonical candidate ids", () => {

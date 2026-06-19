@@ -79,9 +79,12 @@ KANDIDATLISTE (navnNo | navnLatin | kjennetegn):
 - Treff normaliseres mot artsdatabasen med `id`, slik at modellens fritekst for
   `navnNo`, `navnLatin` og `kategori` ikke kan overstyre kanoniske verdier.
 - Hvis trinn 2 gir `stokkmaur` som toppkandidat, gjør backend en ekstra
-  fargeaudit som kun vurderer om maurene er helsvarte eller tydelig
-  rødbrun/sort. Helsvarte funn blir satt til `usikker` og svarte alternativer
-  (`Sauemaur`, `Svart jordmaur`, `Svart tremaur`) flyttes foran `Stokkmaur`.
+  fargeaudit som kun vurderer om maurene har tydelig rødbrun/sort tofarging på
+  selve maurkroppen. `Stokkmaur` beholdes bare ved positiv tofargeaudit og når
+  modellen ikke samtidig har svarte maur-alternativer i topp-5. Helsvarte,
+  uklare eller svarte-alternativ-tunge funn blir satt til `usikker`, og svarte
+  alternativer (`Sauemaur`, `Svart jordmaur`, `Svart tremaur`) flyttes foran
+  `Stokkmaur`.
 - Hvis trinn 1 returnerer `"ikke_skadedyr"` → avbryt; returner tom liste.
 - Hvis kategorien fra trinn 1 ikke finnes i artsdatabasen → fallback til alle
   arter (sikkernhet mot kategori-hallusinasjon).

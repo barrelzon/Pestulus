@@ -4,7 +4,17 @@ import { fileURLToPath } from "url";
 import type { Treff, VisionStatus } from "./vision.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const DATA_DIR = path.join(__dirname, "../data");
+const DEFAULT_DATA_DIR = path.join(__dirname, "../data");
+
+export function resolveActivityDataDir(
+  configuredDir = process.env.ADMIN_DATA_DIR,
+  fallbackDir = DEFAULT_DATA_DIR,
+): string {
+  const trimmed = configuredDir?.trim();
+  return trimmed ? path.resolve(trimmed) : fallbackDir;
+}
+
+const DATA_DIR = resolveActivityDataDir();
 
 export const SCAN_EVENTS_LOG = path.join(DATA_DIR, "scan-events.log");
 export const FEEDBACK_LOG = path.join(DATA_DIR, "feedback.log");

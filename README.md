@@ -50,6 +50,9 @@ Bruk gjerne **Plan Mode** for større oppgaver, og se gjennom diff-ene før du g
 ## Deploy
 - **Backend → Render:** Node-tjeneste. Build: `npm install && npm run build`.
   Start: `npm start`. Legg `VISION_API_KEY` m.m. som env vars i Render (ikke i git).
+  For admin-data må Render-tjenesten ha persistent disk og `ADMIN_DATA_DIR`
+  satt til diskens mount path, f.eks. `/var/data/pestulus-admin`. Uten dette
+  forsvinner `scan-events.log`, `feedback.log` og admin-bilder ved deploy/restart.
 - **Web → Vercel:** `npx expo export -p web` gir statiske filer i `app/dist`.
   Pek Vercel mot `app/`, build-kommando `npx expo export -p web`, output `dist`.
 

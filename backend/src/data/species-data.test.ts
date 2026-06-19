@@ -27,6 +27,16 @@ test("stokkmaur describes the common two-colored species without calling all sto
   assert.match(stokkmaur.beskrivelse, /sotstokkmaur er sjelden/i);
 });
 
+test("stokkmaur warns against classifying ordinary all-black ants as stokkmaur", () => {
+  const stokkmaur = findSpecies("stokkmaur");
+  const blackAntRule = `${stokkmaur.kjennetegn} ${stokkmaur.forveksling}`;
+
+  assert.match(blackAntRule, /helsvart maur/i);
+  assert.match(blackAntRule, /ikke.*stokkmaur/i);
+  assert.match(blackAntRule, /svart jordmaur/i);
+  assert.match(blackAntRule, /sauemaur/i);
+});
+
 test("red skogsmaur comparison does not describe stokkmaur as entirely black", () => {
   const redSkogsmaur = findSpecies("rod-skogsmaur");
 

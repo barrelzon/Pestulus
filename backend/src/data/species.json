@@ -486,7 +486,7 @@
     "tiltak": "Tett sprekker i grunnmuren og monter finmasket netting på ventiler som forebygging. Rutinemessig sprøyting har liten effekt; forgiftet åte som maurene bringer til reiret er mest virkningsfullt, alternativt mekanisk fjerning av reiret.",
     "bildeUrl": "",
     "region": "Norge",
-    "forveksling": "Stokkmaur (5–18 mm, spruter ikke syre). Svart jordmaur (matt svart, mindre)."
+    "forveksling": "Stokkmaur (større 5–18 mm, ofte rødbrun/sort; helsvart stokkmaur er sjelden og krever tydelig stor/kraftig stokkmaur-kropp). Svart jordmaur (matt svart, mindre)."
   },
   {
     "id": "spokelsesmaur",
@@ -506,13 +506,13 @@
     "navnNo": "Stokkmaur",
     "navnLatin": "Camponotus spp.",
     "kategori": "Maur",
-    "kjennetegn": "5–18 mm. Vanlige skogstokkmaur og jordstokkmaur er tofarget rødbrun/sort; sjelden sotstokkmaur er ensfarget sort. Helt svart hode. Jevnt krummet rygg. Spruter ikke maursyre.",
+    "kjennetegn": "5–18 mm. Vanlige skogstokkmaur og jordstokkmaur er tofarget rødbrun/sort; sjelden sotstokkmaur er ensfarget sort. Helt svart hode. Jevnt krummet rygg. Spruter ikke maursyre. Helsvart maur uten tydelig stor, kraftig stokkmaur-kropp skal ikke settes til stokkmaur; vurder svart jordmaur eller sauemaur først.",
     "beskrivelse": "Norges største maur, med dronninger opptil 18 mm og arbeidere fra 5–14 mm. I Norge finnes tre stokkmaurarter: skogstokkmaur og jordstokkmaur er vanlige og tofarget rødbrun/sort, mens sotstokkmaur er sjelden og ensfarget sort. Stokkmaur skilles fra rød skogsmaur ved helt svart hode, jevnt krummet rygg og at den ikke spruter maursyre når den forstyrres.",
     "helsemessigBetydning": "Ingen kjent helserisiko. Arten er først og fremst et problem for bygninger, siden den gnager ut tre eller isolasjonsmateriale for å lage reir.",
     "tiltak": "Fjern overhengende greiner mot bygninger, råteskadet trevirke nær grunnmuren, og sørg for god ventilasjon i krypkjellere. Synlige reir kan fjernes fysisk eller behandles direkte, mens skjulte reir krever forgiftet åte og tett oppfølging over tid. Profesjonell bekjempelse anbefales.",
     "bildeUrl": "",
     "region": "Norge",
-    "forveksling": "Rød skogsmaur (rødt og svart hode, humpete rygg, spruter maursyre). Svart jordmaur og sauemaur (mindre og helt svarte; vanlige stokkmaur er større og rødbrun/sort). Brun tremaur (gult bryst, mye mindre)."
+    "forveksling": "Rød skogsmaur (rødt og svart hode, humpete rygg, spruter maursyre). Svart jordmaur og sauemaur (mindre og helt svarte; helsvart maur uten tydelig stor/kraftig stokkmaur-kropp skal normalt vurderes her, ikke som stokkmaur). Brun tremaur (gult bryst, mye mindre)."
   },
   {
     "id": "svart-jordmaur",
@@ -525,7 +525,7 @@
     "tiltak": "Forebygg ved å bytte ut sand med grus rundt grunnmuren, redusere vegetasjon nær huset, og montere finmasket netting på kjellerventiler. Tilgjengelige reir kan fjernes med graving, kokende vann eller insektmiddel, og sukkerholdig åte er effektivt på våren. Profesjonell bekjemper anbefales for varig løsning.",
     "bildeUrl": "",
     "region": "Norge",
-    "forveksling": "Svart tremaur (blank svart, bredt konkavt hode, appelsinlukt). Kompostmaur (har brodd)."
+    "forveksling": "Sauemaur (glanssvart, ofte litt større). Stokkmaur (større 5–18 mm; vanlige arter er rødbrun/sort, og helsvart sotstokkmaur er sjelden). Svart tremaur (blank svart, bredt konkavt hode, appelsinlukt). Kompostmaur (har brodd)."
   },
   {
     "id": "svart-tremaur",

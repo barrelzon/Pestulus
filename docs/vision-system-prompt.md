@@ -48,6 +48,11 @@ REGLER:
 - Vær realistisk og forsiktig med konfidens. Sett høy konfidens (over ca. 0.8)
   KUN når kjennetegnene i bildet er tydelige og entydige for én art. Fordel
   ellers sannsynligheten mer jevnt mellom kandidatene.
+- Ikke bruk en sjelden variant som hovedforklaring når bildet bare viser et vanlig
+  trekk. For maur: en helsvart maur skal ikke identifiseres som Stokkmaur bare
+  fordi sotstokkmaur kan være ensfarget sort. Velg Stokkmaur først når
+  stor/kraftig kropp, jevnt krummet rygg og øvrige stokkmaurtrekk er tydelige;
+  vurder Svart jordmaur eller Sauemaur for små eller middels helsvarte maur.
 - Hvis du er usikker, sett "status": "usikker".
 - Hvis bildet ikke viser et dyr/skadedyr, sett "status": "ikke_skadedyr" og
   "treff": [].

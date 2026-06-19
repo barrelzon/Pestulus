@@ -58,10 +58,15 @@ Expo-app (etter at den er generert):
   dem som NO/SE/DK i stedet for flagg.
 - IKKE forenkle artskjennetegn slik at gruppearter får én feil farge/variant;
   skill vanlige arter fra sjeldne varianter når FHI gjør det.
+- IKKE la sjeldne varianter dominere artsgjenkjenning; for helsvart maur skal
+  modellen vurdere svart jordmaur/sauemaur før stokkmaur med mindre tydelige
+  stokkmaurtrekk vises.
 - IKKE hardkod vision-leverandørens API-form fra hukommelsen — les leverandørens
   gjeldende docs og verifiser request/response før du fullfører `src/lib/vision.ts`.
 - IKKE stol på skjulte/ugjettbare URL-er som admin-sikkerhet — bruk backend-auth
   med hemmelighet fra env.
+- IKKE lagre admin-søk/feedback i Render sin ephemeral deploy-mappe; bruk
+  persistent storage (`ADMIN_DATA_DIR`) eller database.
 
 ## Byggerekkefølge
 1. Backend: fullfør `/scan` (vision), `/species`, `/categories`, og bygg ut

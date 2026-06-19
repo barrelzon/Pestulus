@@ -40,6 +40,8 @@ VISION_API_URL=https://generativelanguage.googleapis.com/v1beta/models
 VISION_MODEL=gemini-3.5-flash
 CONFIDENCE_THRESHOLD=0.5
 ALLOWED_ORIGIN=*
+ADMIN_PASSWORD=<admin password>
+ADMIN_DATA_DIR=/var/data/pestulus-admin
 ```
 
 ### app/.env
@@ -75,5 +77,8 @@ Se CODEX_PROMPT.md for detaljert oppgaveliste.
 
 ## Deploy
 - **Backend → Render:** root=`backend`, build=`npm install && npm run build`, start=`npm start`
+- **Admin-data på Render:** attach persistent disk til backend-tjenesten og sett
+  `ADMIN_DATA_DIR` til mount path, f.eks. `/var/data/pestulus-admin`. Filbasert
+  admin-logg i deploy-mappa er ephemeral og forsvinner ved deploy/restart.
 - **Web → Vercel:** root=`app`, build=`npx expo export -p web`, output=`dist`
 - Sett env vars i Render/Vercel dashboard — ikke i kode

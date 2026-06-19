@@ -68,6 +68,8 @@ Expo-app (etter at den er generert):
 - IKKE behold stokkmaur som toppresultat uten positiv tofargeaudit på selve
   maurkroppen; uklar audit eller svarte maur-alternativer i topp-5 skal gi
   usikkert resultat.
+- IKKE bruk sotstokkmaur som forklaring i automatisk gjenkjenning nå; helsvart
+  maur skal rutes til svart jordmaur, sauemaur eller svart tremaur/usikker.
 - IKKE stol på modellens fritekst for navn/kategori når id finnes; normaliser
   alltid treff mot artsdatabasen før logging og visning.
 - IKKE hardkod vision-leverandørens API-form fra hukommelsen — les leverandørens

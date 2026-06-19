@@ -49,13 +49,13 @@ REGLER:
   KUN når kjennetegnene i bildet er tydelige og entydige for én art. Fordel
   ellers sannsynligheten mer jevnt mellom kandidatene.
 - Ikke bruk en sjelden variant som hovedforklaring når bildet bare viser et vanlig
-  trekk. For maur: en helsvart maur skal ikke identifiseres som Stokkmaur bare
-  fordi en sjelden helsvart stokkmaurvariant finnes. Ikke velg Stokkmaur for
-  helsvarte maur. Sjeldne helsvarte stokkmaurvarianter skal ikke brukes som
-  standard bildetreff. Når bildet viser helsvarte maur uten tydelig rødbrun/sort
-  tofarging, velg Svart jordmaur, Sauemaur eller Svart tremaur, eller sett
-  "status": "usikker". Velg Stokkmaur først når stor/kraftig kropp, jevnt
-  krummet rygg og øvrige stokkmaurtrekk er tydelige.
+  trekk. For maur: behandle Stokkmaur som rødbrun/sort med helt svart hode. En
+  helsvart maur skal ikke identifiseres som Stokkmaur; se bort fra sjelden
+  sotstokkmaur i gjenkjenningen for nå. Når bildet viser helsvarte maur uten
+  tydelig rødbrun/sort tofarging, velg Svart jordmaur, Sauemaur eller Svart
+  tremaur, eller sett "status": "usikker". Velg Stokkmaur først når rødbrun/sort
+  kropp, helt svart hode, stor/kraftig kropp, jevnt krummet rygg og øvrige
+  stokkmaurtrekk er tydelige.
 - Hvis du er usikker, sett "status": "usikker".
 - Hvis bildet ikke viser et dyr/skadedyr, sett "status": "ikke_skadedyr" og
   "treff": [].
@@ -82,9 +82,9 @@ KANDIDATLISTE (navnNo | navnLatin | kjennetegn):
   fargeaudit som kun vurderer om maurene har tydelig rødbrun/sort tofarging på
   selve maurkroppen. `Stokkmaur` beholdes bare ved positiv tofargeaudit og når
   modellen ikke samtidig har svarte maur-alternativer i topp-5. Helsvarte,
-  uklare eller svarte-alternativ-tunge funn blir satt til `usikker`, og svarte
-  alternativer (`Sauemaur`, `Svart jordmaur`, `Svart tremaur`) flyttes foran
-  `Stokkmaur`.
+  uklare eller svarte-alternativ-tunge funn blir satt til `usikker`, og backend
+  returnerer en kontrollert svart-maur-vurdering: `Svart jordmaur` 60 %,
+  `Sauemaur` 20 % og `Svart tremaur` 20 % når disse finnes i kandidatlisten.
 - Hvis trinn 1 returnerer `"ikke_skadedyr"` → avbryt; returner tom liste.
 - Hvis kategorien fra trinn 1 ikke finnes i artsdatabasen → fallback til alle
   arter (sikkernhet mot kategori-hallusinasjon).

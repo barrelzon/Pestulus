@@ -32,11 +32,12 @@ test("species prompt does not default all-black ants to rare black stokkmaur", (
   const prompt = buildSpeciesPrompt(candidates);
 
   assert.match(prompt, /helsvart maur/i);
-  assert.match(prompt, /ikke.*Stokkmaur.*bare fordi.*sjelden helsvart stokkmaurvariant/i);
-  assert.match(prompt, /Ikke velg Stokkmaur for helsvarte maur/i);
-  assert.match(prompt, /Sjeldne helsvarte stokkmaurvarianter skal ikke brukes som standard bildetreff/i);
+  assert.match(prompt, /behandle Stokkmaur som rødbrun\/sort med helt svart hode/i);
+  assert.match(prompt, /helsvart maur skal ikke identifiseres som Stokkmaur/i);
+  assert.match(prompt, /se bort fra sjelden sotstokkmaur/i);
   assert.match(prompt, /Svart jordmaur/i);
   assert.match(prompt, /Sauemaur/i);
+  assert.match(prompt, /Svart tremaur/i);
 });
 
 test("vision model calls use deterministic JSON generation", () => {

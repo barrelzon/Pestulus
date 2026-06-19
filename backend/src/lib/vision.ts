@@ -26,7 +26,12 @@ export type AntVisualAudit = {
 
 const CONFIDENCE_THRESHOLD = Number(process.env.CONFIDENCE_THRESHOLD ?? 0.7);
 const CONFIDENCE_MARGIN_THRESHOLD = Number(process.env.CONFIDENCE_MARGIN_THRESHOLD ?? 0.15);
-const BLACK_ANT_ALTERNATIVE_IDS = ["sauemaur", "svart-jordmaur", "svart-tremaur"];
+const BLACK_ANT_FALLBACK_TREFF = [
+  { id: "svart-jordmaur", konfidens: 0.6 },
+  { id: "sauemaur", konfidens: 0.2 },
+  { id: "svart-tremaur", konfidens: 0.2 },
+] as const;
+const BLACK_ANT_ALTERNATIVE_IDS: readonly string[] = BLACK_ANT_FALLBACK_TREFF.map((treff) => treff.id);
 
 // Schema for trinn 1 — kategorigjenkjenning
 const CATEGORY_SCHEMA = {
@@ -106,7 +111,7 @@ REGLER:
 - Bruk id, navnNo og navnLatin NØYAKTIG slik de står i lista. Bruk kategori fra lista.
 - Returner ALLTID de 5 mest sannsynlige artene (med mindre bildet ikke viser noe skadedyr i det hele tatt), sortert med høyest konfidens først.
 - Vær realistisk og forsiktig med konfidens. Sett høy konfidens (over ca. 0.8) KUN når kjennetegnene i bildet er tydelige og entydige for én art. Fordel ellers sannsynligheten mer jevnt.
-- Ikke bruk en sjelden variant som hovedforklaring når bildet bare viser et vanlig trekk. For maur: en helsvart maur skal ikke identifiseres som Stokkmaur bare fordi en sjelden helsvart stokkmaurvariant finnes. Ikke velg Stokkmaur for helsvarte maur. Sjeldne helsvarte stokkmaurvarianter skal ikke brukes som standard bildetreff. Når bildet viser helsvarte maur uten tydelig rødbrun/sort tofarging, velg Svart jordmaur, Sauemaur eller Svart tremaur, eller sett "status": "usikker". Velg Stokkmaur først når stor/kraftig kropp, jevnt krummet rygg og øvrige stokkmaurtrekk er tydelige.
+- Ikke bruk en sjelden variant som hovedforklaring når bildet bare viser et vanlig trekk. For maur: behandle Stokkmaur som rødbrun/sort med helt svart hode. En helsvart maur skal ikke identifiseres som Stokkmaur; se bort fra sjelden sotstokkmaur i gjenkjenningen for nå. Når bildet viser helsvarte maur uten tydelig rødbrun/sort tofarging, velg Svart jordmaur, Sauemaur eller Svart tremaur, eller sett "status": "usikker". Velg Stokkmaur først når rødbrun/sort kropp, helt svart hode, stor/kraftig kropp, jevnt krummet rygg og øvrige stokkmaurtrekk er tydelige.
 - Hvis du er usikker, sett "status": "usikker".
 - Hvis bildet ikke viser et dyr/skadedyr, sett "status": "ikke_skadedyr" og "treff": [].
 - Ellers sett "status": "treff".
@@ -230,9 +235,19 @@ async function auditAntVisuals(imageBase64List: string[]): Promise<AntVisualAudi
   return { colorPattern: parsed.colorPattern, redBrownVisible: parsed.redBrownVisible };
 }
 
+function buildBlackAntFallbackTreff(result: VisionResult, candidates: Candidate[]): Treff[] {
+  return BLACK_ANT_FALLBACK_TREFF.flatMap(({ id, konfidens }) => {
+    const source =
+      result.treff.find((treff) => treff.id === id) ??
+      candidates.find((candidate) => candidate.id === id);
+    return source ? [{ ...source, konfidens }] : [];
+  });
+}
+
 export function applyAntVisualGuard(
   result: VisionResult,
   audit: AntVisualAudit | null,
+  candidates: Candidate[] = [],
 ): VisionResult {
   const top = result.treff[0];
   if (!top || top.id !== "stokkmaur") return result;
@@ -241,24 +256,13 @@ export function applyAntVisualGuard(
     audit?.colorPattern === "tofarget_rodbrun_sort" && audit.redBrownVisible;
   if (hasPositiveStokkmaurColor && preferred.length === 0) return result;
 
-  const loweredStokkmaur = { ...top, konfidens: Math.min(top.konfidens, 0.25) };
-  if (preferred.length === 0) {
-    return { ...result, status: "usikker", treff: [loweredStokkmaur, ...result.treff.slice(1)] };
+  const blackAntFallback = buildBlackAntFallbackTreff(result, candidates);
+  if (blackAntFallback.length > 0) {
+    return { status: "usikker", treff: blackAntFallback };
   }
 
-  const adjustedPreferred = preferred.map((treff, index) => ({
-    ...treff,
-    konfidens: Math.max(treff.konfidens, Math.max(0.3, 0.55 - index * 0.1)),
-  }));
-  const remaining = result.treff.filter(
-    (treff) =>
-      treff.id !== top.id && !adjustedPreferred.some((preferredTreff) => preferredTreff.id === treff.id),
-  );
-
-  return {
-    status: "usikker",
-    treff: [...adjustedPreferred, ...remaining, loweredStokkmaur],
-  };
+  const loweredStokkmaur = { ...top, konfidens: Math.min(top.konfidens, 0.25) };
+  return { ...result, status: "usikker", treff: [loweredStokkmaur, ...result.treff.slice(1)] };
 }
 
 export function normalizeVisionResult(result: VisionResult, candidates: Candidate[]): VisionResult {
@@ -279,14 +283,15 @@ export function normalizeVisionResult(result: VisionResult, candidates: Candidat
 async function applyVisualGuards(
   imageBase64List: string[],
   result: VisionResult,
+  candidates: Candidate[],
 ): Promise<VisionResult> {
   if (result.treff[0]?.id !== "stokkmaur") return result;
   try {
     const audit = await auditAntVisuals(imageBase64List);
-    return applyAntVisualGuard(result, audit);
+    return applyAntVisualGuard(result, audit, candidates);
   } catch (err) {
     console.warn("maur-fargeaudit-feil:", err);
-    return result;
+    return applyAntVisualGuard(result, null, candidates);
   }
 }
 
@@ -337,6 +342,7 @@ export async function identifyPest(
   const result = await applyVisualGuards(
     imageBase64List,
     await identifySpecies(imageBase64List, finalCandidates),
+    finalCandidates,
   );
 
   // Sikkerhetsnett: degrader "treff" til "usikker" hvis konfidens er for lav

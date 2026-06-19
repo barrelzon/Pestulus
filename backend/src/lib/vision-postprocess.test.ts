@@ -36,16 +36,53 @@ const stokkmaurTop: VisionResult = {
   ],
 };
 
+const blackAntCandidates: Candidate[] = [
+  {
+    id: "svart-jordmaur",
+    navnNo: "Svart jordmaur",
+    navnLatin: "Lasius niger",
+    kategori: "Maur",
+  },
+  {
+    id: "sauemaur",
+    navnNo: "Sauemaur",
+    navnLatin: "Formica fusca",
+    kategori: "Maur",
+  },
+  {
+    id: "svart-tremaur",
+    navnNo: "Svart tremaur",
+    navnLatin: "Lasius fuliginosus",
+    kategori: "Maur",
+  },
+];
+
+test("returns uncertain black ant trio instead of stokkmaur for all-black ants", () => {
+  const audit: AntVisualAudit = { colorPattern: "helsvart", redBrownVisible: false };
+
+  const guarded = applyAntVisualGuard(stokkmaurTop, audit, blackAntCandidates);
+
+  assert.equal(guarded.status, "usikker");
+  assert.deepEqual(
+    guarded.treff.map((treff) => treff.id),
+    ["svart-jordmaur", "sauemaur", "svart-tremaur"],
+  );
+  assert.deepEqual(
+    guarded.treff.map((treff) => treff.konfidens),
+    [0.6, 0.2, 0.2],
+  );
+});
+
 test("demotes stokkmaur when visual audit says ants are all black", () => {
   const audit: AntVisualAudit = { colorPattern: "helsvart", redBrownVisible: false };
 
   const guarded = applyAntVisualGuard(stokkmaurTop, audit);
 
   assert.equal(guarded.status, "usikker");
-  assert.equal(guarded.treff[0]?.id, "sauemaur");
-  assert.equal(guarded.treff[1]?.id, "svart-jordmaur");
-  assert.equal(guarded.treff.at(-1)?.id, "stokkmaur");
-  assert.ok((guarded.treff.at(-1)?.konfidens ?? 1) <= 0.25);
+  assert.deepEqual(
+    guarded.treff.map((treff) => treff.id),
+    ["svart-jordmaur", "sauemaur"],
+  );
 });
 
 test("demotes stokkmaur when visual audit is unclear", () => {
@@ -54,16 +91,16 @@ test("demotes stokkmaur when visual audit is unclear", () => {
   const guarded = applyAntVisualGuard(stokkmaurTop, audit);
 
   assert.equal(guarded.status, "usikker");
-  assert.equal(guarded.treff[0]?.id, "sauemaur");
-  assert.equal(guarded.treff.at(-1)?.id, "stokkmaur");
+  assert.equal(guarded.treff[0]?.id, "svart-jordmaur");
+  assert.ok(!guarded.treff.some((treff) => treff.id === "stokkmaur"));
 });
 
 test("demotes stokkmaur when visual audit fails", () => {
   const guarded = applyAntVisualGuard(stokkmaurTop, null);
 
   assert.equal(guarded.status, "usikker");
-  assert.equal(guarded.treff[0]?.id, "sauemaur");
-  assert.equal(guarded.treff.at(-1)?.id, "stokkmaur");
+  assert.equal(guarded.treff[0]?.id, "svart-jordmaur");
+  assert.ok(!guarded.treff.some((treff) => treff.id === "stokkmaur"));
 });
 
 test("keeps stokkmaur when red-brown coloring is visible", () => {
@@ -106,9 +143,9 @@ test("demotes stokkmaur when black ant alternatives are present even if audit is
   const guarded = applyAntVisualGuard(stokkmaurTop, audit);
 
   assert.equal(guarded.status, "usikker");
-  assert.equal(guarded.treff[0]?.id, "sauemaur");
-  assert.equal(guarded.treff[1]?.id, "svart-jordmaur");
-  assert.equal(guarded.treff.at(-1)?.id, "stokkmaur");
+  assert.equal(guarded.treff[0]?.id, "svart-jordmaur");
+  assert.equal(guarded.treff[1]?.id, "sauemaur");
+  assert.ok(!guarded.treff.some((treff) => treff.id === "stokkmaur"));
 });
 
 test("normalizes model treff fields from canonical candidate ids", () => {

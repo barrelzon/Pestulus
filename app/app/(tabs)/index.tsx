@@ -394,7 +394,6 @@ function ScanEntry({
       ]}>
       <View style={styles.entryHeader}>
         <PestulusLogo variant="wordmark" size="md" />
-        <LanguageSwitcher />
       </View>
 
       <View style={styles.entryCopy}>
@@ -452,6 +451,7 @@ function ScanEntry({
           <Text style={styles.entryPrivacy}>{t('scan.privacy')}</Text>
           <Text numberOfLines={1} style={styles.entryPrivacyNote}>{t('scan.localOnly')}</Text>
         </View>
+        <LanguageSwitcher />
       </View>
     </View>
   );
